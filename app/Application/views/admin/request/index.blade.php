@@ -1,0 +1,49 @@
+@extends(layoutExtend())
+
+@section('title')
+     {{ trans('request.request') }} {{ trans('home.control') }}
+@endsection
+
+@section('style')
+    @include('admin.shared.style')
+@endsection
+
+@push('header')
+    <button class="btn btn-danger" onclick="deleteThemAll(this)" data-link="{{ url('admin/request/pluck') }}" ><i class="fa fa-trash"></i></button>
+    <button class="btn btn-success" onclick="checkAll(this)"  ><i class="fa fa-check-circle-o"></i> </button>
+    <button class="btn btn-warning" onclick="unCheckAll(this)"  ><i class="fa fa-check-circle"></i> </button>
+@endpush
+
+@push('search')
+    <form method="get" class="form-inline">
+        <div class="form-group">
+            <input type="text" name="from" class="form-control datepicker2" placeholder="{{ trans('admin.from') }}" value="{{ request()->has('from') ? request()->get('from') : '' }}">
+        </div>
+        <div class="form-group">
+            <input type="text" name="to" class="form-control datepicker2" placeholder="{{ trans('admin.to') }}" value="{{ request()->has('to') ? request()->get('to') : '' }}">
+        </div>
+		<div class="form-group">
+			<input type="text" name="artisan_id" class="form-control " placeholder="{{ trans("request.artisan_id") }}" value="{{ request()->has("artisan_id") ? request()->get("artisan_id") : "" }}">
+		</div>
+		<div class="form-group">
+			<input type="text" name="section_id" class="form-control " placeholder="{{ trans("request.section_id") }}" value="{{ request()->has("section_id") ? request()->get("section_id") : "" }}">
+		</div>
+		<div class="form-group">
+			<input type="text" name="local_id" class="form-control " placeholder="{{ trans("request.local_id") }}" value="{{ request()->has("local_id") ? request()->get("local_id") : "" }}">
+		</div>
+		<div class="form-group">
+			<input type="text" name="status" class="form-control " placeholder="{{ trans("request.status") }}" value="{{ request()->has("status") ? request()->get("status") : "" }}">
+		</div>
+
+        <button class="btn btn-success" type="submit" ><i class="fa fa-search"></i></button>
+        <a href="{{ url('admin/request') }}" class="btn btn-danger" ><i class="fa fa-close"></i></a>
+    </form>
+@endpush
+
+@section('content')
+    @include(layoutTable() , ['title' => trans('request.request') , 'model' => 'request' , 'table' => $dataTable->table([] , true) ])
+@endsection
+
+@section('script')
+    @include('admin.shared.scripts')
+@endsection
