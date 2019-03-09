@@ -45,4 +45,5 @@ return [
     'request' => '',
     'news' => '',
     'galery' => '',
+    'medias' => '',
 ];

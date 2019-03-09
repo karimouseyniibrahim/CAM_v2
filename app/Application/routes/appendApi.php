@@ -73,9 +73,12 @@ Route::post('news/add', 'NewsApi@add');
 Route::post('news/update/{id}', 'NewsApi@update');
 Route::get('news', 'NewsApi@index');
 
-#galery
-Route::get('galery/getById/{id}', 'GaleryApi@getById');
-Route::get('galery/delete/{id}', 'GaleryApi@delete');
-Route::post('galery/add', 'GaleryApi@add');
-Route::post('galery/update/{id}', 'GaleryApi@update');
-Route::get('galery', 'GaleryApi@index');
+
+
+#medias
+Route::get('medias/getById/{id}', 'MediasApi@getById');
+Route::get('medias/delete/{id}', 'MediasApi@delete');
+Route::post('medias/add', 'MediasApi@add');
+Route::post('medias/update/{id}', 'MediasApi@update');
+Route::get('medias', 'MediasApi@index');
+

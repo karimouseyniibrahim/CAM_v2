@@ -184,6 +184,7 @@
 {{ Html::script('admin/plugins/flot-charts/jquery.flot.time.js') }}
 {{ Html::script('admin/plugins/jquery-sparkline/jquery.sparkline.js') }}
 {{ Html::script('admin/js/admin.js') }}
+
 {{ Html::script('admin/js/pages/index.js') }}
 {{ Html::script('admin/js/jquery.dataTables.min.js') }}
 {{ Html::script('admin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.min.js') }}

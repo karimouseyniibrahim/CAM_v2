@@ -195,11 +195,14 @@ Route::post('news/item/{id}' , 'NewsController@update');
 Route::get('news/{id}/delete' , 'NewsController@destroy');
 Route::get('news/{id}/view' , 'NewsController@getById');
 Route::get('news/pluck', 'NewsController@pluck');
-#### galery control
-Route::get('galery' , 'GaleryController@index');
-Route::get('galery/item/{id?}' , 'GaleryController@show');
-Route::post('galery/item' , 'GaleryController@store');
-Route::post('galery/item/{id}' , 'GaleryController@update');
-Route::get('galery/{id}/delete' , 'GaleryController@destroy');
-Route::get('galery/{id}/view' , 'GaleryController@getById');
-Route::get('galery/pluck', 'GaleryController@pluck');
+
+
+#### medias control
+Route::get('medias' , 'MediasController@index');
+Route::get('medias/item/{id?}' , 'MediasController@show');
+Route::post('medias/item' , 'MediasController@store');
+Route::post('medias/item/{id}' , 'MediasController@update');
+Route::get('medias/{id}/delete' , 'MediasController@destroy');
+Route::get('medias/{id}/view' , 'MediasController@getById');
+Route::get('medias/pluck', 'MediasController@pluck');
+Route::get('medias/file/{id}' , 'MediasController@filedestroy');
