@@ -24,9 +24,9 @@ class AddRequestRequest extends FormRequest
     public function rules()
     {
         return [
-            "artisan_id" => "required",
-			"section_id" => "required",
-			"local_id" => "required",
+            "artisan_id" => "required|exists:artisan,numero_artisan",
+			"section_id" => "required|exists:section,id",
+			"local_id" => "required|exists:local,id",
 			"status" => "nullable",
 			
         ];

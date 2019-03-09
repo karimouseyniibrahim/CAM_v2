@@ -14,4 +14,6 @@ return [
     'price_unit' => '',
     'area_unit' => '',
     'request' => '',
+    'local_id' => '',
+    'artisan_id' => '',
 ];

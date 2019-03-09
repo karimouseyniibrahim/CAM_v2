@@ -6,13 +6,13 @@ use App\Application\Requests\Admin\Request\AddRequestRequest;
 use App\Application\Requests\Admin\Request\UpdateRequestRequest;
 use App\Application\Controllers\AbstractController;
 use App\Application\DataTables\RequestsDataTable;
-use App\Application\Model\Request;
+use App\Application\Model\RequestLocal;
 use Yajra\Datatables\Request;
 use Alert;
 
 class RequestController extends AbstractController
 {
-    public function __construct(Request $model)
+    public function __construct(RequestLocal $model)
     {
         parent::__construct($model);
     }

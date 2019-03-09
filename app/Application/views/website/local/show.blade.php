@@ -11,38 +11,31 @@
 	<!-- Grid row -->
 	<div class="row pull-{{ getDirection() }}">
 		<!-- Grid column -->
+
 		<div class="col-lg-12 col-md-12 mb-0">
-			<!-- Featured image -->
-			<div class="view overlay rounded z-depth-2 mb-4">
-				<img class="img-fluid" src="{{ url('/'.env('UPLOAD_PATH').'/'.$item->image) }}" alt="{{ $item->name_lang }}">
-				<a>
-					<div class="mask rgba-white-slight"></div>
-				</a>
-			</div>
-		  
-		
-			<!-- Post title -->
-			<h4 class="font-weight-bold mb-3"><strong>{{ $item->name_lang }}</strong></h4>
+		<div class="card card-cascade wider">
+		<div class="card card-cascade wider">
 
-			<!-- Price -->
-			<a class="blue-text">
-					<h6 class="font-weight-bold mb-3">{{ $item->price }} {{ trans('local.price_unit') }}</h6>
-			</a>
-			<a class="blue-text">
-					<h6 class="font-weight-bold mb-3">{{ $item->area }} {{ trans('local.area_unit') }}</h6>
-			</a>
-
-			<!-- Post data -->
-			<!-- Excerpt -->
-			<p class="dark-grey-text">{!! $item->description_lang !!}</p>
-			<!-- Read more button -->
-			<a class="btn btn-info btn-rounded btn-md" data-toggle="modal" data-target="#modalRequest">{{ trans('local.request') }}</a>
-		  
-			</div>
-			<!-- Grid column -->
+<!-- Card image -->
+		<div class="view view-cascade overlay">
+			<img  class="card-img-top mx-auto d-block"  src="{{ url('/'.env('UPLOAD_PATH').'/'.$item->image) }}"  style=" height: 250px;  " alt="Card image cap">			
 		</div>
-		<!-- Grid row -->
-	
+		<!-- Card content -->
+		<div class="card-body card-body-cascade text-center">
+
+		<!-- Title -->
+		<h4 class="card-title blue-text pb-2"><strong>{{ $item->name_lang }}</strong></h4>
+		<!-- Subtitle -->
+		<h5 class="pb-2"><strong>{{ $item->price }} {{ trans('local.price_unit') }} / {{ $item->area }} {{ trans('local.area_unit') }} </strong></h5>
+		<!-- Text -->
+		<p class="card-text">{!! $item->description_lang !!}</p>
+
+		<!-- Linkedin -->
+		<a class="btn btn-info btn-rounded btn-md" data-toggle="modal" data-target="#modalRequest">{{ trans('local.request') }}</a>
+
+		</div>
+
+</div>
 		@include("website.section.request", ["sections" => $data['data'], "section_id" => $item->section_id,'local_id'=>$item->id])
 		@include(layoutMessage('website'))
 </section>

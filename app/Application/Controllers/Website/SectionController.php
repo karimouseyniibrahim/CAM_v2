@@ -59,6 +59,7 @@ return redirect()->back();
          return $this->deleteItem($id , 'section')->with('sucess' , 'Done Delete Section From system');
      }
      public function locaux($id){
-        return $locaux = Local::where('section_id', $id)->get();
+        $locaux = Local::where('section_id', $id)->pluck('name','id')->all();
+        return json_encode(transformSelect($locaux)) ;
     }
 }

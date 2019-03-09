@@ -43,4 +43,7 @@ return [
     'local' => '',
     'artisan' => '',
     'request' => '',
+    'news' => '',
+    'galery' => '',
+    'medias' => '',
 ];

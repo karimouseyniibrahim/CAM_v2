@@ -2,7 +2,7 @@
 
 namespace App\Application\DataTables;
 
-use App\Application\Model\Request;
+use App\Application\Model\RequestLocal;
 use Yajra\Datatables\Services\DataTable;
 
 class RequestsDataTable extends DataTable
@@ -30,7 +30,7 @@ class RequestsDataTable extends DataTable
      */
     public function query()
     {
-        $query = Request::query();
+        $query = RequestLocal::query();
 
         if(request()->has('from') && request()->get('from') != ''){
             $query = $query->whereDate('created_at' , '>=' , request()->get('from'));

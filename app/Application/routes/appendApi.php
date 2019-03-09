@@ -65,3 +65,20 @@ Route::get('request/delete/{id}', 'RequestApi@delete');
 Route::post('request/add', 'RequestApi@add');
 Route::post('request/update/{id}', 'RequestApi@update');
 Route::get('request', 'RequestApi@index');
+
+#news
+Route::get('news/getById/{id}', 'NewsApi@getById');
+Route::get('news/delete/{id}', 'NewsApi@delete');
+Route::post('news/add', 'NewsApi@add');
+Route::post('news/update/{id}', 'NewsApi@update');
+Route::get('news', 'NewsApi@index');
+
+
+
+#medias
+Route::get('medias/getById/{id}', 'MediasApi@getById');
+Route::get('medias/delete/{id}', 'MediasApi@delete');
+Route::post('medias/add', 'MediasApi@add');
+Route::post('medias/update/{id}', 'MediasApi@update');
+Route::get('medias', 'MediasApi@index');
+

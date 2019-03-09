@@ -35,34 +35,16 @@ Route::get('categorie/{id}/view', 'CategorieController@getById');
 // Route::get('inscription/{id}/delete' , 'InscriptionController@destroy');
 // Route::get('inscription/{id}/view' , 'InscriptionController@getById');
 
-#### section control
-Route::get('section' , 'SectionController@index');
-Route::get('section/item/{id?}' , 'SectionController@show');
-Route::post('section/item' , 'SectionController@store');
-Route::post('section/item/{id}' , 'SectionController@update');
-Route::get('section/{id}/delete' , 'SectionController@destroy');
-Route::get('section/{id}/view' , 'SectionController@getById');
 
-#### local control
-Route::get('local' , 'LocalController@index');
-Route::get('local/item/{id?}' , 'LocalController@show');
-Route::post('local/item' , 'LocalController@store');
-Route::post('local/item/{id}' , 'LocalController@update');
-Route::get('local/{id}/delete' , 'LocalController@destroy');
-Route::get('local/{id}/view' , 'LocalController@getById');
 
-#### artisan control
-Route::get('artisan' , 'ArtisanController@index');
-Route::get('artisan/item/{id?}' , 'ArtisanController@show');
-Route::post('artisan/item' , 'ArtisanController@store');
-Route::post('artisan/item/{id}' , 'ArtisanController@update');
-Route::get('artisan/{id}/delete' , 'ArtisanController@destroy');
-Route::get('artisan/{id}/view' , 'ArtisanController@getById');
 
-#### request control
-Route::get('request' , 'RequestController@index');
-Route::get('request/item/{id?}' , 'RequestController@show');
-Route::post('request/item' , 'RequestController@store');
-Route::post('request/item/{id}' , 'RequestController@update');
-Route::get('request/{id}/delete' , 'RequestController@destroy');
-Route::get('request/{id}/view' , 'RequestController@getById');
+
+
+#### medias control
+Route::get('medias' , 'MediasController@index');
+Route::get('medias/item/{id?}' , 'MediasController@show');
+Route::post('medias/item' , 'MediasController@store');
+Route::post('medias/item/{id}' , 'MediasController@update');
+Route::get('medias/{id}/delete' , 'MediasController@destroy');
+Route::get('medias/{id}/view' , 'MediasController@getById');
+

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
     <meta charset="utf-8">
@@ -50,6 +51,9 @@
     <!-- Slimscroll Plugin Js -->
     {{ Html::script('website/css/js/mdb.min.js') }}
 
+    {{ Html::script('website/css/js/request.js') }}
+    {{ Html::script('js/sweetalert.min.js') }}
+    @include('sweet::alert')
     @stack('js')
 
 </body>

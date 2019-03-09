@@ -161,6 +161,8 @@ Route::post('section/item/{id}' , 'SectionController@update');
 Route::get('section/{id}/delete' , 'SectionController@destroy');
 Route::get('section/{id}/view' , 'SectionController@getById');
 Route::get('section/pluck', 'SectionController@pluck');
+Route::get('section/locaux{id}', 'SectionController@locaux');
+
 #### local control
 Route::get('local' , 'LocalController@index');
 Route::get('local/item/{id?}' , 'LocalController@show');
@@ -185,3 +187,22 @@ Route::post('request/item/{id}' , 'RequestController@update');
 Route::get('request/{id}/delete' , 'RequestController@destroy');
 Route::get('request/{id}/view' , 'RequestController@getById');
 Route::get('request/pluck', 'RequestController@pluck');
+#### news control
+Route::get('news' , 'NewsController@index');
+Route::get('news/item/{id?}' , 'NewsController@show');
+Route::post('news/item' , 'NewsController@store');
+Route::post('news/item/{id}' , 'NewsController@update');
+Route::get('news/{id}/delete' , 'NewsController@destroy');
+Route::get('news/{id}/view' , 'NewsController@getById');
+Route::get('news/pluck', 'NewsController@pluck');
+
+
+#### medias control
+Route::get('medias' , 'MediasController@index');
+Route::get('medias/item/{id?}' , 'MediasController@show');
+Route::post('medias/item' , 'MediasController@store');
+Route::post('medias/item/{id}' , 'MediasController@update');
+Route::get('medias/{id}/delete' , 'MediasController@destroy');
+Route::get('medias/{id}/view' , 'MediasController@getById');
+Route::get('medias/pluck', 'MediasController@pluck');
+Route::get('medias/file/{id}' , 'MediasController@filedestroy');

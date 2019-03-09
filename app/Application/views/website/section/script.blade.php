@@ -1,4 +1,5 @@
 <script type="application/javascript">
+    function request() {
         $('#section_id').on('change',function(){
             var section=$(this).val();
 
@@ -14,4 +15,6 @@
                 });                
             }
         });
+    }
+    request();
 </script>

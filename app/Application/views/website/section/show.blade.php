@@ -14,6 +14,7 @@
 			<!-- Featured image -->
 			<div class="view overlay rounded z-depth-2 mb-4">
 				<img class="img-fluid" src="{{ url('/'.env('UPLOAD_PATH').'/'.$item->image) }}" alt="{{ $item->name_lang }}">
+				<img class="card-img-top mx-auto d-block" style=" height: 250px;  " src="{{ url('/'.env('UPLOAD_PATH').'/'.$item->image) }}" alt="{{ $item->name_lang }}">
 				<a>
 					<div class="mask rgba-white-slight"></div>
 				</a>
@@ -32,7 +33,7 @@
 					<!-- Grid column -->
 						<!--Image-->
 						<div class="col-lg-3 mb-lg-0 mb-3">
-							<img class="img-fluid" src="{{ url('/'.env('UPLOAD_PATH').'/'.$local->image) }}" alt="{{ $local->name_lang }}">
+							<img class="img-fluid" src="{{ url('/'.env('UPLOAD_PATH').'/'.$local->image) }}"  style=" height: 150px;  "  alt="{{ $local->name_lang }}">
 							<a>
 								<div class="mask rgba-white-slight"></div>
 							</a>
@@ -81,5 +82,8 @@
 		<!-- Grid row -->
 		@include("website.section.request",  ["sections" => $data['data'], "section_id" => $item->id,"local_id" => null])
 		@include(layoutMessage('website'))
+	
 </section>
 @endsection
+
+
