@@ -1,0 +1,2 @@
+<link rel="stylesheet" href="<?php echo e(url('/')); ?>/vendor/datatables/responsive/css/responsive.bootstrap.css">
+<link rel="stylesheet" href="<?php echo e(url('/')); ?>/vendor/datatables/responsive/css/responsive.dataTables.css">
