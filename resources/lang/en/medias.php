@@ -11,5 +11,17 @@ return [
     "message-delete"=> 'You will not be able to recover this imaginary file!',
     "message-btn"=> 'Yes, delete',
     "message-to-delete"=> 'Delete !',
-    "ask-to-delete"=> 'Are you sure?'
+    "ask-to-delete"=> 'Are you sure?',
+    "galery"=> 'Galery',
+    "nomenclature"=> 'Nomenclature',
+    "views"=> 'Views',
+    "details"=> 'Details',
+    "message-alert"=> 'Survoller les elements plus de details ',   
+    "galery"=> 'Galery',
+    "name"=> 'Name',
+    "action"=> 'Action',
+    "download"=> 'Download',
+    "element"=> 'N° ',
+    "empty-nomenclature"=> 'No Nomenclature Avalaible ',
+    
 ];

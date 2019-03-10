@@ -20,6 +20,7 @@
     @endif
     {{ Html::style('css/sweetalert.css') }}
     {{ Html::Style('website/css/custom.css') }}
+    @yield('style')
 
     <script>
         window.Laravel = {!! json_encode([
@@ -52,6 +53,7 @@
     {{ Html::script('website/css/js/request.js') }}
     {{ Html::script('js/sweetalert.min.js') }}
     @include('sweet::alert')
+    @yield('script')
     @stack('js')
 
 </body>

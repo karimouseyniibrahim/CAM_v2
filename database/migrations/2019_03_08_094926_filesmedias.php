@@ -17,8 +17,8 @@ class Filesmedias extends Migration
         Schema::create('filesmedias', function (Blueprint $table) {
             $table->increments('id');
             $table->text("url");
-			$table->integer("media_id")->unsigned();
-			$table->foreign('media_id')->references('id')->on('medias')->onDelete('cascade');            
+			$table->integer("medias_id")->unsigned();
+			$table->foreign('medimedias_ida_id')->references('id')->on('medias')->onDelete('cascade');            
             $table->timestamps();
         });
     }

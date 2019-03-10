@@ -54,10 +54,9 @@
 
 			<div class="form-group {{ $errors->has("type") ? "has-error" : "" }}" > 
 				<label for="type">{{ trans("medias.type")}}</label>
-				<select class="form-control" id="type" name="type">
-					<option value="1">{{ trans("medias.galery")}}</option>
-					<option value="2">{{ trans("medias.nomenclature")}}</option>
-				</select>
+				@php $typeName =  isset($item->type) ? $item->type : old("type") @endphp
+				{!! Form::select('type',$data['type'],$typeName, ['class'=>'form-control'])!!}
+				
 			</div>
 			@if ($errors->has("type"))
 				<div class="alert alert-danger">

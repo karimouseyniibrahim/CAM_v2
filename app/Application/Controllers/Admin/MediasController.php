@@ -26,10 +26,13 @@ class MediasController extends AbstractController
 
     public function show($id = null){
         $files=[];
+        $type=[];
         if($id!=null){
-            $files=FilesMedia::where('media_id',$id)->get()->all();
+            $files=FilesMedia::where('medias_id',$id)->get()->all();
+            $type=['1'=>trans("medias.galery"),
+                   '2'=>trans("medias.nomenclature")];
         }
-        return $this->createOrEdit('admin.medias.edit' , $id,['files'=> $files]);
+        return $this->createOrEdit('admin.medias.edit' , $id,compact('files','type'));
     }
 
      public function store(AddRequestMedias $request){
@@ -50,15 +53,15 @@ class MediasController extends AbstractController
             $request->request->remove('files');
             //store infos 
             $item =  $this->storeOrUpdate($request , null , true);
-            $media_id=$item->id;
+            $medias_id=$item->id;
             
             
             foreach($files as $file)
             {  $name=$file->getClientOriginalName();
-                $file->move(public_path().'/files/'.$media_id.'/', $name);                
-                $url='/files/'.$media_id.'/'. $name;
+                $file->move(public_path().'/files/'.$medias_id.'/', $name);                
+                $url='/files/'.$medias_id.'/'. $name;
                 
-                $file = FilesMedia::create(compact('url','media_id'));
+                $file = FilesMedia::create(compact('url','medias_id'));
             }
         }
 
@@ -75,13 +78,13 @@ class MediasController extends AbstractController
             $request->request->remove('files');
             //store infos 
            // $item =  $this->storeOrUpdate($request , null , true);
-            $media_id=$id;            
+            $medias_id=$id;            
             
             foreach($files as $file)
             {  $name=$file->getClientOriginalName();
                 $file->move(public_path().'/files/'.$id.'/', $name);                
-                $url='/files/'.$media_id.'/'. $name;                
-                $file = FilesMedia::create(compact('url','media_id'));
+                $url='/files/'.$medias_id.'/'. $name;                
+                $file = FilesMedia::create(compact('url','medias_id'));
             }           
         } 
          
