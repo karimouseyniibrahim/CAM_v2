@@ -11,6 +11,6 @@ class FilesMedia extends Model
 
 
    protected $fillable = [
-      'url' , 'media_id'  
+      'url' , 'medias_id'  
    ];
 }
