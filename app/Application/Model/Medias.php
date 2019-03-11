@@ -33,4 +33,9 @@ class Medias extends Model
 		return is_json($this->description) && is_object(json_decode($this->description)) ?  json_decode($this->description)->ar  : $this->description;
 	}
 
+	
+	public function filesmedia(){
+		return $this->hasMany('App\Application\Model\FilesMedia');
+   }
+
 }

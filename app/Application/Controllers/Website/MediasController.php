@@ -68,6 +68,22 @@ return redirect()->back();
      public function destroy($id){
          return $this->deleteItem($id , 'medias')->with('sucess' , 'Done Delete Medias From system');
      }
+     public function galery(){
 
+        $items=$this->model->all()->load('filesmedia:medias_id,url as src')->where('type',1);
+       // $data=$this->model->load('filesmedia:medias_id,url as src');
+       
+       // $items = $items->paginate(env('PAGINATE'));
+
+        return view('website.medias.galery' , compact('items'));
+    }
+    public function nomenclature(){
+
+        $items=$this->model->load('filesmedia:medias_id,url as src')->where('type',2);
+       // $data=$this->model->load('filesmedia:medias_id,url as src');
+       
+        $items = $items->paginate(env('PAGINATE'));
+        return view('website.medias.nomenclature' , compact('items'));
+    }
 
 }

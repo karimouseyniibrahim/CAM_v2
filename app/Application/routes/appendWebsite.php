@@ -40,11 +40,5 @@ Route::get('categorie/{id}/view', 'CategorieController@getById');
 
 
 
-#### medias control
-Route::get('medias' , 'MediasController@index');
-Route::get('medias/item/{id?}' , 'MediasController@show');
-Route::post('medias/item' , 'MediasController@store');
-Route::post('medias/item/{id}' , 'MediasController@update');
-Route::get('medias/{id}/delete' , 'MediasController@destroy');
-Route::get('medias/{id}/view' , 'MediasController@getById');
+
 

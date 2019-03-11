@@ -35,5 +35,7 @@ Auth::routes();
 Route::get('page' , 'PageController@index');
 Route::get('page/{id}/view' , 'PageController@getById');
 
-
+#### medias control
+Route::get('galery' , 'MediasController@galery');
+Route::get('nomenclature' , 'MediasController@nomenclature');
 
