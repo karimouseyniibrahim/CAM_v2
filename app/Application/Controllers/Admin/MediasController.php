@@ -44,7 +44,7 @@ class MediasController extends AbstractController
                 "type" => "required",
             ]);
               
-            $new_request = new AddRequestMedias();
+           
         if($request->hasfile('files'))
          {
             //files uploads 
@@ -53,8 +53,7 @@ class MediasController extends AbstractController
             $request->request->remove('files');
             //store infos 
             $item =  $this->storeOrUpdate($request , null , true);
-            $medias_id=$item->id;
-            
+            $medias_id=$item->id;            
             
             foreach($files as $file)
             {  $name=$file->getClientOriginalName();

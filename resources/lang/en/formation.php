@@ -11,5 +11,6 @@ return [
     'empty' => 'No Training Avalaible',
     'edit' => '',
     'show' => '',
+    'places' => 'Places',
     'delete' => '',
 ];

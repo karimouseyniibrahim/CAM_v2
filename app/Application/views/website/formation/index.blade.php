@@ -36,7 +36,7 @@
 						<div class="card card-cascade narrower card-ecommerce">
 						<!-- Card image -->
 						<div class="view view-cascade overlay">
-							<img src="{{ url('/'.env('UPLOAD_PATH').'/'.$d->image) }}" class="card-img-top">
+							<img src="{{ url('/'.env('UPLOAD_PATH').'/formation/'.$item->id.'/'.$d->image) }}" class="card-img-top">
 							<a>
 							<div class="mask rgba-white-slight"></div>
 							</a>

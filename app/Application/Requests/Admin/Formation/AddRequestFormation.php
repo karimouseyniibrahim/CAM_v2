@@ -26,6 +26,10 @@ class AddRequestFormation extends FormRequest
         return [
             "libelle.*" => "required",
 			"description.*" => "nullable",
+			"image" => "required|image",
+			"price" => "required",
+			"debut_formation" => "required",
+			"fin_formation" => "required",
 			
         ];
     }

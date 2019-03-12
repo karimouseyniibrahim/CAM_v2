@@ -27,12 +27,24 @@ class SectionController extends AbstractController
 
      public function store(AddRequestSection $request){
           $item =  $this->storeOrUpdate($request , null , true);
+          File::move(public_path().'/files/'.$item->image,public_path().'/files/Section/'.$item->$id.'/'.$item->image);
           return redirect('admin/section');
      }
 
      public function update($id , UpdateRequestSection $request){
+        if($request->hasfile('image'))
+        { 
+        $s=$this->model->find($id);            
+            $tr= File::delete(public_path().'/files/Section/'.$id.'/'.$s->image);           
+        }
           $item = $this->storeOrUpdate($request, $id, true);
-return redirect()->back();
+
+          if($request->hasfile('image'))
+          {            
+             File::move(public_path().'/files/'.$item->image,public_path().'/files/Section/'.$id.'/'.$item->image);                        
+         }   
+
+        return redirect()->back();
 
      }
 
@@ -43,6 +55,7 @@ return redirect()->back();
     }
 
     public function destroy($id){
+        File::deleteDirectory(public_path().'/files/Section/'.$id);
         return $this->deleteItem($id , 'admin/section')->with('sucess' , 'Done Delete section From system');
     }
 
