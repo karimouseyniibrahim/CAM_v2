@@ -42,8 +42,10 @@
 
 @section('content')
     @include(layoutTable() , ['title' => trans('inscription.inscription') , 'model' => 'inscription' , 'table' => $dataTable->table([] , true) ])
+    @include("admin.shared.modalstatus", ["name_id" =>"formation_id","url" => concatenateLangToUrl('admin/inscription/validation')])
 @endsection
 
 @section('script')
     @include('admin.shared.scripts')
+    @include('admin.shared.validation')
 @endsection

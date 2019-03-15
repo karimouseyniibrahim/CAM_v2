@@ -39,11 +39,15 @@
         <a href="{{ url('admin/request') }}" class="btn btn-danger" ><i class="fa fa-close"></i></a>
     </form>
 @endpush
-
+     
 @section('content')
-    @include(layoutTable() , ['title' => trans('request.request') , 'model' => 'request' , 'table' => $dataTable->table([] , true) ])
+    
+    @include(layoutTable() , ['title' => trans('request.request') , 'model' => 'requestlocal' , 'table' => $dataTable->table([] , true) ])
+    @include("admin.shared.modalstatus", ["name_id" =>"local_id","url" => concatenateLangToUrl('admin/request/validation')])
+
 @endsection
 
 @section('script')
     @include('admin.shared.scripts')
+    @include('admin.shared.validation')
 @endsection
