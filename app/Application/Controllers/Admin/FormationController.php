@@ -9,6 +9,7 @@ use App\Application\DataTables\FormationsDataTable;
 use App\Application\Model\Formation;
 use Yajra\Datatables\Request;
 use Alert;
+use Illuminate\Support\Facades\File ;
 
 class FormationController extends AbstractController
 {
@@ -26,28 +27,42 @@ class FormationController extends AbstractController
     }
 
      public function store(AddRequestFormation $request){
-          $item =  $this->storeOrUpdate($request , null , true);
-          return redirect('admin/formation');
+
+         $item =  $this->storeOrUpdate($request , null , true);   
+         $this->AcMove($item->image,('\\files\\Formation\\'.$item->id));                     
+         return redirect('admin/formation');
      }
 
      public function update($id , UpdateRequestFormation $request){
-          $item = $this->storeOrUpdate($request, $id, true);
-return redirect()->back();
-
-     }
-
-
+        
+        if($request->hasfile('image'))
+        { 
+        $f=$this->model->find($id);            
+            $tr= File::delete(public_path().'\\files\\Formation\\'.$id.'\\'.$f->image);           
+        }    
+        $item = $this->storeOrUpdate($request, $id, true);
+        if($request->hasfile('image'))
+        {            
+          $this->AcMove($item->image,('\\files\\Formation\\'.$id));           
+        } 
+        return redirect()->back();
+        
+    }
+    
+    
     public function getById($id){
         $fields = $this->model->findOrFail($id);
         return $this->createOrEdit('admin.formation.show' , $id , ['fields' =>  $fields]);
     }
-
+    
     public function destroy($id){
+        File::deleteDirectory(public_path().'\\files\\Formation\\'.$id);
         return $this->deleteItem($id , 'admin/formation')->with('sucess' , 'Done Delete formation From system');
     }
-
+    
     public function pluck(\Illuminate\Http\Request $request){
         return $this->deleteItem($request->id , 'admin/formation')->with('sucess' , 'Done Delete formation From system');
     }
-
+    
+   
 }

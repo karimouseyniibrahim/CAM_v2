@@ -93,7 +93,7 @@
 				<div class="form-line">
 					<label for="">{{ adminTrans('formation' , 'image') }}</label>
 					@if(isset($item) && $item->image != '')
-						<img src="{{ url('/'.env('UPLOAD_PATH').'/'.$item->image) }}" class="img-responsive thumbnail" alt="">
+						<img src="{{ url('/'.env('UPLOAD_PATH').'/Formation/'.$item->id.'/'.$item->image) }}"  style="height:200px" class="img-responsive thumbnail" alt="">
 						<br>
 					@endif    
 					{!! csrf_field() !!}

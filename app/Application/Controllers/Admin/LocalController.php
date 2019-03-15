@@ -10,6 +10,7 @@ use App\Application\Model\Local;
 use App\Application\Model\Section;
 use Yajra\Datatables\Request;
 use Alert;
+use Illuminate\Support\Facades\File ;
 
 class LocalController extends AbstractController
 { 
@@ -29,12 +30,23 @@ class LocalController extends AbstractController
 
      public function store(AddRequestLocal $request){
           $item =  $this->storeOrUpdate($request , null , true);
+          $this->AcMove($item->image,('\\files\\Local\\'.$item->id));
           return redirect('admin/local');
      }
 
      public function update($id , UpdateRequestLocal $request){
+        if($request->hasfile('image'))
+        { 
+        $l=$this->model->find($id);            
+            $tr= File::delete(public_path().'\\files\\Local\\'.$id.'\\'.$l->image);           
+        } 
           $item = $this->storeOrUpdate($request, $id, true);
-return redirect()->back();
+          if($request->hasfile('image'))
+          { 
+            $this->AcMove($item->image,('\\files\\Local\\'.$id));
+         } 
+
+        return redirect()->back();
 
      }
 
@@ -45,6 +57,7 @@ return redirect()->back();
     }
 
     public function destroy($id){
+        File::deleteDirectory(public_path().'\\files\\Local\\'.$id);
         return $this->deleteItem($id , 'admin/local')->with('sucess' , 'Done Delete local From system');
     }
 

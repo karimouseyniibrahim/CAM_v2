@@ -18,7 +18,7 @@
 
 <!-- Card image -->
 		<div class="view view-cascade overlay">
-			<img  class="card-img-top mx-auto d-block"  src="{{ url('/'.env('UPLOAD_PATH').'/'.$item->image) }}"  style=" height: 250px;  " alt="Card image cap">			
+			<img  class="card-img-top mx-auto d-block"  src="{{ url('/'.env('UPLOAD_PATH').'/Local/'.$item->id.'/'.$item->image) }}"  style=" height: 250px;  " alt="Card image cap">			
 		</div>
 		<!-- Card content -->
 		<div class="card-body card-body-cascade text-center">
