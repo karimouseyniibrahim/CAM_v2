@@ -29,9 +29,6 @@
 			<input type="text" name="name" class="form-control " placeholder="{{ trans("inscription.name") }}" value="{{ request()->has("name") ? request()->get("name") : "" }}">
 		</div>
 		<div class="form-group">
-			<input type="text" name="status" class="form-control " placeholder="{{ trans("inscription.status") }}" value="{{ request()->has("status") ? request()->get("status") : "" }}">
-		</div>
-		<div class="form-group">
 			<input type="text" name="formation_id" class="form-control " placeholder="{{ trans("inscription.formation_id") }}" value="{{ request()->has("formation_id") ? request()->get("formation_id") : "" }}">
 		</div>
 

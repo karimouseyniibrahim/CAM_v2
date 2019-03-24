@@ -10,6 +10,7 @@ return [
     'subscribe' => 'Subscribe',
     'empty' => 'No Training Avalaible',
     'edit' => '',
-    'show' => '',
+    'show' => 'Show',
     'delete' => '',
+    'show-all' => 'Show All',
 ];

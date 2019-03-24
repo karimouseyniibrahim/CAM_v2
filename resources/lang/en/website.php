@@ -46,4 +46,6 @@ return [
     'news' => '',
     'galery' => '',
     'medias' => '',
+    'read-more' => 'Read More',
+    'show-all' => 'Show All',
 ];
