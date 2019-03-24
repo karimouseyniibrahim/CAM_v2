@@ -63,19 +63,34 @@ class InscriptionController extends AbstractController
     public function validation(\Illuminate\Http\Request $request){
             
         $infos="";
+        $formation=Formation::withcount(['inscriptions'=> function($query){$query->where('status', 1);}])->find($request->formation_id);
+        $ms=".refus";
+        $item=null;
         if($request->status==1){
-            $formation=Formation::withcount(['inscriptions'=> function($query){$query->where('status', 1);}])->find($request->formation_id);
             
             if($formation->places > $formation->inscriptions_count){                    
                 $item = $this->storeOrUpdate($request, $request->id, true);
                 $infos=trans('inscription.validate-inscription'); 
+                $ms=".accept";
             }else{
                 $infos=trans('inscription.validate-refuse');                    
             }
         }else{
             $item = $this->storeOrUpdate($request, $request->id, true);
             $infos=trans('inscription.validate-no-inscription');
-        }    
+        }  
+        if($item!=null){  
+        $data=["name"=>$formation->name_lang,
+        'type'=>'formation',
+        'ms-action'=>$ms,
+        'title'=>trans('inscription.inscription').' '.trans('formation.formation'),
+        'img'=>url('/'.env('UPLOAD_PATH').'/Formation/'.$formation->id.'/'.$formation->image),
+        "email"=>$item->email ];
+        Mail::send('website.mail.email',['data'=>$data],function($email) use ($data){
+            $email->to($data['email'],$data['name'])->from('ibrahimkarimouseyni56@gmail.com')->subject(trans('inscription.inscription').' '.trans('formation.formation'));
+        });
+    }
+
         Alert::success($infos, trans('inscription.validate1'));
     return redirect()->back();    
 }

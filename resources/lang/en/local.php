@@ -16,4 +16,6 @@ return [
     'local_id'=>'Local ID',
     'artisan_id'=>'Artisan Number',
     'request' => 'Request',
+    'accept' => '',
+    'refus' => '',
 ];
