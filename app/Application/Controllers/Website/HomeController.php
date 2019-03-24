@@ -13,7 +13,7 @@ use App\Application\Model\Section;
 use App\Application\Model\Formation;
 use App\Application\Model\Medias;
 use Illuminate\Http\Request;
-
+use Mail;
 
 class HomeController extends Controller
 {
@@ -24,9 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+       
         return view(layoutHomePage('website'));
+        
     }
-
 
     public function welcome(){
         $director_speech = page(1);

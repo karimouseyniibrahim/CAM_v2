@@ -88,11 +88,55 @@
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="card card-block">
                     <div class="icon">
+                        <i class="material-icons">build</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">{{ trans('home.setting') }}</div>
+                        <div class="number count-to" data-from="0" data-to="{{$data['setting']}}" data-speed="1000" data-fresh-interval="20">{{ $data['setting'] }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="card card-block">
+                    <div class="icon">
                         <i class="material-icons">info</i>
                     </div>
                     <div class="content">
                         <div class="text">{{ trans('home.logs') }}</div>
                         <div class="number count-to" data-from="0" data-to="{{$data['logs']}}" data-speed="1000" data-fresh-interval="20">{{ $data['logs'] }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="card card-block">
+                    <div class="icon">
+                        <i class="material-icons">build</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">{{ trans('home.setting') }}</div>
+                        <div class="number count-to" data-from="0" data-to="{{$data['setting']}}" data-speed="1000" data-fresh-interval="20">{{ $data['setting'] }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="card card-block">
+                    <div class="icon">
+                        <i class="material-icons">build</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">{{ trans('home.setting') }}</div>
+                        <div class="number count-to" data-from="0" data-to="{{$data['setting']}}" data-speed="1000" data-fresh-interval="20">{{ $data['setting'] }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="card card-block">
+                    <div class="icon">
+                        <i class="material-icons">build</i>
+                    </div>
+                    <div class="content">
+                        <div class="text">{{ trans('home.setting') }}</div>
+                        <div class="number count-to" data-from="0" data-to="{{$data['setting']}}" data-speed="1000" data-fresh-interval="20">{{ $data['setting'] }}</div>
                     </div>
                 </div>
             </div>

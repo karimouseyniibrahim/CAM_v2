@@ -14,7 +14,7 @@
 		<div class="col-lg-12 col-md-12 mb-0">
 			<!-- Featured image -->
 			<div class="view overlay rounded z-depth-2 mb-4">
-				<img class="img-fluid" src="{{ url('/'.env('UPLOAD_PATH').'/Formation/'.$item->id.'/'.$item->image) }}" alt="{{ $item->libelle_lang }}">
+				<img class="img-fluid" src="{{ url('/'.env('UPLOAD_PATH').'/Formation/'.$item->id.'/'.$item->image) }}" style="height:250px"alt="{{ $item->libelle_lang }}">
 				<a>
 					<div class="mask rgba-white-slight"></div>
 				</a>

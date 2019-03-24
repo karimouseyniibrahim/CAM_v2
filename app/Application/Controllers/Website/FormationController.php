@@ -7,7 +7,7 @@ use Alert;
 use App\Application\Model\Formation;
 use App\Application\Requests\Website\Formation\AddRequestFormation;
 use App\Application\Requests\Website\Formation\UpdateRequestFormation;
- 
+use Mail; 
 class FormationController extends AbstractController
 {
 
@@ -18,7 +18,6 @@ class FormationController extends AbstractController
 
      public function index(){
         $items = $this->model;
-
         if(request()->has("libelle") && request()->get("libelle") != ""){
             $items = $items->where("libelle","like", "%".request()->get("libelle")."%");
         }
@@ -30,6 +29,9 @@ class FormationController extends AbstractController
     public function getById($id){
         $fields = $this->model->findOrFail($id);
         $items = $this->model;
+        
+
+
         $items = transformSelect(Formation::pluck('libelle', 'id')->all());
         return $this->createOrEdit('website.formation.show' , $id , ['data' => $items, 'fields' =>  $fields]);
     }
