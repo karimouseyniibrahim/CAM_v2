@@ -9,7 +9,8 @@
     <title>{{ config('app.name', 'CAM Souk Akhras') }} | @yield('title')</title>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"> -->
+    {{ Html::Style('website/css/css/fontawesome5.css') }}
     <!-- Bootstrap Core Css -->
     {{ Html::Style('website/css/css/bootstrap.min.css') }}
     <!-- Waves Effect Css -->
@@ -17,7 +18,8 @@
     {{ Html::Style('website/css/themes/all-themes.min.css') }}
 
     @if(getDir() == 'rtl')
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css">
+        {{ Html::Style('website/css/css/bootstrap-rtl.css') }}
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css"> -->
     @endif
     {{ Html::style('css/sweetalert.css') }}
     {{ Html::Style('website/css/custom.css') }}

@@ -50,6 +50,7 @@
     {{ Html::style('admin/plugins/tinymce/plugins/elfinder/css/elfinder.full.css') }}
     {{ Html::style('css/rate.css') }}
     <link rel="stylesheet" href="{{ url('css/fontawesome-iconpicker.min.css') }}">
+    {{ Html::style('admin/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}
     @yield('style')
     <style>
         .img-responsive {
@@ -71,7 +72,7 @@
 <div class="app">
     <!--sidebar panel-->
     <div class="off-canvas-overlay" data-toggle="sidebar"></div>
-    <div class="sidebar-panel">
+    <div class="sidebar-panel my-sidebar">
         <div class="brand">
             <!-- toggle offscreen menu -->
             <a href="javascript:;" data-toggle="sidebar" class="toggle-offscreen hidden-lg-up">
@@ -116,7 +117,7 @@
             </div>
         </div>
         <!-- main navigation -->
-        <nav>
+        <nav style="margin-right: 0px; padding-right: 0px;">
             <p class="nav-title">NAVIGATION</p>
             <ul class="nav">
                 @include(layoutMenu())
@@ -225,6 +226,7 @@
 <script src="{{ url('js/select2.min.js') }}"></script>
 <script src="{{ url('js/moment.js') }}"></script>
 <script src="{{ url('js/bootstrap-datetimepicker.js') }}"></script>
+{{ Html::script('admin/plugins/perfect-scrollbar/js/perfect-scrollbar.min.js') }}
 
 <script type="application/javascript">
     $('.select2').select2({
@@ -335,6 +337,11 @@
         onSelect: function (value, text, event) {
             $('#rate').closest('form').submit();
         }
+    });
+    new PerfectScrollbar('.my-sidebar', {
+        wheelSpeed: 10,
+        wheelPropagation: !0,
+        minScrollbarLength: 5
     });
 
 </script>

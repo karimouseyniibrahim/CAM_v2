@@ -13,9 +13,9 @@
 
 
 -- Listage de la structure de la base pour cam-souk-akhras-v2
-DROP DATABASE IF EXISTS `cam-souk-akhras-v2`;
-CREATE DATABASE IF NOT EXISTS `cam-souk-akhras-v2` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `cam-souk-akhras-v2`;
+DROP DATABASE IF EXISTS `cam-souk-akhras-v6`;
+CREATE DATABASE IF NOT EXISTS `cam-souk-akhras-v6` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `cam-souk-akhras-v6`;
 
 -- Listage de la structure de la table cam-souk-akhras-v2. artisan
 DROP TABLE IF EXISTS `artisan`;

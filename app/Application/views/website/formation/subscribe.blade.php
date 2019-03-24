@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal fade {{ isset($errors) ? 'show' : '' }}" id="modalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
 	<div class="modal-dialog modal-notify modal-primary text-left" role="document">
 		<!--Content-->
@@ -10,7 +10,7 @@
 				<span aria-hidden="true" class="white-text">&times;</span>
 				</button>
 			</div>
-			
+			@include(layoutMessage('website'))
 			<form action="{{ concatenateLangToUrl('inscription') }}" method="post" enctype="multipart/form-data">
 				<!--Body-->
 				<div class="modal-body">
