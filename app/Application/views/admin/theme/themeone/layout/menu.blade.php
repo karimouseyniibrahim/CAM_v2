@@ -7,6 +7,7 @@
             <li>
                 @if(array_key_exists('item' , $admin))
                     @if(array_intersect($admin['item']['controller_path']  ,$p))
+                    
                         <a href="{{ array_key_exists('sub' , $admin) ? 'javascript:void(0);' : url($admin['item']['link']) }}"
                            class="{{ array_key_exists('sub' , $admin) ? 'menu-toggle' : '' }}">
                             @if(array_key_exists('sub' , $admin))

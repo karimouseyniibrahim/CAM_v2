@@ -27,6 +27,7 @@ class ContactController extends AbstractController
     }
 
     public function index(ContactsDataTable $dataTable){
+        Contact::where('read',null)->update(['read'=>'read']);
         return $dataTable->render('admin.contact.index');
     }
 

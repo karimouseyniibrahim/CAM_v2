@@ -19,10 +19,10 @@ class AdminMiddleware
         if(!Auth::check()){
             return redirect('/login');
         }
-        if(Auth::user()->group_id != 1)
+        /*if(Auth::user()->group_id != 1)
         {
             return redirect('/');
-        }
+        }*/
         return $next($request);
     }
 }

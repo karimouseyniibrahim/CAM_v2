@@ -36,7 +36,7 @@
         <link rel="stylesheet" href="{{ url('style') }}/styles/app.skins-rtl.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css">
     @else
-        <link rel="stylesheet" href="{{ url('style') }}/styles/app.css" id="load_styles_before"/>
+        <link rel="stylesheet" href="{{ url('style') }}/styles/app.css" id="load_styles_before"/>       
         <link rel="stylesheet" href="{{ url('style') }}/styles/app.skins.css"/>
     @endif
 <!-- endbuild -->
