@@ -10,8 +10,9 @@ return [
     'subscribe' => 'Subscribe',
     'empty' => 'No Training Avalaible',
     'edit' => '',
-    'show' => '',
+    'show' => 'Show',
     'delete' => '',
+    'show-all' => 'Show All',
     'accept' => 'Nous accusons réception de votre demande de candidature et avons le plaisir de vous informer
     que nous avons décidé de retenir votre candidature au poste de
     Dès réception de la présente, vous voudrez bien prendre contact avec notre responsable du

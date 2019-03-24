@@ -1,9 +1,9 @@
 <?php
 function page($id = null){
     if($id != null){
-        return \App\Application\Model\Page::infOrFail($id);
+        return \App\Application\Model\Page::findOrFail($id);
     }
-    return \App\Application\Model\Page::get();
+    return \App\Application\Model\Page::where('id', '<>', 1)->get();
 }
 
 function getYouTubeId($url){

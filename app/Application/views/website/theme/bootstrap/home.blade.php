@@ -1,4 +1,16 @@
 @extends(layoutExtend('website'))
+
+@section('style')
+	{{ Html::style('/website/css/animation.css') }}
+	<style>
+		.show-all {
+			width: 100%;
+			height: 100%;
+			align-self: center;
+		}
+	</style>
+@endsection
+
 @section('content')
 
 	<!--Card Director word-->
@@ -8,11 +20,9 @@
 			<!-- Card Title -->
 			<h2 class="card-title">{{ trans('website.director-word') }}</h2>
 
-			<blockquote class="blockquote">
-				<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-				<footer class="blockquote-footer">Someone famous in
-				</footer>
-			</blockquote>
+			{!!
+				$director_speech->body_lang
+			!!}
 		</div>
 	</div>
 	<!--/.Card Director word-->
@@ -21,30 +31,31 @@
 	<h2 class="h1-responsive font-weight-bold text-center my-5">{{ trans('website.latest-news') }}</h2>
 	<section class="text-center my-5">
 		<!-- Carousel Wrapper -->
-		<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+		<div id="news-caroussel" class="carousel slide carousel-multi-item" data-ride="carousel">
 			<!-- Controls -->
 		
 			<!-- Controls -->
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
-				<li class="primary-color active" data-target="#multi-item-example" data-slide-to="0"></li>
-				<li class="primary-color" data-target="#multi-item-example" data-slide-to="1"></li> 
+				@foreach($news as $i => $v)
+				<li class="primary-color {{ $i == 0 ? 'active' : ''}}" data-target="news-caroussel" data-slide-to="{{ $i }}"></li>
+				@endforeach
 			</ol>
 			<!-- Indicators -->
 			<!-- Slides -->
 			<div class="carousel-inner" role="listbox">
+				@foreach($news as $i => $new)
 				<!-- First slide -->
-				<div class="carousel-item active">
+				<div class="carousel-item {{ $i == 0 ? 'active' : ''}}">
 					<!-- Section: Blog v.1 -->
 					<div class="jumbotron text-center hoverable p-4">
-
-					<!-- Grid row -->
+						<!-- Grid row -->
 						<div class="row">
 							<!-- Grid column -->
 							<div class="col-md-4 offset-md-1 mx-3 my-3">
 								<!-- Featured image -->
 								<div class="view overlay">
-									<img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid" alt="Sample image for first version of blog listing">
+									<img src="{{ url('/'.env('UPLOAD_PATH').'/'.$new->image) }}" class="img-fluid" alt="{{ $new->title_lang }}">
 									<a>
 										<div class="mask rgba-white-slight"></div>
 									</a>
@@ -54,18 +65,18 @@
 							<!-- Grid column -->
 							<div class="col-md-7 text-md-left ml-3 mt-3">
 								<!-- Excerpt -->
-								<a href="#!" class="green-text">
+								<!-- <a href="#!" class="green-text">
 									<h6 class="h6 pb-1"><i class="fas fa-desktop pr-1"></i> Work</h6>
-								</a>
+								</a> -->
 
-								<h4 class="h4 mb-4">This is title of the news</h4>
+								<h4 class="h4 mb-4">{{ $new->title_lang }}</h4>
 
-								<p class="font-weight-normal">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque, totam
-									rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-									dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur.</p>
-								<p class="font-weight-normal">by <a><strong>Carine Fox</strong></a>, 19/08/2016</p>
+								<p class="font-weight-normal">
+									{!! str_limit($new->description_lang, 200) !!}
+								</p>
+								<p class="font-weight-normal">{{ $new->created_at }}</p>
 
-								<a class="btn btn-indigo btn-md">Read more</a>
+								<a class="btn btn-indigo btn-md" href="{{ url('news/'.$new->id.'/view') }}">{{ trans('website.read-more') }}</a>
 							</div>
 							<!-- Grid column -->
 						</div>
@@ -73,6 +84,7 @@
 					</div> 
 				</div>
 				<!-- First slide -->
+				@endforeach
 			</div>
 			<!-- Slides -->
 		</div>
@@ -87,24 +99,27 @@
 		<!-- Section description -->
 		<!-- Grid row -->
 		<div class="row">
+			@foreach($sites as $site)
 			<!-- Grid column -->
-			<div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
-				<!-- Site card -->
-				<div class="card collection-card z-depth-1-half">
-					<!-- Card image -->
-					<div class="view zoom">
-					<img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/5.jpg" class="img-fluid"
-						alt="">
-					<div class="stripe dark">
-						<a>
-						<p>Red trousers
-							<i class="fas fa-angle-right"></i>
-						</p>
-						</a>
+			<div class="col-lg-4 col-md-4 mb-lg-0 mb-4">
+				<div class="box3">
+					<img src="{{ url('/'.env('UPLOAD_PATH').'/Section/'.$site->id.'/'.$site->image) }}" style="height:300px">
+					<div class="box-content">
+						<h3 class="title">{{ $site->name_lang }}</h3>
+						<div class="description d">
+							{!! str_limit($site->description_lang , 150) !!}
+						</div>
+						<ul class="icon">
+							<a class="btn btn-primary btn-sm btn-squared " href="{{ url('section/'.$site->id.'/view') }}"><i class="fas fa-eye left"></i> {{trans("section.show")}}</a>
+						</ul>
 					</div>
-					</div>
-					<!-- Card image -->
 				</div>
+			</div>
+			<!-- Grid column -->
+			@endforeach
+			<!-- Grid column -->
+			<div class="col-lg-4 col-md-4 mb-lg-0 mb-4 show-all">
+				<a class="btn btn-primary btn-md btn-squared " href="{{ url('section') }}" style="text-decoration: none;"><i class="fas fa-eye left"></i> {{trans("section.show-all")}}</a>		
 			</div>
 			<!-- Grid column -->
 		</div>
@@ -118,42 +133,45 @@
 		<h2 class="h1-responsive font-weight-bold text-center my-5">{{ trans('website.formation') }}</h2>
 		<!-- Grid row-->
 		<div class="row text-center text-md-left">
-		  	<!-- Grid column -->
-	  		<div class="col-md-4 mb-2 clearfix d-none d-md-block">
-				<!-- Card -->
-				<div class="card card-cascade narrower card-ecommerce">
-				  <!-- Card image -->
-				  <div class="view view-cascade overlay">
-					<img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(22).jpg" class="card-img-top"
-					  alt="sample photo">
-					<a>
-					  <div class="mask rgba-white-slight"></div>
-					</a>
-				  </div>
-				  <!-- Card image -->
-				  <!-- Card content -->
-				  <div class="card-body card-body-cascade text-center">
-					<!-- Category & Title -->
-					<a href="" class="text-muted">
-					  <h5>Jeans</h5>
-					</a>
-					<!-- Card footer -->
-					<div class="card-footer px-1">
-					  <span class="float-left">99$</span>
-					  <span class="float-right">
-						<a class="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick Look">
-						  <i class="fas fa-eye ml-3"></i>
+			@foreach ($formations as $formation) 
+				<!-- Grid column -->
+				<div class="col-md-4 mb-2 clearfix d-none d-md-block">
+					<!-- Card -->
+					<div class="card card-cascade narrower card-ecommerce">
+					<!-- Card image -->
+					<div class="view view-cascade overlay">
+						<img src="{{ url('/'.env('UPLOAD_PATH').'/Formation/'.$formation->id.'/'.$formation->image) }}" class="card-img-top">
+						<a>
+						<div class="mask rgba-white-slight"></div>
 						</a>
-						<a class="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist">
-						  <i class="fas fa-heart ml-3"></i>
-						</a>
-					  </span>
 					</div>
-				  </div>
-				  <!-- Card content -->
+					<!-- Card image -->
+					<!-- Card content -->
+					<div class="card-body card-body-cascade text-center">
+						<!-- Category & Title -->
+						<a href="" class="text-muted">
+						<h5>{{ $formation->libelle_lang }}</h5>
+						</a>
+						<!-- Card footer -->
+						<div class="card-footer px-1">
+						<span class="float-left">{{ $formation->price }} {{ trans('formation.price_unit') }}</span>
+						<span class="float-right">
+							<a class="" href="{{ url('formation/'.$formation->id.'/view') }}" data-toggle="tooltip" data-placement="top" title="{{ trans('formation.show') }}" data-original-title="{{ trans('formation.show') }}">
+								<i class="fas fa-eye ml-3"></i>
+							</a>
+						</span>
+						</div>
+					</div>
+					<!-- Card content -->
+					</div>
+					<!-- Card -->
 				</div>
-				<!-- Card -->
+			@endforeach
+			<!-- Grid column -->
+			<div class="col-md-4 mb-2 clearfix d-none d-md-block show-all">
+				<a class="btn btn-primary btn-md btn-squared " href="{{ url('formation') }}" style="text-decoration: none;"><i class="fas fa-eye left"></i> {{trans("formation.show-all")}}</a>		
 			</div>
+			<!-- Grid column -->
 		</div>
 		<!-- Grid row-->
 	  
@@ -168,80 +186,23 @@
 		<div class="row text-center text-md-left">
 			<!-- Grid column -->
 			<div class="col-md-12">
-
 				<div id="mdb-lightbox-ui"></div>
-				
 				<div class="mdb-lightbox">
-			
+					@foreach($collections as $img)
 					<figure class="col-md-4">
-					<a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg" data-size="1600x1067">
-						<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(145).jpg" alt="placeholder"
-						class="img-fluid">
-					</a>
+						<a href="{{ url($img->src) }}" data-size="1600x1067">
+							<img src="{{ url($img->src) }}" alt="placeholder"
+							class="img-fluid">
+						</a>
 					</figure>
-			
-					<figure class="col-md-4">
-					<a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(150).jpg" data-size="1600x1067">
-						<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(150).jpg" alt="placeholder"
-						class="img-fluid" />
-					</a>
-					</figure>
-			
-					<figure class="col-md-4">
-					<a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(152).jpg" data-size="1600x1067">
-						<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(152).jpg" alt="placeholder"
-						class="img-fluid" />
-					</a>
-					</figure>
-			
-					<figure class="col-md-4">
-					<a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(42).jpg" data-size="1600x1067">
-						<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(42).jpg" alt="placeholder"
-						class="img-fluid" />
-					</a>
-					</figure>
-			
-					<figure class="col-md-4">
-					<a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(151).jpg" data-size="1600x1067">
-						<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(151).jpg" alt="placeholder"
-						class="img-fluid" />
-					</a>
-					</figure>
-			
-					<figure class="col-md-4">
-					<a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(40).jpg" data-size="1600x1067">
-						<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(40).jpg" alt="placeholder"
-						class="img-fluid" />
-					</a>
-					</figure>
-			
-					<figure class="col-md-4">
-					<a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(148).jpg" data-size="1600x1067">
-						<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(148).jpg" alt="placeholder"
-						class="img-fluid" />
-					</a>
-					</figure>
-			
-					<figure class="col-md-4">
-					<a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(147).jpg" data-size="1600x1067">
-						<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg" alt="placeholder"
-						class="img-fluid" />
-					</a>
-					</figure>
-			
-					<figure class="col-md-4">
-					<a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(149).jpg" data-size="1600x1067">
-						<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(149).jpg" alt="placeholder"
-						class="img-fluid" />
-					</a>
-					</figure>
-			
+					@endforeach
 				</div>
-			
-				</div>
+			</div>
+			<div class="col-md-12 mt-3 show-all text-center">
+				<a class="btn btn-primary btn-md btn-squared " href="{{ url('galery') }}" style="text-decoration: none;"><i class="fas fa-eye left"></i> {{trans("website.show-all")}}</a>		
+			</div>
 		</div>
 		<!-- Grid row-->
-		
 	</section>
 	<!--/.Section Gallery -->
 @endsection

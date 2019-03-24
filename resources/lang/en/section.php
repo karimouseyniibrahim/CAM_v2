@@ -10,4 +10,5 @@ return [
     'delete' => 'Delete',
     'request' => 'Request',
     'empty' => '',
+    'show-all' => 'Show All',
 ];

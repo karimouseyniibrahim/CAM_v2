@@ -26,6 +26,10 @@ class AddRequestContact extends FormRequest
         return [
             'name' => 'required|min:5|max:191',
             'email' => 'required|min:5|max:191|email',
+<<<<<<< HEAD
+=======
+            //'subject' => 'required|min:5|max:191',
+>>>>>>> c7615468c7d7ae222b9647536e03087704b9387f
             'message'=> 'required|min:5|max:500'
         ];
     }
