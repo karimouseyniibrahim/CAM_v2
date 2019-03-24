@@ -32,5 +32,7 @@ class Formation extends Model
 	public function getDescriptionArAttribute(){
 		return is_json($this->description) && is_object(json_decode($this->description)) ?  json_decode($this->description)->ar  : $this->description;
 	}
-
+	public function inscriptions(){
+		return $this->hasMany('App\Application\Model\Inscription');
+   }
 }

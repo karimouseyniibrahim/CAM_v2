@@ -36,7 +36,7 @@
 
 							<!-- Card image -->
 							<div class="view overlay">
-								<img class="card-img-top" style=" height: 150px;  " src="{{ url('/'.env('UPLOAD_PATH').'/'.$d->image) }}" alt="Card image cap">
+								<img class="card-img-top" style=" height: 150px;  " src="{{ url('/'.env('UPLOAD_PATH').'/Section/'.$d->id.'/'.$d->image) }}" alt="Card image cap">
 								<a>
 								<div class="mask rgba-white-slight"></div>
 								</a>

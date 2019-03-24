@@ -20,7 +20,7 @@ class InscriptionsDataTable extends DataTable
              ->addColumn('edit', 'admin.inscription.buttons.edit')
              ->addColumn('delete', 'admin.inscription.buttons.delete')
              ->addColumn('view', 'admin.inscription.buttons.view')
-             /*->addColumn('name', 'admin.inscription.buttons.langcol')*/
+             ->addColumn('validation', 'admin.inscription.buttons.validation')
              ->make(true);
     }
     /**
@@ -100,6 +100,15 @@ class InscriptionsDataTable extends DataTable
                 'data' => 'formation_id',
                 'title' => 'formation_id',
              ],
+             [
+                'name' => 'validation',
+                'data' => 'validation',
+                'title' => trans('inscription.validation'),
+                'exportable' => false,
+                'printable' => false,
+                'searchable' => false,
+                'orderable' => false,
+          ],
              [
                   'name' => 'view',
                   'data' => 'view',

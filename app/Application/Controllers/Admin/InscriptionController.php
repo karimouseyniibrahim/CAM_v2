@@ -9,6 +9,7 @@ use App\Application\DataTables\InscriptionsDataTable;
 use App\Application\Model\Inscription;
 use App\Application\Repository\InterFaces\InscriptionInterface;
 use Yajra\Datatables\Request;
+use App\Application\Model\Formation;
 use Alert;
 
 class InscriptionController extends AbstractController
@@ -59,4 +60,23 @@ class InscriptionController extends AbstractController
         return $this->deleteItem($request->id , 'admin/inscription')->with('sucess' , 'Done Delete inscription From system');
     }
 
+    public function validation(\Illuminate\Http\Request $request){
+            
+        $infos="";
+        if($request->status==1){
+            $formation=Formation::withcount(['inscriptions'=> function($query){$query->where('status', 1);}])->find($request->formation_id);
+            
+            if($formation->places > $formation->inscriptions_count){                    
+                $item = $this->storeOrUpdate($request, $request->id, true);
+                $infos=trans('inscription.validate-inscription'); 
+            }else{
+                $infos=trans('inscription.validate-refuse');                    
+            }
+        }else{
+            $item = $this->storeOrUpdate($request, $request->id, true);
+            $infos=trans('inscription.validate-no-inscription');
+        }    
+        Alert::success($infos, trans('inscription.validate1'));
+    return redirect()->back();    
+}
 }

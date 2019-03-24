@@ -14,13 +14,14 @@ class RequestsDataTable extends DataTable
      */
     public function ajax()
     {
+        
         return $this->datatables
              ->eloquent($this->query())
               ->addColumn('id', 'admin.request.buttons.id')
              ->addColumn('edit', 'admin.request.buttons.edit')
              ->addColumn('delete', 'admin.request.buttons.delete')
              ->addColumn('view', 'admin.request.buttons.view')
-             /*->addColumn('name', 'admin.request.buttons.langcol')*/
+             ->addColumn('validation', 'admin.request.buttons.validation')
              ->make(true);
     }
     /**
@@ -57,7 +58,7 @@ class RequestsDataTable extends DataTable
 		}
 
 
-
+        //dd($query);
         return $this->applyScopes($query);
     }
 
@@ -91,6 +92,15 @@ class RequestsDataTable extends DataTable
                 'title' => "artisan_id",
                 
                 ],
+                [
+                    'name' => 'validation',
+                    'data' => 'validation',
+                    'title' => trans('inscription.validation'),
+                    'exportable' => false,
+                    'printable' => false,
+                    'searchable' => false,
+                    'orderable' => false,
+              ],
              [
                   'name' => 'view',
                   'data' => 'view',
