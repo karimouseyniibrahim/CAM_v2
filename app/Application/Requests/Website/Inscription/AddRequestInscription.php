@@ -30,7 +30,7 @@ class AddRequestInscription extends FormRequest
 			"adresse" => "nullable",
 			"telephone" => "nullable",
 			"status" => "nullable",
-			"formation_id" => "required",
+			"formation_id" => "required|exists:formation,id",
 			
         ];
     }

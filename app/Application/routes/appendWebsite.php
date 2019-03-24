@@ -34,11 +34,3 @@ Route::get('categorie/{id}/view', 'CategorieController@getById');
 // Route::post('inscription/item/{id}' , 'InscriptionController@update');
 // Route::get('inscription/{id}/delete' , 'InscriptionController@destroy');
 // Route::get('inscription/{id}/view' , 'InscriptionController@getById');
-
-
-
-
-
-
-
-

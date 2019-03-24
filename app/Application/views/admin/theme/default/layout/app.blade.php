@@ -19,6 +19,7 @@
     {{ Html::style('admin/plugins/node-waves/waves.css') }}
     {{ Html::style('admin/plugins/animate-css/animate.css') }}
     {{ Html::style('admin/plugins/morrisjs/morris.css') }}
+    {{ Html::style('admin/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}
     {{ Html::style('admin/css/style.css') }}
     @if(LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
         {{ Html::style('admin/css/rtl/rtl.css') }}
@@ -176,6 +177,7 @@
 {{ Html::script('admin/plugins/jquery-countto/jquery.countTo.js') }}
 {{ Html::script('admin/plugins/raphael/raphael.min.js') }}
 {{ Html::script('admin/plugins/morrisjs/morris.js') }}
+{{ Html::script('admin/plugins/perfect-scrollbar/js/perfect-scrollbar.min.js') }}
 {{ Html::script('admin/plugins/chartjs/Chart.bundle.js') }}
 {{ Html::script('admin/plugins/flot-charts/jquery.flot.js') }}
 {{ Html::script('admin/plugins/flot-charts/jquery.flot.resize.js') }}
@@ -184,12 +186,12 @@
 {{ Html::script('admin/plugins/flot-charts/jquery.flot.time.js') }}
 {{ Html::script('admin/plugins/jquery-sparkline/jquery.sparkline.js') }}
 {{ Html::script('admin/js/admin.js') }}
-
 {{ Html::script('admin/js/pages/index.js') }}
 {{ Html::script('admin/js/jquery.dataTables.min.js') }}
 {{ Html::script('admin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.min.js') }}
 {{ Html::script('js/sweetalert.min.js') }}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js"></script>
+{{ Html::script('admin/js/jquery.barrating.min.js') }}
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js"></script> -->
 <script src="{{ url('js/select2.min.js') }}"></script>
 <script src="{{ url('js/moment.js') }}"></script>
 <script src="{{ url('js/bootstrap-datetimepicker.js') }}"></script>
@@ -291,6 +293,12 @@
             alert("@lang('admin.Please Select Some items')");
         }
     }
+    var o = s.querySelector(".sidebar");
+    new PerfectScrollbar(o, {
+        wheelSpeed: 10,
+        wheelPropagation: !0,
+        minScrollbarLength: 5
+    });
 </script>
 <script src="{{ url('js/fontawesome-iconpicker.min.js') }}"></script>
 <script>

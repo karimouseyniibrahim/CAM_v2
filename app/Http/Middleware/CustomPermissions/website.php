@@ -9,13 +9,4 @@ return [
     'App\Application\Controllers\Website\InscriptionController',
     'App\Application\Controllers\Website\HomeController',
     'App\Application\Controllers\Website\MediasController',
-    'locaux'=>[
-        'add'
-    ],
-    'galery'=>[
-        'add'
-    ],
-    'nomenclature'=>[
-        'add'
-    ]
 ];

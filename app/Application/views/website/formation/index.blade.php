@@ -26,7 +26,6 @@
 			<div class="text-center mb-3">
 				<a class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#modalSubscription">{{ trans('formation.subscribe') }}</a>
 			</div>
-			@include(layoutMessage('website'))
 			<!-- Grid row-->
 			<div class="row pull-{{ getDirection() }} text-center text-md-left">
 				@foreach ($items as $d) 

@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Hôte :                        localhost
--- Version du serveur:           5.6.35 - MySQL Community Server (GPL)
+-- Version du serveur:           5.7.24 - MySQL Community Server (GPL)
 -- SE du serveur:                Win64
 -- HeidiSQL Version:             9.5.0.5332
 -- --------------------------------------------------------
@@ -12,12 +12,12 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Listage de la structure de la base pour cam-souk-akhras-v2
-DROP DATABASE IF EXISTS `cam-souk-akhras-v2`;
-CREATE DATABASE IF NOT EXISTS `cam-souk-akhras-v2` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `cam-souk-akhras-v2`;
+-- Listage de la structure de la base pour cam-souk-akhras-v6
+DROP DATABASE IF EXISTS `cam-souk-akhras-v6`;
+CREATE DATABASE IF NOT EXISTS `cam-souk-akhras-v6` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `cam-souk-akhras-v6`;
 
--- Listage de la structure de la table cam-souk-akhras-v2. artisan
+-- Listage de la structure de la table cam-souk-akhras-v6. artisan
 DROP TABLE IF EXISTS `artisan`;
 CREATE TABLE IF NOT EXISTS `artisan` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -32,13 +32,14 @@ CREATE TABLE IF NOT EXISTS `artisan` (
   UNIQUE KEY `artisan_numero_artisan_unique` (`numero_artisan`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.artisan : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.artisan : ~0 rows (environ)
+DELETE FROM `artisan`;
 /*!40000 ALTER TABLE `artisan` DISABLE KEYS */;
 INSERT INTO `artisan` (`id`, `numero_artisan`, `name`, `email`, `telephone`, `address`, `created_at`, `updated_at`) VALUES
 	(1, 'A001', '{"en":"Issa","ar":"Issa"}', 'ibrahim.karimouseyni@yahoo.com', '0025555955', 'RU04', '2019-03-07 11:29:55', '2019-03-07 11:29:55');
 /*!40000 ALTER TABLE `artisan` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. categorie
+-- Listage de la structure de la table cam-souk-akhras-v6. categorie
 DROP TABLE IF EXISTS `categorie`;
 CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -48,7 +49,8 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.categorie : ~4 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.categorie : ~4 rows (environ)
+DELETE FROM `categorie`;
 /*!40000 ALTER TABLE `categorie` DISABLE KEYS */;
 INSERT INTO `categorie` (`id`, `title`, `created_at`, `updated_at`) VALUES
 	(1, '{"en":"Genaral","ar":"العام"}', '2019-03-05 19:54:45', '2019-03-05 19:54:45'),
@@ -57,7 +59,7 @@ INSERT INTO `categorie` (`id`, `title`, `created_at`, `updated_at`) VALUES
 	(4, '{"en":"cars","ar":"السيارات"}', '2019-03-08 11:48:16', '2019-03-08 11:48:16');
 /*!40000 ALTER TABLE `categorie` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. command
+-- Listage de la structure de la table cam-souk-akhras-v6. command
 DROP TABLE IF EXISTS `command`;
 CREATE TABLE IF NOT EXISTS `command` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -69,7 +71,8 @@ CREATE TABLE IF NOT EXISTS `command` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.command : ~12 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.command : ~14 rows (environ)
+DELETE FROM `command`;
 /*!40000 ALTER TABLE `command` DISABLE KEYS */;
 INSERT INTO `command` (`id`, `name`, `options`, `command`, `created_at`, `updated_at`) VALUES
 	(1, 'Page', 'title:string:min-1_max-70_required:true,body:text:min-1_required:true,active:boolean:required_integer:false', 'laraflat:admin_model', '2019-03-05 19:54:44', '2019-03-05 19:54:44'),
@@ -88,7 +91,7 @@ INSERT INTO `command` (`id`, `name`, `options`, `command`, `created_at`, `update
 	(18, 'Medias', 'name:string:required:true,description:longText:required:true,type:integer:required:false', 'laraflat:admin_model', '2019-03-08 13:01:29', '2019-03-08 13:01:29');
 /*!40000 ALTER TABLE `command` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. contacts
+-- Listage de la structure de la table cam-souk-akhras-v6. contacts
 DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE IF NOT EXISTS `contacts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -103,11 +106,12 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.contacts : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.contacts : ~0 rows (environ)
+DELETE FROM `contacts`;
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. filesmedias
+-- Listage de la structure de la table cam-souk-akhras-v6. filesmedias
 DROP TABLE IF EXISTS `filesmedias`;
 CREATE TABLE IF NOT EXISTS `filesmedias` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -120,7 +124,8 @@ CREATE TABLE IF NOT EXISTS `filesmedias` (
   CONSTRAINT `filesmedias_media_id_foreign` FOREIGN KEY (`medias_id`) REFERENCES `medias` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.filesmedias : ~13 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.filesmedias : ~12 rows (environ)
+DELETE FROM `filesmedias`;
 /*!40000 ALTER TABLE `filesmedias` DISABLE KEYS */;
 INSERT INTO `filesmedias` (`id`, `url`, `medias_id`, `created_at`, `updated_at`) VALUES
 	(75, '/files/17/58.jpg', 17, '2019-03-08 23:53:56', '2019-03-08 23:53:56'),
@@ -137,7 +142,7 @@ INSERT INTO `filesmedias` (`id`, `url`, `medias_id`, `created_at`, `updated_at`)
 	(87, '/files/17/user-lg.jpg', 17, '2019-03-08 23:53:57', '2019-03-08 23:53:57');
 /*!40000 ALTER TABLE `filesmedias` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. formation
+-- Listage de la structure de la table cam-souk-akhras-v6. formation
 DROP TABLE IF EXISTS `formation`;
 CREATE TABLE IF NOT EXISTS `formation` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -154,14 +159,15 @@ CREATE TABLE IF NOT EXISTS `formation` (
   UNIQUE KEY `formation_libelle_unique` (`libelle`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.formation : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.formation : ~2 rows (environ)
+DELETE FROM `formation`;
 /*!40000 ALTER TABLE `formation` DISABLE KEYS */;
 INSERT INTO `formation` (`id`, `libelle`, `description`, `price`, `places`, `debut_formation`, `fin_formation`, `image`, `created_at`, `updated_at`) VALUES
 	(1, '{"en":"Complete Training 01","ar":"Complete Training 01"}', '{"en":"<p>Complete Training 01 English<\\/p>","ar":"<p>Complete Training 01 Arabic<\\/p>"}', 15000, 25, '2019-03-07', '2019-03-16', '91485_1552606612.jpg', '2019-03-06 15:01:49', '2019-03-14 23:36:53'),
 	(2, '{"en":"Formation 02","ar":"تدريب 002"}', '{"en":"<p>Lorsqu\'on acquiert suffisamment d&rsquo;exp&eacute;rience en programmation orient&eacute; objet, on constate que pour un probl&egrave;me donn&eacute;, plusieurs solutions d\'impl&eacute;mentations s\'offrent &agrave; nous. Il est parfois difficile de trouver parmi ces solutions, laquelle offrira un maximum d\'avantages sans apporter d&rsquo;inconv&eacute;nients. Malgr&eacute; la simplicit&eacute; apparente offerte par l\'approche objet, certaines solutions qui semblent efficaces au d&eacute;part se retrouvent d&eacute;su&egrave;tes si une &eacute;volution doit &ecirc;tre apport&eacute;e.<\\/p>","ar":"<p>عندما تحصل على خبرة كافية في البرمجة الموجهة للكائنات ، يمكنك أن ترى أنه بالنسبة لمشكلة معينة ، هناك العديد من حلول التنفيذ المتاحة لنا. من الصعب في بعض الأحيان العثور عليها من بين هذه الحلول ، والتي ستوفر أقصى قدر من الفوائد دون إزعاج. على الرغم من البساطة الواضحة التي يقدمها النهج الموجه للكائنات ، فإن بعض الحلول التي تبدو فعالة في البداية تكون عفا عليها الزمن إذا أريد حدوث تطور.<\\/p>"}', 2500, 50, '2019-03-14', '2019-03-17', '94845_1552606715.jpg', '2019-03-12 09:05:31', '2019-03-14 23:38:35');
 /*!40000 ALTER TABLE `formation` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. groups
+-- Listage de la structure de la table cam-souk-akhras-v6. groups
 DROP TABLE IF EXISTS `groups`;
 CREATE TABLE IF NOT EXISTS `groups` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -171,16 +177,18 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.groups : ~2 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.groups : ~2 rows (environ)
+DELETE FROM `groups`;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
 INSERT INTO `groups` (`id`, `name`, `slug`, `description`, `created_at`, `updated_at`) VALUES
 	(1, 'Admin', 'admin', 'Access to User , permission , role , groups roles', '2019-03-08 11:47:46', '2019-03-08 11:47:46'),
-	(2, 'User', 'user', 'User group ', NULL, NULL);
+	(2, 'User', 'user', 'User group ', NULL, NULL),
+	(3, 'Developer', 'developer', NULL, '2019-03-24 17:49:01', '2019-03-24 17:49:01');
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. group_role
+-- Listage de la structure de la table cam-souk-akhras-v6. group_role
 DROP TABLE IF EXISTS `group_role`;
 CREATE TABLE IF NOT EXISTS `group_role` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -193,11 +201,12 @@ CREATE TABLE IF NOT EXISTS `group_role` (
   CONSTRAINT `group_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.group_role : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.group_role : ~0 rows (environ)
+DELETE FROM `group_role`;
 /*!40000 ALTER TABLE `group_role` DISABLE KEYS */;
 /*!40000 ALTER TABLE `group_role` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. inscription
+-- Listage de la structure de la table cam-souk-akhras-v6. inscription
 DROP TABLE IF EXISTS `inscription`;
 CREATE TABLE IF NOT EXISTS `inscription` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -215,14 +224,15 @@ CREATE TABLE IF NOT EXISTS `inscription` (
   CONSTRAINT `inscription_formation_id_foreign` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.inscription : ~2 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.inscription : ~2 rows (environ)
+DELETE FROM `inscription`;
 /*!40000 ALTER TABLE `inscription` DISABLE KEYS */;
 INSERT INTO `inscription` (`id`, `numero_artisan`, `name`, `email`, `adresse`, `telephone`, `status`, `formation_id`, `created_at`, `updated_at`) VALUES
 	(1, 'KIS001', 'Ibrahim', 'habibou776@gmail.com', 'Algeria', '02639645', '1', 1, '2019-03-06 20:26:55', '2019-03-15 11:00:29'),
 	(2, 'Kis002', 'Mahamet Habibou', 'habibou776@gmail.com', 'Algeria', '02639645', NULL, 1, '2019-03-06 20:30:54', '2019-03-06 20:30:54');
 /*!40000 ALTER TABLE `inscription` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. items
+-- Listage de la structure de la table cam-souk-akhras-v6. items
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE IF NOT EXISTS `items` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -241,59 +251,60 @@ CREATE TABLE IF NOT EXISTS `items` (
   CONSTRAINT `items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.items : ~48 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.items : ~47 rows (environ)
+DELETE FROM `items`;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
 INSERT INTO `items` (`id`, `name`, `link`, `type`, `icon`, `parent_id`, `order`, `controller_path`, `menu_id`, `created_at`, `updated_at`) VALUES
-	(1, '{"ar":" الرئيسية ","en":"Home"}', '/admin/home', '', '<i class="material-icons">home</i>', 0, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-03-07 16:08:16'),
-	(3, '{"ar":"  المستخدمين ","en":"User"}', '#', '', '<i class="material-icons">account_circle</i>', 0, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\UserController","App\\\\Application\\\\Controllers\\\\Admin\\\\GroupController","App\\\\Application\\\\Controllers\\\\Admin\\\\RoleController","App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\PermissionController"]', 1, NULL, '2019-03-07 16:08:16'),
-	(4, '{"ar":" اعدادت الموقع ","en":"Setting"}', '#', '', '<i class="material-icons">insert_emoticon</i>', 0, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SettingController","App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController","App\\\\Application\\\\Controllers\\\\Admin\\\\MenuController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(5, '{"ar":" الصفحات ","en":"Page"}', '/admin/page', '', '<i class="material-icons">find_in_page</i>', 0, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\PageController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(6, '{"ar":" ادارة الملفات ","en":"File Manager"}', '/admin/file-manager', '', '<i class="material-icons">folder</i>', 0, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(7, '{"ar":" سجل البينات ","en":"Logs"}', '/admin/log', '', '<i class="material-icons">info</i>', 0, 7, '["App\\\\Application\\\\Controllers\\\\Admin\\\\LogController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(8, '{"ar":" الاحصائيات ","en":"Statistics"}', '/admin/links', '', '<i class="material-icons">insert_chart</i>', 0, 8, '["App\\\\Application\\\\Controllers\\\\Admin\\\\UserController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(9, '{"ar":" اتصل بنا ","en":"Contact Us"}', '/admin/contact', '', '<i class="material-icons">perm_contact_calendar</i>', 0, 9, '["App\\\\Application\\\\Controllers\\\\Admin\\\\ContactController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(10, '{"ar":" المستخدمين ","en":"Users"}', '/admin/user', '', NULL, 3, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\UserController"]', 1, NULL, '2019-03-07 16:08:16'),
-	(11, '{"ar":" جروبات الاعضاء ","en":"Groups"}', '/admin/group', '', NULL, 3, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\GroupController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(12, '{"ar":" قوانين الاستخدام ","en":"Roles"}', '/admin/role', '', NULL, 3, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RoleController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(13, '{"ar":" التصاريح ","en":"Permissions"}', '/admin/permission', '', NULL, 3, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\PermissionController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(14, '{"ar":" ايقونات الموقع ","en":"Icons"}', '/admin/icons', '', NULL, 4, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(15, '{"ar":"  التوثيق ","en":"Docs"}', '/admin/docs', '', NULL, 4, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(16, '{"ar":" اعدادت الموقع ","en":"Settings"}', '/admin/setting', '', NULL, 4, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SettingController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(17, '{"ar":" القوائم ","en":"Menu"}', '/admin/menu', '', NULL, 4, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\MenuController"]', 1, NULL, '2019-03-07 16:08:17'),
+	(1, '{"ar":" الرئيسية ","en":"Home"}', '/admin/home', '', '<i class="material-icons">home</i>', 0, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-03-24 17:42:14'),
+	(3, '{"ar":"  المستخدمين ","en":"User"}', '#', '', '<i class="material-icons">account_circle</i>', 0, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\UserController","App\\\\Application\\\\Controllers\\\\Admin\\\\GroupController","App\\\\Application\\\\Controllers\\\\Admin\\\\RoleController","App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\PermissionController"]', 1, NULL, '2019-03-24 17:42:15'),
+	(4, '{"ar":" اعدادت الموقع ","en":"Setting"}', '#', '', '<i class="material-icons">insert_emoticon</i>', 0, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SettingController","App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController","App\\\\Application\\\\Controllers\\\\Admin\\\\MenuController"]', 1, NULL, '2019-03-24 17:42:15'),
+	(5, '{"ar":" الصفحات ","en":"Page"}', '/admin/page', '', '<i class="material-icons">find_in_page</i>', 55, 7, '["App\\\\Application\\\\Controllers\\\\Admin\\\\PageController"]', 1, NULL, '2019-03-24 17:42:14'),
+	(6, '{"ar":" ادارة الملفات ","en":"File Manager"}', '/admin/file-manager', '', '<i class="material-icons">folder</i>', 4, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-03-24 17:42:15'),
+	(7, '{"ar":" سجل البينات ","en":"Logs"}', '/admin/log', '', '<i class="material-icons">info</i>', 4, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\LogController"]', 1, NULL, '2019-03-24 17:42:16'),
+	(8, '{"ar":" الاحصائيات ","en":"Statistics"}', '/admin/links', '', '<i class="material-icons">insert_chart</i>', 4, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\UserController"]', 1, NULL, '2019-03-24 17:42:16'),
+	(9, '{"ar":" اتصل بنا ","en":"Contact Us"}', '/admin/contact', '', '<i class="material-icons">perm_contact_calendar</i>', 55, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\ContactController"]', 1, NULL, '2019-03-24 17:42:14'),
+	(10, '{"ar":" المستخدمين ","en":"Users"}', '/admin/user', '', NULL, 3, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\UserController"]', 1, NULL, '2019-03-24 17:42:15'),
+	(11, '{"ar":" جروبات الاعضاء ","en":"Groups"}', '/admin/group', '', NULL, 3, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\GroupController"]', 1, NULL, '2019-03-24 17:42:15'),
+	(12, '{"ar":" قوانين الاستخدام ","en":"Roles"}', '/admin/role', '', NULL, 3, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RoleController"]', 1, NULL, '2019-03-24 17:42:15'),
+	(13, '{"ar":" التصاريح ","en":"Permissions"}', '/admin/permission', '', NULL, 3, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\PermissionController"]', 1, NULL, '2019-03-24 17:42:15'),
+	(14, '{"en":"Icons","ar":"ايقونات الموقع"}', '/admin/icons', 'self', '<i class="material-icons"> explore </i>', 4, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-03-24 18:23:05'),
+	(15, '{"en":"Docs","ar":"التوثيق"}', '/admin/docs', 'self', '<i class="material-icons"> description </i>', 4, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-03-24 18:23:23'),
+	(16, '{"en":"Settings","ar":"اعدادت الموقع"}', '/admin/setting', 'self', '<i class="material-icons"> settings_input_component </i>', 4, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SettingController"]', 1, NULL, '2019-03-24 18:22:30'),
+	(17, '{"en":"Menu","ar":"القوائم"}', '/admin/menu', 'self', '<i class="material-icons"> view_list </i>', 4, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\MenuController"]', 1, NULL, '2019-03-24 18:22:08'),
 	(18, '{"ar":" لارافلات ","en":"laraFalt"}', 'https://laraflat.com/', 'blank', NULL, 0, 1, '', 2, NULL, NULL),
 	(19, '{"ar":" خدمات ويب ","en":"5dmat-web"}', 'https://5dmat-web.com/', 'blank', NULL, 0, 2, '', 2, NULL, NULL),
 	(20, '{"ar":" ستريم لاب ","en":"StreamLab"}', 'https://streamlab.io/', 'blank', NULL, 0, 3, '', 2, NULL, NULL),
-	(21, '{"ar":" تطوير  ","en":"Develop"}', '#', '', '<i class="material-icons">settings</i>', 0, 10, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RelationController","App\\\\Application\\\\Controllers\\\\Admin\\\\TranslationController","App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController","App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\CustomPermissionsController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(22, '{"ar":" الاوامر ","en":"Commands"}', '/admin/commands', '', NULL, 21, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(23, '{"ar":"  العلاقات ","en":"Relation"}', '/admin/relation', '', NULL, 21, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RelationController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(24, '{"ar":" الترجمة  ","en":" Translation "}', '/admin/translation', '', NULL, 21, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\TranslationController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(25, '{"ar":"  تخصيص التصريحات  ","en":" Custom Permissions "}', '/admin/custom-permissions', '', NULL, 21, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\CustomPermissionsController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(26, '{"ar":" اوامر لارافيل  ","en":" Laravel Commands  "}', 'admin/laravel/commands', '', NULL, 21, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(27, '{"ar":"  التحكم في قواعد البينات  ","en":" DataBase Manager  "}', '/adminer.php', 'blank', NULL, 21, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(28, '{"ar":" المظهر  ","en":"Theme"}', '#', '', '<i class="material-icons">color_lens</i>', 0, 11, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(29, '{"ar":" لوحة تحكم المدير  ","en":"Admin"}', 'admin/theme/admin', '', '', 28, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(30, '{"ar":" الموقع ","en":"Website"}', 'admin/theme/website', '', '', 28, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(31, '{"ar":" رئيسية الموقع ","en":"Home Widget"}', 'admin/theme/homepage', '', '', 28, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(32, '{"ar":" السيد بار ","en":"Sidebar Widget"}', 'admin/theme/sidebar', '', '', 28, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-07 16:08:17'),
-	(33, '{"ar":"  رفع \\/ استخراج المديولات ","en":" Export \\\\ Import Models  "}', 'admin/exportImport', 'blank', NULL, 21, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-07 16:08:17'),
+	(21, '{"ar":" تطوير  ","en":"Develop"}', '#', '', '<i class="material-icons">settings</i>', 0, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RelationController","App\\\\Application\\\\Controllers\\\\Admin\\\\TranslationController","App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController","App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\CustomPermissionsController"]', 1, NULL, '2019-03-24 17:42:16'),
+	(22, '{"ar":" الاوامر ","en":"Commands"}', '/admin/commands', '', NULL, 21, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-24 17:42:16'),
+	(23, '{"ar":"  العلاقات ","en":"Relation"}', '/admin/relation', '', NULL, 21, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RelationController"]', 1, NULL, '2019-03-24 17:42:16'),
+	(24, '{"ar":" الترجمة  ","en":" Translation "}', '/admin/translation', '', NULL, 21, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\TranslationController"]', 1, NULL, '2019-03-24 17:42:16'),
+	(25, '{"ar":"  تخصيص التصريحات  ","en":" Custom Permissions "}', '/admin/custom-permissions', '', NULL, 21, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\CustomPermissionsController"]', 1, NULL, '2019-03-24 17:42:17'),
+	(26, '{"ar":" اوامر لارافيل  ","en":" Laravel Commands  "}', 'admin/laravel/commands', '', NULL, 21, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-24 17:42:17'),
+	(27, '{"ar":"  التحكم في قواعد البينات  ","en":" DataBase Manager  "}', '/adminer.php', 'blank', NULL, 21, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-24 17:42:17'),
+	(28, '{"ar":" المظهر  ","en":"Theme"}', '#', '', '<i class="material-icons">color_lens</i>', 0, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
+	(29, '{"ar":" لوحة تحكم المدير  ","en":"Admin"}', 'admin/theme/admin', '', '', 28, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
+	(30, '{"ar":" الموقع ","en":"Website"}', 'admin/theme/website', '', '', 28, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
+	(31, '{"ar":" رئيسية الموقع ","en":"Home Widget"}', 'admin/theme/homepage', '', '', 28, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
+	(32, '{"ar":" السيد بار ","en":"Sidebar Widget"}', 'admin/theme/sidebar', '', '', 28, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
+	(33, '{"ar":"  رفع \\/ استخراج المديولات ","en":" Export \\\\ Import Models  "}', 'admin/exportImport', 'blank', NULL, 21, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-24 17:42:17'),
 	(34, '{"en":"Home","ar":null}', '/', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\HomeController"]', 3, '2019-03-05 20:40:13', '2019-03-05 20:40:13'),
-	(43, '{"en":"Formation","ar":"Formation"}', '/admin/formation', 'self', NULL, 55, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\FormationController"]', 1, '2019-03-06 14:35:29', '2019-03-07 16:08:16'),
+	(43, '{"en":"Formation","ar":"Formation"}', '/admin/formation', 'self', '<i class="material-icons"> work </i>', 55, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\FormationController"]', 1, '2019-03-06 14:35:29', '2019-03-24 18:15:08'),
 	(44, '{"en":"Formation","ar":"Formation"}', 'formation', 'self', '<i class="fa fa-plus-square-o" aria-hidden="true"></i>', 0, 36, '["App\\\\Application\\\\Controllers\\\\Website\\\\FormationController"]', 3, '2019-03-06 14:35:29', '2019-03-06 18:40:58'),
-	(45, '{"en":"Inscription","ar":"Inscription"}', '/admin/inscription', 'self', NULL, 55, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\InscriptionController"]', 1, '2019-03-06 15:09:03', '2019-03-07 16:08:16'),
-	(47, '{"en":"Section","ar":"Section"}', '/admin/section', 'self', NULL, 55, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SectionController"]', 1, '2019-03-06 20:38:36', '2019-03-07 16:08:16'),
+	(45, '{"en":"Inscription","ar":"Inscription"}', '/admin/inscription', 'self', '<i class="material-icons"> receipt </i>', 55, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\InscriptionController"]', 1, '2019-03-06 15:09:03', '2019-03-24 18:14:07'),
+	(47, '{"en":"Section","ar":"Section"}', '/admin/section', 'self', '<i class="material-icons"> view_carousel </i>', 55, 9, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SectionController"]', 1, '2019-03-06 20:38:36', '2019-03-24 18:16:06'),
 	(48, '{"en":"Section","ar":"Section"}', 'section', '', '<i class="fa fa-plus-square-o" aria-hidden="true"></i> ', 0, 39, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SectionController"]', 3, '2019-03-06 20:38:36', '2019-03-06 20:38:36'),
-	(49, '{"en":"Local","ar":"Local"}', '/admin/local', 'self', NULL, 55, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\LocalController"]', 1, '2019-03-06 20:53:21', '2019-03-07 16:08:16'),
-	(51, '{"en":"Artisan","ar":"Artisan"}', '/admin/artisan', 'self', NULL, 55, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\ArtisanController"]', 1, '2019-03-06 20:55:33', '2019-03-07 16:08:16'),
-	(53, '{"en":"Request","ar":"Request"}', '/admin/request', 'self', NULL, 55, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RequestController"]', 1, '2019-03-06 23:20:14', '2019-03-07 16:08:16'),
-	(55, '{"en":"Management","ar":"Management"}', '/admin/management', 'self', '<i class="material-icons">control_point</i>', 0, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\FormationController"]', 1, '2019-03-07 16:04:52', '2019-03-07 16:11:17'),
-	(56, '{"en":"News","ar":"News"}', '/admin/news', '', '<i class="material-icons">control_point</i>', 0, 43, '["App\\\\Application\\\\Controllers\\\\Admin\\\\NewsController"]', 1, '2019-03-07 16:14:36', '2019-03-07 16:14:36'),
+	(49, '{"en":"Local","ar":"Local"}', '/admin/local', 'self', '<i class="material-icons"> view_array </i>', 55, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\LocalController"]', 1, '2019-03-06 20:53:21', '2019-03-24 18:16:27'),
+	(51, '{"en":"Artisan","ar":"Artisan"}', '/admin/artisan', 'self', '<i class="material-icons"> people_outline </i>', 55, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\ArtisanController"]', 1, '2019-03-06 20:55:33', '2019-03-24 18:19:25'),
+	(53, '{"en":"Request","ar":"Request"}', '/admin/request', 'self', '<i class="material-icons"> subscriptions </i>', 55, 8, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RequestController"]', 1, '2019-03-06 23:20:14', '2019-03-24 18:15:43'),
+	(55, '{"en":"Management","ar":"Management"}', '/admin/management', 'self', '<i class="material-icons">control_point</i>', 0, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\FormationController"]', 1, '2019-03-07 16:04:52', '2019-03-24 17:42:14'),
+	(56, '{"en":"News","ar":"News"}', '/admin/news', '', '<i class="material-icons">control_point</i>', 55, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\NewsController"]', 1, '2019-03-07 16:14:36', '2019-03-24 17:42:14'),
 	(57, '{"en":"News","ar":"News"}', 'news', '', '<i class="fa fa-plus-square-o" aria-hidden="true"></i> ', 0, 44, '["App\\\\Application\\\\Controllers\\\\Admin\\\\NewsController"]', 3, '2019-03-07 16:14:36', '2019-03-07 16:14:36'),
-	(60, '{"en":"Medias","ar":"Medias"}', '/admin/medias', '', '<i class="material-icons">control_point</i>', 0, 45, '["App\\\\Application\\\\Controllers\\\\Admin\\\\MediasController"]', 1, '2019-03-08 13:00:30', '2019-03-08 13:00:30'),
+	(60, '{"en":"Medias","ar":"Medias"}', '/admin/medias', 'self', '<i class="material-icons"> perm_media </i>', 55, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\MediasController"]', 1, '2019-03-08 13:00:30', '2019-03-24 18:13:28'),
 	(61, '{"en":"Nomenclature","ar":"Nomenclature"}', 'nomenclature', 'self', '<i class="fa fa-plus-square-o" aria-hidden="true"></i>', 0, 46, '["App\\\\Application\\\\Controllers\\\\Admin\\\\MediasController"]', 3, '2019-03-08 13:00:30', '2019-03-10 01:17:37'),
 	(62, '{"en":"Galery","ar":"Galery"}', '/galery', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\MediasController"]', 3, '2019-03-10 01:17:18', '2019-03-10 01:17:18');
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. links
+-- Listage de la structure de la table cam-souk-akhras-v6. links
 DROP TABLE IF EXISTS `links`;
 CREATE TABLE IF NOT EXISTS `links` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -305,7 +316,8 @@ CREATE TABLE IF NOT EXISTS `links` (
   UNIQUE KEY `links_slug_unique` (`slug`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.links : ~3 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.links : ~3 rows (environ)
+DELETE FROM `links`;
 /*!40000 ALTER TABLE `links` DISABLE KEYS */;
 INSERT INTO `links` (`id`, `url`, `slug`, `created_at`, `updated_at`) VALUES
 	(1, 'http://127.0.0.1:8000/en/login', '0ms8DD', '2019-03-05 19:55:25', '2019-03-05 19:55:25'),
@@ -313,7 +325,7 @@ INSERT INTO `links` (`id`, `url`, `slug`, `created_at`, `updated_at`) VALUES
 	(3, 'http://127.0.0.1:8000/en/contact', 'SclkjX', '2019-03-05 19:56:54', '2019-03-05 19:56:54');
 /*!40000 ALTER TABLE `links` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. link_views
+-- Listage de la structure de la table cam-souk-akhras-v6. link_views
 DROP TABLE IF EXISTS `link_views`;
 CREATE TABLE IF NOT EXISTS `link_views` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -329,7 +341,8 @@ CREATE TABLE IF NOT EXISTS `link_views` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.link_views : ~6 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.link_views : ~6 rows (environ)
+DELETE FROM `link_views`;
 /*!40000 ALTER TABLE `link_views` DISABLE KEYS */;
 INSERT INTO `link_views` (`id`, `link_id`, `language`, `browser`, `browser_version`, `os`, `os_version`, `ip`, `created_at`, `updated_at`) VALUES
 	(1, '1', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-03-05 19:55:46', '2019-03-05 19:55:46'),
@@ -340,7 +353,7 @@ INSERT INTO `link_views` (`id`, `link_id`, `language`, `browser`, `browser_versi
 	(6, '3', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-03-05 20:43:04', '2019-03-05 20:43:04');
 /*!40000 ALTER TABLE `link_views` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. local
+-- Listage de la structure de la table cam-souk-akhras-v6. local
 DROP TABLE IF EXISTS `local`;
 CREATE TABLE IF NOT EXISTS `local` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -358,14 +371,15 @@ CREATE TABLE IF NOT EXISTS `local` (
   CONSTRAINT `local_section_id_foreign` FOREIGN KEY (`section_id`) REFERENCES `section` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.local : ~2 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.local : ~2 rows (environ)
+DELETE FROM `local`;
 /*!40000 ALTER TABLE `local` DISABLE KEYS */;
 INSERT INTO `local` (`id`, `name`, `description`, `image`, `price`, `area`, `section_id`, `created_at`, `updated_at`) VALUES
 	(1, '{"en":"Local 01","ar":"Local 01"}', '{"en":"<p>Local 01.....<\\/p>","ar":null}', '15923_1552607758.jpg', 14000, 25, 1, '2019-03-06 21:14:17', '2019-03-14 23:55:58'),
 	(2, '{"en":"local 02","ar":"local 02"}', '{"en":"<p>local 02 ...<\\/p>","ar":null}', '23759_1552607896.jpg', 25000, 15, 1, '2019-03-06 22:51:08', '2019-03-14 23:58:17');
 /*!40000 ALTER TABLE `local` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. logs
+-- Listage de la structure de la table cam-souk-akhras-v6. logs
 DROP TABLE IF EXISTS `logs`;
 CREATE TABLE IF NOT EXISTS `logs` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -377,9 +391,10 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=790 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=829 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.logs : ~784 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.logs : ~789 rows (environ)
+DELETE FROM `logs`;
 /*!40000 ALTER TABLE `logs` DISABLE KEYS */;
 INSERT INTO `logs` (`id`, `action`, `model`, `status`, `messages`, `user_id`, `created_at`, `updated_at`) VALUES
 	(1, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["1"]}', 0, '2019-03-05 19:56:47', '2019-03-05 19:56:47'),
@@ -1170,10 +1185,49 @@ INSERT INTO `logs` (`id`, `action`, `model`, `status`, `messages`, `user_id`, `c
 	(786, 'Update', 'groups', 'Success', '{"Updated id":["1"]}', 1, '2019-03-15 10:01:44', '2019-03-15 10:01:44'),
 	(787, 'Update', 'request', 'Success', '{"Updated id":["4"]}', 1, '2019-03-15 10:48:38', '2019-03-15 10:48:38'),
 	(788, 'Update', 'inscription', 'Success', '{"Updated id":["1"]}', 1, '2019-03-15 11:00:29', '2019-03-15 11:00:29'),
-	(789, 'Update', 'inscription', 'Success', '{"Updated id":["1"]}', 1, '2019-03-15 11:00:49', '2019-03-15 11:00:49');
+	(789, 'Update', 'inscription', 'Success', '{"Updated id":["1"]}', 1, '2019-03-15 11:00:49', '2019-03-15 11:00:49'),
+	(790, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 17:13:49', '2019-03-24 17:13:49'),
+	(791, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 17:16:49', '2019-03-24 17:16:49'),
+	(792, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 17:19:58', '2019-03-24 17:19:58'),
+	(793, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 17:21:44', '2019-03-24 17:21:44'),
+	(794, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 17:22:05', '2019-03-24 17:22:05'),
+	(795, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 17:30:00', '2019-03-24 17:30:00'),
+	(796, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 17:39:04', '2019-03-24 17:39:04'),
+	(797, 'Update', 'menu', 'Success', '{"Updated id":["1"]}', 1, '2019-03-24 17:42:26', '2019-03-24 17:42:26'),
+	(798, 'Visit Create Page', 'groups', 'Success', '', 1, '2019-03-24 17:42:56', '2019-03-24 17:42:56'),
+	(799, 'Visit Create Page', 'groups', 'Success', '', 1, '2019-03-24 17:43:25', '2019-03-24 17:43:25'),
+	(800, 'Visit Create Page', 'groups', 'Success', '', 1, '2019-03-24 17:43:59', '2019-03-24 17:43:59'),
+	(801, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 17:45:21', '2019-03-24 17:45:21'),
+	(802, 'Visit Create Page', 'groups', 'Success', '', 1, '2019-03-24 17:48:16', '2019-03-24 17:48:16'),
+	(803, 'Create', 'groups', 'Success', '{"New id":[3]}', 1, '2019-03-24 17:49:01', '2019-03-24 17:49:01'),
+	(804, 'Visit Edit Page', 'groups', 'Success', '{"Edit Id":["3"]}', 1, '2019-03-24 17:51:22', '2019-03-24 17:51:22'),
+	(805, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 18:00:34', '2019-03-24 18:00:34'),
+	(806, 'Update', 'news', 'Success', '{"Updated id":["1"]}', 1, '2019-03-24 18:02:21', '2019-03-24 18:02:21'),
+	(807, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 18:02:22', '2019-03-24 18:02:22'),
+	(808, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-24 18:02:40', '2019-03-24 18:02:40'),
+	(809, 'Update', 'news', 'Success', '{"Updated id":["2"]}', 1, '2019-03-24 18:04:04', '2019-03-24 18:04:04'),
+	(810, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-24 18:04:05', '2019-03-24 18:04:05'),
+	(811, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 18:04:35', '2019-03-24 18:04:35'),
+	(812, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 18:05:03', '2019-03-24 18:05:03'),
+	(813, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 18:06:39', '2019-03-24 18:06:39'),
+	(814, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 18:06:52', '2019-03-24 18:06:52'),
+	(815, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 18:12:14', '2019-03-24 18:12:14'),
+	(816, 'Update', 'menu', 'Success', '{"Updated id":["1"]}', 1, '2019-03-24 18:16:31', '2019-03-24 18:16:31'),
+	(817, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 18:17:19', '2019-03-24 18:17:19'),
+	(818, 'Update', 'menu', 'Success', '{"Updated id":["1"]}', 1, '2019-03-24 18:18:24', '2019-03-24 18:18:24'),
+	(819, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 18:19:16', '2019-03-24 18:19:16'),
+	(820, 'Update', 'menu', 'Success', '{"Updated id":["1"]}', 1, '2019-03-24 18:19:29', '2019-03-24 18:19:29'),
+	(821, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 18:20:09', '2019-03-24 18:20:09'),
+	(822, 'Update', 'menu', 'Success', '{"Updated id":["1"]}', 1, '2019-03-24 18:26:16', '2019-03-24 18:26:16'),
+	(823, 'Visit Edit Page', 'groups', 'Success', '{"Edit Id":["3"]}', 1, '2019-03-24 19:13:43', '2019-03-24 19:13:43'),
+	(824, 'Update', 'groups', 'Success', '{"Updated id":["3"]}', 1, '2019-03-24 19:17:45', '2019-03-24 19:17:45'),
+	(825, 'Visit Create Page', 'users', 'Success', '', 1, '2019-03-24 19:21:11', '2019-03-24 19:21:11'),
+	(826, 'Visit Create Page', 'users', 'Success', '', 1, '2019-03-24 19:21:47', '2019-03-24 19:21:47'),
+	(827, 'Visit Create Page', 'users', 'Success', '', 1, '2019-03-24 19:22:07', '2019-03-24 19:22:07'),
+	(828, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 19:23:00', '2019-03-24 19:23:00');
 /*!40000 ALTER TABLE `logs` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. medias
+-- Listage de la structure de la table cam-souk-akhras-v6. medias
 DROP TABLE IF EXISTS `medias`;
 CREATE TABLE IF NOT EXISTS `medias` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -1186,13 +1240,14 @@ CREATE TABLE IF NOT EXISTS `medias` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.medias : ~1 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.medias : ~0 rows (environ)
+DELETE FROM `medias`;
 /*!40000 ALTER TABLE `medias` DISABLE KEYS */;
 INSERT INTO `medias` (`id`, `name`, `description`, `type`, `created_at`, `updated_at`) VALUES
 	(17, '{"en":"Gestions","ar":"ايقونات الموقع"}', '{"en":"<p>qefvresversvzr<\\/p>","ar":"<p>sdwvedfxc<\\/p>"}', 1, '2019-03-08 23:53:56', '2019-03-09 01:54:11');
 /*!40000 ALTER TABLE `medias` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. menu
+-- Listage de la structure de la table cam-souk-akhras-v6. menu
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -1202,7 +1257,8 @@ CREATE TABLE IF NOT EXISTS `menu` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.menu : ~3 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.menu : ~3 rows (environ)
+DELETE FROM `menu`;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
 INSERT INTO `menu` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(1, 'Admin', NULL, NULL),
@@ -1210,7 +1266,7 @@ INSERT INTO `menu` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(3, 'Website', NULL, NULL);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. migrations
+-- Listage de la structure de la table cam-souk-akhras-v6. migrations
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -1219,7 +1275,8 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.migrations : ~32 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.migrations : ~32 rows (environ)
+DELETE FROM `migrations`;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_04_11_141239_create_groups_table', 1),
@@ -1256,7 +1313,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(40, '2019_03_08_1552050026_create_medias_table', 11);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. news
+-- Listage de la structure de la table cam-souk-akhras-v6. news
 DROP TABLE IF EXISTS `news`;
 CREATE TABLE IF NOT EXISTS `news` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -1268,14 +1325,15 @@ CREATE TABLE IF NOT EXISTS `news` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.news : ~2 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.news : ~2 rows (environ)
+DELETE FROM `news`;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
 INSERT INTO `news` (`id`, `title`, `description`, `image`, `created_at`, `updated_at`) VALUES
-	(1, '{"en":"News 01","ar":"News 01"}', '{"en":"<div class=\\"main-wrapper\\">\\r\\n<div class=\\"container-fluid\\">\\r\\n<div class=\\"row\\">\\r\\n<div class=\\"col-md-12\\">\\r\\n<div class=\\"logo-generator-wrapper\\">\\r\\n<div class=\\"row\\">\\r\\n<section id=\\"free-resources\\" class=\\"section\\">\\r\\n<div class=\\"row wow fadeIn\\">\\r\\n<div class=\\"col-lg-4 col-md-6 mb-4\\">\\r\\n<div class=\\"card card-cascade wider\\">\\r\\n<div class=\\"card-body card-body-cascade  text-center\\">\\r\\n<p class=\\"card-text\\">This comprehensive tutorial contains everything you have to know about WordPress Theme development, starting with setting the environment, through WordPress installation and configuration, setting up theme construction, development including custom widgets and functions.<\\/p>\\r\\n<a class=\\"btn btn-primary waves-effect waves-light\\" href=\\"https:\\/\\/mdbootstrap.com\\/wordpress-tutorial\\/\\">LEARN MORE<\\/a><\\/div>\\r\\n<\\/div>\\r\\n<\\/div>\\r\\n<\\/div>\\r\\n<\\/section>\\r\\n<\\/div>\\r\\n<\\/div>\\r\\n<\\/div>\\r\\n<div class=\\"col-md-12\\">&nbsp;<\\/div>\\r\\n<\\/div>\\r\\n<\\/div>\\r\\n<\\/div>\\r\\n<footer id=\\"footer\\" class=\\"page-footer unique-color-dark mt-4\\"><\\/footer>","ar":"<div class=\\"main-wrapper\\">\\r\\n<div class=\\"container-fluid\\">\\r\\n<div class=\\"row\\">\\r\\n<div class=\\"col-md-12\\">\\r\\n<div class=\\"logo-generator-wrapper\\">\\r\\n<div class=\\"row\\">\\r\\n<section id=\\"free-resources\\" class=\\"section\\">\\r\\n<div class=\\"row wow fadeIn\\">\\r\\n<div class=\\"col-lg-4 col-md-6 mb-4\\">\\r\\n<div class=\\"card card-cascade wider\\">\\r\\n<div class=\\"card-body card-body-cascade  text-center\\">\\r\\n<p class=\\"card-text\\">This comprehensive tutorial contains everything you have to know about WordPress Theme development, starting with setting the environment, through WordPress installation and configuration, setting up theme construction, development including custom widgets and functions.<\\/p>\\r\\n<a class=\\"btn btn-primary waves-effect waves-light\\" href=\\"https:\\/\\/mdbootstrap.com\\/wordpress-tutorial\\/\\">LEARN MORE<\\/a><\\/div>\\r\\n<\\/div>\\r\\n<\\/div>\\r\\n<\\/div>\\r\\n<\\/section>\\r\\n<\\/div>\\r\\n<\\/div>\\r\\n<\\/div>\\r\\n<div class=\\"col-md-12\\">&nbsp;<\\/div>\\r\\n<\\/div>\\r\\n<\\/div>\\r\\n<\\/div>\\r\\n<footer id=\\"footer\\" class=\\"page-footer unique-color-dark mt-4\\"><\\/footer>"}', '37342_1551976155.jpg', '2019-03-07 16:29:15', '2019-03-07 16:29:15'),
-	(2, '{"en":"News 02","ar":"News 02"}', '{"en":"<section id=\\"how-it-works\\">\\r\\n<p>The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous\\/next controls and indicators.<\\/p>\\r\\n<p>In browsers where the&nbsp;<a href=\\"https:\\/\\/www.w3.org\\/TR\\/page-visibility\\/\\">Page Visibility API<\\/a>&nbsp;is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).<\\/p>\\r\\n<p>Please be aware that nested carousels are not supported, and carousels are generally not compliant with accessibility standards.<\\/p>\\r\\n<\\/section>","ar":"<section id=\\"how-it-works\\">\\r\\n<p>The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous\\/next controls and indicators.<\\/p>\\r\\n<p>In browsers where the&nbsp;<a href=\\"https:\\/\\/www.w3.org\\/TR\\/page-visibility\\/\\">Page Visibility API<\\/a>&nbsp;is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).<\\/p>\\r\\n<p>Please be aware that nested carousels are not supported, and carousels are generally not compliant with accessibility standards.<\\/p>\\r\\n<\\/section>"}', '37052_1551976252.jpg', '2019-03-07 16:30:52', '2019-03-07 16:30:52');
+	(1, '{"en":"News 01","ar":"News 01"}', '{"en":"<p>This comprehensive tutorial contains everything you have to know about WordPress Theme development, starting with setting the environment, through WordPress installation and configuration, setting up theme construction, development including custom widgets and functions.<\\/p>","ar":"<p>This comprehensive tutorial contains everything you have to know about WordPress Theme development, starting with setting the environment, through WordPress installation and configuration, setting up theme construction, development including custom widgets and functions.<\\/p>"}', '37342_1551976155.jpg', '2019-03-07 16:29:15', '2019-03-24 18:02:21'),
+	(2, '{"en":"News 02","ar":"News 02"}', '{"en":"<p>The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous\\/next controls and indicators.<\\/p>\\r\\n<p>In browsers where the&nbsp;<a href=\\"https:\\/\\/www.w3.org\\/TR\\/page-visibility\\/\\">Page Visibility API<\\/a>&nbsp;is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).<\\/p>","ar":"<p>The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous\\/next controls and indicators.<\\/p>\\r\\n<p>In browsers where the&nbsp;<a href=\\"https:\\/\\/www.w3.org\\/TR\\/page-visibility\\/\\">Page Visibility API<\\/a>&nbsp;is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).<\\/p>"}', '37052_1551976252.jpg', '2019-03-07 16:30:52', '2019-03-24 18:04:04');
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. page
+-- Listage de la structure de la table cam-souk-akhras-v6. page
 DROP TABLE IF EXISTS `page`;
 CREATE TABLE IF NOT EXISTS `page` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -1287,13 +1345,14 @@ CREATE TABLE IF NOT EXISTS `page` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.page : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.page : ~0 rows (environ)
+DELETE FROM `page`;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
 INSERT INTO `page` (`id`, `title`, `body`, `active`, `created_at`, `updated_at`) VALUES
 	(1, '{"ar":" من نحن ","en":"About us"}', '{"ar":"\\n                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.\\nإذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.\\nومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.\\nهذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.\\n            ","en":"\\n                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<\\/p>\\n                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<\\/p>\\n             "}', 1, NULL, NULL);
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. pagecomment
+-- Listage de la structure de la table cam-souk-akhras-v6. pagecomment
 DROP TABLE IF EXISTS `pagecomment`;
 CREATE TABLE IF NOT EXISTS `pagecomment` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -1305,11 +1364,12 @@ CREATE TABLE IF NOT EXISTS `pagecomment` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.pagecomment : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.pagecomment : ~0 rows (environ)
+DELETE FROM `pagecomment`;
 /*!40000 ALTER TABLE `pagecomment` DISABLE KEYS */;
 /*!40000 ALTER TABLE `pagecomment` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. password_resets
+-- Listage de la structure de la table cam-souk-akhras-v6. password_resets
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1318,11 +1378,12 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.password_resets : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.password_resets : ~0 rows (environ)
+DELETE FROM `password_resets`;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. permissions
+-- Listage de la structure de la table cam-souk-akhras-v6. permissions
 DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE IF NOT EXISTS `permissions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -1339,7 +1400,8 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=685 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.permissions : ~545 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.permissions : ~568 rows (environ)
+DELETE FROM `permissions`;
 /*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
 INSERT INTO `permissions` (`id`, `name`, `slug`, `description`, `controller_name`, `method_name`, `controller_type`, `permission`, `namespace`, `created_at`, `updated_at`) VALUES
 	(1, 'admin-admin-index-CustomPermissionsController', 'App-Application-Controllers-Admin-Development-CustomPermissionsController-index', 'Allow Admin admin on index in controller CustomPermissionsController', 'CustomPermissionsController', 'index', 'admin', 1, 'App\\Application\\Controllers\\Admin\\Development\\CustomPermissionsController', '2019-03-05 19:54:27', '2019-03-05 19:54:27'),
@@ -1912,7 +1974,7 @@ INSERT INTO `permissions` (`id`, `name`, `slug`, `description`, `controller_name
 	(684, 'validation-RequestController', 'App-Application-Admin-Request-Controller-validation', 'Allow admin on validationin controller Request Controller', 'RequestController', 'validation', 'admin', 1, 'App\\Application\\Controllers\\Admin\\RequestController', '2019-03-06 23:20:14', '2019-03-06 23:20:14');
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. permission_group
+-- Listage de la structure de la table cam-souk-akhras-v6. permission_group
 DROP TABLE IF EXISTS `permission_group`;
 CREATE TABLE IF NOT EXISTS `permission_group` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -1923,9 +1985,10 @@ CREATE TABLE IF NOT EXISTS `permission_group` (
   KEY `permission_group_group_id_foreign` (`group_id`),
   CONSTRAINT `permission_group_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE,
   CONSTRAINT `permission_group_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=318 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=414 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.permission_group : ~270 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.permission_group : ~394 rows (environ)
+DELETE FROM `permission_group`;
 /*!40000 ALTER TABLE `permission_group` DISABLE KEYS */;
 INSERT INTO `permission_group` (`id`, `permission_id`, `group_id`) VALUES
 	(1, 368, 1),
@@ -2225,10 +2288,106 @@ INSERT INTO `permission_group` (`id`, `permission_id`, `group_id`) VALUES
 	(314, 681, 2),
 	(315, 682, 1),
 	(316, 683, 1),
-	(317, 684, 1);
+	(317, 684, 1),
+	(318, 1, 3),
+	(319, 2, 3),
+	(320, 3, 3),
+	(321, 4, 3),
+	(322, 5, 3),
+	(323, 6, 3),
+	(324, 7, 3),
+	(325, 8, 3),
+	(326, 9, 3),
+	(327, 10, 3),
+	(328, 11, 3),
+	(329, 12, 3),
+	(330, 13, 3),
+	(331, 14, 3),
+	(332, 22, 3),
+	(333, 23, 3),
+	(334, 24, 3),
+	(335, 25, 3),
+	(336, 26, 3),
+	(337, 27, 3),
+	(338, 28, 3),
+	(339, 29, 3),
+	(340, 38, 3),
+	(341, 39, 3),
+	(342, 40, 3),
+	(343, 41, 3),
+	(344, 42, 3),
+	(345, 43, 3),
+	(346, 44, 3),
+	(347, 45, 3),
+	(348, 46, 3),
+	(349, 47, 3),
+	(350, 49, 3),
+	(351, 50, 3),
+	(352, 51, 3),
+	(353, 52, 3),
+	(354, 53, 3),
+	(355, 54, 3),
+	(356, 55, 3),
+	(357, 56, 3),
+	(358, 57, 3),
+	(359, 58, 3),
+	(360, 59, 3),
+	(361, 60, 3),
+	(362, 61, 3),
+	(363, 62, 3),
+	(364, 63, 3),
+	(365, 64, 3),
+	(366, 65, 3),
+	(367, 66, 3),
+	(368, 67, 3),
+	(369, 68, 3),
+	(370, 69, 3),
+	(371, 70, 3),
+	(372, 71, 3),
+	(373, 72, 3),
+	(374, 73, 3),
+	(375, 74, 3),
+	(376, 75, 3),
+	(377, 76, 3),
+	(378, 77, 3),
+	(379, 78, 3),
+	(380, 79, 3),
+	(381, 80, 3),
+	(382, 81, 3),
+	(383, 82, 3),
+	(384, 83, 3),
+	(385, 84, 3),
+	(386, 85, 3),
+	(387, 86, 3),
+	(388, 87, 3),
+	(389, 88, 3),
+	(390, 89, 3),
+	(391, 90, 3),
+	(392, 91, 3),
+	(393, 92, 3),
+	(394, 93, 3),
+	(395, 94, 3),
+	(396, 95, 3),
+	(397, 96, 3),
+	(398, 97, 3),
+	(399, 98, 3),
+	(400, 99, 3),
+	(401, 100, 3),
+	(402, 101, 3),
+	(403, 102, 3),
+	(404, 103, 3),
+	(405, 104, 3),
+	(406, 105, 3),
+	(407, 106, 3),
+	(408, 107, 3),
+	(409, 114, 3),
+	(410, 115, 3),
+	(411, 116, 3),
+	(412, 117, 3),
+	(413, 118, 3);
 /*!40000 ALTER TABLE `permission_group` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. permission_role
+-- Listage de la structure de la table cam-souk-akhras-v6. permission_role
 DROP TABLE IF EXISTS `permission_role`;
 CREATE TABLE IF NOT EXISTS `permission_role` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -2241,11 +2400,12 @@ CREATE TABLE IF NOT EXISTS `permission_role` (
   CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.permission_role : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.permission_role : ~0 rows (environ)
+DELETE FROM `permission_role`;
 /*!40000 ALTER TABLE `permission_role` DISABLE KEYS */;
 /*!40000 ALTER TABLE `permission_role` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. permission_user
+-- Listage de la structure de la table cam-souk-akhras-v6. permission_user
 DROP TABLE IF EXISTS `permission_user`;
 CREATE TABLE IF NOT EXISTS `permission_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -2258,11 +2418,12 @@ CREATE TABLE IF NOT EXISTS `permission_user` (
   CONSTRAINT `permission_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.permission_user : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.permission_user : ~0 rows (environ)
+DELETE FROM `permission_user`;
 /*!40000 ALTER TABLE `permission_user` DISABLE KEYS */;
 /*!40000 ALTER TABLE `permission_user` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. relations
+-- Listage de la structure de la table cam-souk-akhras-v6. relations
 DROP TABLE IF EXISTS `relations`;
 CREATE TABLE IF NOT EXISTS `relations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -2277,11 +2438,12 @@ CREATE TABLE IF NOT EXISTS `relations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.relations : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.relations : ~0 rows (environ)
+DELETE FROM `relations`;
 /*!40000 ALTER TABLE `relations` DISABLE KEYS */;
 /*!40000 ALTER TABLE `relations` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. request
+-- Listage de la structure de la table cam-souk-akhras-v6. request
 DROP TABLE IF EXISTS `request`;
 CREATE TABLE IF NOT EXISTS `request` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -2300,7 +2462,8 @@ CREATE TABLE IF NOT EXISTS `request` (
   CONSTRAINT `request_section_id_foreign` FOREIGN KEY (`section_id`) REFERENCES `section` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.request : ~4 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.request : ~4 rows (environ)
+DELETE FROM `request`;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
 INSERT INTO `request` (`id`, `artisan_id`, `section_id`, `local_id`, `status`, `created_at`, `updated_at`) VALUES
 	(4, 'A001', 1, 1, '1', '2019-03-07 11:30:07', '2019-03-15 10:48:38'),
@@ -2309,7 +2472,7 @@ INSERT INTO `request` (`id`, `artisan_id`, `section_id`, `local_id`, `status`, `
 	(11, 'A001', 2, 1, NULL, '2019-03-07 16:00:50', '2019-03-07 16:00:50');
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. roles
+-- Listage de la structure de la table cam-souk-akhras-v6. roles
 DROP TABLE IF EXISTS `roles`;
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -2321,11 +2484,12 @@ CREATE TABLE IF NOT EXISTS `roles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.roles : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.roles : ~0 rows (environ)
+DELETE FROM `roles`;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. role_user
+-- Listage de la structure de la table cam-souk-akhras-v6. role_user
 DROP TABLE IF EXISTS `role_user`;
 CREATE TABLE IF NOT EXISTS `role_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -2338,11 +2502,12 @@ CREATE TABLE IF NOT EXISTS `role_user` (
   CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.role_user : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.role_user : ~0 rows (environ)
+DELETE FROM `role_user`;
 /*!40000 ALTER TABLE `role_user` DISABLE KEYS */;
 /*!40000 ALTER TABLE `role_user` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. section
+-- Listage de la structure de la table cam-souk-akhras-v6. section
 DROP TABLE IF EXISTS `section`;
 CREATE TABLE IF NOT EXISTS `section` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -2355,14 +2520,15 @@ CREATE TABLE IF NOT EXISTS `section` (
   UNIQUE KEY `section_name_unique` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.section : ~2 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.section : ~2 rows (environ)
+DELETE FROM `section`;
 /*!40000 ALTER TABLE `section` DISABLE KEYS */;
 INSERT INTO `section` (`id`, `name`, `description`, `image`, `created_at`, `updated_at`) VALUES
 	(1, '{"en":"Section 01","ar":"Section 01"}', '{"en":"<p>Section 01 Description0.....<\\/p>","ar":null}', '22082_1552607235.jpg', '2019-03-06 20:50:06', '2019-03-14 23:47:15'),
 	(2, '{"en":"Section 02","ar":"Section 02"}', '{"en":"<p>Section 02 ....<\\/p>","ar":null}', '14937_1552607266.jpg', '2019-03-07 00:29:17', '2019-03-14 23:47:46');
 /*!40000 ALTER TABLE `section` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. setting
+-- Listage de la structure de la table cam-souk-akhras-v6. setting
 DROP TABLE IF EXISTS `setting`;
 CREATE TABLE IF NOT EXISTS `setting` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -2374,14 +2540,15 @@ CREATE TABLE IF NOT EXISTS `setting` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.setting : ~2 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.setting : ~2 rows (environ)
+DELETE FROM `setting`;
 /*!40000 ALTER TABLE `setting` DISABLE KEYS */;
 INSERT INTO `setting` (`id`, `name`, `type`, `body_setting`, `created_at`, `updated_at`) VALUES
 	(1, 'siteTitle', 'text', 'LaraFlat', NULL, NULL),
 	(2, 'GOOGLE_API_MAP', 'text', '', NULL, NULL);
 /*!40000 ALTER TABLE `setting` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-akhras-v2. users
+-- Listage de la structure de la table cam-souk-akhras-v6. users
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -2398,10 +2565,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_api_token_unique` (`api_token`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v2.users : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.users : ~0 rows (environ)
+DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `group_id`, `api_token`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'admin', 'admin@gmail.com', '$2y$10$TENvveevcPmcHMsvLCHHQ.btzrzEahN6GDEXkqiD3nqfvb66gK6o2', 1, 'JEj4uiIEfCXjupx82Q5N0hV7RkjbYz24S6VlATP8DUz7wlZvdtos4W0Rjvzy', NULL, '2019-03-08 11:47:47', '2019-03-08 11:47:47');
+	(1, 'admin', 'admin@gmail.com', '$2y$10$TENvveevcPmcHMsvLCHHQ.btzrzEahN6GDEXkqiD3nqfvb66gK6o2', 1, 'JEj4uiIEfCXjupx82Q5N0hV7RkjbYz24S6VlATP8DUz7wlZvdtos4W0Rjvzy', '3PK1clT7ATGgXwWe8VsVJ7CCveLxTw2xwWHLWFgb5euwiDOFeCZ273emfhQQ', '2019-03-08 11:47:47', '2019-03-08 11:47:47');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

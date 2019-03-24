@@ -80,7 +80,6 @@
 		</div>
 		<!-- Grid row -->
 		@include("website.section.request",  ["sections" => $data['data'], "section_id" => $item->id,"local_id" => null])
-		@include(layoutMessage('website'))
 	
 </section>
 @endsection
