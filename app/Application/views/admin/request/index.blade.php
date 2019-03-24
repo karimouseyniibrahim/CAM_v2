@@ -43,7 +43,7 @@
 @section('content')
     
     @include(layoutTable() , ['title' => trans('request.request') , 'model' => 'requestlocal' , 'table' => $dataTable->table([] , true) ])
-    @include("admin.shared.modalstatus", ["name_id" =>"local_id","url" => concatenateLangToUrl('admin/request/validation')])
+    @include("admin.shared.modalstatus", ["title" =>trans('inscription.validate1'),"name_id" =>"local_id","url" => concatenateLangToUrl('admin/request/validation')])
 
 @endsection
 

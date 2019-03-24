@@ -14,6 +14,7 @@ return [
     'delete' => 'Delete',
     'validation' => 'Validation',
     'validate' => 'Validate',
+    'none' => 'None',
     'validate1' => 'Validate Inscription',
     'accept' => 'Accept',
     'infos-accept' => 'Add Status to this Inscription ',
