@@ -23,23 +23,7 @@
             <h4 class="card-title">{{ trans('website.menu') }}</h4>
             <ul class="list-group list-group-flush">
                 <ul class="list-group">
-                    <li class="list-group-item">
-                    <a class="text-white btn-floating btn-fb btn-sm"><i class="fab fa-facebook-f"></i></a> Cras justo odio
-                    </li>
-                    <li class="list-group-item">
-                    <a class="btn-floating btn-tw btn-sm"><i class="fab fa-twitter"></i></a>Dapibus ac facilisis in
-                    </li>
-                    <li class="list-group-item">
-                    <a class="text-white btn-floating btn-li btn-sm"><i class="fab fa-linkedin-in"></i></a>Morbi leo risus
-                    </li>
-                    <li class="list-group-item">
-                    <a class="text-white btn-floating btn-slack btn-sm"><i class="fab fa-slack-hash"></i></a>Porta ac
-                    consectetur
-                    ac
-                    </li>
-                    <li class="list-group-item">
-                    <a class="text-white btn-floating btn-yt btn-sm"><i class="fab fa-youtube"></i></a>Vestibulum at eros
-                    </li>
+                    {!! website_left_menu() !!}
                 </ul>
             </ul>
         </div>
@@ -54,23 +38,7 @@
             <h4 class="card-title">{{ trans('website.link') }}</h4>
             <ul class="list-group list-group-flush">
                 <ul class="list-group">
-                    <li class="list-group-item">
-                    <a class="text-white btn-floating btn-fb btn-sm"><i class="fab fa-facebook-f"></i></a> Cras justo odio
-                    </li>
-                    <li class="list-group-item">
-                    <a class="btn-floating btn-tw btn-sm"><i class="fab fa-twitter"></i></a>Dapibus ac facilisis in
-                    </li>
-                    <li class="list-group-item">
-                    <a class="text-white btn-floating btn-li btn-sm"><i class="fab fa-linkedin-in"></i></a>Morbi leo risus
-                    </li>
-                    <li class="list-group-item">
-                    <a class="text-white btn-floating btn-slack btn-sm"><i class="fab fa-slack-hash"></i></a>Porta ac
-                    consectetur
-                    ac
-                    </li>
-                    <li class="list-group-item">
-                    <a class="text-white btn-floating btn-yt btn-sm"><i class="fab fa-youtube"></i></a>Vestibulum at eros
-                    </li>
+                    {!! website_left_menu('website links') !!}
                 </ul>
             </ul>
         </div>

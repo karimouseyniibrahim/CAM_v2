@@ -53,4 +53,5 @@
 		'File Manager'=>'File Manager',
 		'Admin Panel'=>'Admin Panel',
 		'Theme'=>'Theme',
+		'home' => 'Home',
 	];

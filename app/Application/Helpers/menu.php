@@ -36,6 +36,24 @@ function website_menu($name = 'website')
     return $out;
 }
 
+function website_left_menu($name = 'website left')
+{
+    $out = '';
+    foreach (getMenu($name) as $menus) {
+        $out .= '<li class="list-group-item" data-id="' . $menus['item']['id'] . '">';
+        foreach ($menus as $key => $menu) {
+            if ($key == 'item') {
+                $out .= '<a class="nav-link" href="'. url($menu['link']) .'">'. getDefaultValueKey($menu['name']) .'</a>';
+            }
+            if ($key == 'sub') {
+                //$out .= 'extractSubMenu($menu, $main, $smclass, $ssclass)';
+            }
+        }
+        $out .= '</li>';
+    }
+    return $out;
+}
+
 function getMenu($name)
 {
     $array = [];

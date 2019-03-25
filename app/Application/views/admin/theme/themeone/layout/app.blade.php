@@ -19,7 +19,7 @@
     <title>
         @yield('title')
         |
-        {{ getSetting('siteTitle') }}
+        {{ getSetting('siteTitle') }} 
     </title>
 
     <!-- page stylesheets -->

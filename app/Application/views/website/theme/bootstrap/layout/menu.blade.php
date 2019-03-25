@@ -26,12 +26,12 @@
      
            <ul class="nav navbar-nav nav-flex-icons ml-auto">
             {!! website_menu('website') !!}
-            @php $pages = page(); @endphp
+            <!-- @php $pages = page(); @endphp
             @foreach($pages as $page)
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('page/'.$page->id.'/view') }}">{{ getDefaultValueKey($page->title) }}</a>
                 </li>
-            @endforeach
+            @endforeach -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('contact') }}">{{ trans('website.Contact Us') }}</a>
             </li>

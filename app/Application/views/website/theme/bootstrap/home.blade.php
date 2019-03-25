@@ -1,5 +1,10 @@
 @extends(layoutExtend('website'))
 
+@section('title')
+  {{ trans('home.home') }}
+@endsection
+
+
 @section('style')
 	{{ Html::style('/website/css/animation.css') }}
 	<style>
