@@ -101,14 +101,17 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT '0',
   `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `read` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.contacts : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.contacts : ~1 rows (environ)
 DELETE FROM `contacts`;
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
+INSERT INTO `contacts` (`id`, `name`, `email`, `subject`, `phone`, `user_id`, `message`, `read`, `created_at`, `updated_at`) VALUES
+	(1, 'admin', 'developer@gmail.com', NULL, NULL, 1, 'fhgfgfg', NULL, '2019-03-24 20:26:23', '2019-03-24 20:26:23');
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. filesmedias
@@ -122,24 +125,36 @@ CREATE TABLE IF NOT EXISTS `filesmedias` (
   PRIMARY KEY (`id`),
   KEY `filesmedias_media_id_foreign` (`medias_id`),
   CONSTRAINT `filesmedias_media_id_foreign` FOREIGN KEY (`medias_id`) REFERENCES `medias` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.filesmedias : ~12 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.filesmedias : ~24 rows (environ)
 DELETE FROM `filesmedias`;
 /*!40000 ALTER TABLE `filesmedias` DISABLE KEYS */;
 INSERT INTO `filesmedias` (`id`, `url`, `medias_id`, `created_at`, `updated_at`) VALUES
-	(75, '/files/17/58.jpg', 17, '2019-03-08 23:53:56', '2019-03-08 23:53:56'),
-	(76, '/files/17/82.jpg', 17, '2019-03-08 23:53:56', '2019-03-08 23:53:56'),
-	(78, '/files/17/88.jpg', 17, '2019-03-08 23:53:57', '2019-03-08 23:53:57'),
-	(79, '/files/17/animation-bg.jpg', 17, '2019-03-08 23:53:57', '2019-03-08 23:53:57'),
-	(80, '/files/17/profile-post-image.jpg', 17, '2019-03-08 23:53:57', '2019-03-08 23:53:57'),
-	(81, '/files/17/project4.jpg', 17, '2019-03-08 23:53:57', '2019-03-08 23:53:57'),
-	(82, '/files/17/screenshot.png', 17, '2019-03-08 23:53:57', '2019-03-08 23:53:57'),
-	(83, '/files/17/thumbs-up.png', 17, '2019-03-08 23:53:57', '2019-03-08 23:53:57'),
-	(84, '/files/17/user.jpg', 17, '2019-03-08 23:53:57', '2019-03-08 23:53:57'),
-	(85, '/files/17/user.png', 17, '2019-03-08 23:53:57', '2019-03-08 23:53:57'),
-	(86, '/files/17/user-img-background.jpg', 17, '2019-03-08 23:53:57', '2019-03-08 23:53:57'),
-	(87, '/files/17/user-lg.jpg', 17, '2019-03-08 23:53:57', '2019-03-08 23:53:57');
+	(104, '/files/medias/55/18446_1553482954.PNG', 55, '2019-03-25 03:02:34', '2019-03-25 03:02:34'),
+	(105, '/files/medias/55/43601_1553482954.PNG', 55, '2019-03-25 03:02:34', '2019-03-25 03:02:34'),
+	(106, '/files/medias/55/64165_1553482954.PNG', 55, '2019-03-25 03:02:34', '2019-03-25 03:02:34'),
+	(107, '/files/medias/55/43835_1553482954.PNG', 55, '2019-03-25 03:02:34', '2019-03-25 03:02:34'),
+	(108, '/files/medias/55/72276_1553482954.PNG', 55, '2019-03-25 03:02:34', '2019-03-25 03:02:34'),
+	(109, '/files/medias/55/63645_1553482954.PNG', 55, '2019-03-25 03:02:34', '2019-03-25 03:02:34'),
+	(110, '/files/medias/55/21972_1553482954.PNG', 55, '2019-03-25 03:02:34', '2019-03-25 03:02:34'),
+	(111, '/files/medias/55/27142_1553482954.PNG', 55, '2019-03-25 03:02:34', '2019-03-25 03:02:34'),
+	(112, '/files/medias/56/18644_1553483031.jpg', 56, '2019-03-25 03:03:52', '2019-03-25 03:03:52'),
+	(113, '/files/medias/56/38627_1553483031.jpg', 56, '2019-03-25 03:03:52', '2019-03-25 03:03:52'),
+	(114, '/files/medias/56/22590_1553483031.jpg', 56, '2019-03-25 03:03:52', '2019-03-25 03:03:52'),
+	(115, '/files/medias/56/11399_1553483032.jpg', 56, '2019-03-25 03:03:52', '2019-03-25 03:03:52'),
+	(116, '/files/medias/56/13967_1553483032.jpg', 56, '2019-03-25 03:03:52', '2019-03-25 03:03:52'),
+	(117, '/files/medias/56/14626_1553483032.jpg', 56, '2019-03-25 03:03:52', '2019-03-25 03:03:52'),
+	(118, '/files/medias/57/36681_1553483086.jpg', 57, '2019-03-25 03:04:49', '2019-03-25 03:04:49'),
+	(119, '/files/medias/57/35574_1553483086.jpg', 57, '2019-03-25 03:04:49', '2019-03-25 03:04:49'),
+	(120, '/files/medias/57/71744_1553483086.jpg', 57, '2019-03-25 03:04:49', '2019-03-25 03:04:49'),
+	(121, '/files/medias/57/51265_1553483086.jpg', 57, '2019-03-25 03:04:49', '2019-03-25 03:04:49'),
+	(122, '/files/medias/57/81363_1553483087.jpg', 57, '2019-03-25 03:04:49', '2019-03-25 03:04:49'),
+	(123, '/files/medias/57/14796_1553483087.jpg', 57, '2019-03-25 03:04:49', '2019-03-25 03:04:49'),
+	(124, '/files/medias/57/14036_1553483087.jpg', 57, '2019-03-25 03:04:49', '2019-03-25 03:04:49'),
+	(125, '/files/medias/57/77283_1553483088.jpg', 57, '2019-03-25 03:04:50', '2019-03-25 03:04:50'),
+	(126, '/files/medias/57/47213_1553483088.jpg', 57, '2019-03-25 03:04:50', '2019-03-25 03:04:50'),
+	(127, '/files/medias/58/35665_1553485359.docx', 58, '2019-03-25 03:42:39', '2019-03-25 03:42:39');
 /*!40000 ALTER TABLE `filesmedias` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. formation
@@ -249,9 +264,9 @@ CREATE TABLE IF NOT EXISTS `items` (
   PRIMARY KEY (`id`),
   KEY `items_menu_id_foreign` (`menu_id`),
   CONSTRAINT `items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.items : ~47 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.items : ~49 rows (environ)
 DELETE FROM `items`;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
 INSERT INTO `items` (`id`, `name`, `link`, `type`, `icon`, `parent_id`, `order`, `controller_path`, `menu_id`, `created_at`, `updated_at`) VALUES
@@ -287,21 +302,22 @@ INSERT INTO `items` (`id`, `name`, `link`, `type`, `icon`, `parent_id`, `order`,
 	(31, '{"ar":" رئيسية الموقع ","en":"Home Widget"}', 'admin/theme/homepage', '', '', 28, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
 	(32, '{"ar":" السيد بار ","en":"Sidebar Widget"}', 'admin/theme/sidebar', '', '', 28, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
 	(33, '{"ar":"  رفع \\/ استخراج المديولات ","en":" Export \\\\ Import Models  "}', 'admin/exportImport', 'blank', NULL, 21, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-24 17:42:17'),
-	(34, '{"en":"Home","ar":null}', '/', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\HomeController"]', 3, '2019-03-05 20:40:13', '2019-03-05 20:40:13'),
+	(34, '{"en":"Home","fr":null,"ar":"الرئيسية"}', '/', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\HomeController"]', 3, '2019-03-05 20:40:13', '2019-03-25 11:06:05'),
 	(43, '{"en":"Formation","ar":"Formation"}', '/admin/formation', 'self', '<i class="material-icons"> work </i>', 55, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\FormationController"]', 1, '2019-03-06 14:35:29', '2019-03-24 18:15:08'),
-	(44, '{"en":"Formation","ar":"Formation"}', 'formation', 'self', '<i class="fa fa-plus-square-o" aria-hidden="true"></i>', 0, 36, '["App\\\\Application\\\\Controllers\\\\Website\\\\FormationController"]', 3, '2019-03-06 14:35:29', '2019-03-06 18:40:58'),
+	(44, '{"en":"Formation","ar":"Formation"}', 'formation', 'self', NULL, 0, 36, '["App\\\\Application\\\\Controllers\\\\Website\\\\FormationController"]', 3, '2019-03-06 14:35:29', '2019-03-25 09:44:59'),
 	(45, '{"en":"Inscription","ar":"Inscription"}', '/admin/inscription', 'self', '<i class="material-icons"> receipt </i>', 55, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\InscriptionController"]', 1, '2019-03-06 15:09:03', '2019-03-24 18:14:07'),
 	(47, '{"en":"Section","ar":"Section"}', '/admin/section', 'self', '<i class="material-icons"> view_carousel </i>', 55, 9, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SectionController"]', 1, '2019-03-06 20:38:36', '2019-03-24 18:16:06'),
-	(48, '{"en":"Section","ar":"Section"}', 'section', '', '<i class="fa fa-plus-square-o" aria-hidden="true"></i> ', 0, 39, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SectionController"]', 3, '2019-03-06 20:38:36', '2019-03-06 20:38:36'),
+	(48, '{"en":"Sites","ar":"Sites"}', 'section', 'self', NULL, 0, 39, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SectionController"]', 3, '2019-03-06 20:38:36', '2019-03-25 09:44:51'),
 	(49, '{"en":"Local","ar":"Local"}', '/admin/local', 'self', '<i class="material-icons"> view_array </i>', 55, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\LocalController"]', 1, '2019-03-06 20:53:21', '2019-03-24 18:16:27'),
 	(51, '{"en":"Artisan","ar":"Artisan"}', '/admin/artisan', 'self', '<i class="material-icons"> people_outline </i>', 55, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\ArtisanController"]', 1, '2019-03-06 20:55:33', '2019-03-24 18:19:25'),
 	(53, '{"en":"Request","ar":"Request"}', '/admin/request', 'self', '<i class="material-icons"> subscriptions </i>', 55, 8, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RequestController"]', 1, '2019-03-06 23:20:14', '2019-03-24 18:15:43'),
 	(55, '{"en":"Management","ar":"Management"}', '/admin/management', 'self', '<i class="material-icons">control_point</i>', 0, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\FormationController"]', 1, '2019-03-07 16:04:52', '2019-03-24 17:42:14'),
 	(56, '{"en":"News","ar":"News"}', '/admin/news', '', '<i class="material-icons">control_point</i>', 55, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\NewsController"]', 1, '2019-03-07 16:14:36', '2019-03-24 17:42:14'),
-	(57, '{"en":"News","ar":"News"}', 'news', '', '<i class="fa fa-plus-square-o" aria-hidden="true"></i> ', 0, 44, '["App\\\\Application\\\\Controllers\\\\Admin\\\\NewsController"]', 3, '2019-03-07 16:14:36', '2019-03-07 16:14:36'),
 	(60, '{"en":"Medias","ar":"Medias"}', '/admin/medias', 'self', '<i class="material-icons"> perm_media </i>', 55, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\MediasController"]', 1, '2019-03-08 13:00:30', '2019-03-24 18:13:28'),
-	(61, '{"en":"Nomenclature","ar":"Nomenclature"}', 'nomenclature', 'self', '<i class="fa fa-plus-square-o" aria-hidden="true"></i>', 0, 46, '["App\\\\Application\\\\Controllers\\\\Admin\\\\MediasController"]', 3, '2019-03-08 13:00:30', '2019-03-10 01:17:37'),
-	(62, '{"en":"Galery","ar":"Galery"}', '/galery', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\MediasController"]', 3, '2019-03-10 01:17:18', '2019-03-10 01:17:18');
+	(63, '{"en":"Gallery","ar":"Gallery"}', '/galery', 'self', NULL, 0, 1, '["App\\\\Application\\\\Controllers\\\\Website\\\\MediasController"]', 4, '2019-03-25 09:39:04', '2019-03-25 09:42:16'),
+	(64, '{"en":"News","ar":"News"}', 'news', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\NewsController"]', 4, '2019-03-25 09:40:03', '2019-03-25 09:42:16'),
+	(66, '{"en":"About Us","ar":"About Us"}', 'page/2/view', 'self', NULL, 0, 3, '["App\\\\Application\\\\Controllers\\\\Website\\\\HomeController"]', 4, '2019-03-25 09:42:07', '2019-03-25 09:42:16'),
+	(67, '{"en":"Nomenclature","ar":"Nomenclature"}', 'nomenclature', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\MediasController"]', 3, '2019-03-25 09:44:17', '2019-03-25 09:44:17');
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. links
@@ -391,7 +407,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=829 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=876 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.logs : ~789 rows (environ)
 DELETE FROM `logs`;
@@ -1224,7 +1240,54 @@ INSERT INTO `logs` (`id`, `action`, `model`, `status`, `messages`, `user_id`, `c
 	(825, 'Visit Create Page', 'users', 'Success', '', 1, '2019-03-24 19:21:11', '2019-03-24 19:21:11'),
 	(826, 'Visit Create Page', 'users', 'Success', '', 1, '2019-03-24 19:21:47', '2019-03-24 19:21:47'),
 	(827, 'Visit Create Page', 'users', 'Success', '', 1, '2019-03-24 19:22:07', '2019-03-24 19:22:07'),
-	(828, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 19:23:00', '2019-03-24 19:23:00');
+	(828, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 19:23:00', '2019-03-24 19:23:00'),
+	(829, 'Visit Edit Page', 'groups', 'Success', '{"Edit Id":["3"]}', 1, '2019-03-24 20:06:14', '2019-03-24 20:06:14'),
+	(830, 'Visit Edit Page', 'groups', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 20:07:35', '2019-03-24 20:07:35'),
+	(831, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 20:10:16', '2019-03-24 20:10:16'),
+	(832, 'Create', 'contacts', 'Success', '{"New id":[1]}', 1, '2019-03-24 20:26:23', '2019-03-24 20:26:23'),
+	(833, 'Visit Edit Page', 'users', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 20:26:50', '2019-03-24 20:26:50'),
+	(834, 'Visit Edit Page', 'groups', 'Success', '{"Edit Id":["3"]}', 1, '2019-03-24 20:39:40', '2019-03-24 20:39:40'),
+	(835, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 20:48:05', '2019-03-24 20:48:05'),
+	(836, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-03-24 20:53:46', '2019-03-24 20:53:46'),
+	(837, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 20:59:17', '2019-03-24 20:59:17'),
+	(838, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-24 21:57:49', '2019-03-24 21:57:49'),
+	(839, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-24 22:02:38', '2019-03-24 22:02:38'),
+	(840, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-24 22:24:05', '2019-03-24 22:24:05'),
+	(841, 'Visit Create Page', 'page', 'Success', '', 1, '2019-03-24 22:59:12', '2019-03-24 22:59:12'),
+	(842, 'Create', 'page', 'Success', '{"New id":[2]}', 1, '2019-03-24 23:01:09', '2019-03-24 23:01:09'),
+	(843, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-24 23:08:32', '2019-03-24 23:08:32'),
+	(844, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-24 23:11:20', '2019-03-24 23:11:20'),
+	(845, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-24 23:12:55', '2019-03-24 23:12:55'),
+	(846, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-24 23:14:47', '2019-03-24 23:14:47'),
+	(847, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-03-25 09:35:09', '2019-03-25 09:35:09'),
+	(848, 'Visit Create Page', 'menu', 'Success', '', 1, '2019-03-25 09:35:58', '2019-03-25 09:35:58'),
+	(849, 'Create', 'menu', 'Success', '{"New id":[4]}', 1, '2019-03-25 09:36:43', '2019-03-25 09:36:43'),
+	(850, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["4"]}', 1, '2019-03-25 09:37:52', '2019-03-25 09:37:52'),
+	(851, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["4"]}', 1, '2019-03-25 09:39:05', '2019-03-25 09:39:05'),
+	(852, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["4"]}', 1, '2019-03-25 09:40:03', '2019-03-25 09:40:03'),
+	(853, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["4"]}', 1, '2019-03-25 09:40:53', '2019-03-25 09:40:53'),
+	(854, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["4"]}', 1, '2019-03-25 09:42:08', '2019-03-25 09:42:08'),
+	(855, 'Update', 'menu', 'Success', '{"Updated id":["4"]}', 1, '2019-03-25 09:42:20', '2019-03-25 09:42:20'),
+	(856, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-03-25 09:42:28', '2019-03-25 09:42:28'),
+	(857, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-03-25 09:42:36', '2019-03-25 09:42:36'),
+	(858, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-03-25 09:42:44', '2019-03-25 09:42:44'),
+	(859, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-03-25 09:44:17', '2019-03-25 09:44:17'),
+	(860, 'Update', 'menu', 'Success', '{"Updated id":["3"]}', 1, '2019-03-25 09:45:05', '2019-03-25 09:45:05'),
+	(861, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["4"]}', 1, '2019-03-25 09:56:45', '2019-03-25 09:56:45'),
+	(862, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["4"]}', 1, '2019-03-25 09:56:50', '2019-03-25 09:56:50'),
+	(863, 'Visit Create Page', 'menu', 'Success', '', 1, '2019-03-25 09:58:23', '2019-03-25 09:58:23'),
+	(864, 'Create', 'menu', 'Success', '{"New id":[5]}', 1, '2019-03-25 09:58:33', '2019-03-25 09:58:33'),
+	(865, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-25 10:18:12', '2019-03-25 10:18:12'),
+	(866, 'Update', 'page', 'Success', '{"Updated id":["1"]}', 1, '2019-03-25 10:19:29', '2019-03-25 10:19:29'),
+	(867, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-25 10:19:30', '2019-03-25 10:19:30'),
+	(868, 'Update', 'page', 'Success', '{"Updated id":["1"]}', 1, '2019-03-25 10:24:14', '2019-03-25 10:24:14'),
+	(869, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-25 10:24:15', '2019-03-25 10:24:15'),
+	(870, 'Update', 'page', 'Success', '{"Updated id":["1"]}', 1, '2019-03-25 10:25:39', '2019-03-25 10:25:39'),
+	(871, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-25 10:25:40', '2019-03-25 10:25:40'),
+	(872, 'Update', 'page', 'Success', '{"Updated id":["1"]}', 1, '2019-03-25 10:51:13', '2019-03-25 10:51:13'),
+	(873, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-25 10:51:14', '2019-03-25 10:51:14'),
+	(874, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-03-25 11:05:31', '2019-03-25 11:05:31'),
+	(875, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-03-25 11:16:28', '2019-03-25 11:16:28');
 /*!40000 ALTER TABLE `logs` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. medias
@@ -1234,17 +1297,21 @@ CREATE TABLE IF NOT EXISTS `medias` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci,
   `type` int(11) DEFAULT NULL,
+  `files` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.medias : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.medias : ~5 rows (environ)
 DELETE FROM `medias`;
 /*!40000 ALTER TABLE `medias` DISABLE KEYS */;
-INSERT INTO `medias` (`id`, `name`, `description`, `type`, `created_at`, `updated_at`) VALUES
-	(17, '{"en":"Gestions","ar":"ايقونات الموقع"}', '{"en":"<p>qefvresversvzr<\\/p>","ar":"<p>sdwvedfxc<\\/p>"}', 1, '2019-03-08 23:53:56', '2019-03-09 01:54:11');
+INSERT INTO `medias` (`id`, `name`, `description`, `type`, `files`, `created_at`, `updated_at`) VALUES
+	(55, '{"en":"Albums 002","ar":"ايقونات الموقع"}', '{"en":"<p>Albums 002<\\/p>","ar":"<p>Albums 002<\\/p>"}', 1, NULL, '2019-03-25 03:02:34', '2019-03-25 03:02:34'),
+	(56, '{"en":"Albums 003","ar":"قسم"}', '{"en":"<p>Albums 03<\\/p>","ar":"<p>Albums 03<\\/p>"}', 1, NULL, '2019-03-25 03:03:52', '2019-03-25 03:03:52'),
+	(57, '{"en":"Albums 04","ar":"Albums 04"}', '{"en":"<p>Albums 04<\\/p>","ar":"<p>Albums 04<\\/p>"}', 1, NULL, '2019-03-25 03:04:49', '2019-03-25 03:04:50'),
+	(58, '{"en":"NomentClature 001","ar":"NomentClature 001"}', '{"en":"<p>NomentClature 001<\\/p>","ar":"<p>NomentClature 001<\\/p>"}', 2, NULL, '2019-03-25 03:42:39', '2019-03-25 03:42:39');
 /*!40000 ALTER TABLE `medias` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. menu
@@ -1255,15 +1322,17 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.menu : ~3 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.menu : ~5 rows (environ)
 DELETE FROM `menu`;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
 INSERT INTO `menu` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(1, 'Admin', NULL, NULL),
 	(2, 'Main', NULL, NULL),
-	(3, 'Website', NULL, NULL);
+	(3, 'Website', NULL, NULL),
+	(4, 'Website Left', '2019-03-25 09:36:43', '2019-03-25 09:36:43'),
+	(5, 'Website Links', '2019-03-25 09:58:33', '2019-03-25 09:58:33');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. migrations
@@ -1343,13 +1412,14 @@ CREATE TABLE IF NOT EXISTS `page` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.page : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.page : ~2 rows (environ)
 DELETE FROM `page`;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
 INSERT INTO `page` (`id`, `title`, `body`, `active`, `created_at`, `updated_at`) VALUES
-	(1, '{"ar":" من نحن ","en":"About us"}', '{"ar":"\\n                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.\\nإذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.\\nومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.\\nهذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.\\n            ","en":"\\n                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<\\/p>\\n                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<\\/p>\\n             "}', 1, NULL, NULL);
+	(1, '{"en":"Director Speech","ar":"كلمة المدير"}', '{"en":"<blockquote class=\\"blockquote\\">\\r\\n<p class=\\"mb-0\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<\\/p>\\r\\n<footer class=\\"blockquote-footer\\">Someone famous in<\\/footer><\\/blockquote>","ar":"<blockquote class=\\"blockquote\\">\\r\\n<p class=\\"mb-0\\">يشرفنا أن نرحب بزوارنا الكرام لموقع دار الصناعات التقليدية لولاية سوق أهراس<\\/p>\\r\\n<footer class=\\"blockquote-footer\\">Mr. Ali<\\/footer><\\/blockquote>"}', 1, '2019-03-24 23:01:08', '2019-03-25 10:51:13'),
+	(2, '{"ar":" من نحن ","en":"About us"}', '{"ar":"\\n                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.\\nإذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.\\nومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.\\nهذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.\\n            ","en":"\\n                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<\\/p>\\n                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<\\/p>\\n             "}', 1, NULL, NULL);
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. pagecomment
@@ -2538,14 +2608,15 @@ CREATE TABLE IF NOT EXISTS `setting` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.setting : ~2 rows (environ)
 DELETE FROM `setting`;
 /*!40000 ALTER TABLE `setting` DISABLE KEYS */;
 INSERT INTO `setting` (`id`, `name`, `type`, `body_setting`, `created_at`, `updated_at`) VALUES
-	(1, 'siteTitle', 'text', 'LaraFlat', NULL, NULL),
-	(2, 'GOOGLE_API_MAP', 'text', '', NULL, NULL);
+	(1, 'siteTitle', 'text', 'CAM', NULL, NULL),
+	(2, 'GOOGLE_API_MAP', 'text', '', NULL, NULL),
+	(3, 'logo', 'image', '90980_1553489803.png', NULL, NULL);
 /*!40000 ALTER TABLE `setting` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. users
