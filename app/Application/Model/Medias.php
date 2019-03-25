@@ -11,7 +11,7 @@ class Medias extends Model
 
 
    protected $fillable = [
-        'name','description','type'
+        'name','description','type','files'
    ];
 
 	public function getNameLangAttribute(){

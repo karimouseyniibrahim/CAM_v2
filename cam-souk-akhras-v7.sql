@@ -222,22 +222,22 @@ DROP INCONNU, NE DEVRAIT JAMAIS SURVENIR IF EXISTS ``;
 DROP INCONNU, NE DEVRAIT JAMAIS SURVENIR IF EXISTS ``;
 
 
--- Listage de la structure de la base pour homestead
-DROP DATABASE IF EXISTS `homestead`;
-CREATE DATABASE IF NOT EXISTS `homestead` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `homestead`;
-
--- Listage de la structure de inconnu, ne devrait jamais survenir homestead. 
-DROP INCONNU, NE DEVRAIT JAMAIS SURVENIR IF EXISTS ``;
-DROP INCONNU, NE DEVRAIT JAMAIS SURVENIR IF EXISTS ``;
-
-
 -- Listage de la structure de la base pour homestead1
 DROP DATABASE IF EXISTS `homestead1`;
 CREATE DATABASE IF NOT EXISTS `homestead1` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `homestead1`;
 
 -- Listage de la structure de inconnu, ne devrait jamais survenir homestead1. 
+DROP INCONNU, NE DEVRAIT JAMAIS SURVENIR IF EXISTS ``;
+DROP INCONNU, NE DEVRAIT JAMAIS SURVENIR IF EXISTS ``;
+
+
+-- Listage de la structure de la base pour homestead
+DROP DATABASE IF EXISTS `homestead`;
+CREATE DATABASE IF NOT EXISTS `homestead` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `homestead`;
+
+-- Listage de la structure de inconnu, ne devrait jamais survenir homestead. 
 DROP INCONNU, NE DEVRAIT JAMAIS SURVENIR IF EXISTS ``;
 DROP INCONNU, NE DEVRAIT JAMAIS SURVENIR IF EXISTS ``;
 

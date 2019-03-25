@@ -81,7 +81,7 @@
             <!-- /toggle offscreen menu -->
             <!-- logo -->
             <a class="brand-logo">
-                <img class="expanding-hidden" src="{{ url('/style') }}/images/laraflat-logo.png" alt=""/>
+                <img class="expanding-hidden" src="{{ url('/'.env('UPLOAD_PATH').'/'.logo()) }}" alt=""/>
             </a>
             <!-- /logo -->
         </div>

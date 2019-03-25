@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Application\Controllers\Admin;
-
+use Illuminate\Support\Arr;
 use App\Application\Requests\Admin\Medias\AddRequestMedias;
 use App\Application\Requests\Admin\Medias\UpdateRequestMedias;
 use App\Application\Controllers\AbstractController;
@@ -26,19 +26,21 @@ class MediasController extends AbstractController
 
     public function show($id = null){
         $files=[];
-        $type=[];
+
+        $type=['1'=>trans("medias.galery"),
+               '2'=>trans("medias.nomenclature")];
         if($id!=null){
             $files=FilesMedia::where('medias_id',$id)->get()->all();
-            $type=['1'=>trans("medias.galery"),
-                   '2'=>trans("medias.nomenclature")];
+            
         }
         return $this->createOrEdit('admin.medias.edit' , $id,compact('files','type'));
     }
 
      public function store(AddRequestMedias $request){
 
+            $ext=$request->type!=1?'file':'image';
             $validate=$this->validate($request, [
-                "files.*" => "required",
+                "files.*" => "required|".$ext,
                 "name.*" => "required",
                 "description.*" => "required",
                 "type" => "required",
@@ -48,44 +50,45 @@ class MediasController extends AbstractController
         if($request->hasfile('files'))
          {
             //files uploads 
-            $files=$request->file('files');
-
+            
             $request->request->remove('files');
             //store infos 
             $item =  $this->storeOrUpdate($request , null , true);
-            $medias_id=$item->id;
-            
-            
-            foreach($files as $file)
-            {  $name=$file->getClientOriginalName();
-                $file->move(public_path().'/files/'.$medias_id.'/', $name);                
-                $url='/files/'.$medias_id.'/'. $name;
-                
+        //    dd($item);
+            $medias_id= $item->id;
+            $arrays = json_decode($item->files);
+            foreach($arrays as $file){
+                $this->AcMove($file,('\\files\\medias\\'.$medias_id)); 
+                $url='/files/medias/'.$medias_id.'/'.$file;     
                 $file = FilesMedia::create(compact('url','medias_id'));
             }
+                          
+           $item->update(['files'=>null]);
         }
 
           return redirect('admin/medias')->with('success', trans('medias.upload-success'));;
      }
 
      public function update($id , UpdateRequestMedias $request){
-         
+        if($request->hasfile('files'))
+        {
+            $ext=$request->type!=1?'file':'image';
+            $validate=$this->validate($request, [
+                "files.*" => "required|".$ext              
+            ]);
+        }
         $item = $this->storeOrUpdate($request, $id, true);
          if($request->hasfile('files'))
          {
-            //files uploads 
-            $files=$request->file('files');            
-            $request->request->remove('files');
-            //store infos 
-           // $item =  $this->storeOrUpdate($request , null , true);
-            $medias_id=$id;            
-            
-            foreach($files as $file)
-            {  $name=$file->getClientOriginalName();
-                $file->move(public_path().'/files/'.$id.'/', $name);                
-                $url='/files/'.$medias_id.'/'. $name;                
+            $medias_id=$id;
+            $arrays = json_decode($item->files);
+            foreach($arrays as $file){
+                $this->AcMove($file,('\\files\\medias\\'.$medias_id)); 
+                $url='/files/medias/'.$medias_id.'/'.$file;     
                 $file = FilesMedia::create(compact('url','medias_id'));
-            }           
+            }
+            $item->update(['files'=>null]);
+                        
         } 
          
           return redirect('admin/medias');
@@ -99,7 +102,7 @@ class MediasController extends AbstractController
         return $this->createOrEdit('admin.medias.show' , $id , ['fields' =>  $fields]);
     }
     public function destroy($id){
-        File::deleteDirectory(public_path().'/files/'.$id);
+        File::deleteDirectory(public_path().'/files/medias/'.$id);
         return $this->deleteItem($id , 'admin/medias')->with('sucess' , 'Done Delete medias From system');
     }
     

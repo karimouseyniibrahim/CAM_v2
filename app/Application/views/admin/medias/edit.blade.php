@@ -54,7 +54,11 @@
 
 			<div class="form-group {{ $errors->has("type") ? "has-error" : "" }}" > 
 				<label for="type">{{ trans("medias.type")}}</label>
-				@php $typeName =  isset($item->type) ? $item->type : old("type") @endphp
+				@php $typeName =  isset($item->type) ? $item->type : old("type") ;
+				if(isset($item->type))
+				$data['type']=Illuminate\Support\Arr::only($data['type'],[$typeName]);
+				
+				@endphp
 				{!! Form::select('type',$data['type'],$typeName, ['class'=>'form-control'])!!}
 				
 			</div>
@@ -111,7 +115,7 @@
 					{!! csrf_field() !!}
 					<div class="form-group">
 						<div class="file-loading">
-							{!! Form::file('files[]', array('multiple'=>true,'accept'=>'image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf','class'=>'file','data-overwrite-initial'=>'false','data-min-file-count'=>'1','data-max-file-count'=>'500','id'=>'file-1'))  !!}                                      
+							{!! Form::file('files[]', array('multiple'=>true,'class'=>'file','data-overwrite-initial'=>'false','data-min-file-count'=>'1','data-max-file-count'=>'500','id'=>'file-1'))  !!}                                      
 						</div>
 					</div>
 				</div>

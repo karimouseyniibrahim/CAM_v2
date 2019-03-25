@@ -62,7 +62,8 @@
             <!-- /toggle offscreen menu -->
             <!-- logo -->
             <a class="brand-logo">
-                <img class="expanding-hidden" src="{{ url('/style') }}/images/logo.png" alt=""/>
+                
+                <img class="expanding-hidden" src="{{ url('/'.env('UPLOAD_PATH').'/'.logo()) }}" alt=""/>
             </a>
             <!-- /logo -->
         </div>
@@ -115,6 +116,7 @@
                     </a>
                     <!-- /toggle offscreen menu -->
                     <!-- logo -->
+                    
                     <a class="brand-logo hidden-xs-down">
                         <img src="{{ url('/style') }}/images/logo_white.png" alt="logo"/>
                     </a>

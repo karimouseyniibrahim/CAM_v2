@@ -9,6 +9,7 @@ use App\Application\Requests\Admin\Setting\AddRequestSetting;
 use App\Application\Requests\Admin\Setting\UpdateRequestSetting;
 use Yajra\Datatables\Request;
 use Alert;
+use File;   
 
 class SettingController extends AbstractController
 {
@@ -30,7 +31,22 @@ class SettingController extends AbstractController
     }
 
     public function update($id , UpdateRequestSetting $request){
-        return $this->storeOrUpdate($request , $id , 'admin/setting');
+        $lastitem=null;
+        
+        if(isset($request->type) &&$request->type=="image"){
+            $lastitem=$this->model->find($id);
+            
+        }
+       
+         $items=$this->storeOrUpdate($request , $id , 'admin/setting');
+
+        if($lastitem!=null){            
+           $f= File::delete(public_path().'/files/'.$lastitem->body_setting);
+          
+        }
+       
+
+        return $items;
     }
 
     public function getById($id){
@@ -39,6 +55,11 @@ class SettingController extends AbstractController
     }
 
     public function destroy($id){
+        $lastitem=$this->model->find($id);
+        if($lastitem->type=="image"){
+            $f= File::delete(public_path().'/files/'.$lastitem->body_setting);           
+         }
+
         return $this->deleteItem($id , 'admin/setting')->with('sucess' , 'Done Delete setting From system');
     }
 

@@ -10,6 +10,9 @@
             <a href="javascript:void(0);" class="bars" style="display: block;"></a>
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ getSetting('siteTitle') }}
+                 
+                <img class="expanding-hidden" src="{{ url('/'.env('UPLOAD_PATH').'/'.logo()) }}" alt=""/>
+                
             </a>
         </div>
         <!-- Collapse button -->

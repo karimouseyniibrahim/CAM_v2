@@ -126,3 +126,9 @@ function permissionArray()
     $psermisions->can(auth()->user());
     return array_keys($psermisions->permission);
 }
+function logo()
+{
+    $l =\App\Application\Model\Setting::find(3);
+    
+    return $l->body_setting;
+}
