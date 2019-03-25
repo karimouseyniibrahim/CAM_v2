@@ -191,8 +191,8 @@
 					@foreach($collections as $img)
 					<figure class="col-md-4">
 						<a href="{{ url($img->src) }}" data-size="1600x1067">
-							<img src="{{ url($img->src) }}" alt="placeholder"
-							class="img-fluid">
+							<img src="{{ url($img->src) }}" style="height:100px"alt="placeholder"
+							class="card-img-top mx-auto d-block">
 						</a>
 					</figure>
 					@endforeach
