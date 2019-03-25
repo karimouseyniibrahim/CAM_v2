@@ -34,15 +34,41 @@ for give project more work time
 First install [Composer](https://getcomposer.org)
 
 1. Download the git
-
+ First you need download the project and mount in your public directory
+```sh
+$ git clone https://github.com/karimouseyniibrahim/CAM_v2.git
+```
 
 2. Enter the newly created folder
 
    ```
    cd CAN_v2
-   ```
+  ```
+3. Also you have to modify the .env file with the database configuration
+```sh
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=dbname
+DB_USERNAME=dbuser
+DB_PASSWORD=dbpassword
+```
 
-3. DB migration and seed, user creation, import database
+### Users seeded
+
+|Email|Password|Profile|
+|:------------|:------------|:------------|
+| admin@gmail.com | admin | admin |
+
+
+### Profiles seeded
+
+|Profile Name|Description|Access|
+|:------------|:------------|:------------|
+|admin| Administrator|* (all)|
+
+
+And just use it!
 
 ## Feature
 
