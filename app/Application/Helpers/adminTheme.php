@@ -132,3 +132,7 @@ function logo()
     
     return $l->body_setting;
 }
+function img_cam()
+{    $l =\App\Application\Model\Setting::find(4);    
+    return $l->body_setting;
+}

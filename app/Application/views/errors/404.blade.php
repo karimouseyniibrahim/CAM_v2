@@ -1,79 +1,44 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html>
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>404 | Bootstrap Based Admin Template - Material Design</title>
+    <!-- Favicon-->
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
-    <title>404</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link rel="stylesheet" href="{{ url('admin') }}/plugins/bootstrap/css/bootstrap.css"/>
 
-    <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
+    <!-- Waves Effect Css -->
+    <link href="{{ url('admin') }}/plugins/node-waves/waves.css" rel="stylesheet" />
 
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
-        }
-
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-    </style>
+    <!-- Custom Css -->
+    <link href="{{ url('admin') }}/css/style.css" rel="stylesheet">
 </head>
-<body>
-<div class="flex-center position-ref full-height">
-    <div class="content">
-        <div class="title m-b-md">
-            404
-        </div>
-        <div>
-            <a href="http://laraflat.com">laraflat</a>
+
+<body class="four-zero-four">
+    <div class="four-zero-four-container">
+        <div class="error-code">404</div>
+        <div class="error-message">{{trans('home.error-404')}}</div>
+        <div class="button-place">
+            <a href="{{ url('/') }}" class="btn btn-default btn-lg waves-effect">{{trans('home.error-HOMEPAGE')}}</a>
         </div>
     </div>
-</div>
+
+    <!-- Jquery Core Js -->
+    <script src="{{ url('admin') }}/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="{{ url('admin') }}/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="{{ url('admin') }}/plugins/node-waves/waves.js"></script>
 </body>
+
 </html>

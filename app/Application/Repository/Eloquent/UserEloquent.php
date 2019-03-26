@@ -36,7 +36,8 @@ class UserEloquent extends AbstractEloquent implements UserInterface{
     }
 
 
-    public function getPermissionById($id){
+    public function getPermissionById($id){        
         return $this->model->where('id' , $id)->with('permission' ,'role')->first();
     }
+     
 }

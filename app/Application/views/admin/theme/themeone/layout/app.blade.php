@@ -87,8 +87,11 @@
         </div>
         <div class="nav-profile dropdown">
             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+            @php
+                $img = isset(auth()->user()->image)? auth()->user()->id.'/'.auth()->user()->image:'user.png';
+            @endphp
                 <div class="user-image">
-                    <img src="{{ url('/style') }}/images/avatar.jpg" class="avatar img-circle" alt="user" title="user"/>
+                    <img src="{{ url('/'.env('UPLOAD_PATH').'/users/'.$img) }}" class="avatar img-circle" alt="user" title="user"/>
                 </div>
                 <div class="user-info expanding-hidden">
                     {{ auth()->user()->name }}
@@ -104,7 +107,7 @@
                 @endforeach
                 <div class="dropdown-divider"></div>
 
-                <a href="{{ url('/admin/user/item/'.auth()->user()->id) }}"><i
+                <a href="{{ url('/admin/user/profile/'.auth()->user()->id) }}"><i
                             class="material-icons">person</i>{{ trans('home.profile') }}</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}"

@@ -43,7 +43,7 @@
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
 				@foreach($news as $i => $v)
-				<li class="primary-color {{ $i == 0 ? 'active' : ''}}" data-target="news-caroussel" data-slide-to="{{ $i }}"></li>
+				<li class="primary-color {{ $i == 0 ? 'active' : ''}}" data-target="#news-caroussel" data-slide-to="{{ $i }}"></li>
 				@endforeach
 			</ol>
 			<!-- Indicators -->
@@ -60,7 +60,7 @@
 							<div class="col-md-4 offset-md-1 mx-3 my-3">
 								<!-- Featured image -->
 								<div class="view overlay">
-									<img src="{{ url('/'.env('UPLOAD_PATH').'/'.$new->image) }}" class="img-fluid" alt="{{ $new->title_lang }}">
+									<img src="{{ url('/'.env('UPLOAD_PATH').'/news/'.$new->id.'/'.$new->image) }}" class="img-fluid" alt="{{ $new->title_lang }}">
 									<a>
 										<div class="mask rgba-white-slight"></div>
 									</a>
@@ -140,7 +140,7 @@
 		<div class="row text-center text-md-left">
 			@foreach ($formations as $formation) 
 				<!-- Grid column -->
-				<div class="col-md-4 mb-2 clearfix d-none d-md-block">
+				<div class="col-md-4 mb-2 clearfix  d-md-block">
 					<!-- Card -->
 					<div class="card card-cascade narrower card-ecommerce">
 					<!-- Card image -->

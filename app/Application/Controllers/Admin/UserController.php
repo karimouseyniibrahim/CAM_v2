@@ -9,11 +9,10 @@ use App\Application\Repository\InterFaces\UserInterface;
 use App\Application\Requests\Admin\User\AddRequestUser;
 use App\Application\Requests\Admin\User\UpdateRequestUser;
 use Yajra\Datatables\Request;
-
+use File;
 class UserController extends AbstractController
 {
     protected $userInterface;
-    protected $middleware;
 
     public function __construct(User $model , UserInterface $userInterface )
     {
@@ -29,17 +28,51 @@ class UserController extends AbstractController
     public function show($id = null){
         $data = $this->userInterface->getPermissions();
         $data['roles_permission'] = $this->userInterface->getPermissionById($id);
+       
         return $this->createOrEdit('admin.user.edit' , $id , $data);
     }
 
     public function store(AddRequestUser $request){
         $request = $this->userInterface->checkRequest($request);
-         return $this->storeOrUpdate($request , null , 'admin/user');
+          $item=$this->storeOrUpdate($request , null , true);
+          if($request->hasfile('image')){ 
+            $this->AcMove($item->image,('\\files\\users\\'.$item->id));
+        }           
+          return redirect('admin/user');
     }
 
     public function update($id , UpdateRequestUser $request){
+        $l=null;
+                             
+        if($request->hasfile('image'))
+        {   $l=$this->model->find($id);
+        } 
         $request = $this->userInterface->checkRequest($request);
-        return $this->storeOrUpdate($request , $id , 'admin/user');
+        $item= $this->storeOrUpdate($request , $id , true);
+        if($l!=null){                     
+            $tr= File::delete(public_path().'\\files\\users\\'.$id.'\\'.$l->image);
+            $this->AcMove($item->image,('\\files\\users\\'.$item->id));
+        }
+        return redirect()->back();
+    }
+    public function profile($id, \Illuminate\Http\Request $request){
+        if(auth()->user()->id!=$id){
+          return  redirect('admin/home');
+        }
+        if($request->method()=="POST"){
+            $l=null;
+            if($request->hasfile('image'))
+            {   $l=$this->model->find($id);
+            } 
+            $request = $this->userInterface->checkRequest($request);
+            $item= $this->storeOrUpdate($request , $id , true);
+            if($l!=null){                     
+                $tr= File::delete(public_path().'\\files\\users\\'.$id.'\\'.$l->image);
+                $this->AcMove($item->image,('\\files\\users\\'.$item->id));
+                return  redirect('admin/home');
+            }           
+        }
+        return $this->createOrEdit('admin.user.profile' , $id);
     }
 
     public function getById($id){
@@ -48,6 +81,7 @@ class UserController extends AbstractController
     }
 
     public function destroy($id){
+        File::deleteDirectory(public_path().'/files/users/'.$id);
         return $this->deleteItem($id , 'admin/user');
     }
 

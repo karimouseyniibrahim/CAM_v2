@@ -26,7 +26,9 @@ class AddRequestUser extends FormRequest
         return [
             'name' => 'required|min:4|max:40',
             'email' => 'email|unique:users',
-            'password' => 'required'
+            'password' => 'required',
+            'image' => 'image',
+            
         ];
     }
 }

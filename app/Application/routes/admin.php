@@ -29,6 +29,8 @@ Route::get('user', 'UserController@index');
 Route::get('user/item/{id?}', 'UserController@show');
 Route::post('user/item', 'UserController@store');
 Route::post('user/item/{id}', 'UserController@update');
+Route::post('user/profile/{id}', 'ProfileController@profile');
+Route::get('user/profile/{id}', 'ProfileController@profile');
 Route::get('user/{id}/delete', 'UserController@destroy');
 Route::get('user/{id}/view', 'UserController@getById');
 Route::get('user/pluck', 'UserController@pluck');

@@ -31,7 +31,6 @@ class MediasController extends AbstractController
                '2'=>trans("medias.nomenclature")];
         if($id!=null){
             $files=FilesMedia::where('medias_id',$id)->get()->all();
-            
         }
         return $this->createOrEdit('admin.medias.edit' , $id,compact('files','type'));
     }

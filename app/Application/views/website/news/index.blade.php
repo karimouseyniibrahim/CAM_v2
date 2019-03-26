@@ -13,7 +13,7 @@
 				<div class="col-lg-5">
 					<!-- Featured image -->
 					<div class="view overlay rounded z-depth-2 mb-lg-0 mb-4">
-						<img class="img-fluid" src="{{ url('/'.env('UPLOAD_PATH').'/'.$d->image) }}" alt="{{$d->title_lang}}">
+						<img class="img-fluid" src="{{ url('/'.env('UPLOAD_PATH').'/news/'.$d->id.'/'.$d->image) }}" alt="{{$d->title_lang}}">
 						<a>
 							<div class="mask rgba-white-slight"></div>
 						</a>

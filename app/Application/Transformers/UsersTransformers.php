@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
              'name' => $modelOrCollection->name,
              'email' => $modelOrCollection->email,
              'token' => $modelOrCollection->api_token,
+             
          ];
      }
  }

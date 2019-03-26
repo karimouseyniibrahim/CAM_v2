@@ -9,7 +9,7 @@ use App\Application\DataTables\NewssDataTable;
 use App\Application\Model\News;
 use Yajra\Datatables\Request;
 use Alert;
-
+use File;
 class NewsController extends AbstractController
 {
     public function __construct(News $model)
@@ -27,11 +27,26 @@ class NewsController extends AbstractController
 
      public function store(AddRequestNews $request){
           $item =  $this->storeOrUpdate($request , null , true);
+          if($s!=null)
+          {  
+              $this->AcMove($item->image,('\\files\\news\\'.$item->id));                               
+          }
           return redirect('admin/news');
      }
 
      public function update($id , UpdateRequestNews $request){
+        $s=null;
+        if($request->hasfile('image'))
+        { 
+            $s=$this->model->find($id);                                   
+        }
+
           $item = $this->storeOrUpdate($request, $id, true);
+          if($s!=null)
+        { 
+            File::delete(public_path().'\\files\\news\\'.$s->image);  
+            $this->AcMove($item->image,('\\files\\news\\'.$id));                               
+        }
 return redirect()->back();
 
      }
@@ -43,6 +58,7 @@ return redirect()->back();
     }
 
     public function destroy($id){
+        $tr= File::deleteDirectory(public_path().'\\files\\news\\'.$id); 
         return $this->deleteItem($id , 'admin/news')->with('sucess' , 'Done Delete news From system');
     }
 

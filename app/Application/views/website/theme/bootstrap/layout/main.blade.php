@@ -3,8 +3,8 @@
     <div class="card card-cascade wider reverse my-4 pb-5">
 
         <!--Card image-->
-        <div class="view view-cascade overlay wow fadeIn" style=" height: 250px;  ">
-            <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(132).jpg" class="img-fluid">
+        <div class="view view-cascade overlay wow fadeIn" >
+            <img style=" height: 300px;  " src="{{ url('/'.env('UPLOAD_PATH').'/'.img_cam())}}" class="card-img-top mx-auto d-block">
             <a href="#!">
                 <div class="mask rgba-white-slight"></div>
             </a>

@@ -54,4 +54,6 @@
 		'Admin Panel'=>'Admin Panel',
 		'Theme'=>'Theme',
 		'home' => 'Home',
+		'error-404' => "This page doesn't exist",
+		'error-HOMEPAGE' =>"GO TO HOMEPAGE",
 	];

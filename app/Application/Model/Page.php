@@ -26,7 +26,7 @@ class Page extends Model
     {
         return is_json($this->title) && is_object(json_decode($this->title)) ? json_decode($this->title)->ar : $this->title;
     }
-
+ 
     public function getBodyLangAttribute()
     {
         return is_json($this->body) && is_object(json_decode($this->body)) ? json_decode($this->body)->{getCurrentLang()} : $this->body;
@@ -36,7 +36,7 @@ class Page extends Model
     {
         return is_json($this->body) && is_object(json_decode($this->body)) ? json_decode($this->body)->en : $this->body;
     }
-
+  
     public function getBodyArAttribute()
     {
         return is_json($this->body) && is_object(json_decode($this->body)) ? json_decode($this->body)->ar : $this->body;

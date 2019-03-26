@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
     use Notifiable;
      public $table = "users";
       protected $fillable = [
-        'name', 'email', 'password', 'group_id' ,'api_token'
+        'name', 'email', 'password', 'group_id' ,'api_token','image'
     ];
      protected $hidden = [
         'password', 'remember_token',

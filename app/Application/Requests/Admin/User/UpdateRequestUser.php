@@ -27,7 +27,8 @@ class UpdateRequestUser extends FormRequest
         $id = Route::input('id');
         return [
             'name' => 'required|min:4|max:40',
-            'email' => 'email|unique:users,email,'.$id
+            'email' => 'email|unique:users,email,'.$id,
+            'image' => 'image',
         ];
     }
 }

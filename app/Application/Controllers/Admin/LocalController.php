@@ -37,7 +37,7 @@ class LocalController extends AbstractController
      public function update($id , UpdateRequestLocal $request){
         if($request->hasfile('image'))
         { 
-        $l=$this->model->find($id);            
+            $l=$this->model->find($id);            
             $tr= File::delete(public_path().'\\files\\Local\\'.$id.'\\'.$l->image);           
         } 
           $item = $this->storeOrUpdate($request, $id, true);

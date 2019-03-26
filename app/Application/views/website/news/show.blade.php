@@ -10,7 +10,7 @@
 	<div class="single-news mt-4 ">
 		<!-- Image -->
 		<div class="view view-cascade overlay z-depth-1-half mb-4 ">
-			<img class="card-img-top mx-auto d-block" src="{{ url('/'.env('UPLOAD_PATH').'/'.$item->image) }}" style="height:200px" >
+			<img class="card-img-top mx-auto d-block" src="{{ url('/'.env('UPLOAD_PATH').'/news/'.$item->id.'/'.$item->image) }}" style="height:200px" >
 		</div>		  
 		<!-- Data -->
 		<div class="news-data d-flex justify-content-between">

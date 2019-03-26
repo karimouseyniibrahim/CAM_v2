@@ -39,7 +39,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                    <img src="{{ url('/admin') }}/images/user.png" class="rounded-circle z-depth-0" alt="avatar image" height="35">
+                    @php
+                        $img = isset(auth()->user()->image)? auth()->user()->id.'/'.auth()->user()->image:'user.png';
+                    @endphp
+                    <img src="{{url('/'.env('UPLOAD_PATH').'/users/'.$img)}}" class="rounded-circle z-depth-0" alt="avatar image" height="35">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink-333">
                         <a class="dropdown-item" href="{{ url('/admin/home') }}">{{ trans('website.admin') }}</a>
