@@ -7,6 +7,7 @@ use App\Application\Requests\Admin\Request\UpdateRequestRequest;
 use App\Application\Controllers\AbstractController;
 use App\Application\DataTables\RequestsDataTable;
 use App\Application\Model\RequestLocal;
+use App\Application\Model\Local;
 
 use Yajra\Datatables\Request;
 use Alert;
@@ -54,19 +55,35 @@ return redirect()->back();
     public function validation(\Illuminate\Http\Request $request){
             
         $infos="";
+        $ms=".refus";
         if($request->status==1){
             $local=$this->model->where(['local_id'=>$request->local_id,"status"=>1])->count();
             if($local ==0 ){                    
                 
                 $item = $this->storeOrUpdate($request, $request->id, true);
-                $infos=trans('request.validate-request'); 
+                $infos=trans('request.validate-request');
+                $ms=".accept"; 
             }else{
                 $infos=trans('request.validate-refuse');                    
             }
         }else{
             $item = $this->storeOrUpdate($request, $request->id, true);
             $infos=trans('request.validate-no-request');
-        }    
+            
+        }
+        
+        if($item!=null){  
+            $local=Local::find($request->local_id);
+            $data=["name"=>$local->name_lang,
+            'type'=>'local',
+            'ms-action'=>$ms,
+            'title'=>trans('request.request').' '.trans('local.local'),
+            'img'=>url('/'.env('UPLOAD_PATH').'/Local/'.$local->id.'/'.$local->image),
+            "email"=>$item->email ];
+            Mail::send('website.mail.email',['data'=>$data],function($email) use ($data){
+                $email->to($data['email'],$data['name'])->from(auth()->user()->email)->subject(trans('request.request').' '.trans('local.local'));
+            });
+
         Alert::success($infos, trans('request.validate'));
     return redirect()->back();    
 }

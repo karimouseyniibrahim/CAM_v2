@@ -87,7 +87,7 @@ class InscriptionController extends AbstractController
         'img'=>url('/'.env('UPLOAD_PATH').'/Formation/'.$formation->id.'/'.$formation->image),
         "email"=>$item->email ];
         Mail::send('website.mail.email',['data'=>$data],function($email) use ($data){
-            $email->to($data['email'],$data['name'])->from('ibrahimkarimouseyni56@gmail.com')->subject(trans('inscription.inscription').' '.trans('formation.formation'));
+            $email->to($data['email'],$data['name'])->from(auth()->user()->email)->subject(trans('inscription.inscription').' '.trans('formation.formation'));
         });
     }
 
