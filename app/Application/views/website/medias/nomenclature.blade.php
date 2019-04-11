@@ -48,7 +48,7 @@
 				<tr>
 					<td class="col-md-8"><strong class="font-weight-bold"> {{$d->name_lang}} : {{trans('medias.element') }} {{$count}}</strong> {!!str_limit($d->description_lang,70)!!}</td>
 					<td class="col-md-4 form-group">
-						<button type="button" class="btn btn-outline-primary btn-rounded btn-sm px-3">
+						<button type="button" class="btn btn-outline-primary btn-rounded btn-sm px-3" onclick="openmodal('{{$d->description_lang}}')" >
 							<i class="fas fa-eye ml-1"></i>
 						</button>
 						
@@ -81,4 +81,16 @@
 	@include(layoutPaginate() , ["items" => $items])
 		
 </div>
+
+@endsection
+@section('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7"></script>
+<script type="text/javascript">
+function openmodal(description) {
+  swal({
+                title: "{{trans("medias.description")}}",
+                html: description
+            });
+}
+</script>
 @endsection

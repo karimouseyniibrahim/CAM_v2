@@ -3,7 +3,7 @@
 return [
     'medias' => 'medias',
     'name' => '',
-    'description' => '',
+    'description' => 'Description',
     'type' => '',
     'edit' => '',
     'show' => '',
