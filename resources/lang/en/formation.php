@@ -7,6 +7,7 @@ return [
     'price' => 'Price',
     'price_unit' => 'DZD',
     'from' => 'From',
+    'to' => 'To',
     'subscribe' => 'Subscribe',
     'empty' => 'No Training Avalaible',
     'edit' => '',

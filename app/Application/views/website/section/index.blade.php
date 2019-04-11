@@ -1,10 +1,14 @@
 @extends(layoutExtend('website'))
 
 @section('title')
-     {{ trans('section.section') }} {{ trans('home.control') }}
+  {{ trans('section.section') }} {{ trans('home.control') }}
 @endsection
 
 @section('content')
+	<!-- Section: Our Sites -->
+	<section class="text-center">
+		<!-- Section heading -->
+		<h2 class="h1-responsive font-weight-bold">{{ trans('website.site') }}</h2>
 	
 		@if (count($items) > 0) 
 			<!--Card : Dynamic content wrapper-->
@@ -27,38 +31,28 @@
 				<a class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#modalRequest">{{ trans('section.request') }}</a>
 			</div>
 			<!-- Grid row -->
-			<div class="row pull-{{ getDirection() }}">
+			<div class="row pull-{{ getDirection() }} text-center">
 				@foreach ($items as $d)
 					<!-- Grid column -->
 					<div class="col-lg-4 col-md-4 mb-lg-0 mb-4">
-					<!-- Card Light -->
-						<div class="card">
-
-							<!-- Card image -->
-							<div class="view overlay">
-								<img class="card-img-top" style=" height: 150px;  " src="{{ url('/'.env('UPLOAD_PATH').'/Section/'.$d->id.'/'.$d->image) }}" alt="Card i		mage cap2">
-								<a>
+						<!--Featured image-->
+						<div class="view overlay rounded z-depth-1">
+							<img style="height: 150px;" src="{{ url('/'.env('UPLOAD_PATH').'/Section/'.$d->id.'/'.$d->image) }}" class="img-fluid" alt="{{ $d->name_lang }}">
+							<a>
 								<div class="mask rgba-white-slight"></div>
-								</a>
-							</div>
-
-							<!-- Card content -->
-							<div class="card-body">
-
-								<!-- Social shares button -->						
-								<!-- Title -->
-								<h4 class="card-title">{{ $d->name_lang }}</h4>
-								<hr>
-								<!-- Link -->
-								<a href="{{ url('section/'.$d->id.'/view') }}" class="black-text d-flex justify-content-end"><h5>Read more <i class="fas fa-angle-double-right"></i></h5></a>
-
-							</div>
-
+							</a>
+						</div>
+						<!--Excerpt-->
+						<div class="card-body pb-0">
+							<h4 class="font-weight-bold my-3">
+								<a href="{{ url('section/'.$d->id.'/view') }}">{{ $d->name_lang }}</a>
+							</h4>
+							<p class="grey-text">
+								{!! str_limit($d->description_lang, 50) !!}
+							</p>
+							<a href="{{ url('section/'.$d->id.'/view') }}" class="btn btn-info btn-sm"><i class="fas fa-eye left"></i> {{ trans('section.show') }}</a>
 						</div>
 					</div>
-					<!-- Card Light -->
-
-
 					<!-- Grid column -->
 					@endforeach
 			</div>
@@ -77,7 +71,7 @@
 			</div>
 			<!-- Card -->
 		@endif
-	
-	@include(layoutPaginate() , ["items" => $items])
+		@include(layoutPaginate() , ["items" => $items])
+	</section>
 @endsection
 
