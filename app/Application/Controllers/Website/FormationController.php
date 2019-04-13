@@ -23,7 +23,12 @@ class FormationController extends AbstractController
         }
 
         $items = $items->paginate(env('PAGINATE'));
-        return view('website.formation.index' , compact('items'));
+        $url=setting("formations");
+        $imag=[];
+        if($url!=null)
+            $imag=["imag"=>url('/'.env('UPLOAD_PATH').'/'. $url)];
+       
+        return view('website.formation.index' , compact('items','imag'));
     }
 
     public function getById($id){

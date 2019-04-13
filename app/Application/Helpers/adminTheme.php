@@ -136,3 +136,8 @@ function img_cam()
 {    $l =\App\Application\Model\Setting::find(4);    
     return $l->body_setting;
 }
+function setting($name)
+{    $l =\App\Application\Model\Setting::where("name",$name)->first();
+   
+    return $l->count()!=0? $l->body_setting:null;
+}

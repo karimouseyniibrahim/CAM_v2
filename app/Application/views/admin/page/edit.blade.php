@@ -3,6 +3,7 @@
     {{ trans('page.page') }} {{  isset($item) ? trans('home.edit')  : trans('home.add')  }}
 @endsection
 @section('style')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
     {{ Html::style('/admin/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}
 @endsection
  @section('content')
@@ -47,6 +48,29 @@
                         </div>
                     @endif
             </div>
+            @if ($errors->has("active"))
+                    <div class="alert alert-danger">
+                        <span class='help-block'>
+                            <strong>{{ $errors->first("active") }}</strong>
+                        </span>
+                    </div>
+                @endif
+                <div class="form-group">
+				<div class="form-line">
+					<label for="">{{ adminTrans('section' , 'image') }}</label>
+					@if(isset($item) && $item->image != '')
+						<img src="{{ url('/'.env('UPLOAD_PATH').'/Section/'.$item->id.'/'.$item->image) }}" style="height:200px" class="img-responsive thumbnail" alt="">
+						<br>
+					@endif    
+					{!! csrf_field() !!}
+					<div class="form-group">
+						<div class="file-loading">
+							{!! Form::file('image', array('multiple'=>false,'accept'=>'image/*','class'=>'file','data-overwrite-initial'=>'false','data-min-file-count'=>'1','data-max-file-count'=>'1','id'=>'file-1'))  !!}                                      
+						</div>
+					</div>
+				</div>
+			</div> 
+            
             <div class="form-group {{  $errors->has("active")   ? "has-error" : "" }}">
                 <label for="active">{{ trans("page.active")}}</label>
                 <div class="form-check">
@@ -63,13 +87,14 @@
                         {{ trans("page.Yes")}}
                     </label>
                 </div>
-                @if ($errors->has("active"))
-                    <div class="alert alert-danger">
-                        <span class='help-block'>
-                            <strong>{{ $errors->first("active") }}</strong>
-                        </span>
-                    </div>
-                @endif
+               
+			@if ($errors->has("image"))
+				<div class="alert alert-danger">
+					<span class='help-block'>
+						<strong>{{ $errors->first("image") }}</strong>
+					</span>
+				</div>
+			@endif 
             </div>
               <div class="form-group">
                 <button type="submit" name="submit" class="btn btn-default">
@@ -83,5 +108,7 @@
 @endsection
  @section('script')
     @include(layoutPath('layout.helpers.tynic'))
+	{{ Html::script('/admin/plugins/momentjs/moment.js') }}
+	@include('admin.shared.script_uploads')
 @endsection
  

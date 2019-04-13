@@ -49,7 +49,8 @@ class HomeController extends Controller
         foreach ($galleries as $gallery) {
             $collections = $collections->merge($gallery->filesmedia->slice(0,10));
         }
-        return view(layoutHomePage('website'), compact('director_speech', 'news', 'sites', 'formations', 'collections'));
+       $imag=["imag"=>url('/'.env('UPLOAD_PATH').'/'.img_cam())];
+        return view(layoutHomePage('website'), compact('director_speech', 'news', 'sites', 'formations', 'collections','imag'));
     }
 
     public function deleteImage($model, $id, Request $request)

@@ -7,6 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'CAM Souk Akhras') }} | @yield('title')</title>
+
     <!-- Bootstrap Core Css -->      
     @if(getDir() == 'rtl')
         {{ Html::Style('website/css/css/bootstrap-rtl.css') }}

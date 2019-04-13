@@ -30,7 +30,11 @@ class SectionController extends AbstractController
 
         $data=['data' => $this->localInterface->getRequestById(null)];
         $items = $items->paginate(env('PAGINATE'));
-        return view('website.section.index' , compact('data','items'));
+        $url=setting("sections");
+        $imag=[];
+        if($url!=null)
+            $imag=["imag"=>url('/'.env('UPLOAD_PATH').'/'. $url)];
+        return view('website.section.index' , compact('data','items','imag'));
      }
 
      public function show($id = null){

@@ -38,7 +38,11 @@ class NewsController extends AbstractController
 
 
         $items = $items->paginate(env('PAGINATE'));
-        return view('website.news.index' , compact('items'));
+        $url=setting("news");
+        $imag=[];
+        if($url!=null)
+            $imag=["imag"=>url('/'.env('UPLOAD_PATH').'/'. $url)];
+        return view('website.news.index' , compact('items','imag'));
      }
 
      public function show($id = null){

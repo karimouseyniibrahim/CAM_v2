@@ -1,9 +1,8 @@
-@extends(layoutExtend('website'))
+@extends(layoutExtend('website',["imag"=>$imag]))
 
 @section('title')
   {{ trans('home.home') }}
 @endsection
-
 
 @section('style')
 	{{ Html::style('/website/css/animation.css') }}
@@ -17,7 +16,7 @@
 @endsection
 
 @section('content')
-
+	
 	<!--Card Director word-->
 	<div class="card mb-4 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
 		<!--Card content-->
@@ -33,8 +32,8 @@
 	<!--/.Card Director word-->
 
 	<!--Latest News-->
-	<h2 class="h1-responsive font-weight-bold text-center my-5">{{ trans('website.latest-news') }}</h2>
-	<section class="text-center my-5">
+	<h2 class="h1-responsive font-weight-bold text-center">{{ trans('website.latest-news') }}</h2>
+	<section class="text-center">
 		<!-- Carousel Wrapper -->
 		<div id="news-caroussel" class="carousel slide carousel-multi-item" data-ride="carousel">
 			<!-- Controls -->
@@ -57,7 +56,7 @@
 						<!-- Grid row -->
 						<div class="row">
 							<!-- Grid column -->
-							<div class="col-md-4 offset-md-1 mx-3 my-3">
+							<div class="col-md-4 offset-md-1 mx-3">
 								<!-- Featured image -->
 								<div class="view overlay">
 									<img src="{{ url('/'.env('UPLOAD_PATH').'/news/'.$new->id.'/'.$new->image) }}" class="img-fluid" alt="{{ $new->title_lang }}">
@@ -98,9 +97,9 @@
 	<!--/.Latest News-->
 
 	<!--Section Sites -->
-	<section class="text-center my-5">
+	<section class="text-center">
 		<!-- Section heading -->
-		<h2 class="h1-responsive font-weight-bold text-center my-5">{{ trans('website.site') }}</h2>
+		<h2 class="h1-responsive font-weight-bold text-center">{{ trans('website.site') }}</h2>
 		<!-- Section description -->
 		<!-- Grid row -->
 		<div class="row">
@@ -133,9 +132,9 @@
 	<!--/.Section Sites -->
 
 	<!-- Section Formations -->
-	<section class="team-section my-5">
+	<section class="team-section">
 		<!-- Section heading -->
-		<h2 class="h1-responsive font-weight-bold text-center my-5">{{ trans('website.formation') }}</h2>
+		<h2 class="h1-responsive font-weight-bold text-center">{{ trans('website.formation') }}</h2>
 		<!-- Grid row-->
 		<div class="row text-center text-md-left">
 			@foreach ($formations as $formation) 
@@ -184,9 +183,9 @@
 	<!--/.Section Formations -->
 
 	<!-- Section Gallery -->
-	<section class="team-section my-5">
+	<section class="team-section">
 		<!-- Section heading -->
-		<h2 class="h1-responsive font-weight-bold text-center my-5">{{ trans('website.gallery') }}</h2>
+		<h2 class="h1-responsive font-weight-bold text-center">{{ trans('website.gallery') }}</h2>
 		<!-- Grid row-->
 		<div class="row text-center text-md-left">
 			<!-- Grid column -->

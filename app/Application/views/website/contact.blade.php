@@ -2,7 +2,7 @@
 @section('content')
     <section class="contact-section">
         <!-- Section heading -->
-		<h2 class="h1-responsive font-weight-bold text-center my-5">{{ trans('website.contact-us') }}</h2>
+		<h2 class="h1-responsive font-weight-bold text-center">{{ trans('website.contact-us') }}</h2>
     	@include(layoutMessage('website'))
         <!-- Form with header -->
         <div class="card">
