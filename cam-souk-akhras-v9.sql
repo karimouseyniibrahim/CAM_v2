@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Hôte :                        localhost
--- Version du serveur:           5.6.35 - MySQL Community Server (GPL)
+-- Version du serveur:           5.7.24 - MySQL Community Server (GPL)
 -- SE du serveur:                Win64
 -- HeidiSQL Version:             9.5.0.5332
 -- --------------------------------------------------------
@@ -13,12 +13,10 @@
 
 
 -- Listage de la structure de la base pour cam-souk-akhras-v6
-DROP DATABASE IF EXISTS `cam-souk-akhras-v6`;
 CREATE DATABASE IF NOT EXISTS `cam-souk-akhras-v6` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `cam-souk-akhras-v6`;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. artisan
-DROP TABLE IF EXISTS `artisan`;
 CREATE TABLE IF NOT EXISTS `artisan` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `numero_artisan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -32,14 +30,14 @@ CREATE TABLE IF NOT EXISTS `artisan` (
   UNIQUE KEY `artisan_numero_artisan_unique` (`numero_artisan`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.artisan : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.artisan : ~1 rows (environ)
+DELETE FROM `artisan`;
 /*!40000 ALTER TABLE `artisan` DISABLE KEYS */;
 INSERT INTO `artisan` (`id`, `numero_artisan`, `name`, `email`, `telephone`, `address`, `created_at`, `updated_at`) VALUES
 	(1, 'A001', '{"en":"Issa","ar":"Issa"}', 'ibrahim.karimouseyni@yahoo.com', '0025555955', 'RU04', '2019-03-07 11:29:55', '2019-03-07 11:29:55');
 /*!40000 ALTER TABLE `artisan` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. categorie
-DROP TABLE IF EXISTS `categorie`;
 CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -49,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.categorie : ~4 rows (environ)
+DELETE FROM `categorie`;
 /*!40000 ALTER TABLE `categorie` DISABLE KEYS */;
 INSERT INTO `categorie` (`id`, `title`, `created_at`, `updated_at`) VALUES
 	(1, '{"en":"Genaral","ar":"العام"}', '2019-03-05 19:54:45', '2019-03-05 19:54:45'),
@@ -58,7 +57,6 @@ INSERT INTO `categorie` (`id`, `title`, `created_at`, `updated_at`) VALUES
 /*!40000 ALTER TABLE `categorie` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. command
-DROP TABLE IF EXISTS `command`;
 CREATE TABLE IF NOT EXISTS `command` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -70,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `command` (
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.command : ~14 rows (environ)
+DELETE FROM `command`;
 /*!40000 ALTER TABLE `command` DISABLE KEYS */;
 INSERT INTO `command` (`id`, `name`, `options`, `command`, `created_at`, `updated_at`) VALUES
 	(1, 'Page', 'title:string:min-1_max-70_required:true,body:text:min-1_required:true,active:boolean:required_integer:false', 'laraflat:admin_model', '2019-03-05 19:54:44', '2019-03-05 19:54:44'),
@@ -89,7 +88,6 @@ INSERT INTO `command` (`id`, `name`, `options`, `command`, `created_at`, `update
 /*!40000 ALTER TABLE `command` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. contacts
-DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE IF NOT EXISTS `contacts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -104,14 +102,14 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.contacts : ~0 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.contacts : ~1 rows (environ)
+DELETE FROM `contacts`;
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
 INSERT INTO `contacts` (`id`, `name`, `email`, `subject`, `phone`, `user_id`, `message`, `read`, `created_at`, `updated_at`) VALUES
 	(1, 'admin', 'developer@gmail.com', NULL, NULL, 1, 'fhgfgfg', NULL, '2019-03-24 20:26:23', '2019-03-24 20:26:23');
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. filesmedias
-DROP TABLE IF EXISTS `filesmedias`;
 CREATE TABLE IF NOT EXISTS `filesmedias` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `url` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -124,6 +122,7 @@ CREATE TABLE IF NOT EXISTS `filesmedias` (
 ) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.filesmedias : ~24 rows (environ)
+DELETE FROM `filesmedias`;
 /*!40000 ALTER TABLE `filesmedias` DISABLE KEYS */;
 INSERT INTO `filesmedias` (`id`, `url`, `medias_id`, `created_at`, `updated_at`) VALUES
 	(104, '/files/medias/55/18446_1553482954.PNG', 55, '2019-03-25 03:02:34', '2019-03-25 03:02:34'),
@@ -153,7 +152,6 @@ INSERT INTO `filesmedias` (`id`, `url`, `medias_id`, `created_at`, `updated_at`)
 /*!40000 ALTER TABLE `filesmedias` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. formation
-DROP TABLE IF EXISTS `formation`;
 CREATE TABLE IF NOT EXISTS `formation` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `libelle` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -170,6 +168,7 @@ CREATE TABLE IF NOT EXISTS `formation` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.formation : ~2 rows (environ)
+DELETE FROM `formation`;
 /*!40000 ALTER TABLE `formation` DISABLE KEYS */;
 INSERT INTO `formation` (`id`, `libelle`, `description`, `price`, `places`, `debut_formation`, `fin_formation`, `image`, `created_at`, `updated_at`) VALUES
 	(1, '{"en":"Complete Training 01","ar":"Complete Training 01"}', '{"en":"<p>Complete Training 01 English<\\/p>","ar":"<p>Complete Training 01 Arabic<\\/p>"}', 15000, 25, '2019-03-07', '2019-03-16', '91485_1552606612.jpg', '2019-03-06 15:01:49', '2019-03-14 23:36:53'),
@@ -177,7 +176,6 @@ INSERT INTO `formation` (`id`, `libelle`, `description`, `price`, `places`, `deb
 /*!40000 ALTER TABLE `formation` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. groups
-DROP TABLE IF EXISTS `groups`;
 CREATE TABLE IF NOT EXISTS `groups` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -189,6 +187,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.groups : ~3 rows (environ)
+DELETE FROM `groups`;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
 INSERT INTO `groups` (`id`, `name`, `slug`, `description`, `created_at`, `updated_at`) VALUES
 	(1, 'Admin', 'admin', 'Access to User , permission , role , groups roles', '2019-03-08 11:47:46', '2019-03-08 11:47:46'),
@@ -197,7 +196,6 @@ INSERT INTO `groups` (`id`, `name`, `slug`, `description`, `created_at`, `update
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. group_role
-DROP TABLE IF EXISTS `group_role`;
 CREATE TABLE IF NOT EXISTS `group_role` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `group_id` int(10) unsigned NOT NULL,
@@ -210,11 +208,11 @@ CREATE TABLE IF NOT EXISTS `group_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.group_role : ~0 rows (environ)
+DELETE FROM `group_role`;
 /*!40000 ALTER TABLE `group_role` DISABLE KEYS */;
 /*!40000 ALTER TABLE `group_role` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. inscription
-DROP TABLE IF EXISTS `inscription`;
 CREATE TABLE IF NOT EXISTS `inscription` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `numero_artisan` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -232,6 +230,7 @@ CREATE TABLE IF NOT EXISTS `inscription` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.inscription : ~2 rows (environ)
+DELETE FROM `inscription`;
 /*!40000 ALTER TABLE `inscription` DISABLE KEYS */;
 INSERT INTO `inscription` (`id`, `numero_artisan`, `name`, `email`, `adresse`, `telephone`, `status`, `formation_id`, `created_at`, `updated_at`) VALUES
 	(1, 'KIS001', 'Ibrahim', 'habibou776@gmail.com', 'Algeria', '02639645', '1', 1, '2019-03-06 20:26:55', '2019-03-15 11:00:29'),
@@ -239,7 +238,6 @@ INSERT INTO `inscription` (`id`, `numero_artisan`, `name`, `email`, `adresse`, `
 /*!40000 ALTER TABLE `inscription` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. items
-DROP TABLE IF EXISTS `items`;
 CREATE TABLE IF NOT EXISTS `items` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -255,9 +253,10 @@ CREATE TABLE IF NOT EXISTS `items` (
   PRIMARY KEY (`id`),
   KEY `items_menu_id_foreign` (`menu_id`),
   CONSTRAINT `items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.items : ~48 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.items : ~70 rows (environ)
+DELETE FROM `items`;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
 INSERT INTO `items` (`id`, `name`, `link`, `type`, `icon`, `parent_id`, `order`, `controller_path`, `menu_id`, `created_at`, `updated_at`) VALUES
 	(1, '{"ar":" الرئيسية ","en":"Home"}', '/admin/home', '', '<i class="material-icons">home</i>', 0, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-03-24 17:42:14'),
@@ -292,12 +291,12 @@ INSERT INTO `items` (`id`, `name`, `link`, `type`, `icon`, `parent_id`, `order`,
 	(31, '{"ar":" رئيسية الموقع ","en":"Home Widget"}', 'admin/theme/homepage', '', '', 28, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
 	(32, '{"ar":" السيد بار ","en":"Sidebar Widget"}', 'admin/theme/sidebar', '', '', 28, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
 	(33, '{"ar":"  رفع \\/ استخراج المديولات ","en":" Export \\\\ Import Models  "}', 'admin/exportImport', 'blank', NULL, 21, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-24 17:42:17'),
-	(34, '{"en":"Home","fr":null,"ar":"الرئيسية"}', '/', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\HomeController"]', 3, '2019-03-05 20:40:13', '2019-03-25 11:06:05'),
+	(34, '{"en":"Home","fr":null,"ar":"الرئيسية"}', '/', 'self', NULL, 0, 4, '["App\\\\Application\\\\Controllers\\\\Website\\\\HomeController"]', 3, '2019-03-05 20:40:13', '2019-04-13 20:34:31'),
 	(43, '{"en":"Formation","ar":"Formation"}', '/admin/formation', 'self', '<i class="material-icons"> work </i>', 55, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\FormationController"]', 1, '2019-03-06 14:35:29', '2019-03-24 18:15:08'),
-	(44, '{"en":"Formation","ar":"Formation"}', 'formation', 'self', NULL, 0, 36, '["App\\\\Application\\\\Controllers\\\\Website\\\\FormationController"]', 3, '2019-03-06 14:35:29', '2019-03-25 09:44:59'),
+	(44, '{"en":"Formation","ar":"Formation"}', 'formation', 'self', NULL, 0, 6, '["App\\\\Application\\\\Controllers\\\\Website\\\\FormationController"]', 3, '2019-03-06 14:35:29', '2019-04-13 20:34:31'),
 	(45, '{"en":"Inscription","ar":"Inscription"}', '/admin/inscription', 'self', '<i class="material-icons"> receipt </i>', 55, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\InscriptionController"]', 1, '2019-03-06 15:09:03', '2019-03-24 18:14:07'),
 	(47, '{"en":"Section","ar":"Section"}', '/admin/section', 'self', '<i class="material-icons"> view_carousel </i>', 55, 9, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SectionController"]', 1, '2019-03-06 20:38:36', '2019-03-24 18:16:06'),
-	(48, '{"en":"Sites","ar":"Sites"}', 'section', 'self', NULL, 0, 39, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SectionController"]', 3, '2019-03-06 20:38:36', '2019-03-25 09:44:51'),
+	(48, '{"en":"Sites","ar":"Sites"}', 'section', 'self', NULL, 0, 7, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SectionController"]', 3, '2019-03-06 20:38:36', '2019-04-13 20:34:31'),
 	(49, '{"en":"Local","ar":"Local"}', '/admin/local', 'self', '<i class="material-icons"> view_array </i>', 55, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\LocalController"]', 1, '2019-03-06 20:53:21', '2019-03-24 18:16:27'),
 	(51, '{"en":"Artisan","ar":"Artisan"}', '/admin/artisan', 'self', '<i class="material-icons"> people_outline </i>', 55, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\ArtisanController"]', 1, '2019-03-06 20:55:33', '2019-03-24 18:19:25'),
 	(53, '{"en":"Request","ar":"Request"}', '/admin/request', 'self', '<i class="material-icons"> subscriptions </i>', 55, 8, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RequestController"]', 1, '2019-03-06 23:20:14', '2019-03-24 18:15:43'),
@@ -307,11 +306,32 @@ INSERT INTO `items` (`id`, `name`, `link`, `type`, `icon`, `parent_id`, `order`,
 	(63, '{"en":"Gallery","ar":"Gallery"}', '/galery', 'self', NULL, 0, 1, '["App\\\\Application\\\\Controllers\\\\Website\\\\MediasController"]', 4, '2019-03-25 09:39:04', '2019-03-25 09:42:16'),
 	(64, '{"en":"News","ar":"News"}', 'news', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\NewsController"]', 4, '2019-03-25 09:40:03', '2019-03-25 09:42:16'),
 	(66, '{"en":"About Us","ar":"About Us"}', 'page/2/view', 'self', NULL, 0, 3, '["App\\\\Application\\\\Controllers\\\\Website\\\\HomeController"]', 4, '2019-03-25 09:42:07', '2019-03-25 09:42:16'),
-	(67, '{"en":"Nomenclature","ar":"Nomenclature"}', 'nomenclature', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\MediasController"]', 3, '2019-03-25 09:44:17', '2019-03-25 09:44:17');
+	(67, '{"en":"Nomenclature","ar":"Nomenclature"}', 'nomenclature', 'self', NULL, 0, 5, '["App\\\\Application\\\\Controllers\\\\Website\\\\MediasController"]', 3, '2019-03-25 09:44:17', '2019-04-13 20:34:31'),
+	(68, '{"en":"Votre Cam","fr":"Votre Cam","ar":"Votre Cam"}', '/page/3/view', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-11 10:23:07', '2019-04-13 20:34:28'),
+	(70, '{"en":"Créer","fr":"Créer","ar":"Créer"}', '/page', 'self', NULL, 0, 1, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 15:52:24', '2019-04-13 20:34:29'),
+	(71, '{"en":"Gérer","fr":"Gérer","ar":"Gérer"}', '/page', 'self', NULL, 0, 2, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 15:53:13', '2019-04-13 20:34:30'),
+	(72, '{"en":"Se Former","fr":"Se Former","ar":"Se Former"}', '/page', 'self', NULL, 0, 3, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 15:54:16', '2019-04-13 20:34:31'),
+	(73, '{"en":"L\'artisanat","fr":"L\'artisanat","ar":"L\'artisanat"}', '/page', 'self', NULL, 68, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 15:54:50', '2019-04-13 20:34:29'),
+	(74, '{"en":"Partenariat","fr":"Partenariat","ar":"Partenariat"}', '/page', 'self', NULL, 68, 1, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 15:55:19', '2019-04-13 20:34:29'),
+	(75, '{"en":"Nous contactez","fr":"Nous contactez","ar":"Nous contactez"}', '/page', 'self', NULL, 0, 8, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 15:55:50', '2019-04-13 20:34:31'),
+	(76, '{"en":"Nos missions","fr":"Nos missions","ar":"Nos missions"}', '/page', 'self', NULL, 73, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 15:56:37', '2019-04-13 20:34:29'),
+	(77, '{"en":"L\'observatoire de l\'artisanat","fr":"L\'observatoire de l\'artisanat","ar":"L\'observatoire de l\'artisanat"}', '/page', 'self', NULL, 73, 1, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 15:57:12', '2019-04-13 20:34:29'),
+	(78, '{"en":"Les partenaires","fr":"Les partenaires","ar":"Les partenaires"}', '/page', 'self', NULL, 74, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 15:57:41', '2019-04-13 20:34:29'),
+	(79, '{"en":"Comment devenir partenaire ?","fr":"Comment devenir partenaire ?","ar":"Comment devenir partenaire ?"}', '/page', 'self', NULL, 74, 1, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 15:58:17', '2019-04-13 20:34:29'),
+	(80, '{"en":"Créer son entreprise","fr":"Créer son entreprise","ar":"Créer son entreprise"}', '/page', 'self', NULL, 70, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 16:02:47', '2019-04-13 20:34:30'),
+	(81, '{"en":"Déclarer son entreprise","fr":"Déclarer son entreprise","ar":"Déclarer son entreprise"}', '/page', 'self', NULL, 70, 1, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 16:03:18', '2019-04-13 20:34:30'),
+	(82, '{"en":"Gérer au quotidien","fr":"Gérer au quotidien","ar":"Gérer au quotidien"}', '/page', 'self', NULL, 71, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 16:03:53', '2019-04-13 20:34:30'),
+	(83, '{"en":"Développer son activité","fr":"Développer son activité","ar":"Développer son activité"}', '/page', 'self', NULL, 71, 1, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 16:04:24', '2019-04-13 20:34:30'),
+	(84, '{"en":"Formation par l\'apprentissage","fr":"Formation par l\'apprentissage","ar":"Formation par l\'apprentissage"}', '/page', 'self', NULL, 72, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 16:04:56', '2019-04-13 20:34:31'),
+	(85, '{"en":"Formation Continue","fr":"Formation Continue","ar":"Formation Continue"}', '/page', 'self', NULL, 72, 1, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 16:05:24', '2019-04-13 20:34:31'),
+	(86, '{"en":"Piloter la gestion de son activité","fr":"Piloter la gestion de son activité","ar":"Piloter la gestion de son activité"}', '/page', 'self', NULL, 71, 4, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 16:06:05', '2019-04-13 20:34:31'),
+	(87, '{"en":"Former un apprenti","fr":"Former un apprenti","ar":"Former un apprenti"}', '/page', 'self', NULL, 71, 2, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 16:06:32', '2019-04-13 20:34:30'),
+	(88, '{"en":"Booster son developpement commercial","fr":"Booster son developpement commercial","ar":"Booster son developpement commercial"}', '/page', 'self', NULL, 71, 3, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 16:07:06', '2019-04-13 20:34:30'),
+	(89, '{"en":"Qu\'est-ce que l\'apprentissage","fr":"Qu\'est-ce que l\'apprentissage","ar":"Qu\'est-ce que l\'apprentissage"}', '/page', 'self', NULL, 84, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 16:08:10', '2019-04-13 20:34:31'),
+	(90, '{"en":"Qu\'est-ce que la formation continue ?","fr":"Qu\'est-ce que la formation continue ?","ar":"Qu\'est-ce que la formation continue ?"}', '/page', 'self', NULL, 85, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 16:08:41', '2019-04-13 20:34:31');
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. links
-DROP TABLE IF EXISTS `links`;
 CREATE TABLE IF NOT EXISTS `links` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -323,6 +343,7 @@ CREATE TABLE IF NOT EXISTS `links` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.links : ~3 rows (environ)
+DELETE FROM `links`;
 /*!40000 ALTER TABLE `links` DISABLE KEYS */;
 INSERT INTO `links` (`id`, `url`, `slug`, `created_at`, `updated_at`) VALUES
 	(1, 'http://127.0.0.1:8000/en/login', '0ms8DD', '2019-03-05 19:55:25', '2019-03-05 19:55:25'),
@@ -331,7 +352,6 @@ INSERT INTO `links` (`id`, `url`, `slug`, `created_at`, `updated_at`) VALUES
 /*!40000 ALTER TABLE `links` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. link_views
-DROP TABLE IF EXISTS `link_views`;
 CREATE TABLE IF NOT EXISTS `link_views` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `link_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -347,6 +367,7 @@ CREATE TABLE IF NOT EXISTS `link_views` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.link_views : ~6 rows (environ)
+DELETE FROM `link_views`;
 /*!40000 ALTER TABLE `link_views` DISABLE KEYS */;
 INSERT INTO `link_views` (`id`, `link_id`, `language`, `browser`, `browser_version`, `os`, `os_version`, `ip`, `created_at`, `updated_at`) VALUES
 	(1, '1', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-03-05 19:55:46', '2019-03-05 19:55:46'),
@@ -358,7 +379,6 @@ INSERT INTO `link_views` (`id`, `link_id`, `language`, `browser`, `browser_versi
 /*!40000 ALTER TABLE `link_views` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. local
-DROP TABLE IF EXISTS `local`;
 CREATE TABLE IF NOT EXISTS `local` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -376,6 +396,7 @@ CREATE TABLE IF NOT EXISTS `local` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.local : ~2 rows (environ)
+DELETE FROM `local`;
 /*!40000 ALTER TABLE `local` DISABLE KEYS */;
 INSERT INTO `local` (`id`, `name`, `description`, `image`, `price`, `area`, `section_id`, `created_at`, `updated_at`) VALUES
 	(1, '{"en":"Local 01","ar":"Local 01"}', '{"en":"<p>Local 01.....<\\/p>","ar":null}', '15923_1552607758.jpg', 14000, 25, 1, '2019-03-06 21:14:17', '2019-03-14 23:55:58'),
@@ -383,7 +404,6 @@ INSERT INTO `local` (`id`, `name`, `description`, `image`, `price`, `area`, `sec
 /*!40000 ALTER TABLE `local` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. logs
-DROP TABLE IF EXISTS `logs`;
 CREATE TABLE IF NOT EXISTS `logs` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `action` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -394,9 +414,10 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1093 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1206 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.logs : ~877 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.logs : ~1 205 rows (environ)
+DELETE FROM `logs`;
 /*!40000 ALTER TABLE `logs` DISABLE KEYS */;
 INSERT INTO `logs` (`id`, `action`, `model`, `status`, `messages`, `user_id`, `created_at`, `updated_at`) VALUES
 	(1, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["1"]}', 0, '2019-03-05 19:56:47', '2019-03-05 19:56:47'),
@@ -1490,11 +1511,123 @@ INSERT INTO `logs` (`id`, `action`, `model`, `status`, `messages`, `user_id`, `c
 	(1089, 'Visit Edit Page', 'users', 'Success', '{"Edit Id":["13"]}', 13, '2019-03-26 16:21:37', '2019-03-26 16:21:37'),
 	(1090, 'Visit Edit Page', 'users', 'Success', '{"Edit Id":["13"]}', 13, '2019-03-26 16:22:11', '2019-03-26 16:22:11'),
 	(1091, 'Visit Edit Page', 'users', 'Success', '{"Edit Id":["13"]}', 13, '2019-03-26 16:24:32', '2019-03-26 16:24:32'),
-	(1092, 'Visit Edit Page', 'users', 'Success', '{"Edit Id":["13"]}', 13, '2019-03-26 16:24:49', '2019-03-26 16:24:49');
+	(1092, 'Visit Edit Page', 'users', 'Success', '{"Edit Id":["13"]}', 13, '2019-03-26 16:24:49', '2019-03-26 16:24:49'),
+	(1093, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-29 22:58:24', '2019-03-29 22:58:24'),
+	(1094, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-29 23:39:36', '2019-03-29 23:39:36'),
+	(1095, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-29 23:42:20', '2019-03-29 23:42:20'),
+	(1096, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-29 23:42:39', '2019-03-29 23:42:39'),
+	(1097, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-29 23:42:57', '2019-03-29 23:42:57'),
+	(1098, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:19:44', '2019-03-30 01:19:44'),
+	(1099, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:20:29', '2019-03-30 01:20:29'),
+	(1100, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:21:21', '2019-03-30 01:21:21'),
+	(1101, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:21:36', '2019-03-30 01:21:36'),
+	(1102, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:34:33', '2019-03-30 01:34:33'),
+	(1103, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:35:48', '2019-03-30 01:35:48'),
+	(1104, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:36:18', '2019-03-30 01:36:18'),
+	(1105, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:37:06', '2019-03-30 01:37:06'),
+	(1106, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:38:59', '2019-03-30 01:38:59'),
+	(1107, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:40:08', '2019-03-30 01:40:08'),
+	(1108, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:41:07', '2019-03-30 01:41:07'),
+	(1109, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:49:45', '2019-03-30 01:49:45'),
+	(1110, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:50:19', '2019-03-30 01:50:19'),
+	(1111, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:50:26', '2019-03-30 01:50:26'),
+	(1112, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:51:33', '2019-03-30 01:51:33'),
+	(1113, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:52:43', '2019-03-30 01:52:43'),
+	(1114, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:53:30', '2019-03-30 01:53:30'),
+	(1115, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:53:51', '2019-03-30 01:53:51'),
+	(1116, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:54:25', '2019-03-30 01:54:25'),
+	(1117, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:54:54', '2019-03-30 01:54:54'),
+	(1118, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:56:00', '2019-03-30 01:56:00'),
+	(1119, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 01:58:50', '2019-03-30 01:58:50'),
+	(1120, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 02:00:59', '2019-03-30 02:00:59'),
+	(1121, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-03-30 02:02:48', '2019-03-30 02:02:48'),
+	(1122, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-30 02:02:58', '2019-03-30 02:02:58'),
+	(1123, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-30 02:05:39', '2019-03-30 02:05:39'),
+	(1124, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-30 02:05:55', '2019-03-30 02:05:55'),
+	(1125, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-30 02:07:19', '2019-03-30 02:07:19'),
+	(1126, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-30 02:09:04', '2019-03-30 02:09:04'),
+	(1127, 'Update', 'page', 'Success', '{"Updated id":["2"]}', 1, '2019-03-30 02:10:44', '2019-03-30 02:10:44'),
+	(1128, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-30 02:10:45', '2019-03-30 02:10:45'),
+	(1129, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["2"]}', 1, '2019-03-30 02:11:34', '2019-03-30 02:11:34'),
+	(1130, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-11 08:48:04', '2019-04-11 08:48:04'),
+	(1131, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-11 08:49:52', '2019-04-11 08:49:52'),
+	(1132, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-11 08:50:30', '2019-04-11 08:50:30'),
+	(1133, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-11 08:52:11', '2019-04-11 08:52:11'),
+	(1134, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-11 08:52:15', '2019-04-11 08:52:15'),
+	(1135, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["2"]}', 1, '2019-04-11 09:17:08', '2019-04-11 09:17:08'),
+	(1136, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-11 09:18:42', '2019-04-11 09:18:42'),
+	(1137, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-11 09:25:14', '2019-04-11 09:25:14'),
+	(1138, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["2"]}', 1, '2019-04-11 09:25:46', '2019-04-11 09:25:46'),
+	(1139, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-11 09:39:40', '2019-04-11 09:39:40'),
+	(1140, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-11 09:48:01', '2019-04-11 09:48:01'),
+	(1141, 'Visit Create Page', 'page', 'Success', '', 1, '2019-04-11 10:19:25', '2019-04-11 10:19:25'),
+	(1142, 'Create', 'page', 'Success', '{"New id":[3]}', 1, '2019-04-11 10:20:59', '2019-04-11 10:20:59'),
+	(1143, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-11 10:21:22', '2019-04-11 10:21:22'),
+	(1144, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-11 10:22:08', '2019-04-11 10:22:08'),
+	(1145, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-11 10:23:08', '2019-04-11 10:23:08'),
+	(1146, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-11 10:23:15', '2019-04-11 10:23:15'),
+	(1147, 'Update', 'menu', 'Success', '{"Updated id":["3"]}', 1, '2019-04-11 10:23:32', '2019-04-11 10:23:32'),
+	(1148, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-11 10:23:39', '2019-04-11 10:23:39'),
+	(1149, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-11 10:24:45', '2019-04-11 10:24:45'),
+	(1150, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-11 10:25:44', '2019-04-11 10:25:44'),
+	(1151, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-11 10:26:32', '2019-04-11 10:26:32'),
+	(1152, 'Update', 'menu', 'Success', '{"Updated id":["3"]}', 1, '2019-04-11 10:26:43', '2019-04-11 10:26:43'),
+	(1153, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-11 10:26:50', '2019-04-11 10:26:50'),
+	(1154, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-11 10:28:29', '2019-04-11 10:28:29'),
+	(1155, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 15:50:16', '2019-04-13 15:50:16'),
+	(1156, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 15:52:24', '2019-04-13 15:52:24'),
+	(1157, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 15:53:14', '2019-04-13 15:53:14'),
+	(1158, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 15:54:17', '2019-04-13 15:54:17'),
+	(1159, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 15:54:50', '2019-04-13 15:54:50'),
+	(1160, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 15:55:20', '2019-04-13 15:55:20'),
+	(1161, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 15:55:50', '2019-04-13 15:55:50'),
+	(1162, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 15:56:37', '2019-04-13 15:56:37'),
+	(1163, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 15:57:12', '2019-04-13 15:57:12'),
+	(1164, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 15:57:41', '2019-04-13 15:57:41'),
+	(1165, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 15:58:17', '2019-04-13 15:58:17'),
+	(1166, 'Update', 'menu', 'Success', '{"Updated id":["3"]}', 1, '2019-04-13 16:00:22', '2019-04-13 16:00:22'),
+	(1167, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:01:04', '2019-04-13 16:01:04'),
+	(1168, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:01:50', '2019-04-13 16:01:50'),
+	(1169, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:02:47', '2019-04-13 16:02:47'),
+	(1170, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:03:18', '2019-04-13 16:03:18'),
+	(1171, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:03:53', '2019-04-13 16:03:53'),
+	(1172, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:04:25', '2019-04-13 16:04:25'),
+	(1173, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:04:57', '2019-04-13 16:04:57'),
+	(1174, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:05:25', '2019-04-13 16:05:25'),
+	(1175, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:06:06', '2019-04-13 16:06:06'),
+	(1176, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:06:33', '2019-04-13 16:06:33'),
+	(1177, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:07:06', '2019-04-13 16:07:06'),
+	(1178, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:08:10', '2019-04-13 16:08:10'),
+	(1179, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:08:42', '2019-04-13 16:08:42'),
+	(1180, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:12:37', '2019-04-13 16:12:37'),
+	(1181, 'Update', 'menu', 'Success', '{"Updated id":["3"]}', 1, '2019-04-13 16:12:44', '2019-04-13 16:12:44'),
+	(1182, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:12:50', '2019-04-13 16:12:50'),
+	(1183, 'Update', 'menu', 'Success', '{"Updated id":["3"]}', 1, '2019-04-13 16:14:05', '2019-04-13 16:14:05'),
+	(1184, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 16:14:10', '2019-04-13 16:14:10'),
+	(1185, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 18:28:33', '2019-04-13 18:28:33'),
+	(1186, 'Update', 'menu', 'Success', '{"Updated id":["3"]}', 1, '2019-04-13 18:29:48', '2019-04-13 18:29:48'),
+	(1187, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["2"]}', 1, '2019-04-13 18:29:56', '2019-04-13 18:29:56'),
+	(1188, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["2"]}', 1, '2019-04-13 18:30:02', '2019-04-13 18:30:02'),
+	(1189, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 18:30:13', '2019-04-13 18:30:13'),
+	(1190, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 19:46:54', '2019-04-13 19:46:54'),
+	(1191, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 19:51:24', '2019-04-13 19:51:24'),
+	(1192, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 20:07:41', '2019-04-13 20:07:41'),
+	(1193, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 20:08:55', '2019-04-13 20:08:55'),
+	(1194, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 20:10:35', '2019-04-13 20:10:35'),
+	(1195, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 20:11:09', '2019-04-13 20:11:09'),
+	(1196, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 20:12:01', '2019-04-13 20:12:01'),
+	(1197, 'Update', 'menu', 'Success', '{"Updated id":["3"]}', 1, '2019-04-13 20:12:21', '2019-04-13 20:12:21'),
+	(1198, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 20:12:30', '2019-04-13 20:12:30'),
+	(1199, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 20:13:37', '2019-04-13 20:13:37'),
+	(1200, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 20:22:46', '2019-04-13 20:22:46'),
+	(1201, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 20:25:27', '2019-04-13 20:25:27'),
+	(1202, 'Update', 'menu', 'Success', '{"Updated id":["3"]}', 1, '2019-04-13 20:25:51', '2019-04-13 20:25:51'),
+	(1203, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 20:25:56', '2019-04-13 20:25:56'),
+	(1204, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 20:30:26', '2019-04-13 20:30:26'),
+	(1205, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-04-13 20:41:42', '2019-04-13 20:41:42');
 /*!40000 ALTER TABLE `logs` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. medias
-DROP TABLE IF EXISTS `medias`;
 CREATE TABLE IF NOT EXISTS `medias` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1508,6 +1641,7 @@ CREATE TABLE IF NOT EXISTS `medias` (
 ) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.medias : ~4 rows (environ)
+DELETE FROM `medias`;
 /*!40000 ALTER TABLE `medias` DISABLE KEYS */;
 INSERT INTO `medias` (`id`, `name`, `description`, `type`, `files`, `created_at`, `updated_at`) VALUES
 	(55, '{"en":"Albums 002","ar":"ايقونات الموقع"}', '{"en":"<p>Albums 002<\\/p>","ar":"<p>Albums 002<\\/p>"}', 1, NULL, '2019-03-25 03:02:34', '2019-03-25 03:02:34'),
@@ -1517,7 +1651,6 @@ INSERT INTO `medias` (`id`, `name`, `description`, `type`, `files`, `created_at`
 /*!40000 ALTER TABLE `medias` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. menu
-DROP TABLE IF EXISTS `menu`;
 CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1527,6 +1660,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.menu : ~5 rows (environ)
+DELETE FROM `menu`;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
 INSERT INTO `menu` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(1, 'Admin', NULL, NULL),
@@ -1537,7 +1671,6 @@ INSERT INTO `menu` (`id`, `name`, `created_at`, `updated_at`) VALUES
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. migrations
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1546,6 +1679,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.migrations : ~32 rows (environ)
+DELETE FROM `migrations`;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_04_11_141239_create_groups_table', 1),
@@ -1583,7 +1717,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. news
-DROP TABLE IF EXISTS `news`;
 CREATE TABLE IF NOT EXISTS `news` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1595,6 +1728,7 @@ CREATE TABLE IF NOT EXISTS `news` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.news : ~2 rows (environ)
+DELETE FROM `news`;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
 INSERT INTO `news` (`id`, `title`, `description`, `image`, `created_at`, `updated_at`) VALUES
 	(1, '{"en":"News 01","fr":"News 001","ar":"News 01"}', '{"en":"<p>This comprehensive tutorial contains everything you have to know about WordPress Theme development, starting with setting the environment, through WordPress installation and configuration, setting up theme construction, development including custom widgets and functions.<\\/p>","fr":"<p>This comprehensive tutorial contains everything you have to know about WordPress Theme development, starting with setting the environment, through WordPress installation and configuration, setting up theme construction, development including custom widgets and functions.<\\/p>","ar":"<p>This comprehensive tutorial contains everything you have to know about WordPress Theme development, starting with setting the environment, through WordPress installation and configuration, setting up theme construction, development including custom widgets and functions.<\\/p>"}', '96063_1553611798.jpg', '2019-03-07 16:29:15', '2019-03-26 14:49:58'),
@@ -1602,7 +1736,6 @@ INSERT INTO `news` (`id`, `title`, `description`, `image`, `created_at`, `update
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. page
-DROP TABLE IF EXISTS `page`;
 CREATE TABLE IF NOT EXISTS `page` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1611,17 +1744,18 @@ CREATE TABLE IF NOT EXISTS `page` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.page : ~2 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.page : ~3 rows (environ)
+DELETE FROM `page`;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
 INSERT INTO `page` (`id`, `title`, `body`, `active`, `created_at`, `updated_at`) VALUES
 	(1, '{"en":"Director Speech","fr":"Mot Directeur","ar":"كلمة المدير"}', '{"en":"<blockquote class=\\"blockquote\\">\\r\\n<p class=\\"mb-0\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<\\/p>\\r\\n<footer class=\\"blockquote-footer\\">Someone famous in<\\/footer><\\/blockquote>","fr":"<p class=\\"mb-0\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<\\/p>\\r\\n<footer class=\\"blockquote-footer\\">Someone famous in<\\/footer>","ar":"<blockquote class=\\"blockquote\\">\\r\\n<p class=\\"mb-0\\">يشرفنا أن نرحب بزوارنا الكرام لموقع دار الصناعات التقليدية لولاية سوق أهراس<\\/p>\\r\\n<footer class=\\"blockquote-footer\\">Mr. Ali<\\/footer><\\/blockquote>"}', 1, '2019-03-24 23:01:08', '2019-03-26 14:30:46'),
-	(2, '{"ar":" من نحن ","en":"About us"}', '{"ar":"\\n                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.\\nإذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.\\nومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.\\nهذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.\\n            ","en":"\\n                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<\\/p>\\n                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<\\/p>\\n             "}', 1, NULL, NULL);
+	(2, '{"en":"About us","fr":"A propos de nous","ar":"من نحن"}', '{"en":"<!-- Section description -->\\r\\n<p class=\\"lead grey-text w-responsive mx-auto mb-5\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<\\/p>\\r\\n<!-- Grid row -->\\r\\n<div class=\\"row\\"><!-- Grid column -->\\r\\n<div class=\\"col-md-4\\">\\r\\n<h5 class=\\"font-weight-bold my-4\\">Analytics<\\/h5>\\r\\n<p class=\\"grey-text mb-md-0 mb-5\\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.<\\/p>\\r\\n<\\/div>\\r\\n<!-- Grid column --> <!-- Grid column -->\\r\\n<div class=\\"col-md-4\\">\\r\\n<h5 class=\\"font-weight-bold my-4\\">Tutorials<\\/h5>\\r\\n<p class=\\"grey-text mb-md-0 mb-5\\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.<\\/p>\\r\\n<\\/div>\\r\\n<!-- Grid column --> <!-- Grid column -->\\r\\n<div class=\\"col-md-4\\">\\r\\n<h5 class=\\"font-weight-bold my-4\\">Support<\\/h5>\\r\\n<p class=\\"grey-text mb-0\\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.<\\/p>\\r\\n<\\/div>\\r\\n<!-- Grid column --><\\/div>\\r\\n<!-- Grid row -->","fr":"<!-- Section description -->\\r\\n<p class=\\"lead grey-text w-responsive mx-auto mb-5\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<\\/p>\\r\\n<!-- Grid row -->\\r\\n<div class=\\"row\\"><!-- Grid column -->\\r\\n<div class=\\"col-md-4\\">\\r\\n<h5 class=\\"font-weight-bold my-4\\">Analytics<\\/h5>\\r\\n<p class=\\"grey-text mb-md-0 mb-5\\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.<\\/p>\\r\\n<\\/div>\\r\\n<!-- Grid column --> <!-- Grid column -->\\r\\n<div class=\\"col-md-4\\">\\r\\n<h5 class=\\"font-weight-bold my-4\\">Tutorials<\\/h5>\\r\\n<p class=\\"grey-text mb-md-0 mb-5\\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.<\\/p>\\r\\n<\\/div>\\r\\n<!-- Grid column --> <!-- Grid column -->\\r\\n<div class=\\"col-md-4\\">\\r\\n<h5 class=\\"font-weight-bold my-4\\">Support<\\/h5>\\r\\n<p class=\\"grey-text mb-0\\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores aperiam minima assumenda deleniti hic.<\\/p>\\r\\n<\\/div>\\r\\n<!-- Grid column --><\\/div>\\r\\n<!-- Grid row -->","ar":"<!-- Section description -->\\r\\n<p class=\\"lead grey-text w-responsive mx-auto mb-5\\">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق. إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع. ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق. هذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.<\\/p>\\r\\n<!-- Grid row -->\\r\\n<div class=\\"row\\"><!-- Grid column -->\\r\\n<div class=\\"col-md-4\\">\\r\\n<h5 class=\\"font-weight-bold my-4\\">Analytics<\\/h5>\\r\\n<p class=\\"grey-text mb-md-0 mb-5\\">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق. إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع. ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق. هذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.<\\/p>\\r\\n<\\/div>\\r\\n<!-- Grid column --> <!-- Grid column -->\\r\\n<div class=\\"col-md-4\\">\\r\\n<h5 class=\\"font-weight-bold my-4\\">Tutorials<\\/h5>\\r\\n<p class=\\"grey-text mb-md-0 mb-5\\">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق. إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع. ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق. هذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.<\\/p>\\r\\n<\\/div>\\r\\n<!-- Grid column --> <!-- Grid column -->\\r\\n<div class=\\"col-md-4\\">\\r\\n<h5 class=\\"font-weight-bold my-4\\">Support<\\/h5>\\r\\n<p class=\\"grey-text mb-0\\">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق. إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع. ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق. هذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.<\\/p>\\r\\n<\\/div>\\r\\n<!-- Grid column --><\\/div>\\r\\n<!-- Grid row -->"}', 1, NULL, '2019-03-30 02:10:44'),
+	(3, '{"en":"Votre Cam","fr":"Votre Cam","ar":"Votre Cam"}', '{"en":"<p>Votre Cam Page<\\/p>","fr":"<p>Votre Cam Page<\\/p>","ar":"<p>Votre Cam Page<\\/p>"}', 1, '2019-04-11 10:20:59', '2019-04-11 10:20:59');
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. pagecomment
-DROP TABLE IF EXISTS `pagecomment`;
 CREATE TABLE IF NOT EXISTS `pagecomment` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -1633,11 +1767,11 @@ CREATE TABLE IF NOT EXISTS `pagecomment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.pagecomment : ~0 rows (environ)
+DELETE FROM `pagecomment`;
 /*!40000 ALTER TABLE `pagecomment` DISABLE KEYS */;
 /*!40000 ALTER TABLE `pagecomment` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. password_resets
-DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1646,11 +1780,11 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.password_resets : ~0 rows (environ)
+DELETE FROM `password_resets`;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. permissions
-DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE IF NOT EXISTS `permissions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1666,7 +1800,8 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=686 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.permissions : ~568 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.permissions : ~569 rows (environ)
+DELETE FROM `permissions`;
 /*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
 INSERT INTO `permissions` (`id`, `name`, `slug`, `description`, `controller_name`, `method_name`, `controller_type`, `permission`, `namespace`, `created_at`, `updated_at`) VALUES
 	(1, 'admin-admin-index-CustomPermissionsController', 'App-Application-Controllers-Admin-Development-CustomPermissionsController-index', 'Allow Admin admin on index in controller CustomPermissionsController', 'CustomPermissionsController', 'index', 'admin', 1, 'App\\Application\\Controllers\\Admin\\Development\\CustomPermissionsController', '2019-03-05 19:54:27', '2019-03-05 19:54:27'),
@@ -2241,7 +2376,6 @@ INSERT INTO `permissions` (`id`, `name`, `slug`, `description`, `controller_name
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. permission_group
-DROP TABLE IF EXISTS `permission_group`;
 CREATE TABLE IF NOT EXISTS `permission_group` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `permission_id` int(10) unsigned NOT NULL,
@@ -2253,7 +2387,8 @@ CREATE TABLE IF NOT EXISTS `permission_group` (
   CONSTRAINT `permission_group_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=418 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.permission_group : ~394 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.permission_group : ~397 rows (environ)
+DELETE FROM `permission_group`;
 /*!40000 ALTER TABLE `permission_group` DISABLE KEYS */;
 INSERT INTO `permission_group` (`id`, `permission_id`, `group_id`) VALUES
 	(1, 368, 1),
@@ -2656,7 +2791,6 @@ INSERT INTO `permission_group` (`id`, `permission_id`, `group_id`) VALUES
 /*!40000 ALTER TABLE `permission_group` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. permission_role
-DROP TABLE IF EXISTS `permission_role`;
 CREATE TABLE IF NOT EXISTS `permission_role` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `permission_id` int(10) unsigned NOT NULL,
@@ -2669,11 +2803,11 @@ CREATE TABLE IF NOT EXISTS `permission_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.permission_role : ~0 rows (environ)
+DELETE FROM `permission_role`;
 /*!40000 ALTER TABLE `permission_role` DISABLE KEYS */;
 /*!40000 ALTER TABLE `permission_role` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. permission_user
-DROP TABLE IF EXISTS `permission_user`;
 CREATE TABLE IF NOT EXISTS `permission_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `permission_id` int(10) unsigned NOT NULL,
@@ -2686,11 +2820,11 @@ CREATE TABLE IF NOT EXISTS `permission_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.permission_user : ~0 rows (environ)
+DELETE FROM `permission_user`;
 /*!40000 ALTER TABLE `permission_user` DISABLE KEYS */;
 /*!40000 ALTER TABLE `permission_user` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. relations
-DROP TABLE IF EXISTS `relations`;
 CREATE TABLE IF NOT EXISTS `relations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2705,11 +2839,11 @@ CREATE TABLE IF NOT EXISTS `relations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.relations : ~0 rows (environ)
+DELETE FROM `relations`;
 /*!40000 ALTER TABLE `relations` DISABLE KEYS */;
 /*!40000 ALTER TABLE `relations` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. request
-DROP TABLE IF EXISTS `request`;
 CREATE TABLE IF NOT EXISTS `request` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `artisan_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2728,6 +2862,7 @@ CREATE TABLE IF NOT EXISTS `request` (
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.request : ~4 rows (environ)
+DELETE FROM `request`;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
 INSERT INTO `request` (`id`, `artisan_id`, `section_id`, `local_id`, `status`, `created_at`, `updated_at`) VALUES
 	(4, 'A001', 1, 1, '1', '2019-03-07 11:30:07', '2019-03-15 10:48:38'),
@@ -2737,7 +2872,6 @@ INSERT INTO `request` (`id`, `artisan_id`, `section_id`, `local_id`, `status`, `
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. roles
-DROP TABLE IF EXISTS `roles`;
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2749,11 +2883,11 @@ CREATE TABLE IF NOT EXISTS `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.roles : ~0 rows (environ)
+DELETE FROM `roles`;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. role_user
-DROP TABLE IF EXISTS `role_user`;
 CREATE TABLE IF NOT EXISTS `role_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `role_id` int(10) unsigned NOT NULL,
@@ -2766,11 +2900,11 @@ CREATE TABLE IF NOT EXISTS `role_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.role_user : ~0 rows (environ)
+DELETE FROM `role_user`;
 /*!40000 ALTER TABLE `role_user` DISABLE KEYS */;
 /*!40000 ALTER TABLE `role_user` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. section
-DROP TABLE IF EXISTS `section`;
 CREATE TABLE IF NOT EXISTS `section` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2783,6 +2917,7 @@ CREATE TABLE IF NOT EXISTS `section` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-akhras-v6.section : ~2 rows (environ)
+DELETE FROM `section`;
 /*!40000 ALTER TABLE `section` DISABLE KEYS */;
 INSERT INTO `section` (`id`, `name`, `description`, `image`, `created_at`, `updated_at`) VALUES
 	(1, '{"en":"Section 01","ar":"Section 01"}', '{"en":"<p>Section 01 Description0.....<\\/p>","ar":null}', '22082_1552607235.jpg', '2019-03-06 20:50:06', '2019-03-14 23:47:15'),
@@ -2790,7 +2925,6 @@ INSERT INTO `section` (`id`, `name`, `description`, `image`, `created_at`, `upda
 /*!40000 ALTER TABLE `section` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. setting
-DROP TABLE IF EXISTS `setting`;
 CREATE TABLE IF NOT EXISTS `setting` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2801,7 +2935,8 @@ CREATE TABLE IF NOT EXISTS `setting` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.setting : ~3 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.setting : ~4 rows (environ)
+DELETE FROM `setting`;
 /*!40000 ALTER TABLE `setting` DISABLE KEYS */;
 INSERT INTO `setting` (`id`, `name`, `type`, `body_setting`, `created_at`, `updated_at`) VALUES
 	(1, 'siteTitle', 'text', 'CAM', NULL, NULL),
@@ -2811,7 +2946,6 @@ INSERT INTO `setting` (`id`, `name`, `type`, `body_setting`, `created_at`, `upda
 /*!40000 ALTER TABLE `setting` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-akhras-v6. users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2828,7 +2962,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_api_token_unique` (`api_token`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-akhras-v6.users : ~3 rows (environ)
+-- Listage des données de la table cam-souk-akhras-v6.users : ~4 rows (environ)
+DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `group_id`, `api_token`, `remember_token`, `created_at`, `updated_at`, `image`) VALUES
 	(1, 'admin', 'admin@gmail.com', '$2y$10$TENvveevcPmcHMsvLCHHQ.btzrzEahN6GDEXkqiD3nqfvb66gK6o2', 1, 'JEj4uiIEfCXjupx82Q5N0hV7RkjbYz24S6VlATP8DUz7wlZvdtos4W0Rjvzy', 'jRDZgVI65jAuqjuQPowHz0D1TIlr5acJHOYneLL1JsqnRMhIegaOt52paglt', '2019-03-08 11:47:47', '2019-03-26 11:14:41', '11606_1553598881.jpg'),
