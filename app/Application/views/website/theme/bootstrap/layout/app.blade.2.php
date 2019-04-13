@@ -23,11 +23,6 @@
     <!-- Waves Effect Css -->
     {{ Html::Style('website/css/css/mdb.min.css') }}
     {{ Html::Style('website/css/themes/all-themes.min.css') }}
-    <style>
-        .navbar {
-            top: 150px;
-        }
-    </style>
     @yield('style')
 
     <script>
@@ -43,7 +38,7 @@
     <div id="app">
         @include(layoutMenu('website'))
         <!--Main layout-->
-        <main class="pt-2" style="margin-top: 150px">
+        <main class="mt-5 pt-2">
             @include(layoutMain('website'))
             @include(layoutContent('website'))
         </main>

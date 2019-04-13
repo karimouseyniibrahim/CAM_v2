@@ -74,3 +74,50 @@
     </div>
 </nav>
 
+
+
+
+<ul class="nav navbar-nav nav-flex-icons ml-auto">
+            
+            <!-- @php $pages = page(); @endphp
+            @foreach($pages as $page)
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('page/'.$page->id.'/view') }}">{{ getDefaultValueKey($page->title) }}</a>
+                </li>
+            @endforeach -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('contact') }}">{{ trans('website.Contact Us') }}</a>
+            </li>
+            @if (Auth::check())
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    @php
+                        $img = isset(auth()->user()->image)? auth()->user()->id.'/'.auth()->user()->image:'user.png';
+                    @endphp
+                    <img src="{{url('/'.env('UPLOAD_PATH').'/users/'.$img)}}" class="rounded-circle z-depth-0" alt="avatar image" height="35">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="{{ url('/admin/home') }}">{{ trans('website.admin') }}</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            {{ trans('website.logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </div>
+                </li>
+            @endif
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="langDropdown" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">{{ getCurrentLang() }}</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="langDropdown">
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <a class="dropdown-item" rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+                            {{ $properties['native'] }}
+                        </a>
+                    @endforeach
+                </div>
+            </li>
+          </ul>

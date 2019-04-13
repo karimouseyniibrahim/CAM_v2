@@ -6,7 +6,7 @@
     var id = "{{ $item->id }}";
     var _token = "{{ csrf_token() }}";
     $('.dd').nestable({
-        maxDepth:2
+        maxDepth:3
     });
     $('.dd').on('change', function () {
         var $this = $(this);
