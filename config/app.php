@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'CAM Souk Akhras',
+    'name' => 'CAM Souk Ahras',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ar',
 
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +90,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -185,13 +185,6 @@ return [
         Barryvdh\Cors\ServiceProvider::class,
         Themsaid\Langman\LangmanServiceProvider::class,
         Chumper\Zipper\ZipperServiceProvider::class,
-
-
-
-
-
-
-
 
         /*
          * Application Service Providers...

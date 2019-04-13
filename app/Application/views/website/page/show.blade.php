@@ -3,30 +3,11 @@
     {{ trans('page.page') }} {{ trans('home.view') }}
 @endsection
 @section('content')
-    <div class="pull-{{ getDirection() }} col-lg-9">
-        <table class="table table-bordered table-responsive table-striped">
-            <tr>
-                <th>{{ trans("page.title") }}</th>
-                <td>{{ getDefaultValueKey(nl2br($item->title)) }}</td>
-            </tr>
-            <tr>
-                <th>{{ trans("page.body") }}</th>
-                <td>{!! getDefaultValueKey(nl2br($item->body))  !!} </td>
-            </tr>
-            @if(auth()->check() && auth()->user()->group_id == 1)
-                <tr>
-                    <th>{{ trans("page.active") }}</th>
-                    <td>
-                        {{ $item->active == 1 ? trans("page.Yes") : trans("page.No")  }}
-                    </td>
-                </tr>
-            @endif
-        </table>
-        @include("website.page.comment.show")
-        @include("website.page.comment.edit")
-        @if(auth()->check() && auth()->user()->group_id == 1)
-            @include('website.page.buttons.delete' , ['id' => $item->id])
-            @include('website.page.buttons.edit' , ['id' => $item->id])
-        @endif
-    </div>
+    <!-- Section: Page -->
+	<section class="text-center">
+		<!-- Section heading -->
+		<h2 class="h1-responsive font-weight-bold">{{ nl2br($item->title_lang) }}</h2>
+    
+        {!! getDefaultValueKey(nl2br($item->body))  !!}
+    </section>
 @endsection

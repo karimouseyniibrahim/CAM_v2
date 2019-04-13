@@ -30,13 +30,15 @@
 				<!-- Grid row -->
 				<div class="row text-left">
 					<!-- Grid column -->
-						<!--Image-->
-						<div class="col-lg-3 mb-lg-0 mb-3">
+					<!--Image-->
+					<div class="col-lg-3 mb-lg-0 mb-3">
+						<div class="view overlay rounded z-depth-1">
 							<img class="img-fluid" src="{{ url('/'.env('UPLOAD_PATH').'/Local/'.$local->id.'/'.$local->image) }}"  style=" height: 150px;  "  alt="{{ $local->name_lang }}">
 							<a>
 								<div class="mask rgba-white-slight"></div>
 							</a>
 						</div>
+					</div>
 					<!-- Grid column -->
 					<!-- Grid column -->
 					<div class="col-lg-9">

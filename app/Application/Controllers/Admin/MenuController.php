@@ -28,6 +28,7 @@ class MenuController extends AbstractController
 
     public function show($id = null){
         $items = $this->menuInterface->getMenuById($id);
+        dd($items);
         return $this->createOrEdit('admin.menu.edit' , $id  , ['items' => $items]);
     }
 
@@ -62,7 +63,7 @@ class MenuController extends AbstractController
     }
 
     public function updateOneMenuItem(\Illuminate\Http\Request $request){
-        return $this->menuInterface->updateOneMenuItem($request);
+        return $this->menuInterface->updateOneMenuItem($request); 
     }
 
     public function pluck(\Illuminate\Http\Request $request){

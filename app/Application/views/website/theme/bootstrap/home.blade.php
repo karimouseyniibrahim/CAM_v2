@@ -36,9 +36,18 @@
 	<section class="text-center">
 		<!-- Carousel Wrapper -->
 		<div id="news-caroussel" class="carousel slide carousel-multi-item" data-ride="carousel">
-			<!-- Controls -->
-		
-			<!-- Controls -->
+			<!--Controls-->
+      <a class="carousel-control-prev left carousel-control" href="#news-caroussel" role="button"
+        data-slide="prev">
+        <span class="icon-prev" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next right carousel-control" href="#news-caroussel" role="button"
+        data-slide="next">
+        <span class="icon-next" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      <!--Controls-->
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
 				@foreach($news as $i => $v)

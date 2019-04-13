@@ -42,6 +42,7 @@ class MenuEloquent extends AbstractEloquent implements MenuInterface{
 
     public function updateMenuItems($request){
         $positions = json_decode($request->data);
+        // dd($positions);
         if(count($positions) > 0){
             foreach($positions as $parentKey => $position){
                 if(is_object($position)){
@@ -49,10 +50,21 @@ class MenuEloquent extends AbstractEloquent implements MenuInterface{
                 }
                 if(array_key_exists('children' , $position)){
                     $id = $position->id;
+                    // $this->updateMenuItems2($position->children, $id);
                     foreach($position->children as $key => $child){
-                        $this->updateItems($child->id , $id , $key);
+                        $this->updateChild($child, $id, $key);
+                        // $this->updateItems($child->id , $id , $key);
                     }
                 }
+            }
+        }
+    }
+    public function updateChild($child, $id , $parentKey){
+        $this->updateItems($child->id , $id , $parentKey);
+        if(array_key_exists('children' , $child)){
+            $id = $child->id;
+            foreach($child->children as $key => $ch){
+                $this->updateChild($ch, $id, $key);
             }
         }
     }

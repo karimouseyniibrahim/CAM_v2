@@ -27,7 +27,7 @@
 			<!-- Post title -->
 			<h4 class="font-weight-bold mb-3"><strong>{{ $item->libelle_lang }}</strong></h4>
 			<!-- Post data -->
-			<p>{{ trans('formation.from') }} : {{ $item->debut_formation }} - {{ $item->fin_formation }}</p>
+			<p>{{ trans('formation.from') }} : {{ $item->debut_formation }} {{ trans('formation.to') }} {{ $item->fin_formation }}</p>
 			<!-- Excerpt -->
 			<p class="dark-grey-text">{!! $item->description_lang !!}</p>
 			<!-- Read more button -->

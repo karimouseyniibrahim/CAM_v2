@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+	<!-- Section: Our Trainings -->
+	<section class="text-center">
+		<!-- Section heading -->
+		<h2 class="h1-responsive font-weight-bold">{{ trans('website.formation') }}</h2>
 	
 		@if (count($items) > 0) 
 			<!--Card : Dynamic content wrapper-->
@@ -30,7 +34,7 @@
 			<div class="row pull-{{ getDirection() }} text-center text-md-left">
 				@foreach ($items as $d) 
 					<!-- Grid column -->
-					<div class="col-md-6 mb-2 clearfix d-none d-md-block">
+					<div class="col-md-4 mb-2 clearfix d-none d-md-block">
 						<!-- Card -->
 						<div class="card card-cascade narrower card-ecommerce">
 						<!-- Card image -->
@@ -43,13 +47,15 @@
 						<!-- Card image -->
 						<!-- Card content -->
 						<div class="card-body card-body-cascade text-center">
-							<!-- Category & Title -->
-							<a href="" class="text-muted">
-							<h5>{{ $d->libelle_lang }}</h5>
-							</a>
+							<!-- Title -->
+							<h5 class="card-title">
+                <strong>
+                  <a href="{{ url('formation/'.$d->id.'/view') }}">{{ $d->libelle_lang }}</a>
+                </strong>
+              </h5>
 							<!-- Card footer -->
 							<div class="card-footer px-1">
-							<span class="float-left">{{ $d->price }} {{ trans('formation.price_unit') }}</span>
+							<span class="float-left"><strong>{{ $d->price }} {{ trans('formation.price_unit') }}</strong></span>
 							<span class="float-right">
 								<a class="" href="{{ url('formation/'.$d->id.'/view') }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick Look">
 									<i class="fas fa-eye ml-3"></i>
@@ -79,6 +85,6 @@
 			</div>
 			<!-- Card -->
 		@endif
-	
-	@include(layoutPaginate() , ["items" => $items])
+		@include(layoutPaginate() , ["items" => $items])
+	</section>
 @endsection
