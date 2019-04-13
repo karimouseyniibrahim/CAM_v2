@@ -12,6 +12,7 @@
         var $this = $(this);
         var serializedData = window.JSON.stringify($($this).nestable('serialize'));
         $this.parents('div.body').find('textarea').val(serializedData);
+        console.log(serializedData);
         $.post(url , {id:id,_token:_token,data:serializedData} , function(result){
             showNotification('<strong>Saving</strong> You have been update Items position!');
         });
@@ -54,6 +55,7 @@
     function UpdateItem(){
         $(this).preventDefault;
         var data = $('.saveMenus').serialize();
+        console.log(data);
         $.post("{{ concatenateLangToUrl('admin/updateOneMenuItem/') }}/",data, function(result){
             showNotification('<strong>Saving</strong> You have been update this item!');
             $('#defaultModal').modal('hide');

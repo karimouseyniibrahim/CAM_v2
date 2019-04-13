@@ -24,8 +24,28 @@
     {{ Html::Style('website/css/css/mdb.min.css') }}
     {{ Html::Style('website/css/themes/all-themes.min.css') }}
     <style>
-        .navbar {
+        /* .navbar {
             top: 150px;
+        } */
+        .dropdown:hover .dropdown-menu {display: block;}
+        .top-container {
+            background-color: #f1f1f1;
+            padding: 30px;
+            text-align: center;
+        }
+        .header {
+            /* padding: 10px 16px; */
+        }
+        .navbar {
+            padding: 16px;
+        }
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        .sticky + .navbar {
+            padding-top: 102px;
         }
     </style>
     @yield('style')
@@ -62,6 +82,22 @@
     {{ Html::script('website/css/js/request.js') }}
     {{ Html::script('js/sweetalert.min.js') }}
     @include('sweet::alert')
+    <script>
+        window.onscroll = function() {myFunction()};
+
+        var header = document.getElementById("header");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add("fixed-top");
+                header.classList.remove("container");
+            } else {
+                header.classList.remove("fixed-top");
+                header.classList.add("container");
+            }
+        }
+    </script>
     @yield('script')
     @stack('js')
 

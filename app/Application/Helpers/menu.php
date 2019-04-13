@@ -75,11 +75,14 @@ function website_left_menu($name = 'website left')
 function getMenu($name)
 {
     $array = [];
+    // dd(get($name));
     foreach (get($name) as $mainKey => $main) {
         foreach ($main as $m) {
             if ($mainKey == 0) {
+                // dd($main);
                 $array[$m->id] = ['item' => menuArray($m)];
             } else {
+                // dd($main);
                 if (array_key_exists($m->parent_id, $array)) {
                     if (array_key_exists('sub', $array[$m->parent_id])) {
                         $array[$m->parent_id]['sub'] = array_merge($array[$m->parent_id]['sub'], [menuArray($m)]);

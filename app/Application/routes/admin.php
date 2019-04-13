@@ -87,7 +87,7 @@ Route::get('setting/{id}/delete', 'SettingController@destroy');
 Route::get('setting/{id}/view', 'SettingController@getById');
 Route::get('setting/pluck', 'SettingController@pluck');
 #### menu control
-Route::get('menu', 'MenuController@index');
+Route::get('menu', 'MenuController@index'); 
 Route::get('menu/item/{id?}', 'MenuController@show');
 Route::post('menu/item', 'MenuController@store');
 Route::post('menu/item/{id}', 'MenuController@update');
