@@ -62,7 +62,7 @@
     <div id="app">
         @include(layoutMenu('website'))
         <!--Main layout-->
-        <main class="pt-2" style="margin-top: 150px">
+        <main >
             @include(layoutMain('website'))
             @include(layoutContent('website'))
         </main>

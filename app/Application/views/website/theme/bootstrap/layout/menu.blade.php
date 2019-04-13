@@ -2,7 +2,7 @@
   <h1>Scroll Down</h1>
   <p>Scroll down to see the sticky effect.</p>
 </div>
-<header id="header" class="container header mb-5">
+<header id="header" class="container header">
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark  theme-light-blue">
     
