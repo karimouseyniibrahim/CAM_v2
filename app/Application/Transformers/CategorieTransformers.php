@@ -24,5 +24,12 @@ class CategorieTransformers extends AbstractTransformer
 
         ];
     }
+    public function transformModelFr(Model $modelOrCollection)
+    {
+        return [
+           "id" => $modelOrCollection->id,
+			"title" => $modelOrCollection->title
 
+        ];
+    }
 }

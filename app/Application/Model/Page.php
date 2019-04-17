@@ -9,7 +9,7 @@ class Page extends Model
     public $table = "page";
 
     protected $fillable = [
-        'title', 'body', 'active'
+        'title', 'body', 'active','image'
     ];
 
     public function getTitleLangAttribute()
@@ -21,7 +21,10 @@ class Page extends Model
     {
         return is_json($this->title) && is_object(json_decode($this->title)) ? json_decode($this->title)->en : $this->title;
     }
-
+    public function getTitleFrAttribute()
+    {
+        return is_json($this->title) && is_object(json_decode($this->title)) ? json_decode($this->title)->fr : $this->title;
+    }
     public function getTitleArAttribute()
     {
         return is_json($this->title) && is_object(json_decode($this->title)) ? json_decode($this->title)->ar : $this->title;
@@ -40,5 +43,9 @@ class Page extends Model
     public function getBodyArAttribute()
     {
         return is_json($this->body) && is_object(json_decode($this->body)) ? json_decode($this->body)->ar : $this->body;
+    }
+    public function getBodyFrAttribute()
+    {
+        return is_json($this->body) && is_object(json_decode($this->body)) ? json_decode($this->body)->fr : $this->body;
     }
 }

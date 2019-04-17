@@ -32,5 +32,17 @@ class ArtisanTransformers extends AbstractTransformer
 
         ];
     }
+    public function transformModelFr(Model $modelOrCollection)
+    {
+        return [
+           "id" => $modelOrCollection->id,
+			"numero_artisan" => $modelOrCollection->numero_artisan,
+			"name" => $modelOrCollection->{lang("name" , "fr")},
+			"email" => $modelOrCollection->email,
+			"telephone" => $modelOrCollection->telephone,
+			"address" => $modelOrCollection->address,
+
+        ];
+    }
 
 }

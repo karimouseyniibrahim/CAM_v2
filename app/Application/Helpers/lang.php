@@ -59,6 +59,7 @@ function extractTextFiled ($item = null , $lang, $name,  $class = '', $value, $t
       $title  = $transeFile != null ? adminTrans($transeFile , $name)  : $name;
       $out = '<ul class="nav nav-tabs tab-nav-right" role="tablist">';
       $i = 0;
+      
       foreach ($lang as $l)
       {
             $active = $i == 0 ? 'active' : '';
@@ -74,8 +75,10 @@ function extractTextFiled ($item = null , $lang, $name,  $class = '', $value, $t
       }
       $i = 0;
       $out .= '</ul><div class="tab-content">';
+      
       foreach($lang as $key => $ln)
       {
+            
           $value = $item != null && $item->{$name.'_'.$key} ? $item->{$name.'_'.$key}  : '';
             $active = $i == 0 ? 'active' : '';
             $out .= '<div role="tabpanel" class="tab-pane fade '

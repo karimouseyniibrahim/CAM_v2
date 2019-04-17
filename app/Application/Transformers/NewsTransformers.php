@@ -28,5 +28,14 @@ class NewsTransformers extends AbstractTransformer
 
         ];
     }
+    public function transformModelFr(Model $modelOrCollection)
+    {
+        return [
+           "id" => $modelOrCollection->id,
+			"title" => $modelOrCollection->{lang("title" , "fr")},
+			"description" => $modelOrCollection->{lang("description" , "fr")},
+			"image" => $modelOrCollection->image,
 
+        ];
+    }
 }

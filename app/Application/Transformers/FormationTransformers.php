@@ -26,5 +26,13 @@ class FormationTransformers extends AbstractTransformer
 
         ];
     }
+    public function transformModelFr(Model $modelOrCollection)
+    {
+        return [
+           "id" => $modelOrCollection->id,
+			"libelle" => $modelOrCollection->{lang("libelle" , "fr")},
+			"description" => $modelOrCollection->{lang("description" , "fr")},
 
+        ];
+    }
 }

@@ -36,5 +36,18 @@ class InscriptionTransformers extends AbstractTransformer
 
         ];
     }
+	public function transformModelFr(Model $modelOrCollection)
+    {
+        return [
+           "id" => $modelOrCollection->id,
+			"numero_artisan" => $modelOrCollection->numero_artisan,
+			"name" => $modelOrCollection->name,
+			"email" => $modelOrCollection->email,
+			"adresse" => $modelOrCollection->adresse,
+			"telephone" => $modelOrCollection->telephone,
+			"status" => $modelOrCollection->status,
+			"formation_id" => $modelOrCollection->formation_id,
 
+        ];
+    }
 }

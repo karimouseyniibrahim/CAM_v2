@@ -23,6 +23,9 @@ class Formation extends Model
 	public function getLibelleArAttribute(){
 		return is_json($this->libelle) && is_object(json_decode($this->libelle)) ?  json_decode($this->libelle)->ar  : $this->libelle;
 	}
+	public function getLibelleFrAttribute(){
+		return is_json($this->libelle) && is_object(json_decode($this->libelle)) ?  json_decode($this->libelle)->fr  : $this->libelle;
+	}
 	public function getDescriptionLangAttribute(){
 		return is_json($this->description) && is_object(json_decode($this->description)) ?  json_decode($this->description)->{getCurrentLang()}  : $this->description;
 	}
@@ -31,6 +34,9 @@ class Formation extends Model
 	}
 	public function getDescriptionArAttribute(){
 		return is_json($this->description) && is_object(json_decode($this->description)) ?  json_decode($this->description)->ar  : $this->description;
+	}
+	public function getDescriptionFrAttribute(){
+		return is_json($this->description) && is_object(json_decode($this->description)) ?  json_decode($this->description)->fr  : $this->description;
 	}
 	public function inscriptions(){
 		return $this->hasMany('App\Application\Model\Inscription');

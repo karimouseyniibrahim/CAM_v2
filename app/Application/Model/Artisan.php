@@ -23,5 +23,7 @@ class Artisan extends Model
 	public function getNameArAttribute(){
 		return is_json($this->name) && is_object(json_decode($this->name)) ?  json_decode($this->name)->ar  : $this->name;
 	}
-
+	public function getNameFrAttribute(){
+		return is_json($this->name) && is_object(json_decode($this->name)) ?  json_decode($this->name)->fr  : $this->name;
+	}
 }

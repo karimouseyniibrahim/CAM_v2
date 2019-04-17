@@ -55,12 +55,12 @@ class PageController extends AbstractController
     public function getById($id)
     {
         $fields = $this->model->findOrFail($id);
-        $url=setting("formations");
         $imag=[];
-        if($url!=null)
-            $imag=["imag"=>url('/'.env('UPLOAD_PATH').'/'. $url)];
+        
+        if($fields->image!=null)
+            $imag=["imag"=>url('/'.env('UPLOAD_PATH').'/page/'.$fields->id.'/'. $fields->image)];
             
-        return $this->createOrEdit('website.page.show', $id, ['fields' => $fields]);
+        return view('website.page.show', compact('fields','imag'));
     }
 
     public function destroy($id)

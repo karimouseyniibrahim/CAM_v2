@@ -23,6 +23,9 @@ class Local extends Model
 	public function getNameArAttribute(){
 		return is_json($this->name) && is_object(json_decode($this->name)) ?  json_decode($this->name)->ar  : $this->name;
 	}
+	public function getNameFrAttribute(){
+		return is_json($this->name) && is_object(json_decode($this->name)) ?  json_decode($this->name)->fr  : $this->name;
+	}
 	public function getDescriptionLangAttribute(){
 		return is_json($this->description) && is_object(json_decode($this->description)) ?  json_decode($this->description)->{getCurrentLang()}  : $this->description;
 	}
@@ -31,6 +34,9 @@ class Local extends Model
 	}
 	public function getDescriptionArAttribute(){
 		return is_json($this->description) && is_object(json_decode($this->description)) ?  json_decode($this->description)->ar  : $this->description;
+	}
+	public function getDescriptionFrAttribute(){
+		return is_json($this->description) && is_object(json_decode($this->description)) ?  json_decode($this->description)->fr  : $this->description;
 	}
 
 }

@@ -28,5 +28,15 @@ class PageTransformers extends AbstractTransformer
 
         ];
     }
+    public function transformModelFr(Model $modelOrCollection)
+    {
+        return [
+           "id" => $modelOrCollection->id,
+            "title" => $modelOrCollection->title_fr ,
+            "body" => $modelOrCollection->body_fr,
+			"active" => (bool) $modelOrCollection->active
+
+        ];
+    }
 
 }

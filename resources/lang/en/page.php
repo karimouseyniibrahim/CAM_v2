@@ -9,4 +9,6 @@
 		'edit'=>'edit',
 		'show'=>'show',
 		'delete'=>'delete',
+		'image-not-delete'=>"Image not delete",
+		'image-delete'=>"Image detele success",
 	];

@@ -54,6 +54,19 @@ abstract class AbstractTransformer
 
         return $static->transformModelAr($modelOrCollection);
     }
+    static function transformFr($modelOrCollection, $options = [])
+    {
+        $static = new static($options);
+        if ($modelOrCollection instanceof Collection) {
+            return $modelOrCollection->map([$static, 'transformModelFr'])->toArray();
+        }
+
+        if ($modelOrCollection instanceof LengthAwarePaginator) {
+            return $modelOrCollection->map([$static, 'transformModelFr'])->toArray();
+        }
+
+        return $static->transformModelFr($modelOrCollection);
+    }
     /**
      * Check if the model instance is loaded from the provided pivot table.
      *
@@ -87,6 +100,9 @@ abstract class AbstractTransformer
     {
     }
     protected function transformModelAr(Model $modelOrCollection)
+    {
+    }
+    protected function transformModelFr(Model $modelOrCollection)
     {
     }
 }

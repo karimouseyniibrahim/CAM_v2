@@ -125,6 +125,7 @@ Route::post('page/item/{id}', 'PageController@update');
 Route::get('page/{id}/delete', 'PageController@destroy');
 Route::get('page/{id}/view', 'PageController@getById');
 Route::get('page/pluck', 'PageController@pluck');
+Route::get('page/image/{id}' , 'PageController@filedestroy');
 #### page comment
 Route::post('page/add/comment/{id}', 'PageCommentController@addComment');
 Route::post('page/update/comment/{id}', 'PageCommentController@updateComment');

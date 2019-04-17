@@ -23,6 +23,9 @@ class News extends Model
 	public function getTitleArAttribute(){
 		return is_json($this->title) && is_object(json_decode($this->title)) ?  json_decode($this->title)->ar  : $this->title;
 	}
+	public function getTitleFrAttribute(){
+		return is_json($this->title) && is_object(json_decode($this->title)) ?  json_decode($this->title)->fr  : $this->title;
+	}
 	public function getDescriptionLangAttribute(){
 		return is_json($this->description) && is_object(json_decode($this->description)) ?  json_decode($this->description)->{getCurrentLang()}  : $this->description;
 	}
@@ -32,5 +35,7 @@ class News extends Model
 	public function getDescriptionArAttribute(){
 		return is_json($this->description) && is_object(json_decode($this->description)) ?  json_decode($this->description)->ar  : $this->description;
 	}
-
+	public function getDescriptionFrAttribute(){
+		return is_json($this->description) && is_object(json_decode($this->description)) ?  json_decode($this->description)->fr  : $this->description;
+	}
 }

@@ -30,5 +30,15 @@ class RequestTransformers extends AbstractTransformer
 
         ];
     }
+    public function transformModelFr(Model $modelOrCollection)
+    {
+        return [
+           "id" => $modelOrCollection->id,
+			"artisan_id" => $modelOrCollection->artisan_id,
+			"section_id" => $modelOrCollection->section_id,
+			"local_id" => $modelOrCollection->local_id,
+			"status" => $modelOrCollection->status,
 
+        ];
+    }
 }

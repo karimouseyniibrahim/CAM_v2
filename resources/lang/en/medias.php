@@ -23,5 +23,7 @@ return [
     "download"=> 'Download',
     "element"=> 'N° ',
     "empty-nomenclature"=> 'No Nomenclature Avalaible ',
+    "file-not-delete"=>"File is not  delete",
+    "file-delete"=>"File is delete",
     
 ];

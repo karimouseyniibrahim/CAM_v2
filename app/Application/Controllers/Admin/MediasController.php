@@ -112,8 +112,7 @@ class MediasController extends AbstractController
 
     public function filedestroy($id){
         
-        $item=FilesMedia::find($id);
-        
+        $item=FilesMedia::find($id);        
         $infos=trans("medias.file-not-delete");
         if($item!=null){
             $image_path = public_path().$item->url;
@@ -122,8 +121,7 @@ class MediasController extends AbstractController
             }
             $item->delete();
             $infos=trans("medias.file-delete");            
-        }
-        
+        }        
         return $infos;
     }
 

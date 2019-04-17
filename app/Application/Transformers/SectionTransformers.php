@@ -28,5 +28,14 @@ class SectionTransformers extends AbstractTransformer
 
         ];
     }
+    public function transformModelFr(Model $modelOrCollection)
+    {
+        return [
+           "id" => $modelOrCollection->id,
+			"name" => $modelOrCollection->{lang("name" , "fr")},
+			"description" => $modelOrCollection->{lang("description" , "fr")},
+			"image" => $modelOrCollection->image,
 
+        ];
+    }
 }

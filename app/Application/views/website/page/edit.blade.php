@@ -10,13 +10,20 @@
         <form action="{{ concatenateLangToUrl('page/item') }}{{ isset($item) ? '/'.$item->id : '' }}" method="post"
               enctype="multipart/form-data">
             {{ csrf_field() }}
-            <div class="form-group {{  $errors->has("title.en")  &&  $errors->has("title.ar")  ? "has-error" : "" }}">
+            <div class="form-group {{  $errors->has("title.en")  &&  $errors->has("title.ar") &&  $errors->has("title.fr")  ? "has-error" : "" }}">
                 <label for="title">{{ trans("page.title")}}</label>
                 {!! extractFiled(isset($item) ? $item : null,  "title" , isset($item->title) ? $item->title : old("title") , "text" , "page") !!}
             @if ($errors->has("title.en"))
                     <div class="alert alert-danger">
                             <span class='help-block'>
                                 <strong>{{ $errors->first("title.en") }}</strong>
+                             </span>
+                    </div>
+                @endif
+                @if ($errors->has("title.fr"))
+                    <div class="alert alert-danger">
+                            <span class='help-block'>
+                                <strong>{{ $errors->first("title.fr") }}</strong>
                              </span>
                     </div>
                 @endif

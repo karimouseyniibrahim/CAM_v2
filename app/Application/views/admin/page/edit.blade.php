@@ -59,8 +59,24 @@
 				<div class="form-line">
 					<label for="">{{ adminTrans('section' , 'image') }}</label>
 					@if(isset($item) && $item->image != '')
-						<img src="{{ url('/'.env('UPLOAD_PATH').'/Section/'.$item->id.'/'.$item->image) }}" style="height:200px" class="img-responsive thumbnail" alt="">
-						<br>
+                    <div class="row">						
+						<div class='list-group gallery'>
+									<div class="file-preview-frame krajee-default  kv-preview-thumb" id="file{{$item->id}}" data-fileindex="0" data-template="image">
+										<div class="kv-file-content">
+											<img class="img-responsive" style="height: 150px;" alt="" src="{{ url('/'.env('UPLOAD_PATH').'/page/'.$item->id.'/'.$item->image) }}" />
+										</div>											
+												<div class="file-actions">
+													<div class="file-footer-buttons">
+														<button type="button" onclick="deleteThisfile(this,{{$item->id}})"  data-link="{{ url('admin/page/image/'.$item->id) }}"  class="btn-danger btn-secondary actionfile" ><i class="fa fa-trash"></i></button>
+													</div>
+												</div>
+
+												<div class="clearfix"></div>
+									</div>
+								
+							</div> <!-- list-group / end -->
+						</div> <!-- row / end -->	
+												<br>
 					@endif    
 					{!! csrf_field() !!}
 					<div class="form-group">
@@ -110,5 +126,6 @@
     @include(layoutPath('layout.helpers.tynic'))
 	{{ Html::script('/admin/plugins/momentjs/moment.js') }}
 	@include('admin.shared.script_uploads')
+    @include('admin.shared.actionOnfile')
 @endsection
  
