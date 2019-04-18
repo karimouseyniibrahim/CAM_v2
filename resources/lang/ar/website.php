@@ -45,4 +45,5 @@
 		'news'=>'',
 		'galery'=>'',
 		'medias'=>'',
+		'news' => 'Our News',
 	];

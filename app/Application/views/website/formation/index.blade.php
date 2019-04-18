@@ -9,8 +9,9 @@
 	<section class="text-center">
 		<!-- Section heading -->
 		<h2 class="h1-responsive font-weight-bold">{{ trans('website.formation') }}</h2>
-	
-		@if (count($items) > 0) 
+		<hr class="my-5">
+
+		@if (count($items) > 0)
 			<!--Card : Dynamic content wrapper-->
 			<div class="card mb-4 text-center wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
 				<!--Card content-->
@@ -32,7 +33,7 @@
 			</div>
 			<!-- Grid row-->
 			<div class="row pull-{{ getDirection() }} text-center text-md-left">
-				@foreach ($items as $d) 
+				@foreach ($items as $d)
 					<!-- Grid column -->
 					<div class="col-md-4 mb-2 clearfix d-none d-md-block">
 						<!-- Card -->
@@ -50,14 +51,14 @@
 							<!-- Title -->
 							<h5 class="card-title">
                 <strong>
-                  <a href="{{ url('formation/'.$d->id.'/view') }}">{{ $d->libelle_lang }}</a>
+                  <a href="{{ url($d->url) }}">{{ $d->libelle_lang }}</a>
                 </strong>
               </h5>
 							<!-- Card footer -->
 							<div class="card-footer px-1">
 							<span class="float-left"><strong>{{ $d->price }} {{ trans('formation.price_unit') }}</strong></span>
 							<span class="float-right">
-								<a class="" href="{{ url('formation/'.$d->id.'/view') }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick Look">
+								<a class="" href="{{ url($d->url) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick Look">
 									<i class="fas fa-eye ml-3"></i>
 								</a>
 							</span>
@@ -70,7 +71,7 @@
 				@endforeach
 			</div>
 			<!-- Grid row-->
-			
+
 			@include("website.formation.subscribe", ["formations" => $items->pluck('libelle_lang', 'id'), "selected_id" => null])
 		@else
 			<a href="{{ url('formation') }}" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"></i> {{ trans('website.Back') }}  </a>

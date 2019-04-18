@@ -48,4 +48,5 @@ return [
     'medias' => '',
     'read-more' => 'Read More',
     'show-all' => 'Show All',
+    'news' => 'Nos Actualité',
 ];

@@ -18,6 +18,11 @@ class Formation extends Model
         return str_slug($this->libelle_lang);
     }
 
+    public function getUrlAttribute()
+    {
+        return '/formation/' . str_slug($this->libelle_lang);
+    }
+
     public function getLibelleLangAttribute()
     {
         return is_json($this->libelle) && is_object(json_decode($this->libelle)) ? json_decode($this->libelle)->{getCurrentLang()} : $this->libelle;

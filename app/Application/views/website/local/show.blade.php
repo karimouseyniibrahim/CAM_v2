@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<a href="{{ url('section/'.$item->section_id.'/view') }}" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"></i> {{ trans('website.Back') }}  </a>
+<a href="{{ url($item->url) }}" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"></i> {{ trans('website.Back') }}  </a>
 <section class="text-center my-5">
 		
 	<!-- Grid row -->

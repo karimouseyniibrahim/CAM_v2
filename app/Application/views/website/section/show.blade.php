@@ -63,7 +63,7 @@
 							<div class="col-11 text-truncate pl-0 mb-3">
 								<p href="#!" class="dark-grey-text"> {!! str_limit($local->description_lang,50) !!}</p>
 							</div>
-							<a href="{{ url('local/'.$local->id.'/view') }}"><i class="fas fa-angle-double-right"></i></a>
+							<a href="{{ url($local->url) }}"><i class="fas fa-angle-double-right"></i></a>
 						</div>
 						
 					</div>

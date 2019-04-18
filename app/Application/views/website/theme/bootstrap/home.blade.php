@@ -32,8 +32,9 @@
 	<!--/.Card Director word-->
 
 	<!--Latest News-->
-	<h2 class="h1-responsive font-weight-bold text-center">{{ trans('website.latest-news') }}</h2>
-	<section class="text-center">
+	<section class="text-center mb-3">
+		<h2 class="h1-responsive font-weight-bold text-center">{{ trans('website.latest-news') }}</h2>
+		<hr class="my-3">
 		<!-- Carousel Wrapper -->
 		<div id="news-caroussel" class="carousel slide carousel-multi-item" data-ride="carousel">
 			<!--Controls-->
@@ -89,7 +90,7 @@
 								</p>
 								<p class="font-weight-normal">{{ $new->created_at }}</p>
 
-								<a class="btn btn-indigo btn-md" href="{{ url('news/'.$new->id.'/view') }}">{{ trans('website.read-more') }}</a>
+								<a class="btn btn-indigo btn-md" href="{{ url($new->url) }}">{{ trans('website.read-more') }}</a>
 							</div>
 							<!-- Grid column -->
 						</div>
@@ -106,9 +107,10 @@
 	<!--/.Latest News-->
 
 	<!--Section Sites -->
-	<section class="text-center">
+	<section class="text-center mb-3">
 		<!-- Section heading -->
 		<h2 class="h1-responsive font-weight-bold text-center">{{ trans('website.site') }}</h2>
+		<hr class="my-3">
 		<!-- Section description -->
 		<!-- Grid row -->
 		<div class="row">
@@ -123,7 +125,7 @@
 							{!! str_limit($site->description_lang , 150) !!}
 						</div>
 						<ul class="icon">
-							<a class="btn btn-primary btn-sm btn-squared " href="{{ url('section/'.$site->id.'/view') }}"><i class="fas fa-eye left"></i> {{trans("section.show")}}</a>
+							<a class="btn btn-primary btn-sm btn-squared " href="{{ url($site->url) }}"><i class="fas fa-eye left"></i> {{trans("section.show")}}</a>
 						</ul>
 					</div>
 				</div>
@@ -141,9 +143,10 @@
 	<!--/.Section Sites -->
 
 	<!-- Section Formations -->
-	<section class="team-section">
+	<section class="team-section mb-3">
 		<!-- Section heading -->
 		<h2 class="h1-responsive font-weight-bold text-center">{{ trans('website.formation') }}</h2>
+		<hr class="my-3">
 		<!-- Grid row-->
 		<div class="row text-center text-md-left">
 			@foreach ($formations as $formation) 
@@ -169,7 +172,7 @@
 						<div class="card-footer px-1">
 						<span class="float-left">{{ $formation->price }} {{ trans('formation.price_unit') }}</span>
 						<span class="float-right">
-							<a class="" href="{{ url('formation/'.$formation->id.'/view') }}" data-toggle="tooltip" data-placement="top" title="{{ trans('formation.show') }}" data-original-title="{{ trans('formation.show') }}">
+							<a class="" href="{{ url($formation->url) }}" data-toggle="tooltip" data-placement="top" title="{{ trans('formation.show') }}" data-original-title="{{ trans('formation.show') }}">
 								<i class="fas fa-eye ml-3"></i>
 							</a>
 						</span>
@@ -192,9 +195,10 @@
 	<!--/.Section Formations -->
 
 	<!-- Section Gallery -->
-	<section class="team-section">
+	<section class="team-section mb-3">
 		<!-- Section heading -->
 		<h2 class="h1-responsive font-weight-bold text-center">{{ trans('website.gallery') }}</h2>
+		<hr class="my-3">
 		<!-- Grid row-->
 		<div class="row text-center text-md-left">
 			<!-- Grid column -->

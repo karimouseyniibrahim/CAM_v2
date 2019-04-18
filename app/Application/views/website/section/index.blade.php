@@ -6,9 +6,10 @@
 
 @section('content')
 	<!-- Section: Our Sites -->
-	<section class="text-center">
+	<section>
 		<!-- Section heading -->
-		<h2 class="h1-responsive font-weight-bold">{{ trans('website.site') }}</h2>
+		<h2 class="h1-responsive font-weight-bold text-center">{{ trans('website.site') }}</h2>
+		<hr class="my-5" />
 	
 		@if (count($items) > 0) 
 			<!--Card : Dynamic content wrapper-->
@@ -45,21 +46,22 @@
 						<!--Excerpt-->
 						<div class="card-body pb-0">
 							<h4 class="font-weight-bold my-3">
-								<a href="{{ url('section/'.$d->id.'/view') }}">{{ $d->name_lang }}</a>
+								<a href="{{ url($d->url) }}">{{ $d->name_lang }}</a>
 							</h4>
 							<p class="grey-text">
 								{!! str_limit($d->description_lang, 50) !!}
 							</p>
-							<a href="{{ url('section/'.$d->id.'/view') }}" class="btn btn-info btn-sm"><i class="fas fa-eye left"></i> {{ trans('section.show') }}</a>
+							<a href="{{ url($d->url) }}" class="btn btn-info btn-sm"><i class="fas fa-eye left"></i> {{ trans('section.show') }}</a>
 						</div>
 					</div>
 					<!-- Grid column -->
 					@endforeach
 			</div>
 			<!-- Grid row -->
+			@include(layoutPaginate() , ["items" => $items])
 			@include("website.section.request",  ["sections" => $data, "section_id" => null,"local_id" => null])
 		@else
-			<a href="{{ url('formation') }}" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"></i> {{ trans('website.Back') }}  </a>
+			<a href="{{ url('/') }}" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"></i> {{ trans('website.Back') }}  </a>
 
 			<!-- Card -->
 			<div class="card card-cascade">
@@ -71,7 +73,6 @@
 			</div>
 			<!-- Card -->
 		@endif
-		@include(layoutPaginate() , ["items" => $items])
 	</section>
 @endsection
 

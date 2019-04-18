@@ -63,13 +63,18 @@
 </head>
 <body class="theme-light-blue">
 
-    <div id="app">
+    <div id="top-section">
         @include(layoutMenu('website'))
         <!--Main layout-->
         <main >
             @include(layoutMain('website'))
             @include(layoutContent('website'))
         </main>
+        <div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+            <a href="#top-section" class="btn-floating btn-large red">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
         @include(layoutFooter('website'))
     </div>
 
