@@ -12,6 +12,10 @@ class Page extends Model
         'title', 'body', 'active','image'
     ];
 
+    public function getSlugAttribute() {
+        return str_slug($this->title_lang);
+    }
+
     public function getTitleLangAttribute()
     {
         return is_json($this->title) && is_object(json_decode($this->title)) ? json_decode($this->title)->{getCurrentLang()} : $this->title;

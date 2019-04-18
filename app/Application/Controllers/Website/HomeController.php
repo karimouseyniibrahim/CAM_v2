@@ -24,12 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-       
         return view(layoutHomePage('website'));
         
     }
 
     public function welcome(){
+        //dd(Page::where('title->en', 'About us')->first());
         $director_speech = page(1);
         $news = News::latest()
                     ->limit(5)

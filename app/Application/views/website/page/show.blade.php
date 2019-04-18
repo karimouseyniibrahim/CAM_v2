@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <!-- Section: Page -->
-	<section class="text-center">
+	<section>
 		<!-- Section heading -->
 		<h2 class="h1-responsive font-weight-bold">{{ nl2br($fields->title_lang) }}</h2>
     

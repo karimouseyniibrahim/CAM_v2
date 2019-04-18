@@ -46,6 +46,18 @@ return redirect()->back();
          return $this->createOrEdit('website.local.show' , $id , compact('data','fields'));
      }
 
+     public function getBySlug($slug)
+    {
+        $locals = $this->model->all();
+        $fields = $locals->where('slug', str_slug($slug))->first();
+        if (is_null($fields))
+            return view('errors.404');
+
+        $data=$this->localInterface->getRequestById($fields->id);
+        return $this->createOrEdit('website.local.show' , $fields->id , compact('data','fields'));
+    }
+
+
      public function destroy($id){
          return $this->deleteItem($id , 'local')->with('sucess' , 'Done Delete Local From system');
      }

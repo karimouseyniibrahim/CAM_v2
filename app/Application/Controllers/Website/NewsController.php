@@ -65,6 +65,17 @@ return redirect()->back();
          return $this->createOrEdit('website.news.show' , $id , ['fields' =>  $fields]);
      }
 
+     public function getBySlug($slug)
+    {
+        $news = $this->model->all();
+        $fields = $news->where('slug', str_slug($slug))->first();
+        if (is_null($fields))
+            return view('errors.404');
+
+        return $this->createOrEdit('website.news.show' , $id , ['fields' =>  $fields]);
+    }
+
+
      public function destroy($id){
          return $this->deleteItem($id , 'news')->with('sucess' , 'Done Delete News From system');
      }

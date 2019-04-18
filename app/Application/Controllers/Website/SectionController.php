@@ -59,6 +59,18 @@ return redirect()->back();
          return $this->createOrEdit('website.section.show' , $id , compact('data','locaux','fields'));
      }
 
+    public function getBySlug($slug)
+    {
+        $sections = $this->model->all();
+        $fields = $sections->where('slug', str_slug($slug))->first();
+        if (is_null($fields))
+            return view('errors.404');
+
+        $locaux = Local::where('section_id', $fields->id)->get();
+        $data = $this->localInterface->getRequestById($fields->id);
+    }
+
+
      public function destroy($id){
          return $this->deleteItem($id , 'section')->with('sucess' , 'Done Delete Section From system');
      }

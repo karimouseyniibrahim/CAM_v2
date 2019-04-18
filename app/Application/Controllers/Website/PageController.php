@@ -63,6 +63,21 @@ class PageController extends AbstractController
         return view('website.page.show', compact('fields','imag'));
     }
 
+    public function getBySlug($slug)
+    {
+        $pages = $this->model->where('active', true)->get();
+        $fields = $pages->where('slug', str_slug($slug))->first();
+        if (is_null($fields))
+            return view('errors.404');
+
+        $imag=[];
+        
+        if($fields->image!=null)
+            $imag=["imag"=>url('/'.env('UPLOAD_PATH').'/page/'.$fields->id.'/'. $fields->image)];
+            
+        return view('website.page.show', compact('fields','imag'));
+    }
+
     public function destroy($id)
     {
         return $this->deleteItem($id, 'page')->with('sucess', 'Done Delete Page From system');
