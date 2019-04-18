@@ -27,7 +27,7 @@ class NewsController extends AbstractController
 
      public function store(AddRequestNews $request){
           $item =  $this->storeOrUpdate($request , null , true);
-          if($s!=null)
+          if($request->hasfile('image'))
           {  
               $this->AcMove($item->image,('\\files\\news\\'.$item->id));                               
           }

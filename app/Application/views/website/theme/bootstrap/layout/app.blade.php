@@ -26,6 +26,10 @@
         /* .navbar {
             top: 150px;
         } */
+        body {
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size:20px;
+        } 
         .dropdown:hover .dropdown-menu {display: block;}
         .top-container {
             background-color: #f1f1f1;
