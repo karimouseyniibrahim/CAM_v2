@@ -9,10 +9,7 @@
 @endsection
 
 @section('content')
-<h2 class="h1-responsive font-weight-bold text-center my-5"> {{trans('medias.galery')}}</h2>
-<div class="alert alert-warning" role="alert">
-  {{trans('medias.message-alert')}}
-</div>
+<h2 class="h1-responsive font-weight-bold text-center"> {{trans('medias.galery')}}</h2>
 
 <div class="container mt-40">
             <div class="row mt-30">
