@@ -14,6 +14,10 @@ class Local extends Model
         'name','description','image','price','area','section_id'
    ];
 
+	 public function getSlugAttribute() {
+		return str_slug($this->name_lang);
+}
+
 	public function getNameLangAttribute(){
 		return is_json($this->name) && is_object(json_decode($this->name)) ?  json_decode($this->name)->{getCurrentLang()}  : $this->name;
 	}

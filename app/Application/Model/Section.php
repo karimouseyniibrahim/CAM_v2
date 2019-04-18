@@ -12,7 +12,11 @@ class Section extends Model
 
    protected $fillable = [
         'name','description','image'
-   ];
+	 ];
+	 
+	 public function getSlugAttribute() {
+		return str_slug($this->name_lang);
+}
 
 	public function getNameLangAttribute(){
 		return is_json($this->name) && is_object(json_decode($this->name)) ?  json_decode($this->name)->{getCurrentLang()}  : $this->name;

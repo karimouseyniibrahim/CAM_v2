@@ -41,4 +41,16 @@ class FormationController extends AbstractController
         return $this->createOrEdit('website.formation.show' , $id , ['data' => $items, 'fields' =>  $fields]);
     }
 
+    public function getBySlug($slug)
+    {
+        $formations = $this->model->all();
+        $fields = $formations->where('slug', str_slug($slug))->first();
+        if (is_null($fields))
+            return view('errors.404');
+
+        $items = transformSelect(Formation::pluck('libelle', 'id')->all());
+        return $this->createOrEdit('website.formation.show' , $id , ['data' => $items, 'fields' =>  $fields]);
+    }
+
+
 }
