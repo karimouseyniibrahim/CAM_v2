@@ -11,11 +11,8 @@
       <div class="navbar-header">
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="javascript:void(0);" class="bars" style="display: block;"></a>
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ getSetting('siteTitle') }}
-                 
-                <img class="expanding-hidden" src="{{ url('/'.env('UPLOAD_PATH').'/'.logo()) }}" alt=""/>
-                
+            <a class="navbar-brand" href="{{ url('/') }}">                 
+                <img class="expanding-hidden" src="{{ url('/'.env('UPLOAD_PATH').'/'.logo()) }}" alt=""/>                
             </a>
         </div>
         <!-- Collapse button -->
@@ -28,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <!-- Links -->
             <ul class="navbar-nav mr-auto">
-                {!! website_menu('website') !!}
+                {!! website_menu('website') !!}               
             </ul>
            
           <!-- Links -->

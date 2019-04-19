@@ -141,3 +141,6 @@ function setting($name)
    
     return $l!=null? $l->body_setting:null;
 }
+
+
+

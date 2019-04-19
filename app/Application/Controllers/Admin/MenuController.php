@@ -28,7 +28,6 @@ class MenuController extends AbstractController
 
     public function show($id = null){
         $items = $this->menuInterface->getMenuById($id);
-        dd($items);
         return $this->createOrEdit('admin.menu.edit' , $id  , ['items' => $items]);
     }
 

@@ -18,6 +18,8 @@
                     <input type="text" name="name" id="name" class="form-control" placeholder="{{ trans('menu.name') }}" value="{{ isset($item) ? $item->name : old('name') }}"/>
                 </div>
             </div>
+            
+            
             @if(isset($item))
                 @include('admin.menu.helper.dropSection')
             @endif

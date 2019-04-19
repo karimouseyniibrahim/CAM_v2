@@ -23,14 +23,15 @@
                     @endif
                 @endif
                 @if(array_key_exists('sub' , $admin))
+                
                     <ul class="sub-menu">
                         @foreach($admin['sub']  as $sub)
-                            @if(array_intersect($sub['controller_path']  ,$p))
+                            @if(array_intersect($sub['item']['controller_path']  ,$p))
                                 <li>
-                                    <a href="{{ url($sub['link']) }}" class=" waves-effect waves-block">
-                                        {!! $sub['icon'] != null ? $sub['icon']:  '' !!}
+                                    <a href="{{ url($sub['item']['link']) }}" class=" waves-effect waves-block">
+                                        {!! $sub['item']['icon'] != null ? $sub['item']['icon']:  '' !!}
                                         <span>
-                                     {{ getDefaultValueKey($sub['name']) }}
+                                     {{ getDefaultValueKey($sub['item']['name']) }}
                                 </span>
                                     </a>
                                 </li>
@@ -63,24 +64,24 @@
 
                 <ul class="sub-menu">
                     @foreach($admin['sub']  as $sub)
-                        @if(array_intersect($sub['controller_path'] ,$p))
-                            @if($sub['id'] == 13 ||$sub['id'] == 12 ||$sub['id'] == 11||$sub['id'] == 14||$sub['id'] == 15 )
+                        @if(array_intersect($sub['item']['controller_path'] ,$p))
+                            @if($sub['item']['id'] == 13 ||$sub['item']['id'] == 12 ||$sub['item']['id'] == 11||$sub['item']['id'] == 14||$sub['item']['id'] == 15 )
                                 @if(env('APP_ENV') == 'local' )
                                     <li>
-                                        <a href="{{ url($sub['link']) }}" class=" waves-effect waves-block">
-                                            {!! $sub['icon'] != null ? $sub['icon']:  '' !!}
+                                        <a href="{{ url($sub['item']['link']) }}" class=" waves-effect waves-block">
+                                            {!! $sub['item']['icon'] != null ? $sub['item']['icon']:  '' !!}
                                             <span>
-                                                 {{ getDefaultValueKey($sub['name']) }}
+                                                 {{ getDefaultValueKey($sub['item']['name']) }}
                                             </span>
                                         </a>
                                     </li>
                                 @endif
                             @else
                                 <li>
-                                    <a href="{{ url($sub['link']) }}" class=" waves-effect waves-block">
-                                        {!! $sub['icon'] != null ? $sub['icon']:  '' !!}
+                                    <a href="{{ url($sub['item']['link']) }}" class=" waves-effect waves-block">
+                                        {!! $sub['item']['icon'] != null ? $sub['item']['icon']:  '' !!}
                                         <span>
-                                                 {{ getDefaultValueKey($sub['name']) }}
+                                                 {{ getDefaultValueKey($sub['item']['name']) }}
                                             </span>
                                     </a>
                                 </li>
