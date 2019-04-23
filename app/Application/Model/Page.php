@@ -17,6 +17,11 @@ class Page extends Model
         return str_slug($this->title_lang);
     }
 
+    public function getSlugFrAttribute()
+    {
+        return str_slug($this->title_fr);
+    }
+
     public function getUrlAttribute()
     {
         return '/page/' . str_slug($this->title_lang);
