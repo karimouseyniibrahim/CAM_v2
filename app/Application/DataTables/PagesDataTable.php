@@ -20,7 +20,7 @@ class PagesDataTable extends DataTable
             ->addColumn('edit', 'admin.page.buttons.edit')
             ->addColumn('delete', 'admin.page.buttons.delete')
             ->addColumn('view', 'admin.page.buttons.view')
-            ->addColumn('name', 'admin.page.buttons.langcol')
+            ->addColumn('langcol', 'admin.page.buttons.langcol')
             ->make(true);
     }
 
@@ -81,6 +81,15 @@ class PagesDataTable extends DataTable
                         return JSON.parse(this.title).' . getCurrentLang() . ';
                     }',
             ],
+             [
+                'name' => 'langcol',
+                'data' => 'langcol',
+                'title' => trans('page.url'),
+                'exportable' => false,
+                'printable' => false,
+                'searchable' => false,
+                'orderable' => false,
+          ],
             [
                 'name' => 'view',
                 'data' => 'view',
