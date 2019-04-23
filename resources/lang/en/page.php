@@ -2,6 +2,7 @@
 	return [
 		'page'=>'Page',
 		'title'=>'Page Title',
+        'url' => 'Default Url',
 		'body'=>'Page Body',
 		'active'=>'Active',
 		'No'=>'No',

@@ -253,5 +253,6 @@ function getPageLink($slug)
     if (is_null($fields)) {
         return null;
     }
+//    dd($fields->url);
     return $fields->url;
 }

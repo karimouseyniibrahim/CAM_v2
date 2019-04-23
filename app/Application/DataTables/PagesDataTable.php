@@ -82,6 +82,14 @@ class PagesDataTable extends DataTable
                     }',
             ],
             [
+                'name' => 'url',
+                'data' => 'url',
+                'title' => trans("page.url"),
+                'render' => 'function(){
+                        return this.url_fr;
+                    }',
+            ],
+            [
                 'name' => 'view',
                 'data' => 'view',
                 'title' => trans('curd.view'),

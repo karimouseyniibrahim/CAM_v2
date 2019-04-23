@@ -4,8 +4,8 @@
         $menus['item']['link'] = $link;
     }
 @endphp
-<li class="menu-item nav-item">
-    <a href="{{ $menus['item']['link'] }}" class="nav-link">
+<li class="list-group-item">
+    <a class="nav-link" href="{{ $menus['item']['link'] }}">
         {{ getDefaultValueKey($menus['item']['name']) }}
     </a>
 </li>

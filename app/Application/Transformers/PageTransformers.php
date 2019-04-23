@@ -12,6 +12,7 @@ class PageTransformers extends AbstractTransformer
         return [
             "id" => $modelOrCollection->id,
 			"title" => $modelOrCollection->title_en ,
+            "url" => $modelOrCollection->url_fr ,
 			"body" => $modelOrCollection->body_en,
 			"active" => (bool) $modelOrCollection->active
 
@@ -23,6 +24,7 @@ class PageTransformers extends AbstractTransformer
         return [
            "id" => $modelOrCollection->id,
             "title" => $modelOrCollection->title_ar ,
+            "url" => $modelOrCollection->url_fr ,
             "body" => $modelOrCollection->body_ar,
 			"active" => (bool) $modelOrCollection->active
 
@@ -33,6 +35,7 @@ class PageTransformers extends AbstractTransformer
         return [
            "id" => $modelOrCollection->id,
             "title" => $modelOrCollection->title_fr ,
+            "url" => $modelOrCollection->url_fr ,
             "body" => $modelOrCollection->body_fr,
 			"active" => (bool) $modelOrCollection->active
 

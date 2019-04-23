@@ -12,6 +12,10 @@ class Page extends Model
         'title', 'body', 'active', 'image',
     ];
 
+    protected $appends = [
+        'url_fr'
+    ];
+
     public function getSlugAttribute()
     {
         return str_slug($this->title_lang);
@@ -25,6 +29,11 @@ class Page extends Model
     public function getUrlAttribute()
     {
         return '/page/' . str_slug($this->title_lang);
+    }
+
+    public function getUrlFrAttribute()
+    {
+        return '/page/' . str_slug($this->title_fr);
     }
 
     public function getTitleLangAttribute()

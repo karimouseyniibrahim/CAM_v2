@@ -18,9 +18,9 @@
         <!--Card content-->
         <div class="card-body card-body-cascade text-center wow fadeIn" data-wow-delay="0.2s">
             <!--Title-->
-                <a class="btn btn-primary btn-lg">Primary button</a>             
-                <a class="btn btn-primary btn-lg">Primary button</a>             
-                <a class="btn btn-primary btn-lg">Primary button</a>             
+               {{-- <a class="btn btn-primary btn-lg">Primary button</a>
+                <a class="btn btn-primary btn-lg">Primary button</a> --}}
+            <a class="btn btn-primary btn-lg">{{trans("artisan.inscription")}}</a>
 
         </div>
         @endif 

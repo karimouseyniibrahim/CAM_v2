@@ -24,7 +24,7 @@
                     <h4 class="card-title">{{ trans('website.menu') }}</h4>
                     <ul class="list-group list-group-flush">
                         <ul class="list-group">
-                            {!! website_left_menu() !!}
+                            {!! website_menu("website left", "website.menu.left") !!}
                         </ul>
                     </ul>
                 </div>
@@ -44,6 +44,7 @@
                     </ul>
                 </div>
             </div>
+
             <!--/.Card : Dynamic content wrapper-->   
             </div>
     </div>
