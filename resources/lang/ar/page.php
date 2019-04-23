@@ -2,6 +2,7 @@
 	return [
 		'page'=>'الصفحات',
 		'title'=>'عنوان الصحفة',
+        'url' => 'Url par défaut',
 		'body'=>'محتوي الصفحة',
 		'active'=>'مفعل',
 		'No'=>'لا',

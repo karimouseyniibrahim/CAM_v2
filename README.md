@@ -8,15 +8,11 @@ for give project more work time
 
 **Modules:**
 
-- /ar/events/slug-in-arabe
-- /en/events/slug-in-english
-- /fr/evenements/slug-en-francais
-
 **Pages:**
 
-- /ar/parent-pages-slug-ar/subpage-slug-ar/page-slug-ar
-- /en/parent-pages-slug-en/subpage-slug-en/page-slug-en
-- /fr/parent-pages-slug-fr/subpage-slug-fr/page-slug-fr
+- /ar/page/page-slug-ar
+- /en/page/page-slug-en
+- /fr/page/page-slug-fr
 
 ## Requirements
 
@@ -42,7 +38,7 @@ $ git clone https://github.com/karimouseyniibrahim/CAM_v2.git
 2. Enter the newly created folder
 
    ```
-   cd CAN_v2
+   cd cam-sa-site
   ```
 3. Also you have to modify the .env file with the database configuration
 ```sh

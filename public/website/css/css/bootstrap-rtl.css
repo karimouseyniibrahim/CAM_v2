@@ -3660,7 +3660,13 @@ input[type=submit].btn-block {
 }
 
 .dropdown-menu.show {
-  display: block
+  display: block;
+  left: 0 !important;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  left: 0 !important;
 }
 
 .dropdown-header {
@@ -8355,7 +8361,7 @@ button.bg-dark:hover {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 1020
+    /* z-index: 1020 */
   }
 }
 

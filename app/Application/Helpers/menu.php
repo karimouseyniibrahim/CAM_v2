@@ -37,10 +37,11 @@ function menu($name = 'Main', $main = 'ul', $mClass = '', $sclass = '', $smclass
 //     return $out;
 // }
 
-function website_menu($key, $view = null) {
+function website_menu($key, $view = null)
+{
 
     if (is_null($view)) {
-        $view = 'website.menu.'.$key;
+        $view = 'website.menu.' . $key;
     }
 
     if (!view()->exists($view)) {
@@ -48,55 +49,57 @@ function website_menu($key, $view = null) {
     }
 
     $out = '';
-    $lang=['lang'=>getCurrentLang()];
+    $lang = ['lang' => getCurrentLang()];
     foreach (getMenu($key) as $menus) {
-        if($menus['size']>3){
-            $out.=getmultilevelMenu($menus);            
-        }else{
-            $out .= view($view, compact('menus'));
-        }
+        // if($menus['size']>3){
+        //     $out.=getmultilevelMenu($menus);
+        // }else{
+        $out .= view($view, compact('menus'));
+        // }
     }
 
     return $out;
 }
-function getmultilevelMenu($menu){
-    $out='<li class="nav-item dropdown multi-level-dropdown">
-    <a href="'.$menu['item']['link'].'" id="menu" data-toggle="dropdown" class="nav-link dropdown-toggle text-uppercase font-weight-bold">'.getDefaultValueKey($menu['item']['name']).'</a>
+function getmultilevelMenu($menu)
+{
+    $out = '<li class="nav-item dropdown multi-level-dropdown">
+    <a href="' . $menu['item']['link'] . '" id="menu" data-toggle="dropdown" class="nav-link dropdown-toggle text-uppercase font-weight-bold">' . getDefaultValueKey($menu['item']['name']) . '</a>
     <ul class="dropdown-menu mega-menu v-2 z-depth-1 light-blue py-5 px-3">
     ';
-    
-    foreach($menu['sub'] as $sub){
-        
-    $out.=count($sub['sub'])!=0?
-            '<li class="dropdown-item dropdown-submenu p-0">
-                <a href="'.$sub['item']['link'].'" data-toggle="dropdown" class="dropdown-toggle text-white w-100">'.getDefaultValueKey($sub['item']['name']).'</a>
-                '.getmultilevelSubMenu($sub).'
-                </li>':
-            '<li class="dropdown-item p-0">
-                <a href="'.$sub['item']['link'].'" class="text-white w-100">'.getDefaultValueKey($sub['item']['name']).'</a>
+
+    foreach ($menu['sub'] as $sub) {
+
+        $out .= count($sub['sub']) != 0 ?
+        '<li class="dropdown-item dropdown-submenu p-0">
+                <a href="' . $sub['item']['link'] . '" data-toggle="dropdown" class="dropdown-toggle text-white w-100">' . getDefaultValueKey($sub['item']['name']) . '</a>
+                ' . getmultilevelSubMenu($sub) . '
+                </li>' :
+        '<li class="dropdown-item p-0">
+                <a href="' . $sub['item']['link'] . '" class="text-white w-100">' . getDefaultValueKey($sub['item']['name']) . '</a>
              </li>'
-             ;
+        ;
     }
-    $out.='</ul></li>';
+    $out .= '</ul></li>';
     return $out;
 }
-function getmultilevelSubMenu($menu){
-    $out='<ul class="dropdown-menu ml-2 rounded-0 light-blue border-0 z-depth-1">
+function getmultilevelSubMenu($menu)
+{
+    $out = '<ul class="dropdown-menu ml-2 rounded-0 light-blue border-0 z-depth-1">
     ';
-    
-    foreach($menu['sub'] as $sub){
-        
-    $out.=count($sub['sub'])!=0?
-            '<li class="dropdown-item dropdown-submenu p-0">
-                <a href="'.$sub['item']['link'].'" data-toggle="dropdown" class="dropdown-toggle text-white w-100">'.getDefaultValueKey($sub['item']['name']).'</a>
-                    '.getmultilevelSubMenu($sub).'
-                </li>':
-            '<li class="dropdown-item p-0">
-                <a href="'.$sub['item']['link'].'" class="text-white w-100">'.getDefaultValueKey($sub['item']['name']).'</a>
+
+    foreach ($menu['sub'] as $sub) {
+
+        $out .= count($sub['sub']) != 0 ?
+        '<li class="dropdown-item dropdown-submenu p-0">
+                <a href="' . $sub['item']['link'] . '" data-toggle="dropdown" class="dropdown-toggle text-white w-100">' . getDefaultValueKey($sub['item']['name']) . '</a>
+                    ' . getmultilevelSubMenu($sub) . '
+                </li>' :
+        '<li class="dropdown-item p-0">
+                <a href="' . $sub['item']['link'] . '" class="text-white w-100">' . getDefaultValueKey($sub['item']['name']) . '</a>
              </li>'
-             ;
+        ;
     }
-    $out.='</ul>';
+    $out .= '</ul>';
     return $out;
 }
 
@@ -107,7 +110,7 @@ function website_left_menu($name = 'website left')
         $out .= '<li class="list-group-item" data-id="' . $menus['item']['id'] . '">';
         foreach ($menus as $key => $menu) {
             if ($key == 'item') {
-                $out .= '<a class="nav-link" href="'. url($menu['link']) .'">'. getDefaultValueKey($menu['name']) .'</a>';
+                $out .= '<a class="nav-link" href="' . url($menu['link']) . '">' . getDefaultValueKey($menu['name']) . '</a>';
             }
             if ($key == 'sub') {
                 //$out .= 'extractSubMenu($menu, $main, $smclass, $ssclass)';
@@ -121,61 +124,60 @@ function website_left_menu($name = 'website left')
 function getMenu($name)
 {
     $array = [];
-    $way=[];
-     
+    $way = [];
+
     foreach (get($name) as $mainKey => $main) {
         foreach ($main as $m) {
 
             if ($mainKey == 0) {
                 // dd($main);
-                $array[$m->id] = ['item' => menuArray($m),'size' =>1,'sub'=>[]];
-                $way[$m->id]=$m->id;
+                $array[$m->id] = ['item' => menuArray($m), 'size' => 1, 'sub' => []];
+                $way[$m->id] = $m->id;
             } else {
-                
-                if (array_key_exists($m->parent_id, $array)) {                 
-                    $way[$m->id]=$way[$m->parent_id].'.sub.'.$m->id;
-                    $array[$m->parent_id]["sub"][''.$m->id.''] = [ 'item'=>menuArray($m),
-                                                                    'size' =>2,
-                                                                    'sub'=>[]];
-                    $array[$m->parent_id]['size'] = 2;                                                
-                } else {                   
-                   $way[$m->id]=$way[$m->parent_id].'.sub.'.$m->id; 
-                                                  
-                   $array[$m->id] = ['item' => menuArray($m),
-                                     'size' =>1,
-                                     'sub'=>[]];
+
+                if (array_key_exists($m->parent_id, $array)) {
+                    $way[$m->id] = $way[$m->parent_id] . '.sub.' . $m->id;
+                    $array[$m->parent_id]["sub"]['' . $m->id . ''] = ['item' => menuArray($m),
+                        'size' => 2,
+                        'sub' => []];
+                    $array[$m->parent_id]['size'] = 2;
+                } else {
+                    $way[$m->id] = $way[$m->parent_id] . '.sub.' . $m->id;
+
+                    $array[$m->id] = ['item' => menuArray($m),
+                        'size' => 1,
+                        'sub' => []];
                 }
             }
         }
     }
-   //dd($array,$way);
-    
-    return getorderInMenu($way,$array);
+    //dd($array,$way);
+
+    return getorderInMenu($way, $array);
 }
 
-function getorderInMenu($keyway,$array){
-    foreach($keyway as $key => $value){
-        $t=explode('.'.$key,$value);
-        if($t[0]!=null && data_get($array, $value)==null&&data_get($array, $key)!=null){ 
+function getorderInMenu($keyway, $array)
+{
+    foreach ($keyway as $key => $value) {
+        $t = explode('.' . $key, $value);
+        if ($t[0] != null && data_get($array, $value) == null && data_get($array, $key) != null) {
             $parentway = Illuminate\Support\Str::replaceLast('.sub', '', $t[0]);
-            data_set($array, $t[0].'.'.$key,data_get($array, $key)    , true);                                   
-            //data_set($array, $t[0].'.'.$key,data_get($array, $key)    , true); 
-            $size=explode('sub',$value);             
-            data_set($array, $value.'.size',count($size), true);
+            data_set($array, $t[0] . '.' . $key, data_get($array, $key), true);
+            //data_set($array, $t[0].'.'.$key,data_get($array, $key)    , true);
+            $size = explode('sub', $value);
+            data_set($array, $value . '.size', count($size), true);
 
-            if((count($size)-1+data_get($array, $key.'.size'))>data_get($array, $size[0].'size')){
-                data_set($array, $size[0].'size',count($size)-1+data_get($array, $key.'.size'), true);
-               // dd($array);
+            if ((count($size) - 1 + data_get($array, $key . '.size')) > data_get($array, $size[0] . 'size')) {
+                data_set($array, $size[0] . 'size', count($size) - 1 + data_get($array, $key . '.size'), true);
+                // dd($array);
             }
-            unset($array[$key]);           
-        } 
-        
+            unset($array[$key]);
+        }
+
     }
-   // dd($array);
+    // dd($array);
     return $array;
 }
-
-
 
 function getMenu2($name)
 {
@@ -200,11 +202,10 @@ function getMenu2($name)
     return $array;
 }
 
-
 function get($name)
 {
     return \App\Application\Model\Menu::where('name', $name)->with(['item' => function ($query) {
-        return $query->orderBy('parent_id' , 'asc')->orderBy('order', 'asc');
+        return $query->orderBy('parent_id', 'asc')->orderBy('order', 'asc');
     }])->first()->item->groupBy('parent_id');
 }
 
@@ -218,7 +219,7 @@ function menuArray($main)
         'id' => $main->id,
         'order' => $main->order,
         'parent_id' => $main->order,
-        'controller_path' => json_decode($main->controller_path)
+        'controller_path' => json_decode($main->controller_path),
     ];
 }
 
@@ -243,4 +244,15 @@ function extractSubMenu($sub, $main = 'ul', $smclass = '', $ssclass = '')
     }
     $out .= '</' . $main . '>';
     return $out;
+}
+
+function getPageLink($slug)
+{
+    $pages = App\Application\Model\Page::where('active', true)->get();
+    $fields = $pages->where('slug_fr', str_slug($slug))->first();
+    if (is_null($fields)) {
+        return null;
+    }
+//    dd($fields->url);
+    return $fields->url;
 }

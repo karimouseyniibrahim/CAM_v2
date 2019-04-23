@@ -10,4 +10,5 @@ return [
     'edit' => '',
     'show' => '',
     'delete' => '',
+    'inscription'=>'تسجيل الحرفيين'
 ];
