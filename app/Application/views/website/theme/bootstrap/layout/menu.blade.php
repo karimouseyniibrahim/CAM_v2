@@ -1,4 +1,4 @@
-<header class="top-container page-header page-header-sitebrand-topbar row">
+<header class="top-container page-header page-header-sitebrand-topbar">
     <div class="col col-header">
         <div class="container">
             <div class="background-top">
@@ -35,11 +35,8 @@
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333"
                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                @php $img = isset(auth()->user()->image)? auth()->user()->id.'/'.auth()->user()->image:'user.png';
-
-
-
-
+                                                @php
+                                                    $img = isset(auth()->user()->image)? auth()->user()->id.'/'.auth()->user()->image:'user.png';
                                                 @endphp
                                                 <img src="{{url('/'.env('UPLOAD_PATH').'/users/'.$img)}}"
                                                      class="rounded-circle z-depth-0" alt="avatar image" height="35">
@@ -81,7 +78,7 @@
                                 {!! website_menu('website social', 'website.menu.social') !!}
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown">
-                                        <span class="flag-icon flag-icon-{{ getCurrentLang() }}"> </span> {{ LaravelLocalization::getSupportedLocales()[getCurrentLang()]['name'] }}
+                                        <span class="flag-icon flag-icon-{{ getCurrentLang() }}"> </span> {{ LaravelLocalization::getSupportedLocales()[getCurrentLang()]['native'] }}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdown09">
                                         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
@@ -102,7 +99,7 @@
 </header>
 <header id="header" class="container header">
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark  theme-light-blue">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark  theme-light-blue navbar-rounded">
 
         <!-- Additional container -->
         <div class="container">
@@ -120,22 +117,17 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <!-- Collapsible content -->
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <!-- Links -->
                 <ul class="navbar-nav mr-auto">
                     {!! website_menu('website') !!}
                 </ul>
-
                 <!-- Links -->
             </div>
             <!-- Collapsible content -->
-
         </div>
         <!-- Additional container -->
-
     </nav>
     <!--/.Navbar-->
-
 </header>

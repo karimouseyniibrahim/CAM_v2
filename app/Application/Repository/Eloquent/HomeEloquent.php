@@ -11,7 +11,7 @@ use App\Application\Model\Setting;
 use App\Application\Model\User;
 use App\Application\Model\UserInfo;
 use App\Application\Model\Formation;
-use App\Application\Model\Section;
+use App\Application\Model\Site;
 use App\Application\Model\Local;
 use App\Application\Model\Inscription;
 use App\Application\Model\Artisan;
@@ -40,7 +40,7 @@ class HomeEloquent extends AbstractEloquent implements HomeInterface{
             'menus' => Menu::count() ,
             'artisan' => Artisan::count() ,
             'formation' => Formation::count() ,
-            'section' => Section::count() ,
+            'site' => Site::count() ,
             'local' => Local::count() ,
             'contact' => Contact::count() ,
             'contactNoRead' => Contact::where("read",null)->count(),

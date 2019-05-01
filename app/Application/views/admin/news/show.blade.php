@@ -13,7 +13,7 @@
 				</tr>
 				<tr>
 				<th width="200">{{ trans("news.description") }}</th>
-					<td>{{ nl2br($item->description_lang) }}</td>
+					<td>{!! nl2br($item->description_lang) !!}</td>
 				</tr>
 				<tr>
 				<th width="200">{{ trans("news.image") }}</th>

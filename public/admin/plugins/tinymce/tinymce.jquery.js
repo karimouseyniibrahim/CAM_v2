@@ -7689,7 +7689,7 @@ define("tinymce/dom/DOMUtils", [
 				('abbr article aside audio canvas ' +
 				'details figcaption figure footer ' +
 				'header hgroup mark menu meter nav ' +
-				'output progress section summary ' +
+				'output progress site summary ' +
 				'time video').replace(/\w+/g, function(name) {
 					doc.createElement(name);
 				});
@@ -11615,7 +11615,7 @@ define("tinymce/html/Schema", [
 		if (type != "html4") {
 			globalAttributes.push.apply(globalAttributes, split("contenteditable contextmenu draggable dropzone " +
 				"hidden spellcheck translate"));
-			blockContent.push.apply(blockContent, split("article aside details dialog figure header footer hgroup section nav"));
+			blockContent.push.apply(blockContent, split("article aside details dialog figure header footer hgroup site nav"));
 			phrasingContent.push.apply(phrasingContent, split("audio canvas command datalist mark meter output picture " +
 				"progress time wbr video ruby bdi keygen"));
 		}
@@ -11711,7 +11711,7 @@ define("tinymce/html/Schema", [
 			add("source", "src srcset type media sizes");
 			add("track", "kind src srclang label default");
 			add("datalist", "", phrasingContent, "option");
-			add("article section nav aside header footer", "", flowContent);
+			add("article site nav aside header footer", "", flowContent);
 			add("hgroup", "", "h1 h2 h3 h4 h5 h6");
 			add("figure", "", flowContent, "figcaption");
 			add("time", "datetime", phrasingContent);
@@ -11879,7 +11879,7 @@ define("tinymce/html/Schema", [
 		nonEmptyElementsMap = createLookupTable('non_empty_elements', 'td th iframe video audio object script', shortEndedElementsMap);
 		moveCaretBeforeOnEnterElementsMap = createLookupTable('move_caret_before_on_enter_elements', 'table', nonEmptyElementsMap);
 		textBlockElementsMap = createLookupTable('text_block_elements', 'h1 h2 h3 h4 h5 h6 p div address pre form ' +
-						'blockquote center dir fieldset header footer article section hgroup aside nav figure');
+						'blockquote center dir fieldset header footer article site hgroup aside nav figure');
 		blockElementsMap = createLookupTable('block_elements', 'hr table tbody thead tfoot ' +
 						'th tr td li ol ul caption dl dt dd noscript menu isindex option ' +
 						'datalist select optgroup figcaption', textBlockElementsMap);
@@ -36952,9 +36952,9 @@ define("tinymce/Editor", [
 			convert_fonts_to_spans: true,
 			indent: 'simple',
 			indent_before: 'p,h1,h2,h3,h4,h5,h6,blockquote,div,title,style,pre,script,td,th,ul,ol,li,dl,dt,dd,area,table,thead,' +
-				'tfoot,tbody,tr,section,article,hgroup,aside,figure,figcaption,option,optgroup,datalist',
+				'tfoot,tbody,tr,site,article,hgroup,aside,figure,figcaption,option,optgroup,datalist',
 			indent_after: 'p,h1,h2,h3,h4,h5,h6,blockquote,div,title,style,pre,script,td,th,ul,ol,li,dl,dt,dd,area,table,thead,' +
-				'tfoot,tbody,tr,section,article,hgroup,aside,figure,figcaption,option,optgroup,datalist',
+				'tfoot,tbody,tr,site,article,hgroup,aside,figure,figcaption,option,optgroup,datalist',
 			validate: true,
 			entity_encoding: 'named',
 			url_converter: self.convertURL,

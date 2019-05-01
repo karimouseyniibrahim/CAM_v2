@@ -1,14 +1,15 @@
 <?php 
 
 return [
-    'name' => 'User Name',
+    'name' => 'Nom d\'Utilisateur',
     'email' => 'Email',
-    'user' => 'User',
-    'password' => 'Password',
-    'group' => 'User Group',
-    'role' => 'User Role',
-    'permission' => 'User Permission',
-    'created_at' => 'Craeted At',
+    'user' => 'Utilisateur',
+    'password' => 'Mot de passe',
+    'image' => 'Image',
+    'group' => 'Groupe',
+    'role' => 'Rôle',
+    'permission' => 'Permission',
+    'created_at' => 'Crée le',
     'Laraflat Commands' => 'Laraflat Commands',
     'Laraflat Model Name' => '',
 ];

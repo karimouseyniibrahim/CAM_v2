@@ -34,7 +34,7 @@ tinymce.PluginManager.add('charmap', function(editor) {
 			['8230', 'three dot leader'],
 			['8242', 'minutes / feet'],
 			['8243', 'seconds / inches'],
-			['167', 'section sign'],
+			['167', 'site sign'],
 			['182', 'paragraph sign'],
 			['223', 'sharp s / ess-zed'],
 		// quotations

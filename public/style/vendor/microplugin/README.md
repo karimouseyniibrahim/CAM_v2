@@ -66,7 +66,7 @@ Plugins aren't extravagant—they are barebones by design. A plugin is simply a 
 MyLibrary.define("math", function(options) {
 	// You can return values which will be available to other plugins
 	// when they load the plugin via "require()". Explained more in
-	// the next section.
+	site
 	return {
 		random : Math.random,
 		sqrt   : Math.sqrt,

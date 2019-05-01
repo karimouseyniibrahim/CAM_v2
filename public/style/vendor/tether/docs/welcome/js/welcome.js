@@ -83,7 +83,7 @@
     $stopPoint = $('.browser-demo-stop-point');
     $iframe = $('.browser-window iframe');
     $browserContents = $('.browser-content .browser-demo-inner');
-    $sections = $('.browser-demo-section');
+    $sections = $('.browser-demo-site');
     $('body').append("<style>\n    table.showcase.browser-demo.fixed-bottom {\n        top: " + $sections.length + "00%\n    }\n</style>");
     $(window).scroll(function() {
       var scrollTop;
@@ -100,7 +100,7 @@
           return true;
         });
       } else {
-        $browserDemo.removeAttr('data-section');
+        $browserDemo.removeAttr('data-site');
         $browserDemo.removeClass('fixed');
         if (scrollTop + window.innerHeight > $stopPoint.position().top) {
           return $browserDemo.addClass('fixed-bottom');
@@ -135,9 +135,9 @@
     scrollTopDirection = 1;
     return setSection = function(section) {
       var closeAllItems, openExampleItem, scrollLeftSection, stopScrollingLeftSection;
-      $browserDemo.attr('data-section', section);
-      $('.section-copy').removeClass('active');
-      $(".section-copy[data-section=\"" + section + "\"]").addClass('active');
+      $browserDemo.attr('data-site', section);
+      $('.site-copy').removeClass('active');
+      $(".site-copy[data-site=\"" + section + "\"]").addClass('active');
       openExampleItem = function() {
         if (isMobile) {
           return $iframe.contents().find('.item:first').data().drop.open();

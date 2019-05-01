@@ -57,7 +57,7 @@
                 @endif
                 <div class="form-group">
 				<div class="form-line">
-					<label for="">{{ adminTrans('section' , 'image') }}</label>
+					<label for="">{{ trans('page.image') }}</label>
 					@if(isset($item) && $item->image != '')
                     <div class="row">						
 						<div class='list-group gallery'>

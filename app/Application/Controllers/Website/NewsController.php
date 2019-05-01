@@ -19,21 +19,21 @@ class NewsController extends AbstractController
     {
         $items = $this->model;
 
-        if (request()->has('from') && request()->get('from') != '') {
-            $items = $items->whereDate('created_at', '>=', request()->get('from'));
-        }
-
-        if (request()->has('to') && request()->get('to') != '') {
-            $items = $items->whereDate('created_at', '<=', request()->get('to'));
-        }
-
-        if (request()->has("title") && request()->get("title") != "") {
-            $items = $items->where("title", "like", "%" . request()->get("title") . "%");
-        }
-
-        if (request()->has("description") && request()->get("description") != "") {
-            $items = $items->where("description", "like", "%" . request()->get("description") . "%");
-        }
+//        if (request()->has('from') && request()->get('from') != '') {
+//            $items = $items->whereDate('created_at', '>=', request()->get('from'));
+//        }
+//
+//        if (request()->has('to') && request()->get('to') != '') {
+//            $items = $items->whereDate('created_at', '<=', request()->get('to'));
+//        }
+//
+//        if (request()->has("title") && request()->get("title") != "") {
+//            $items = $items->where("title", "like", "%" . request()->get("title") . "%");
+//        }
+//
+//        if (request()->has("description") && request()->get("description") != "") {
+//            $items = $items->where("description", "like", "%" . request()->get("description") . "%");
+//        }
 
         $items = $items->paginate(env('PAGINATE'));
         $url = setting("news");

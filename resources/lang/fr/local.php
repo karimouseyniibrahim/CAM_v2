@@ -2,20 +2,24 @@
 
 return [
     'local' => 'Local',
-    'name' => 'Name',
+    'locals' => 'Locaux',
+    'name' => 'Nom',
     'description' => 'Description',
     'image' => 'Image',
-    'price' => 'Price',
-    'area' => 'Area',
-    'section_id' => 'Section ID',
+    'price' => 'Prix',
+    'area' => 'Surface',
+    'site_id' => 'ID Site',
     'price_unit' => 'DZD',
     'area_unit' => 'm²',
-    'edit' => '->',
-    'show' => '',
-    'delete' => '',
-    'local_id'=>'Local ID',
-    'artisan_id'=>'Artisan Number',
-    'request' => 'Request',
-    'accept' => '',
-    'refus' => '',
+    'edit' => 'Editer',
+    'show' => 'Afficher',
+    'delete' => 'Supprimer',
+    'local_id'=>'ID Local',
+    'artisan_id'=>'Numéro Artisan',
+    'request' => 'Demande',
+    'accept' => 'Accepter',
+    'refus' => 'Réfuser',
+    'msg' => [
+        'delete' => 'Effectuée ! Suppression de la formation du système'
+    ]
 ];

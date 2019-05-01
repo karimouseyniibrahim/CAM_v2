@@ -35,7 +35,6 @@ Route::get('user/{id}/delete', 'UserController@destroy');
 Route::get('user/{id}/view', 'UserController@getById');
 Route::get('user/pluck', 'UserController@pluck');
 
-
 #### translation
 Route::get('translation', 'TranslationController@index');
 Route::get('translation/readFile/{file}', 'TranslationController@readFile');
@@ -49,7 +48,6 @@ Route::get('custom-permissions/readFile/{file}', 'Development\CustomPermissionsC
 Route::post('custom-permissions/save', 'Development\CustomPermissionsController@save');
 Route::get('getControllerByType/{type}', 'Development\PermissionController@getControllerByType');
 Route::get('getMethodByController/{controller}/{type}', 'Development\PermissionController@getMethodByController');
-
 
 #### group control
 Route::get('group', 'GroupController@index');
@@ -157,16 +155,15 @@ Route::post('inscription/item/{id}' , 'InscriptionController@update');
 Route::get('inscription/{id}/delete' , 'InscriptionController@destroy');
 Route::get('inscription/{id}/view' , 'InscriptionController@getById');
 Route::get('inscription/pluck', 'InscriptionController@pluck');
-#### section control
-Route::get('section' , 'SectionController@index');
-Route::get('section/item/{id?}' , 'SectionController@show');
-Route::post('section/item' , 'SectionController@store');
-Route::post('section/item/{id}' , 'SectionController@update');
-Route::get('section/{id}/delete' , 'SectionController@destroy');
-Route::get('section/{id}/view' , 'SectionController@getById');
-Route::get('section/pluck', 'SectionController@pluck');
-Route::get('section/locaux{id}', 'SectionController@locaux');
-
+#### site control
+Route::get('site' , 'SiteController@index');
+Route::get('site/item/{id?}' , 'SiteController@show');
+Route::post('site/item' , 'SiteController@store');
+Route::post('site/item/{id}' , 'SiteController@update');
+Route::get('site/{id}/delete' , 'SiteController@destroy');
+Route::get('site/{id}/view' , 'SiteController@getById');
+Route::get('site/pluck', 'SiteController@pluck');
+Route::get('site/locaux{id}', 'SiteController@locaux');
 #### local control
 Route::get('local' , 'LocalController@index');
 Route::get('local/item/{id?}' , 'LocalController@show');
@@ -186,6 +183,7 @@ Route::get('artisan/pluck', 'ArtisanController@pluck');
 #### request control
 Route::get('request' , 'RequestController@index');
 Route::get('request/item/{id?}' , 'RequestController@show');
+Route::get('requestlocal/item/{id?}' , 'RequestController@show');
 Route::post('request/item' , 'RequestController@store');
 Route::post('request/validation' , 'RequestController@validation');
 Route::post('request/item/{id}' , 'RequestController@update');
@@ -200,7 +198,6 @@ Route::post('news/item/{id}' , 'NewsController@update');
 Route::get('news/{id}/delete' , 'NewsController@destroy');
 Route::get('news/{id}/view' , 'NewsController@getById');
 Route::get('news/pluck', 'NewsController@pluck');
-
 
 #### medias control
 Route::get('medias' , 'MediasController@index');

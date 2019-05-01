@@ -18,22 +18,22 @@ class Page extends Model
 
     public function getSlugAttribute()
     {
-        return str_slug($this->title_lang);
+        return str_slug($this->title_lang, '-', getCurrentLang());
     }
 
     public function getSlugFrAttribute()
     {
-        return str_slug($this->title_fr);
+        return str_slug($this->title_fr, '-', 'fr');
     }
 
     public function getUrlAttribute()
     {
-        return '/page/' . str_slug($this->title_lang);
+        return '/page/' . str_slug($this->title_lang, '-', getCurrentLang());
     }
 
     public function getUrlFrAttribute()
     {
-        return '/page/' . str_slug($this->title_fr);
+        return '/page/' . str_slug($this->title_fr, '-', 'fr');
     }
 
     public function getTitleLangAttribute()

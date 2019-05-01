@@ -53,7 +53,7 @@
 
 			<div class="form-group">
 				<div class="form-line">
-					<label for="">{{ adminTrans('section' , 'image') }}</label>
+					<label for="">{{ adminTrans('site' , 'image') }}</label>
 					@if(isset($item) && $item->image != '')
 									<div class="row" >
                     <div class="file-preview-frame krajee-default  kv-preview-thumb"  data-fileindex="0" data-template="image">

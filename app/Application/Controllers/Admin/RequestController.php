@@ -19,72 +19,82 @@ class RequestController extends AbstractController
         parent::__construct($model);
     }
 
-    public function index(RequestsDataTable $dataTable){
-       // dd($dataTable);
+    public function index(RequestsDataTable $dataTable)
+    {
+        // dd($dataTable);
         return $dataTable->render('admin.request.index');
     }
 
-    public function show($id = null){
-        return $this->createOrEdit('admin.request.edit' , $id);
+    public function show($id = null)
+    {
+        return $this->createOrEdit('admin.request.edit', $id);
     }
 
-     public function store(AddRequestRequest $request){
-          $item =  $this->storeOrUpdate($request , null , true);
-          return redirect('admin/request');
-     }
+    public function store(AddRequestRequest $request)
+    {
+        $item = $this->storeOrUpdate($request, null, true);
+        return redirect('admin/request');
+    }
 
-     public function update($id , UpdateRequestRequest $request){
-          $item = $this->storeOrUpdate($request, $id, true);
-return redirect()->back();
+    public function update($id, UpdateRequestRequest $request)
+    {
+        $item = $this->storeOrUpdate($request, $id, true);
+        return redirect()->back();
 
-     }
+    }
 
 
-    public function getById($id){
+    public function getById($id)
+    {
         $fields = $this->model->findOrFail($id);
-        return $this->createOrEdit('admin.request.show' , $id , ['fields' =>  $fields]);
+        return $this->createOrEdit('admin.request.show', $id, ['fields' => $fields]);
     }
 
-    public function destroy($id){
-        return $this->deleteItem($id , 'admin/request')->with('sucess' , 'Done Delete request From system');
+    public function destroy($id)
+    {
+        return $this->deleteItem($id, 'admin/request')->with('sucess', 'Done Delete request From system');
     }
 
-    public function pluck(\Illuminate\Http\Request $request){
-        return $this->deleteItem($request->id , 'admin/request')->with('sucess' , 'Done Delete request From system');
+    public function pluck(\Illuminate\Http\Request $request)
+    {
+        return $this->deleteItem($request->id, 'admin/request')->with('sucess', 'Done Delete request From system');
     }
-    public function validation(\Illuminate\Http\Request $request){
-            
-        $infos="";
-        $ms=".refus";
-        if($request->status==1){
-            $local=$this->model->where(['local_id'=>$request->local_id,"status"=>1])->count();
-            if($local ==0 ){                    
-                
+
+    public function validation(\Illuminate\Http\Request $request)
+    {
+
+        $infos = "";
+        $ms = ".refus";
+        if ($request->status == 1) {
+            $local = $this->model->where(['local_id' => $request->local_id, "status" => 1])->count();
+            if ($local == 0) {
+
                 $item = $this->storeOrUpdate($request, $request->id, true);
-                $infos=trans('request.validate-request');
-                $ms=".accept"; 
-            }else{
-                $infos=trans('request.validate-refuse');                    
+                $infos = trans('request.validate-request');
+                $ms = ".accept";
+            } else {
+                $infos = trans('request.validate-refuse');
             }
-        }else{
+        } else {
             $item = $this->storeOrUpdate($request, $request->id, true);
-            $infos=trans('request.validate-no-request');
-            
+            $infos = trans('request.validate-no-request');
+
         }
-        
-        if($item!=null){  
-            $local=Local::find($request->local_id);
-            $data=["name"=>$local->name_lang,
-            'type'=>'local',
-            'ms-action'=>$ms,
-            'title'=>trans('request.request').' '.trans('local.local'),
-            'img'=>url('/'.env('UPLOAD_PATH').'/Local/'.$local->id.'/'.$local->image),
-            "email"=>$item->email ];
-            Mail::send('website.mail.email',['data'=>$data],function($email) use ($data){
-                $email->to($data['email'],$data['name'])->from(auth()->user()->email)->subject(trans('request.request').' '.trans('local.local'));
+
+        if ($item != null) {
+            $local = Local::find($request->local_id);
+            $data = ["name" => $local->name_lang,
+                'type' => 'local',
+                'ms-action' => $ms,
+                'title' => trans('request.request') . ' ' . trans('local.local'),
+                'img' => url('/' . env('UPLOAD_PATH') . '/Local/' . $local->id . '/' . $local->image),
+                "email" => $item->email];
+            Mail::send('website.mail.email', ['data' => $data], function ($email) use ($data) {
+                $email->to($data['email'], $data['name'])->from(auth()->user()->email)->subject(trans('request.request') . ' ' . trans('local.local'));
             });
 
-        Alert::success($infos, trans('request.validate'));
-    return redirect()->back();    
-}
+            Alert::success($infos, trans('request.validate'));
+            return redirect()->back();
+        }
+    }
 }

@@ -1,10 +1,10 @@
 <?php 
 
 return [
-    'add' => ' Add  ',
-    'delete' => ' Delete ',
-    'edit' => ' Edit ',
-    'view' => ' View ',
+    'add' => ' Ajouter  ',
+    'delete' => ' Supprimer ',
+    'edit' => ' Editer ',
+    'view' => ' Voir ',
     'id' => '  ID ',
-    'control' => 'Control',
+    'control' => 'Gestion',
 ];

@@ -1,9 +1,9 @@
 <?php
 return[
-    'name' => ' Group Name ',
-    'slug' => ' Slug ',
-    'group' => 'Group',
+    'name' => 'Nom',
+    'slug' => 'Slug',
+    'group' => 'Groupe',
     'des' => ' Description ',
-    'per_role' => 'Permission Roles',
+    'per_role' => 'Permission du Rôle',
     'permission' => 'Permission'
 ];

@@ -181,15 +181,15 @@
                     </div>
                 </div>
             @endif
-            @if(array_intersect(['0'=>'App\Application\Controllers\Admin\SectionController'] ,$p))            
+            @if(array_intersect(['0'=>'App\Application\Controllers\Admin\SiteController'] ,$p))
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="card card-block">
                         <div class="icon">
                             <i class="material-icons">view_carousel</i>
                         </div>
                         <div class="content">
-                            <div class="text">{{ trans('section.section') }}</div>
-                            <div class="number count-to" data-from="0" data-to="{{$data['section']}}" data-speed="1000" data-fresh-interval="20">{{ $data['section'] }}</div>
+                            <div class="text">{{ trans('site.site') }}</div>
+                            <div class="number count-to" data-from="0" data-to="{{$data['site']}}" data-speed="1000" data-fresh-interval="20">{{ $data['site'] }}</div>
                         </div>
                     </div>
                 </div>

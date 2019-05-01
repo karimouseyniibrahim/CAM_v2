@@ -7,7 +7,7 @@ return [
     'image' => 'Image',
     'price' => 'Price',
     'area' => 'Area',
-    'section_id' => 'Section ID',
+    'section_id' => 'Site ID',
     'price_unit' => 'DZD',
     'area_unit' => 'm²',
     'edit' => '->',

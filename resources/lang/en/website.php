@@ -39,7 +39,7 @@ return [
     'DummyView' => '',
     'register' => '',
     'inscription' => '',
-    'section' => '',
+    'site' => '',
     'local' => '',
     'artisan' => '',
     'request' => '',

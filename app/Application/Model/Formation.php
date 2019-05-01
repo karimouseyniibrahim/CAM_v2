@@ -15,12 +15,12 @@ class Formation extends Model
 
     public function getSlugAttribute()
     {
-        return str_slug($this->libelle_lang);
+        return str_slug($this->libelle_lang, '-', getCurrentLang());
     }
 
     public function getUrlAttribute()
     {
-        return '/formation/' . str_slug($this->libelle_lang);
+        return '/formation/' . str_slug($this->libelle_lang, '-', getCurrentLang());
     }
 
     public function getLibelleLangAttribute()

@@ -1,11 +1,11 @@
 <?php 
 
 return [
-    'news' => 'news',
-    'title' => '',
-    'description' => '',
-    'image' => '',
-    'edit' => '',
-    'show' => '',
-    'delete' => '',
+    'news' => 'article',
+    'title' => 'Titre',
+    'description' => 'Description',
+    'image' => 'Image',
+    'edit' => 'Editer',
+    'show' => 'Afficher',
+    'delete' => 'Supprimer',
 ];

@@ -14,11 +14,11 @@ Route::get('inscription' , 'InscriptionController@index');
 Route::post('inscription' , 'InscriptionController@store');
 
 #### section control
-Route::get('section' , 'SectionController@index');
-Route::get('section/item/{id?}' , 'SectionController@show');
-#Route::get('section/{id}/view' , 'SectionController@getById');
-Route::get('section/{slug}' , 'SectionController@getBySlug');
-Route::get('section/locaux/{id?}' , 'SectionController@locaux');
+Route::get('site' , 'SiteController@index');
+Route::get('site/item/{id?}' , 'SiteController@show');
+#Route::get('site/{id}/view' , 'SiteController@getById');
+Route::get('site/{slug}' , 'SiteController@getBySlug');
+Route::get('site/locaux/{id?}' , 'SiteController@locaux');
 
 #### local control
 Route::get('local/item/{id?}' , 'LocalController@show');
@@ -41,6 +41,6 @@ Auth::routes();
 Route::get('page/{slug}' , 'PageController@getBySlug');
 
 #### medias control
-Route::get('galery' , 'MediasController@galery');
+Route::get('gallery' , 'MediasController@gallery');
 Route::get('nomenclature' , 'MediasController@nomenclature');
 

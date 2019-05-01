@@ -13,7 +13,7 @@
 				</tr>
 				<tr>
 				<th width="200">{{ trans("local.description") }}</th>
-					<td>{{ nl2br($item->description_lang) }}</td>
+					<td>{!! nl2br($item->description_lang) !!}</td>
 				</tr>
 				<tr>
 				<th width="200">{{ trans("local.image") }}</th>
@@ -30,8 +30,8 @@
 					<td>{{ nl2br($item->area) }}</td>
 				</tr>
 				<tr>
-				<th width="200">{{ trans("local.section_id") }}</th>
-					<td>{{ nl2br($item->section_id) }}</td>
+				<th width="200">{{ trans("local.site_id") }}</th>
+					<td>{{ nl2br($item->site_id) }}</td>
 				</tr>
 		</table>
 

@@ -25,9 +25,6 @@
 		<div class="form-group">
 			<input type="text" name="libelle" class="form-control " placeholder="{{ trans("formation.libelle") }}" value="{{ request()->has("libelle") ? request()->get("libelle") : "" }}">
 		</div>
-		<div class="form-group">
-			<input type="text" name="description" class="form-control " placeholder="{{ trans("formation.description") }}" value="{{ request()->has("description") ? request()->get("description") : "" }}">
-		</div>
 
         <button class="btn btn-success" type="submit" ><i class="fa fa-search"></i></button>
         <a href="{{ url('admin/formation') }}" class="btn btn-danger" ><i class="fa fa-close"></i></a>

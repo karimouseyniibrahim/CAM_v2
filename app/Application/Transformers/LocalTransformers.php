@@ -17,7 +17,6 @@ class LocalTransformers extends AbstractTransformer
 			"price" => $modelOrCollection->price,
 			"area" => $modelOrCollection->area,
 			"section_id" => $modelOrCollection->section_id,
-
         ];
     }
 
@@ -31,7 +30,6 @@ class LocalTransformers extends AbstractTransformer
 			"price" => $modelOrCollection->price,
 			"area" => $modelOrCollection->area,
 			"section_id" => $modelOrCollection->section_id,
-
         ];
     }
     public function transformModelFr(Model $modelOrCollection)
@@ -44,7 +42,6 @@ class LocalTransformers extends AbstractTransformer
 			"price" => $modelOrCollection->price,
 			"area" => $modelOrCollection->area,
 			"section_id" => $modelOrCollection->section_id,
-
         ];
     }
 }

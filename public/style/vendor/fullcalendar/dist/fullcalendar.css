@@ -805,13 +805,13 @@ a.fc-more:hover {
 	display: inline-block;
 }
 
-/* the things within each left/right/center section */
+/* the things within each left/right/center site */
 .fc .fc-toolbar > * > * { /* extra precedence to override button border margins */
 	float: left;
 	margin-left: .75em;
 }
 
-/* the first thing within each left/center/right section */
+/* the first thing within each left/center/right site */
 .fc .fc-toolbar > * > :first-child { /* extra precedence to override button border margins */
 	margin-left: 0;
 }
@@ -943,7 +943,7 @@ a.fc-more:hover {
 }
 
 .fc-agenda-view .fc-day-grid .fc-row {
-	min-height: 3em; /* all-day section will never get shorter than this */
+	min-height: 3em; /* all-day site will never get shorter than this */
 }
 
 .fc-agenda-view .fc-day-grid .fc-row .fc-content-skeleton {

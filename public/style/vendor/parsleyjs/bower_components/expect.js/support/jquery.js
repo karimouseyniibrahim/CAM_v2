@@ -5640,7 +5640,7 @@ function createSafeFragment( document ) {
 }
 
 var nodeNames = "abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|" +
-    "header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",
+    "header|hgroup|mark|meter|nav|output|progress|site|summary|time|video",
   rinlinejQuery = / jQuery\d+="(?:\d+|null)"/g,
   rleadingWhitespace = /^\s+/,
   rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/ig,

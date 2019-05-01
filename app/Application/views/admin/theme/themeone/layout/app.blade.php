@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -121,7 +121,7 @@
         </div>
         <!-- main navigation -->
         <nav style="margin-right: 0px; padding-right: 0px;">
-            <p class="nav-title">NAVIGATION</p>
+            <p class="nav-title">{{ trans('home.MAIN_NAVIGATION') }}</p>
             <ul class="nav">
                 @include(layoutMenu())
             </ul>
@@ -166,7 +166,7 @@
                 <nav class="footer-left">
                     <ul class="nav">
                         <li>
-                            <a href="javascript:;">
+                            <a href="javascript:">
                                 <span>Copyright</span>
                                 &copy; 2017 {{ getSetting('siteTitle')  }}
                             </a>
