@@ -3,9 +3,9 @@
 
 function layoutPath($file, $type = 'admin')
 {
-    return $type == 'admin' 
-            ? "admin.theme." . env('THEME') . "." . $file 
-            : "website.theme." . env('WEBSITE_THEME') . "." . $file;
+    return $type == 'admin'
+        ? "admin.theme." . env('THEME') . "." . $file
+        : "website.theme." . env('WEBSITE_THEME') . "." . $file;
 }
 
 function layoutMessage($type = 'admin')
@@ -15,7 +15,7 @@ function layoutMessage($type = 'admin')
 
 function layoutExtend($type = 'admin', $layout = 'app')
 {
-    return layoutPath("layout.".$layout, $type);
+    return layoutPath("layout." . $layout, $type);
 }
 
 function layoutMenu($type = 'admin')
@@ -40,12 +40,12 @@ function layoutFooter($type = 'admin')
 
 function layoutSideBar($type = 'admin', $layout = 'side-bar')
 {
-    return layoutPath("layout.".$layout, $type);
+    return layoutPath("layout." . $layout, $type);
 }
 
 function layoutContent($type = 'admin', $layout = 'content')
 {
-    return layoutPath("layout.".$layout, $type);
+    return layoutPath("layout." . $layout, $type);
 }
 
 function layoutPushHeader($type = 'admin')
@@ -126,20 +126,25 @@ function permissionArray()
     $psermisions->can(auth()->user());
     return array_keys($psermisions->permission);
 }
+
 function logo()
 {
-    $l =\App\Application\Model\Setting::find(3);
-    
+    $l = \App\Application\Model\Setting::find(3);
+
     return $l->body_setting;
 }
+
 function img_cam()
-{    $l =\App\Application\Model\Setting::find(4);    
+{
+    $l = \App\Application\Model\Setting::find(4);
     return $l->body_setting;
 }
+
 function setting($name)
-{    $l =\App\Application\Model\Setting::where("name",$name)->first();
-   
-    return $l!=null? $l->body_setting:null;
+{
+    $l = \App\Application\Model\Setting::where("name", $name)->first();
+
+    return $l != null ? $l->body_setting : null;
 }
 
 

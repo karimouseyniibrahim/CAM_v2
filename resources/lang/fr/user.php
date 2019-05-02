@@ -5,6 +5,7 @@ return [
     'email' => 'Email',
     'user' => 'Utilisateur',
     'password' => 'Mot de passe',
+    'profile' => 'Profile',
     'image' => 'Image',
     'group' => 'Groupe',
     'role' => 'Rôle',

@@ -15,7 +15,7 @@ return [
     'search' => 'Search',
     'link' => 'Liens Utiles',
     'menu' => 'Menu',
-    'director-word' => 'Director Word',
+    'director-word' => 'Mots du Directeur',
     'latest-news' => 'Dernières Actualités',
     'site' => 'Nos Sites',
     'formation' => 'Nos Formations',
