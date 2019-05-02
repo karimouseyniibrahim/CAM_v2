@@ -42,7 +42,7 @@ class ThemeController extends AbstractController
     }
 
     protected function getSideBarWidget(){
-        return loadWidget(app_path('Application/views/website/theme/bootstrap/layout') , '');
+        return loadWidget(app_path('Application/views/website/sidebar') , '');
     }
 
     public function openFile(Request $request){

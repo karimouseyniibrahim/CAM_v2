@@ -15,9 +15,8 @@ class InscriptionEloquent extends AbstractEloquent implements InscriptionInterfa
     }
 
 
-    public function getFormation($id){
-
-    	$formations=transformSelect(Formation::pluck('libelle','id')->all());
+    public function getFormation($id){ 
+    	$formations=transformSelect(Formation::where('fin_formation', '>', \Carbon\Carbon::today()->format('Y-m-d'))->pluck('libelle','id')->all());
 
         if ($id!=null) {
         	$item=$this->model->find($id);

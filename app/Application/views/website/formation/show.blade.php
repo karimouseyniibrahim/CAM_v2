@@ -29,15 +29,17 @@
 			<!-- Excerpt -->
 			<p class="dark-grey-text text-md-left">{!! $item->description_lang !!}</p>
 			<!-- Read more button -->
+			@if(\Carbon\Carbon::today()->format('Y-m-d')< $item->fin_formation)
 			<a class="btn btn-info btn-rounded btn-md" data-toggle="modal" data-target="#modalSubscription">{{ trans('formation.subscribe') }}</a>
-		  
+		  	@endif
 			</div>
 			<!-- Grid column -->
 		</div>
 		<!-- Grid row -->
-	
-		@include("website.formation.subscribe", ["formations" => $data['data'], "selected_id" => $item->id])
-		@include(layoutMessage('website'))
+		@if(\Carbon\Carbon::today()->format('Y-m-d')< $item->fin_formation)
+			@include("website.formation.subscribe", ["formations" => $data['data'], "selected_id" => $item->id])
+			@include(layoutMessage('website'))
+		@endif
 </section>
 
 <a href="{{ url('formation') }}" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"></i> {{ trans('website.Back') }}  </a>

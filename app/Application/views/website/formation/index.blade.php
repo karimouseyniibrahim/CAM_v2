@@ -86,7 +86,7 @@
             </div>
             <!-- Grid row-->
 
-            @include("website.formation.subscribe", ["formations" => $items->pluck('libelle_lang', 'id'), "selected_id" => null])
+            @include("website.formation.subscribe", ["formations" => $items->where('fin_formation', '>', \Carbon\Carbon::today()->format('Y-m-d'))-> pluck('libelle_lang', 'id'), "selected_id" => null])
         @else
             <a href="{{ url('formation') }}" class="btn btn-danger btn-sm"><i
                         class="fa fa-arrow-left"></i> {{ trans('website.Back') }}  </a>
