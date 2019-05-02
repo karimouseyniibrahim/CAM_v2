@@ -20,8 +20,15 @@
         </div>
         <div class="col-lg-9">
             <a href="{{ url('admin/theme/open-file?file=content&type=website') }}" class="btn btn-danger col-lg-12">
-                <div class="well text-center" style="min-height: 500px">
+                <div class="well text-center" style="min-height: 250px">
                     {{ trans('admin.Content') }}
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-9">
+            <a href="{{ url('admin/theme/open-file?file=main&type=website') }}" class="btn btn-info col-lg-12">
+                <div class="well text-center" style="min-height: 250px">
+                    {{ trans('admin.Main') }}
                 </div>
             </a>
         </div>

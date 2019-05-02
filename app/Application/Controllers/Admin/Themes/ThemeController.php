@@ -74,6 +74,7 @@ class ThemeController extends AbstractController
         return [
             'menu',
             'app',
+            'main',
             'messages',
             'paginate',
             'footer',
