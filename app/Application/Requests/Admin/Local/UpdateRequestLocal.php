@@ -31,7 +31,7 @@ class UpdateRequestLocal extends FormRequest
 			"image" => "image",
 			"price" => "required",
 			"area" => "required",
-			"section_id" => "",
+			"site_id" => "",
 			
         ];
     }

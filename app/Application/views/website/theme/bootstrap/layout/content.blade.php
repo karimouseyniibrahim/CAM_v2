@@ -1,5 +1,5 @@
 <div class="container">
-    <!--Section: Content-->
+    <!--Site: Content-->
     <section class="mt-4">
         <!--Grid row-->
         <div class="row py-3">
@@ -14,5 +14,5 @@
         </div>
         <!--Grid row-->
     </section>
-    <!--Section: Content-->    
+    <!--Site: Content-->
 </div>

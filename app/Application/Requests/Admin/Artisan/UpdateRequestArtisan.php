@@ -31,7 +31,6 @@ class UpdateRequestArtisan extends FormRequest
 			"email" => "nullable|email",
 			"telephone" => "required",
 			"address" => "nullable",
-			
         ];
     }
 }

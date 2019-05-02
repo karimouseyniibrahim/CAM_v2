@@ -26,7 +26,7 @@
 			<input type="text" name="artisan_id" class="form-control " placeholder="{{ trans("request.artisan_id") }}" value="{{ request()->has("artisan_id") ? request()->get("artisan_id") : "" }}">
 		</div>
 		<div class="form-group">
-			<input type="text" name="section_id" class="form-control " placeholder="{{ trans("request.section_id") }}" value="{{ request()->has("section_id") ? request()->get("section_id") : "" }}">
+			<input type="textrequest.site_id" class="form-control " placeholder="{{ trans("request.site_id") }}" value="{{ request()->has("section_id") ? request()->get("section_id") : "" }}">
 		</div>
 		<div class="form-group">
 			<input type="text" name="local_id" class="form-control " placeholder="{{ trans("request.local_id") }}" value="{{ request()->has("local_id") ? request()->get("local_id") : "" }}">

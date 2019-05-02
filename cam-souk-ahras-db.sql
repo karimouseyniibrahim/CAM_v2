@@ -28,13 +28,14 @@ CREATE TABLE IF NOT EXISTS `artisan` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `artisan_numero_artisan_unique` (`numero_artisan`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-ahras-db.artisan : ~0 rows (environ)
+-- Listage des données de la table cam-souk-ahras-db.artisan : ~3 rows (environ)
 DELETE FROM `artisan`;
 /*!40000 ALTER TABLE `artisan` DISABLE KEYS */;
 INSERT INTO `artisan` (`id`, `numero_artisan`, `name`, `email`, `telephone`, `address`, `created_at`, `updated_at`) VALUES
-	(1, 'A001', '{"en":"Issa","ar":"Issa"}', 'ibrahim.karimouseyni@yahoo.com', '0025555955', 'RU04', '2019-03-07 11:29:55', '2019-03-07 11:29:55');
+	(2, '2019/A001', '{"en":"Mahamadou Habibou","fr":"Mahamadou Habibou","ar":"محمد حبيبو"}', 'developer01@cam-souk-ahras.dz', '+213000000000', 'RU Ali Mendjeli 04, Constantine 25000', '2019-05-01 00:56:32', '2019-05-01 00:56:32'),
+	(3, '2019/A002', '{"en":"Ibrahim Karimou","fr":"Ibrahim Karimou","ar":"ابرحم كرمو"}', 'developer02@cam-souk-ahras.dz', '+213000000000', 'RU Ali Mendjeli 04, Constantine 25000', '2019-05-01 00:58:12', '2019-05-01 00:58:12');
 /*!40000 ALTER TABLE `artisan` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-ahras-db. categorie
@@ -75,7 +76,7 @@ INSERT INTO `command` (`id`, `name`, `options`, `command`, `created_at`, `update
 	(2, 'PageComment', 'page', 'laraflat:comment', '2019-03-05 19:54:44', '2019-03-05 19:54:44'),
 	(3, 'Categorie', 'title:string:min-1_max-80_required:false', 'laraflat:admin_model', '2019-03-05 19:54:44', '2019-03-05 19:54:44'),
 	(6, 'Inscription', 'numero_artisan:string:nullable:false,name:string:required:false,email:string:nullable_email:false,adresse:string:nullable:false,telephone:string:nullable:false,status:string:nullable:false,formation_id:integer:required:false', 'laraflat:admin_model', '2019-03-06 15:08:59', '2019-03-06 15:08:59'),
-	(7, 'Section', 'name:string:required:true,description:longText:nullable:true,image:string:image:false', 'laraflat:admin_model', '2019-03-06 20:38:30', '2019-03-06 20:38:30'),
+	(7, 'Site', 'name:string:required:true,description:longText:nullable:true,image:string:image:false', 'laraflat:admin_model', '2019-03-06 20:38:30', '2019-03-06 20:38:30'),
 	(8, 'Local', 'name:string:required:true,description:longText:nullable:true,image:string:image:false,price:double:required:false,area:double:required:false,section_id:integer::false', 'laraflat:admin_model', '2019-03-06 20:53:17', '2019-03-06 20:53:17'),
 	(9, 'Artisan', 'numero_artisan:string:required:false,name:string:required:true,email:string:nullable_email:false,telephone:string:required:false,address:string:nullable:false', 'laraflat:admin_model', '2019-03-06 20:55:29', '2019-03-06 20:55:29'),
 	(10, 'Request', 'artisan_id:integer:required:false,section_id:integer:required:false,local_id:integer:required:false,status:string:nullable:false', 'laraflat:admin_model', '2019-03-06 23:20:03', '2019-03-06 23:20:03'),
@@ -106,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `contacts` (
 DELETE FROM `contacts`;
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
 INSERT INTO `contacts` (`id`, `name`, `email`, `subject`, `phone`, `user_id`, `message`, `read`, `created_at`, `updated_at`) VALUES
-	(1, 'admin', 'developer@gmail.com', NULL, NULL, 1, 'fhgfgfg', NULL, '2019-03-24 20:26:23', '2019-03-24 20:26:23');
+	(1, 'admin', 'developer@gmail.com', NULL, NULL, 1, 'fhgfgfg', 'read', '2019-03-24 20:26:23', '2019-04-23 21:03:43');
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-ahras-db. filesmedias
@@ -171,8 +172,8 @@ CREATE TABLE IF NOT EXISTS `formation` (
 DELETE FROM `formation`;
 /*!40000 ALTER TABLE `formation` DISABLE KEYS */;
 INSERT INTO `formation` (`id`, `libelle`, `description`, `price`, `places`, `debut_formation`, `fin_formation`, `image`, `created_at`, `updated_at`) VALUES
-	(1, '{"en":"Complete Training 01","ar":"Complete Training 01", "fr": null}', '{"en":"<p>Complete Training 01 English<\\/p>","ar":"<p>Complete Training 01 Arabic<\\/p>", "fr": null}', 15000, 25, '2019-03-07', '2019-03-16', '91485_1552606612.jpg', '2019-03-06 15:01:49', '2019-03-14 23:36:53'),
-	(2, '{"en":"Formation 02","ar":"تدريب 002", "fr": null}', '{"en":"<p>Lorsqu\'on acquiert suffisamment d&rsquo;exp&eacute;rience en programmation orient&eacute; objet, on constate que pour un probl&egrave;me donn&eacute;, plusieurs solutions d\'impl&eacute;mentations s\'offrent &agrave; nous. Il est parfois difficile de trouver parmi ces solutions, laquelle offrira un maximum d\'avantages sans apporter d&rsquo;inconv&eacute;nients. Malgr&eacute; la simplicit&eacute; apparente offerte par l\'approche objet, certaines solutions qui semblent efficaces au d&eacute;part se retrouvent d&eacute;su&egrave;tes si une &eacute;volution doit &ecirc;tre apport&eacute;e.<\\/p>","ar":"<p>عندما تحصل على خبرة كافية في البرمجة الموجهة للكائنات ، يمكنك أن ترى أنه بالنسبة لمشكلة معينة ، هناك العديد من حلول التنفيذ المتاحة لنا. من الصعب في بعض الأحيان العثور عليها من بين هذه الحلول ، والتي ستوفر أقصى قدر من الفوائد دون إزعاج. على الرغم من البساطة الواضحة التي يقدمها النهج الموجه للكائنات ، فإن بعض الحلول التي تبدو فعالة في البداية تكون عفا عليها الزمن إذا أريد حدوث تطور.<\\/p>", "fr": null}', 2500, 50, '2019-03-14', '2019-03-17', '94845_1552606715.jpg', '2019-03-12 09:05:31', '2019-03-14 23:38:35');
+	(1, '{"en":"Complete Training 01","fr":"Formation Complète 01","ar":"Complete Training 01"}', '{"en":"<p>Complete Training 01 English<\\/p>","fr":"<p>Formation Compl&egrave;te 01<\\/p>","ar":"<p>Complete Training 01 Arabic<\\/p>"}', 15000, 25, '2019-03-07', '2019-03-16', '91485_1552606612.jpg', '2019-03-06 15:01:49', '2019-05-01 01:13:31'),
+	(2, '{"en":"Formation 02","fr":"Formation Complète 02","ar":"تدريب 002"}', '{"en":"<p>Lorsqu\'on acquiert suffisamment d&rsquo;exp&eacute;rience en programmation orient&eacute; objet, on constate que pour un probl&egrave;me donn&eacute;, plusieurs solutions d\'impl&eacute;mentations s\'offrent &agrave; nous. Il est parfois difficile de trouver parmi ces solutions, laquelle offrira un maximum d\'avantages sans apporter d&rsquo;inconv&eacute;nients. Malgr&eacute; la simplicit&eacute; apparente offerte par l\'approche objet, certaines solutions qui semblent efficaces au d&eacute;part se retrouvent d&eacute;su&egrave;tes si une &eacute;volution doit &ecirc;tre apport&eacute;e.<\\/p>","fr":"<p>Formation Compl&egrave;te 01<\\/p>","ar":"<p>عندما تحصل على خبرة كافية في البرمجة الموجهة للكائنات ، يمكنك أن ترى أنه بالنسبة لمشكلة معينة ، هناك العديد من حلول التنفيذ المتاحة لنا. من الصعب في بعض الأحيان العثور عليها من بين هذه الحلول ، والتي ستوفر أقصى قدر من الفوائد دون إزعاج. على الرغم من البساطة الواضحة التي يقدمها النهج الموجه للكائنات ، فإن بعض الحلول التي تبدو فعالة في البداية تكون عفا عليها الزمن إذا أريد حدوث تطور.<\\/p>"}', 2500, 50, '2019-03-14', '2019-03-17', '94845_1552606715.jpg', '2019-03-12 09:05:31', '2019-05-01 01:14:00');
 /*!40000 ALTER TABLE `formation` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-ahras-db. groups
@@ -191,8 +192,8 @@ DELETE FROM `groups`;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
 INSERT INTO `groups` (`id`, `name`, `slug`, `description`, `created_at`, `updated_at`) VALUES
 	(1, 'Admin', 'admin', 'Access to User , permission , role , groups roles', '2019-03-08 11:47:46', '2019-03-08 11:47:46'),
-	(2, 'User', 'user', 'User group', NULL, '2019-03-26 12:35:06'),
-	(3, 'Developer', 'developer', NULL, '2019-03-24 17:49:01', '2019-03-24 17:49:01');
+	(2, 'Manager', 'manager', 'Gestionnaire du contenu de l\'application', NULL, '2019-05-01 10:48:11'),
+	(3, 'Developer', 'developer', 'Développeur de l\'application, modification nécessitant des connaissances en informatiqute et développement web', '2019-03-24 17:49:01', '2019-05-01 10:47:27');
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-ahras-db. group_role
@@ -227,14 +228,11 @@ CREATE TABLE IF NOT EXISTS `inscription` (
   PRIMARY KEY (`id`),
   KEY `inscription_formation_id_foreign` (`formation_id`),
   CONSTRAINT `inscription_formation_id_foreign` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-ahras-db.inscription : ~2 rows (environ)
+-- Listage des données de la table cam-souk-ahras-db.inscription : ~0 rows (environ)
 DELETE FROM `inscription`;
 /*!40000 ALTER TABLE `inscription` DISABLE KEYS */;
-INSERT INTO `inscription` (`id`, `numero_artisan`, `name`, `email`, `adresse`, `telephone`, `status`, `formation_id`, `created_at`, `updated_at`) VALUES
-	(1, 'KIS001', 'Ibrahim', 'habibou776@gmail.com', 'Algeria', '02639645', '1', 1, '2019-03-06 20:26:55', '2019-03-15 11:00:29'),
-	(2, 'Kis002', 'Mahamet Habibou', 'habibou776@gmail.com', 'Algeria', '02639645', NULL, 1, '2019-03-06 20:30:54', '2019-03-06 20:30:54');
 /*!40000 ALTER TABLE `inscription` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-ahras-db. items
@@ -253,56 +251,56 @@ CREATE TABLE IF NOT EXISTS `items` (
   PRIMARY KEY (`id`),
   KEY `items_menu_id_foreign` (`menu_id`),
   CONSTRAINT `items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-ahras-db.items : ~72 rows (environ)
 DELETE FROM `items`;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
 INSERT INTO `items` (`id`, `name`, `link`, `type`, `icon`, `parent_id`, `order`, `controller_path`, `menu_id`, `created_at`, `updated_at`) VALUES
-	(1, '{"ar":" الرئيسية ","en":"Home"}', '/admin/home', '', '<i class="material-icons">home</i>', 0, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-03-24 17:42:14'),
-	(3, '{"ar":"  المستخدمين ","en":"User"}', '#', '', '<i class="material-icons">account_circle</i>', 0, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\UserController","App\\\\Application\\\\Controllers\\\\Admin\\\\GroupController","App\\\\Application\\\\Controllers\\\\Admin\\\\RoleController","App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\PermissionController"]', 1, NULL, '2019-03-24 17:42:15'),
-	(4, '{"en":"Setting","fr":null,"ar":"اعدادت الموقع"}', '#', 'self', '<i class="material-icons">insert_emoticon</i>', 0, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SettingController","App\\\\Application\\\\Controllers\\\\Admin\\\\MenuController"]', 1, NULL, '2019-03-26 15:56:27'),
-	(5, '{"ar":" الصفحات ","en":"Page"}', '/admin/page', '', '<i class="material-icons">find_in_page</i>', 55, 7, '["App\\\\Application\\\\Controllers\\\\Admin\\\\PageController"]', 1, NULL, '2019-03-24 17:42:14'),
-	(6, '{"ar":" ادارة الملفات ","en":"File Manager"}', '/admin/file-manager', '', '<i class="material-icons">folder</i>', 4, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-03-24 17:42:15'),
-	(7, '{"ar":" سجل البينات ","en":"Logs"}', '/admin/log', '', '<i class="material-icons">info</i>', 4, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\LogController"]', 1, NULL, '2019-03-24 17:42:16'),
-	(8, '{"ar":" الاحصائيات ","en":"Statistics"}', '/admin/links', '', '<i class="material-icons">insert_chart</i>', 4, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\UserController"]', 1, NULL, '2019-03-24 17:42:16'),
-	(9, '{"ar":" اتصل بنا ","en":"Contact Us"}', '/admin/contact', '', '<i class="material-icons">perm_contact_calendar</i>', 55, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\ContactController"]', 1, NULL, '2019-03-24 17:42:14'),
-	(10, '{"ar":" المستخدمين ","en":"Users"}', '/admin/user', '', NULL, 3, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\UserController"]', 1, NULL, '2019-03-24 17:42:15'),
-	(11, '{"ar":" جروبات الاعضاء ","en":"Groups"}', '/admin/group', '', NULL, 3, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\GroupController"]', 1, NULL, '2019-03-24 17:42:15'),
-	(12, '{"ar":" قوانين الاستخدام ","en":"Roles"}', '/admin/role', '', NULL, 3, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RoleController"]', 1, NULL, '2019-03-24 17:42:15'),
-	(13, '{"ar":" التصاريح ","en":"Permissions"}', '/admin/permission', '', NULL, 3, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\PermissionController"]', 1, NULL, '2019-03-24 17:42:15'),
-	(14, '{"en":"Icons","ar":"ايقونات الموقع"}', '/admin/icons', 'self', '<i class="material-icons"> explore </i>', 4, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-03-24 18:23:05'),
-	(15, '{"en":"Docs","ar":"التوثيق"}', '/admin/docs', 'self', '<i class="material-icons"> description </i>', 4, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-03-24 18:23:23'),
-	(16, '{"en":"Settings","ar":"اعدادت الموقع"}', '/admin/setting', 'self', '<i class="material-icons"> settings_input_component </i>', 4, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SettingController"]', 1, NULL, '2019-03-24 18:22:30'),
-	(17, '{"en":"Menu","ar":"القوائم"}', '/admin/menu', 'self', '<i class="material-icons"> view_list </i>', 4, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\MenuController"]', 1, NULL, '2019-03-24 18:22:08'),
+	(1, '{"en":"Home","fr":"Tableau de bord","ar":"الرئيسية"}', '/admin/home', 'self', '<i class="material-icons">home</i>', 0, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-04-23 20:26:50'),
+	(3, '{"en":"User","fr":"Utilisateur","ar":"المستخدمين"}', '#', 'self', '<i class="material-icons">account_circle</i>', 0, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\UserController","App\\\\Application\\\\Controllers\\\\Admin\\\\GroupController","App\\\\Application\\\\Controllers\\\\Admin\\\\RoleController","App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\PermissionController"]', 1, NULL, '2019-04-23 20:29:10'),
+	(4, '{"en":"Setting","fr":"Paramètres","ar":"اعدادت الموقع"}', '#', 'self', '<i class="material-icons">insert_emoticon</i>', 0, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SettingController","App\\\\Application\\\\Controllers\\\\Admin\\\\MenuController"]', 1, NULL, '2019-04-23 20:39:28'),
+	(5, '{"en":"Page","fr":"Page","ar":"الصفحات"}', '/admin/page', 'self', '<i class="material-icons">find_in_page</i>', 55, 7, '["App\\\\Application\\\\Controllers\\\\Admin\\\\PageController"]', 1, NULL, '2019-04-23 20:28:40'),
+	(6, '{"en":"File Manager","fr":"Gestionnaire de fichiers","ar":"ادارة الملفات"}', '/admin/file-manager', 'self', '<i class="material-icons">folder</i>', 4, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-04-23 20:30:38'),
+	(7, '{"en":"Logs","fr":"Log","ar":"سجل البينات"}', '/admin/log', 'self', '<i class="material-icons">info</i>', 4, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\LogController"]', 1, NULL, '2019-04-23 20:31:05'),
+	(8, '{"en":"Statistics","fr":"Statistiques","ar":"الاحصائيات"}', '/admin/links', 'self', '<i class="material-icons">insert_chart</i>', 4, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\UserController"]', 1, NULL, '2019-04-23 20:32:03'),
+	(9, '{"en":"Contact Us","fr":"Nous contactez","ar":"اتصل بنا"}', '/admin/contact', 'self', '<i class="material-icons">perm_contact_calendar</i>', 55, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\ContactController"]', 1, NULL, '2019-04-23 20:27:45'),
+	(10, '{"en":"Users","fr":"Utilisateurs","ar":"المستخدمين"}', '/admin/user', 'self', NULL, 3, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\UserController"]', 1, NULL, '2019-04-23 20:29:23'),
+	(11, '{"en":"Groups","fr":"Groupe","ar":"جروبات الاعضاء"}', '/admin/group', 'self', NULL, 3, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\GroupController"]', 1, NULL, '2019-04-23 20:29:33'),
+	(12, '{"en":"Roles","fr":"Rôles","ar":"قوانين الاستخدام"}', '/admin/role', 'self', NULL, 3, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RoleController"]', 1, NULL, '2019-04-23 20:30:02'),
+	(13, '{"en":"Permissions","fr":"Permissions","ar":"التصاريح"}', '/admin/permission', 'self', NULL, 3, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\PermissionController"]', 1, NULL, '2019-04-23 20:29:53'),
+	(14, '{"en":"Icons","fr":"Icônes","ar":"ايقونات الموقع"}', '/admin/icons', 'self', '<i class="material-icons"> explore </i>', 4, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-04-23 20:30:56'),
+	(15, '{"en":"Docs","fr":"Documentation","ar":"التوثيق"}', '/admin/docs', 'self', '<i class="material-icons"> description </i>', 4, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\HomeController"]', 1, NULL, '2019-04-23 20:30:21'),
+	(16, '{"en":"Settings","fr":"Paramètres","ar":"اعدادت الموقع"}', '/admin/setting', 'self', '<i class="material-icons"> settings_input_component </i>', 4, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SettingController"]', 1, NULL, '2019-04-23 20:31:40'),
+	(17, '{"en":"Menu","fr":"Menu","ar":"القوائم"}', '/admin/menu', 'self', '<i class="material-icons"> view_list </i>', 4, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\MenuController"]', 1, NULL, '2019-04-23 20:31:16'),
 	(18, '{"ar":" لارافلات ","en":"laraFalt"}', 'https://laraflat.com/', 'blank', NULL, 0, 1, '', 2, NULL, NULL),
 	(19, '{"ar":" خدمات ويب ","en":"5dmat-web"}', 'https://5dmat-web.com/', 'blank', NULL, 0, 2, '', 2, NULL, NULL),
 	(20, '{"ar":" ستريم لاب ","en":"StreamLab"}', 'https://streamlab.io/', 'blank', NULL, 0, 3, '', 2, NULL, NULL),
-	(21, '{"ar":" تطوير  ","en":"Develop"}', '#', '', '<i class="material-icons">settings</i>', 0, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RelationController","App\\\\Application\\\\Controllers\\\\Admin\\\\TranslationController","App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController","App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\CustomPermissionsController"]', 1, NULL, '2019-03-24 17:42:16'),
-	(22, '{"ar":" الاوامر ","en":"Commands"}', '/admin/commands', '', NULL, 21, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-24 17:42:16'),
-	(23, '{"ar":"  العلاقات ","en":"Relation"}', '/admin/relation', '', NULL, 21, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RelationController"]', 1, NULL, '2019-03-24 17:42:16'),
-	(24, '{"ar":" الترجمة  ","en":" Translation "}', '/admin/translation', '', NULL, 21, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\TranslationController"]', 1, NULL, '2019-03-24 17:42:16'),
-	(25, '{"ar":"  تخصيص التصريحات  ","en":" Custom Permissions "}', '/admin/custom-permissions', '', NULL, 21, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\CustomPermissionsController"]', 1, NULL, '2019-03-24 17:42:17'),
-	(26, '{"ar":" اوامر لارافيل  ","en":" Laravel Commands  "}', 'admin/laravel/commands', '', NULL, 21, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-24 17:42:17'),
-	(27, '{"ar":"  التحكم في قواعد البينات  ","en":" DataBase Manager  "}', '/adminer.php', 'blank', NULL, 21, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-24 17:42:17'),
-	(28, '{"ar":" المظهر  ","en":"Theme"}', '#', '', '<i class="material-icons">color_lens</i>', 0, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
-	(29, '{"ar":" لوحة تحكم المدير  ","en":"Admin"}', 'admin/theme/admin', '', '', 28, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
-	(30, '{"ar":" الموقع ","en":"Website"}', 'admin/theme/website', '', '', 28, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
-	(31, '{"ar":" رئيسية الموقع ","en":"Home Widget"}', 'admin/theme/homepage', '', '', 28, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
-	(32, '{"ar":" السيد بار ","en":"Sidebar Widget"}', 'admin/theme/sidebar', '', '', 28, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-03-24 17:42:17'),
-	(33, '{"ar":"  رفع \\/ استخراج المديولات ","en":" Export \\\\ Import Models  "}', 'admin/exportImport', 'blank', NULL, 21, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-03-24 17:42:17'),
-	(43, '{"en":"Formation","ar":"Formation"}', '/admin/formation', 'self', '<i class="material-icons"> work </i>', 55, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\FormationController"]', 1, '2019-03-06 14:35:29', '2019-03-24 18:15:08'),
-	(45, '{"en":"Inscription","ar":"Inscription"}', '/admin/inscription', 'self', '<i class="material-icons"> receipt </i>', 55, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\InscriptionController"]', 1, '2019-03-06 15:09:03', '2019-03-24 18:14:07'),
-	(47, '{"en":"Section","ar":"Section"}', '/admin/section', 'self', '<i class="material-icons"> view_carousel </i>', 55, 9, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SectionController"]', 1, '2019-03-06 20:38:36', '2019-03-24 18:16:06'),
-	(49, '{"en":"Local","ar":"Local"}', '/admin/local', 'self', '<i class="material-icons"> view_array </i>', 55, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\LocalController"]', 1, '2019-03-06 20:53:21', '2019-03-24 18:16:27'),
-	(51, '{"en":"Artisan","ar":"Artisan"}', '/admin/artisan', 'self', '<i class="material-icons"> people_outline </i>', 55, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\ArtisanController"]', 1, '2019-03-06 20:55:33', '2019-03-24 18:19:25'),
-	(53, '{"en":"Request","ar":"Request"}', '/admin/request', 'self', '<i class="material-icons"> subscriptions </i>', 55, 8, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RequestController"]', 1, '2019-03-06 23:20:14', '2019-03-24 18:15:43'),
-	(55, '{"en":"Management","ar":"Management"}', '/admin/management', 'self', '<i class="material-icons">control_point</i>', 0, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\FormationController"]', 1, '2019-03-07 16:04:52', '2019-03-24 17:42:14'),
-	(56, '{"en":"News","ar":"News"}', '/admin/news', '', '<i class="material-icons">control_point</i>', 55, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\NewsController"]', 1, '2019-03-07 16:14:36', '2019-03-24 17:42:14'),
-	(60, '{"en":"Medias","ar":"Medias"}', '/admin/medias', 'self', '<i class="material-icons"> perm_media </i>', 55, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\MediasController"]', 1, '2019-03-08 13:00:30', '2019-03-24 18:13:28'),
-	(63, '{"en":"Gallery","fr":"Gallerie","ar":"معرض الصور"}', '/galery', 'self', NULL, 0, 1, '["App\\\\Application\\\\Controllers\\\\Website\\\\MediasController"]', 4, '2019-03-25 09:39:04', '2019-04-23 10:05:21'),
-	(64, '{"en":"News","fr":"Actualité","ar":"الأخبار"}', 'news', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\NewsController"]', 4, '2019-03-25 09:40:03', '2019-04-23 10:01:48'),
-	(66, '{"en":"About Us","fr":"A propos","ar":"حول الدار"}', '/page/a-propos-de-nous', 'self', NULL, 0, 3, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 4, '2019-03-25 09:42:07', '2019-04-23 10:14:15'),
+	(21, '{"en":"Develop","fr":"Developper","ar":"تطوير"}', '#', 'self', '<i class="material-icons">settings</i>', 0, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RelationController","App\\\\Application\\\\Controllers\\\\Admin\\\\TranslationController","App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController","App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\CustomPermissionsController"]', 1, NULL, '2019-04-23 20:32:28'),
+	(22, '{"en":"Commands","fr":"Commandes","ar":"الاوامر"}', '/admin/commands', 'self', NULL, 21, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-04-23 20:33:13'),
+	(23, '{"en":"Relation","fr":"Relation","ar":"العلاقات"}', '/admin/relation', 'self', NULL, 21, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RelationController"]', 1, NULL, '2019-04-23 20:33:26'),
+	(24, '{"en":"Translation","fr":"Translation","ar":"الترجمة"}', '/admin/translation', 'self', NULL, 21, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\TranslationController"]', 1, NULL, '2019-04-23 20:33:35'),
+	(25, '{"en":"Custom Permissions","fr":"Permissions Personnalisés","ar":"تخصيص التصريحات"}', '/admin/custom-permissions', 'self', NULL, 21, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Development\\\\CustomPermissionsController"]', 1, NULL, '2019-04-23 20:33:54'),
+	(26, '{"en":"Laravel Commands","fr":"Commandes Laravel","ar":"اوامر لارافيل"}', 'admin/laravel/commands', 'self', NULL, 21, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-04-23 20:34:11'),
+	(27, '{"en":"DataBase Manager","fr":"Gestionnaire de Base de Données","ar":"التحكم في قواعد البينات"}', '/adminer.php', 'blank', NULL, 21, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-04-23 20:34:33'),
+	(28, '{"en":"Theme","fr":"Thème","ar":"المظهر"}', '#', 'self', '<i class="material-icons">color_lens</i>', 0, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-04-23 20:36:17'),
+	(29, '{"en":"Admin","fr":"Administration","ar":"لوحة تحكم المدير"}', 'admin/theme/admin', 'self', NULL, 28, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-04-23 20:36:32'),
+	(30, '{"en":"Website","fr":"Website","ar":"الموقع"}', 'admin/theme/website', 'self', NULL, 28, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-04-23 20:36:53'),
+	(31, '{"en":"Home Widget","fr":"Gadgets Accueil","ar":"رئيسية الموقع"}', 'admin/theme/homepage', 'self', NULL, 28, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-04-23 20:38:22'),
+	(32, '{"en":"Sidebar Widget","fr":"Gadgets Sidebar","ar":"السيد بار"}', 'admin/theme/sidebar', 'self', NULL, 28, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\Themes\\\\ThemeController"]', 1, NULL, '2019-04-23 20:38:15'),
+	(33, '{"en":"Export \\\\ Import Models","fr":"Exporter \\\\ Importer des Modèles","ar":"رفع \\/ استخراج المديولات"}', 'admin/exportImport', 'blank', NULL, 21, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\CommandsController"]', 1, NULL, '2019-04-23 20:35:13'),
+	(43, '{"en":"Formation","fr":"Formation","ar":"Formation"}', '/admin/formation', 'self', '<i class="material-icons"> work </i>', 55, 2, '["App\\\\Application\\\\Controllers\\\\Admin\\\\FormationController"]', 1, '2019-03-06 14:35:29', '2019-04-23 20:27:59'),
+	(45, '{"en":"Inscription","fr":"Inscription","ar":"Inscription"}', '/admin/inscription', 'self', '<i class="material-icons"> receipt </i>', 55, 3, '["App\\\\Application\\\\Controllers\\\\Admin\\\\InscriptionController"]', 1, '2019-03-06 15:09:03', '2019-04-23 20:32:55'),
+	(47, '{"en":"Site","fr":"Site","ar":"Site"}', '/admin/site', 'self', '<i class="material-icons"> view_carousel </i>', 55, 9, '["App\\\\Application\\\\Controllers\\\\Admin\\\\SiteController"]', 1, '2019-03-06 20:38:36', '2019-05-01 01:57:17'),
+	(49, '{"en":"Local","fr":"Local","ar":"Local"}', '/admin/local', 'self', '<i class="material-icons"> view_array </i>', 55, 4, '["App\\\\Application\\\\Controllers\\\\Admin\\\\LocalController"]', 1, '2019-03-06 20:53:21', '2019-04-23 20:28:07'),
+	(51, '{"en":"Artisan","fr":"Artisan","ar":"Artisan"}', '/admin/artisan', 'self', '<i class="material-icons"> people_outline </i>', 55, 0, '["App\\\\Application\\\\Controllers\\\\Admin\\\\ArtisanController"]', 1, '2019-03-06 20:55:33', '2019-04-23 20:27:28'),
+	(53, '{"en":"Request","fr":"Requête","ar":"Request"}', '/admin/request', 'self', '<i class="material-icons"> subscriptions </i>', 55, 8, '["App\\\\Application\\\\Controllers\\\\Admin\\\\RequestController"]', 1, '2019-03-06 23:20:14', '2019-04-23 20:39:11'),
+	(55, '{"en":"Management","fr":"Gestion","ar":"Management"}', '/admin/management', 'self', '<i class="material-icons">control_point</i>', 0, 1, '["App\\\\Application\\\\Controllers\\\\Admin\\\\FormationController"]', 1, '2019-03-07 16:04:52', '2019-04-23 20:27:17'),
+	(56, '{"en":"News","fr":"Articles","ar":"News"}', '/admin/news', 'self', '<i class="material-icons">control_point</i>', 55, 6, '["App\\\\Application\\\\Controllers\\\\Admin\\\\NewsController"]', 1, '2019-03-07 16:14:36', '2019-04-23 20:28:32'),
+	(60, '{"en":"Medias","fr":"Médias","ar":"Medias"}', '/admin/medias', 'self', '<i class="material-icons"> perm_media </i>', 55, 5, '["App\\\\Application\\\\Controllers\\\\Admin\\\\MediasController"]', 1, '2019-03-08 13:00:30', '2019-04-23 20:28:19'),
+	(63, '{"en":"Gallery","fr":"Gallerie","ar":"معرض الصور"}', '/galery', 'self', NULL, 0, 3, '["App\\\\Application\\\\Controllers\\\\Website\\\\MediasController"]', 4, '2019-03-25 09:39:04', '2019-05-01 22:07:10'),
+	(64, '{"en":"News","fr":"Actualité","ar":"الأخبار"}', 'news', 'self', NULL, 0, 1, '["App\\\\Application\\\\Controllers\\\\Website\\\\NewsController"]', 4, '2019-03-25 09:40:03', '2019-05-01 22:07:10'),
+	(66, '{"en":"About Us","fr":"A propos","ar":"حول الدار"}', '/page/a-propos-de-nous', 'self', NULL, 0, 4, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 4, '2019-03-25 09:42:07', '2019-05-01 22:07:10'),
 	(68, '{"en":"Votre Cam","fr":"Votre Cam","ar":"غرفتكم"}', '/page/votre-cam', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-11 09:23:07', '2019-04-23 09:58:17'),
 	(70, '{"en":"Créer","fr":"Créer","ar":"إنشاء مؤسسة"}', '/page', 'self', NULL, 0, 1, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 14:52:24', '2019-04-23 09:58:17'),
 	(71, '{"en":"Gérer","fr":"Gérer","ar":"تسيير المؤسسة"}', '/page', 'self', NULL, 0, 2, '["App\\\\Application\\\\Controllers\\\\Website\\\\PageController"]', 3, '2019-04-13 14:53:13', '2019-04-23 09:58:17'),
@@ -329,8 +327,9 @@ INSERT INTO `items` (`id`, `name`, `link`, `type`, `icon`, `parent_id`, `order`,
 	(94, '{"en":"News","fr":"Actualités","ar":"الأخبار"}', '/news', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\NewsController"]', 7, '2019-04-22 21:41:55', '2019-04-23 11:39:22'),
 	(95, '{"en":"Contact","fr":"Contact","ar":"الاتصال"}', '/contact', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\HomeController"]', 7, '2019-04-22 21:42:33', '2019-04-23 11:39:32'),
 	(96, '{"en":"About Us","fr":"A propos de nous","ar":"حول الدار"}', '/page/', 'self', NULL, 0, 0, 'null', 7, '2019-04-22 22:02:53', '2019-04-23 11:39:44'),
-	(97, '{"en":"Sites de Location","fr":"Sites de Location","ar":"مواقع الكراء"}', '/section', 'self', NULL, 0, 4, '["App\\\\Application\\\\Controllers\\\\Website\\\\SectionController"]', 3, '2019-04-23 09:46:51', '2019-04-23 10:00:06'),
-	(98, '{"en":"Nomenclature","fr":"Nomenclature","ar":"مدونة النشاطات"}', '/nomenclature', 'self', NULL, 0, 0, '["App\\\\Application\\\\Controllers\\\\Website\\\\MediasController"]', 4, '2019-04-23 10:09:09', '2019-04-23 10:09:09');
+	(97, '{"en":"Sites de Location","fr":"Sites de Location","ar":"مواقع الكراء"}', '/section', 'self', NULL, 0, 4, '["App\\\\Application\\\\Controllers\\\\Website\\\\SiteController"]', 3, '2019-04-23 09:46:51', '2019-04-23 10:00:06'),
+	(98, '{"en":"Nomenclature","fr":"Nomenclature","ar":"مدونة النشاطات"}', '/nomenclature', 'self', NULL, 0, 2, '["App\\\\Application\\\\Controllers\\\\Website\\\\MediasController"]', 4, '2019-04-23 10:09:09', '2019-05-01 22:07:10'),
+	(99, '{"fr":"Accueil","ar":"Accueil"}', '/', 'self', NULL, 0, 0, '[null]', 4, '2019-05-01 22:07:04', '2019-05-01 22:07:10');
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-ahras-db. links
@@ -342,7 +341,7 @@ CREATE TABLE IF NOT EXISTS `links` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `links_slug_unique` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-ahras-db.links : ~3 rows (environ)
 DELETE FROM `links`;
@@ -350,7 +349,17 @@ DELETE FROM `links`;
 INSERT INTO `links` (`id`, `url`, `slug`, `created_at`, `updated_at`) VALUES
 	(1, 'http://127.0.0.1:8000/en/login', '0ms8DD', '2019-03-05 19:55:25', '2019-03-05 19:55:25'),
 	(2, 'http://127.0.0.1:8000/en/page/1/view', 'vSPmxg', '2019-03-05 19:56:47', '2019-03-05 19:56:47'),
-	(3, 'http://127.0.0.1:8000/en/contact', 'SclkjX', '2019-03-05 19:56:54', '2019-03-05 19:56:54');
+	(3, 'http://127.0.0.1:8000/en/contact', 'SclkjX', '2019-03-05 19:56:54', '2019-03-05 19:56:54'),
+	(4, 'http://127.0.0.1:8000/fr/site', 'RiL3Ch', '2019-05-01 21:35:26', '2019-05-01 21:35:26'),
+	(5, 'http://127.0.0.1:8000/fr/site/site-02', 'HsN2kZ', '2019-05-01 21:36:08', '2019-05-01 21:36:08'),
+	(6, 'http://127.0.0.1:8000/fr/site/site-01', 'AbhLrm', '2019-05-01 21:39:02', '2019-05-01 21:39:02'),
+	(7, 'http://127.0.0.1:8000/fr/formation/formation-complete-01', '7wsxaH', '2019-05-01 21:39:32', '2019-05-01 21:39:32'),
+	(8, 'http://127.0.0.1:8000/fr/formation', 'lGlrPo', '2019-05-01 21:39:37', '2019-05-01 21:39:37'),
+	(9, 'http://127.0.0.1:8000/fr/gallery', 'EVRxBt', '2019-05-01 21:40:35', '2019-05-01 21:40:35'),
+	(10, 'http://127.0.0.1:8000/fr/local/local-01', 'en0ONM', '2019-05-01 21:56:58', '2019-05-01 21:56:58'),
+	(11, 'http://127.0.0.1:8000/fr/contact', 'cyOhxK', '2019-05-01 22:35:00', '2019-05-01 22:35:00'),
+	(12, 'http://127.0.0.1:8000/ar/login', 'xaMpHl', '2019-05-01 22:55:28', '2019-05-01 22:55:28'),
+	(13, 'http://127.0.0.1:8000/fr/login', '2CdZAn', '2019-05-01 22:57:11', '2019-05-01 22:57:11');
 /*!40000 ALTER TABLE `links` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-ahras-db. link_views
@@ -366,7 +375,7 @@ CREATE TABLE IF NOT EXISTS `link_views` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-ahras-db.link_views : ~6 rows (environ)
 DELETE FROM `link_views`;
@@ -377,7 +386,70 @@ INSERT INTO `link_views` (`id`, `link_id`, `language`, `browser`, `browser_versi
 	(3, '3', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-03-05 19:56:55', '2019-03-05 19:56:55'),
 	(4, '1', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-03-05 19:57:01', '2019-03-05 19:57:01'),
 	(5, '3', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-03-05 20:31:21', '2019-03-05 20:31:21'),
-	(6, '3', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-03-05 20:43:04', '2019-03-05 20:43:04');
+	(6, '3', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-03-05 20:43:04', '2019-03-05 20:43:04'),
+	(7, '4', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:35:27', '2019-05-01 21:35:27'),
+	(8, '4', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:35:45', '2019-05-01 21:35:45'),
+	(9, '5', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:36:09', '2019-05-01 21:36:09'),
+	(10, '5', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:38:29', '2019-05-01 21:38:29'),
+	(11, '5', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:38:47', '2019-05-01 21:38:47'),
+	(12, '6', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:39:03', '2019-05-01 21:39:03'),
+	(13, '7', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:39:33', '2019-05-01 21:39:33'),
+	(14, '8', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:39:38', '2019-05-01 21:39:38'),
+	(15, '6', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:39:45', '2019-05-01 21:39:45'),
+	(16, '9', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:40:36', '2019-05-01 21:40:36'),
+	(17, '6', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:40:47', '2019-05-01 21:40:47'),
+	(18, '6', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:47:46', '2019-05-01 21:47:46'),
+	(19, '6', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:52:48', '2019-05-01 21:52:48'),
+	(20, '6', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:53:16', '2019-05-01 21:53:16'),
+	(21, '6', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:53:33', '2019-05-01 21:53:33'),
+	(22, '6', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:53:57', '2019-05-01 21:53:57'),
+	(23, '6', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:54:28', '2019-05-01 21:54:28'),
+	(24, '6', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:54:58', '2019-05-01 21:54:58'),
+	(25, '6', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:55:48', '2019-05-01 21:55:48'),
+	(26, '6', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:56:10', '2019-05-01 21:56:10'),
+	(27, '10', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 21:57:00', '2019-05-01 21:57:00'),
+	(28, '10', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:00:59', '2019-05-01 22:00:59'),
+	(29, '10', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:01:28', '2019-05-01 22:01:28'),
+	(30, '10', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:01:45', '2019-05-01 22:01:45'),
+	(31, '10', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:02:07', '2019-05-01 22:02:07'),
+	(32, '10', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:02:42', '2019-05-01 22:02:42'),
+	(33, '10', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:03:13', '2019-05-01 22:03:13'),
+	(34, '10', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:03:25', '2019-05-01 22:03:25'),
+	(35, '10', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:03:41', '2019-05-01 22:03:41'),
+	(36, '10', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:04:35', '2019-05-01 22:04:35'),
+	(37, '11', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:35:02', '2019-05-01 22:35:02'),
+	(38, '11', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:36:09', '2019-05-01 22:36:09'),
+	(39, '11', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:36:35', '2019-05-01 22:36:35'),
+	(40, '11', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:41:41', '2019-05-01 22:41:41'),
+	(41, '11', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:43:44', '2019-05-01 22:43:44'),
+	(42, '12', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:55:29', '2019-05-01 22:55:29'),
+	(43, '12', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:57:00', '2019-05-01 22:57:00'),
+	(44, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:57:12', '2019-05-01 22:57:12'),
+	(45, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:57:47', '2019-05-01 22:57:47'),
+	(46, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:58:04', '2019-05-01 22:58:04'),
+	(47, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:59:14', '2019-05-01 22:59:14'),
+	(48, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 22:59:49', '2019-05-01 22:59:49'),
+	(49, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:00:01', '2019-05-01 23:00:01'),
+	(50, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:00:17', '2019-05-01 23:00:17'),
+	(51, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:00:29', '2019-05-01 23:00:29'),
+	(52, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:00:43', '2019-05-01 23:00:43'),
+	(53, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:01:01', '2019-05-01 23:01:01'),
+	(54, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:01:16', '2019-05-01 23:01:16'),
+	(55, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:02:18', '2019-05-01 23:02:18'),
+	(56, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:05:06', '2019-05-01 23:05:06'),
+	(57, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:05:27', '2019-05-01 23:05:27'),
+	(58, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:05:44', '2019-05-01 23:05:44'),
+	(59, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:07:16', '2019-05-01 23:07:16'),
+	(60, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:09:06', '2019-05-01 23:09:06'),
+	(61, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:09:23', '2019-05-01 23:09:23'),
+	(62, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:09:37', '2019-05-01 23:09:37'),
+	(63, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:09:56', '2019-05-01 23:09:56'),
+	(64, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:10:06', '2019-05-01 23:10:06'),
+	(65, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:10:13', '2019-05-01 23:10:13'),
+	(66, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:10:31', '2019-05-01 23:10:31'),
+	(67, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:12:03', '2019-05-01 23:12:03'),
+	(68, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:13:33', '2019-05-01 23:13:33'),
+	(69, '13', 'fr', 'Chrome', '71.0.3578.98', 'Windows', '10.0', '127.0.0.1', '2019-05-01 23:13:54', '2019-05-01 23:13:54');
 /*!40000 ALTER TABLE `link_views` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-ahras-db. local
@@ -388,21 +460,21 @@ CREATE TABLE IF NOT EXISTS `local` (
   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` double NOT NULL,
   `area` double NOT NULL,
-  `section_id` int(10) unsigned NOT NULL,
+  `site_id` int(10) unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `local_name_unique` (`name`),
-  KEY `local_section_id_foreign` (`section_id`),
-  CONSTRAINT `local_section_id_foreign` FOREIGN KEY (`section_id`) REFERENCES `section` (`id`) ON DELETE CASCADE
+  KEY `local_section_id_foreign` (`site_id`),
+  CONSTRAINT `local_site_id_foreign` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-ahras-db.local : ~2 rows (environ)
 DELETE FROM `local`;
 /*!40000 ALTER TABLE `local` DISABLE KEYS */;
-INSERT INTO `local` (`id`, `name`, `description`, `image`, `price`, `area`, `section_id`, `created_at`, `updated_at`) VALUES
-	(1, '{"en":"Local 01","ar":"Local 01"}', '{"en":"<p>Local 01.....<\\/p>","ar":null}', '15923_1552607758.jpg', 14000, 25, 1, '2019-03-06 21:14:17', '2019-03-14 23:55:58'),
-	(2, '{"en":"local 02","ar":"local 02"}', '{"en":"<p>local 02 ...<\\/p>","ar":null}', '23759_1552607896.jpg', 25000, 15, 1, '2019-03-06 22:51:08', '2019-03-14 23:58:17');
+INSERT INTO `local` (`id`, `name`, `description`, `image`, `price`, `area`, `site_id`, `created_at`, `updated_at`) VALUES
+	(1, '{"en":"Local 01","fr":"Local 01","ar":"Local 01"}', '{"en":"<p>Local 01.....<\\/p>","fr":"<p>Local 01 ...<\\/p>","ar":null}', '15923_1552607758.jpg', 14000, 25, 1, '2019-03-06 21:14:17', '2019-04-23 21:18:52'),
+	(2, '{"fr":"Local 02","ar":"Local 02"}', '{"fr":"<p>Local 02<\\/p>","ar":null}', '23759_1552607896.jpg', 25000, 15, 1, '2019-03-06 22:51:08', '2019-05-01 21:56:01');
 /*!40000 ALTER TABLE `local` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-ahras-db. logs
@@ -416,9 +488,9 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1347 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1549 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-ahras-db.logs : ~1 092 rows (environ)
+-- Listage des données de la table cam-souk-ahras-db.logs : ~1 101 rows (environ)
 DELETE FROM `logs`;
 /*!40000 ALTER TABLE `logs` DISABLE KEYS */;
 INSERT INTO `logs` (`id`, `action`, `model`, `status`, `messages`, `user_id`, `created_at`, `updated_at`) VALUES
@@ -1767,7 +1839,209 @@ INSERT INTO `logs` (`id`, `action`, `model`, `status`, `messages`, `user_id`, `c
 	(1343, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":[1]}', 0, '2019-04-23 11:31:24', '2019-04-23 11:31:24'),
 	(1344, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":[1]}', 0, '2019-04-23 11:38:29', '2019-04-23 11:38:29'),
 	(1345, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["7"]}', 1, '2019-04-23 11:39:02', '2019-04-23 11:39:02'),
-	(1346, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":[1]}', 0, '2019-04-23 11:39:53', '2019-04-23 11:39:53');
+	(1346, 'Visit Edit Page', 'section', 'Success', '{"Edit Id":[1]}', 0, '2019-04-23 11:39:53', '2019-04-23 11:39:53'),
+	(1347, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[1]}', 0, '2019-04-23 20:09:00', '2019-04-23 20:09:00'),
+	(1348, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[2]}', 0, '2019-04-23 20:16:06', '2019-04-23 20:16:06'),
+	(1349, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-23 20:26:16', '2019-04-23 20:26:16'),
+	(1350, 'Update', 'menu', 'Success', '{"Updated id":["1"]}', 1, '2019-04-23 20:26:55', '2019-04-23 20:26:55'),
+	(1351, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-23 20:27:03', '2019-04-23 20:27:03'),
+	(1352, 'Update', 'menu', 'Success', '{"Updated id":["1"]}', 1, '2019-04-23 20:32:33', '2019-04-23 20:32:33'),
+	(1353, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-23 20:32:41', '2019-04-23 20:32:41'),
+	(1354, 'Update', 'menu', 'Success', '{"Updated id":["1"]}', 1, '2019-04-23 20:38:29', '2019-04-23 20:38:29'),
+	(1355, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-23 20:38:36', '2019-04-23 20:38:36'),
+	(1356, 'Update', 'menu', 'Success', '{"Updated id":["1"]}', 1, '2019-04-23 20:39:33', '2019-04-23 20:39:33'),
+	(1357, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-23 20:40:40', '2019-04-23 20:40:40'),
+	(1358, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-23 20:40:49', '2019-04-23 20:40:49'),
+	(1359, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-23 20:48:49', '2019-04-23 20:48:49'),
+	(1360, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-23 21:17:33', '2019-04-23 21:17:33'),
+	(1361, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-23 21:17:41', '2019-04-23 21:17:41'),
+	(1362, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-23 21:18:27', '2019-04-23 21:18:27'),
+	(1363, 'Update', 'local', 'Success', '{"Updated id":["1"]}', 1, '2019-04-23 21:18:52', '2019-04-23 21:18:52'),
+	(1364, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["1"]}', 1, '2019-04-23 21:18:53', '2019-04-23 21:18:53'),
+	(1365, 'Visit Edit Page', 'medias', 'Success', '{"Edit Id":["55"]}', 1, '2019-04-23 21:19:16', '2019-04-23 21:19:16'),
+	(1366, 'Update', 'medias', 'Success', '{"Updated id":["55"]}', 1, '2019-04-23 21:19:36', '2019-04-23 21:19:36'),
+	(1367, 'Visit Edit Page', 'medias', 'Success', '{"Edit Id":["56"]}', 1, '2019-04-23 21:21:45', '2019-04-23 21:21:45'),
+	(1368, 'Update', 'medias', 'Success', '{"Updated id":["56"]}', 1, '2019-04-23 21:22:00', '2019-04-23 21:22:00'),
+	(1369, 'Visit Edit Page', 'medias', 'Success', '{"Edit Id":["57"]}', 1, '2019-04-23 21:22:06', '2019-04-23 21:22:06'),
+	(1370, 'Update', 'medias', 'Success', '{"Updated id":["57"]}', 1, '2019-04-23 21:22:21', '2019-04-23 21:22:21'),
+	(1371, 'Visit Edit Page', 'medias', 'Success', '{"Edit Id":["58"]}', 1, '2019-04-23 21:22:28', '2019-04-23 21:22:28'),
+	(1372, 'Update', 'medias', 'Success', '{"Updated id":["58"]}', 1, '2019-04-23 21:22:42', '2019-04-23 21:22:42'),
+	(1373, 'Visit Edit Page', 'medias', 'Success', '{"Edit Id":["57"]}', 1, '2019-04-23 21:23:03', '2019-04-23 21:23:03'),
+	(1374, 'Visit Edit Page', 'medias', 'Success', '{"Edit Id":["57"]}', 1, '2019-04-23 21:23:25', '2019-04-23 21:23:25'),
+	(1375, 'Visit Edit Page', 'artisan', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 00:44:03', '2019-05-01 00:44:03'),
+	(1376, 'Visit Edit Page', 'artisan', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 00:44:19', '2019-05-01 00:44:19'),
+	(1377, 'Visit Edit Page', 'artisan', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 00:45:18', '2019-05-01 00:45:18'),
+	(1378, 'Visit Edit Page', 'artisan', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 00:50:16', '2019-05-01 00:50:16'),
+	(1379, 'Visit Edit Page', 'artisan', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 00:50:26', '2019-05-01 00:50:26'),
+	(1380, 'Visit Create Page', 'artisan', 'Success', '', 1, '2019-05-01 00:53:24', '2019-05-01 00:53:24'),
+	(1381, 'Create', 'artisan', 'Success', '{"New id":[2]}', 1, '2019-05-01 00:56:32', '2019-05-01 00:56:32'),
+	(1382, 'Visit Create Page', 'artisan', 'Success', '', 1, '2019-05-01 00:56:42', '2019-05-01 00:56:42'),
+	(1383, 'Create', 'artisan', 'Success', '{"New id":[3]}', 1, '2019-05-01 00:58:12', '2019-05-01 00:58:12'),
+	(1384, 'Delete', 'artisan', 'Success', '{"Updated id":["1"]}', 1, '2019-05-01 00:58:22', '2019-05-01 00:58:22'),
+	(1385, 'Visit Edit Page', 'artisan', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 01:05:57', '2019-05-01 01:05:57'),
+	(1386, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 01:08:49', '2019-05-01 01:08:49'),
+	(1387, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 01:10:20', '2019-05-01 01:10:20'),
+	(1388, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 01:12:46', '2019-05-01 01:12:46'),
+	(1389, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 01:13:08', '2019-05-01 01:13:08'),
+	(1390, 'Update', 'formation', 'Success', '{"Updated id":["1"]}', 1, '2019-05-01 01:13:31', '2019-05-01 01:13:31'),
+	(1391, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 01:13:32', '2019-05-01 01:13:32'),
+	(1392, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 01:13:43', '2019-05-01 01:13:43'),
+	(1393, 'Update', 'formation', 'Success', '{"Updated id":["2"]}', 1, '2019-05-01 01:14:00', '2019-05-01 01:14:00'),
+	(1394, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 01:14:01', '2019-05-01 01:14:01'),
+	(1395, 'Visit Edit Page', 'inscription', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 01:20:45', '2019-05-01 01:20:45'),
+	(1396, 'Delete', 'inscription', 'Success', '{"Updated id":["1"]}', 1, '2019-05-01 01:20:59', '2019-05-01 01:20:59'),
+	(1397, 'Visit Edit Page', 'inscription', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 01:21:08', '2019-05-01 01:21:08'),
+	(1398, 'Delete', 'inscription', 'Success', '{"Updated id":["2"]}', 1, '2019-05-01 01:21:18', '2019-05-01 01:21:18'),
+	(1399, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 01:30:21', '2019-05-01 01:30:21'),
+	(1400, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 01:31:25', '2019-05-01 01:31:25'),
+	(1401, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 01:57:03', '2019-05-01 01:57:03'),
+	(1402, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 01:57:23', '2019-05-01 01:57:23'),
+	(1403, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 09:08:46', '2019-05-01 09:08:46'),
+	(1404, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 09:08:51', '2019-05-01 09:08:51'),
+	(1405, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 09:09:52', '2019-05-01 09:09:52'),
+	(1406, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 09:12:09', '2019-05-01 09:12:09'),
+	(1407, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:10:57', '2019-05-01 10:10:57'),
+	(1408, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:12:10', '2019-05-01 10:12:10'),
+	(1409, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:15:21', '2019-05-01 10:15:21'),
+	(1410, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:17:21', '2019-05-01 10:17:21'),
+	(1411, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:17:51', '2019-05-01 10:17:51'),
+	(1412, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:17:56', '2019-05-01 10:17:56'),
+	(1413, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:18:55', '2019-05-01 10:18:55'),
+	(1414, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:19:08', '2019-05-01 10:19:08'),
+	(1415, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:21:08', '2019-05-01 10:21:08'),
+	(1416, 'Visit Edit Page', 'page', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:21:40', '2019-05-01 10:21:40'),
+	(1417, 'Visit Create Page', 'request', 'Success', '', 1, '2019-05-01 10:32:15', '2019-05-01 10:32:15'),
+	(1418, 'Visit Create Page', 'request', 'Success', '', 1, '2019-05-01 10:33:24', '2019-05-01 10:33:24'),
+	(1419, 'Visit Create Page', 'request', 'Success', '', 1, '2019-05-01 10:33:43', '2019-05-01 10:33:43'),
+	(1420, 'Delete', 'users', 'Success', '{"Updated id":["13"]}', 1, '2019-05-01 10:34:37', '2019-05-01 10:34:37'),
+	(1421, 'Delete', 'users', 'Success', '{"Updated id":["12"]}', 1, '2019-05-01 10:35:09', '2019-05-01 10:35:09'),
+	(1422, 'Delete', 'users', 'Success', '{"Updated id":["4"]}', 1, '2019-05-01 10:35:21', '2019-05-01 10:35:21'),
+	(1423, 'Visit Create Page', 'users', 'Success', '', 1, '2019-05-01 10:36:19', '2019-05-01 10:36:19'),
+	(1424, 'Visit Edit Page', 'users', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:36:47', '2019-05-01 10:36:47'),
+	(1425, 'Visit Edit Page', 'users', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:37:49', '2019-05-01 10:37:49'),
+	(1426, 'Visit Edit Page', 'users', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:37:59', '2019-05-01 10:37:59'),
+	(1427, 'Visit Edit Page', 'users', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:40:55', '2019-05-01 10:40:55'),
+	(1428, 'Visit Edit Page', 'users', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:41:59', '2019-05-01 10:41:59'),
+	(1429, 'Visit Edit Page', 'users', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 10:43:27', '2019-05-01 10:43:27'),
+	(1430, 'Visit Create Page', 'users', 'Success', '', 1, '2019-05-01 10:43:50', '2019-05-01 10:43:50'),
+	(1431, 'Visit Edit Page', 'groups', 'Success', '{"Edit Id":["3"]}', 1, '2019-05-01 10:46:12', '2019-05-01 10:46:12'),
+	(1432, 'Visit Edit Page', 'groups', 'Success', '{"Edit Id":["3"]}', 1, '2019-05-01 10:46:17', '2019-05-01 10:46:17'),
+	(1433, 'Update', 'groups', 'Success', '{"Updated id":["3"]}', 1, '2019-05-01 10:47:27', '2019-05-01 10:47:27'),
+	(1434, 'Visit Edit Page', 'groups', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 10:47:38', '2019-05-01 10:47:38'),
+	(1435, 'Update', 'groups', 'Success', '{"Updated id":["2"]}', 1, '2019-05-01 10:48:11', '2019-05-01 10:48:11'),
+	(1436, 'Visit Create Page', 'users', 'Success', '', 1, '2019-05-01 10:48:54', '2019-05-01 10:48:54'),
+	(1437, 'Create', 'users', 'Success', '{"New id":[14]}', 1, '2019-05-01 10:49:38', '2019-05-01 10:49:38'),
+	(1438, 'Visit Create Page', 'users', 'Success', '', 1, '2019-05-01 10:49:46', '2019-05-01 10:49:46'),
+	(1439, 'Create', 'users', 'Success', '{"New id":[15]}', 1, '2019-05-01 10:50:28', '2019-05-01 10:50:28'),
+	(1440, 'Visit Create Page', 'users', 'Success', '', 1, '2019-05-01 10:50:34', '2019-05-01 10:50:34'),
+	(1441, 'Create', 'users', 'Success', '{"New id":[16]}', 1, '2019-05-01 10:51:07', '2019-05-01 10:51:07'),
+	(1442, 'Visit Create Page', 'users', 'Success', '', 1, '2019-05-01 10:51:56', '2019-05-01 10:51:56'),
+	(1443, 'Create', 'users', 'Success', '{"New id":[17]}', 1, '2019-05-01 10:52:31', '2019-05-01 10:52:31'),
+	(1444, 'Visit Edit Page', 'groups', 'Success', '{"Edit Id":["3"]}', 14, '2019-05-01 14:10:23', '2019-05-01 14:10:23'),
+	(1445, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["1"]}', 14, '2019-05-01 14:12:09', '2019-05-01 14:12:09'),
+	(1446, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 16:23:52', '2019-05-01 16:23:52'),
+	(1447, 'Update', 'news', 'Success', '{"Updated id":["1"]}', 1, '2019-05-01 16:26:42', '2019-05-01 16:26:42'),
+	(1448, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 16:26:43', '2019-05-01 16:26:43'),
+	(1449, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 16:27:26', '2019-05-01 16:27:26'),
+	(1450, 'Update', 'news', 'Success', '{"Updated id":["2"]}', 1, '2019-05-01 16:28:46', '2019-05-01 16:28:46'),
+	(1451, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 16:28:47', '2019-05-01 16:28:47'),
+	(1452, 'Visit Create Page', 'news', 'Success', '', 1, '2019-05-01 16:29:08', '2019-05-01 16:29:08'),
+	(1453, 'Create', 'news', 'Success', '{"New id":[3]}', 1, '2019-05-01 16:30:17', '2019-05-01 16:30:17'),
+	(1454, 'Visit Create Page', 'news', 'Success', '', 1, '2019-05-01 16:30:30', '2019-05-01 16:30:30'),
+	(1455, 'Create', 'news', 'Success', '{"New id":[4]}', 1, '2019-05-01 16:32:02', '2019-05-01 16:32:02'),
+	(1456, 'Visit Create Page', 'news', 'Success', '', 1, '2019-05-01 16:32:28', '2019-05-01 16:32:28'),
+	(1457, 'Create', 'news', 'Success', '{"New id":[5]}', 1, '2019-05-01 16:33:08', '2019-05-01 16:33:08'),
+	(1458, 'Visit Create Page', 'news', 'Success', '', 1, '2019-05-01 16:33:19', '2019-05-01 16:33:19'),
+	(1459, 'Create', 'news', 'Success', '{"New id":[6]}', 1, '2019-05-01 16:34:12', '2019-05-01 16:34:12'),
+	(1460, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 18:29:36', '2019-05-01 18:29:36'),
+	(1461, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 18:30:28', '2019-05-01 18:30:28'),
+	(1462, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 18:33:31', '2019-05-01 18:33:31'),
+	(1463, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 18:36:15', '2019-05-01 18:36:15'),
+	(1464, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 18:36:42', '2019-05-01 18:36:42'),
+	(1465, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 18:38:39', '2019-05-01 18:38:39'),
+	(1466, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 18:39:16', '2019-05-01 18:39:16'),
+	(1467, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 18:39:24', '2019-05-01 18:39:24'),
+	(1468, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 18:39:32', '2019-05-01 18:39:32'),
+	(1469, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 18:41:19', '2019-05-01 18:41:19'),
+	(1470, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 18:41:56', '2019-05-01 18:41:56'),
+	(1471, 'Visit Edit Page', 'news', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 18:42:32', '2019-05-01 18:42:32'),
+	(1472, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 18:44:03', '2019-05-01 18:44:03'),
+	(1473, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 18:45:17', '2019-05-01 18:45:17'),
+	(1474, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 19:04:05', '2019-05-01 19:04:05'),
+	(1475, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 19:05:35', '2019-05-01 19:05:35'),
+	(1476, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 19:06:58', '2019-05-01 19:06:58'),
+	(1477, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 19:08:37', '2019-05-01 19:08:37'),
+	(1478, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 19:08:53', '2019-05-01 19:08:53'),
+	(1479, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 21:26:11', '2019-05-01 21:26:11'),
+	(1480, 'Update', 'site', 'Success', '{"Updated id":["1"]}', 1, '2019-05-01 21:26:38', '2019-05-01 21:26:38'),
+	(1481, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":["1"]}', 1, '2019-05-01 21:26:39', '2019-05-01 21:26:39'),
+	(1482, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 21:27:27', '2019-05-01 21:27:27'),
+	(1483, 'Update', 'site', 'Success', '{"Updated id":["2"]}', 1, '2019-05-01 21:27:42', '2019-05-01 21:27:42'),
+	(1484, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 21:27:42', '2019-05-01 21:27:42'),
+	(1485, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 21:35:08', '2019-05-01 21:35:08'),
+	(1486, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 21:35:49', '2019-05-01 21:35:49'),
+	(1487, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 21:36:08', '2019-05-01 21:36:08'),
+	(1488, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 21:36:10', '2019-05-01 21:36:10'),
+	(1489, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 21:38:28', '2019-05-01 21:38:28'),
+	(1490, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 21:38:30', '2019-05-01 21:38:30'),
+	(1491, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 21:38:46', '2019-05-01 21:38:46'),
+	(1492, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[2]}', 1, '2019-05-01 21:38:48', '2019-05-01 21:38:48'),
+	(1493, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:39:02', '2019-05-01 21:39:02'),
+	(1494, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:39:03', '2019-05-01 21:39:03'),
+	(1495, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:39:31', '2019-05-01 21:39:31'),
+	(1496, 'Visit Edit Page', 'formation', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:39:33', '2019-05-01 21:39:33'),
+	(1497, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:39:44', '2019-05-01 21:39:44'),
+	(1498, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:39:46', '2019-05-01 21:39:46'),
+	(1499, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:40:46', '2019-05-01 21:40:46'),
+	(1500, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:40:47', '2019-05-01 21:40:47'),
+	(1501, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:47:42', '2019-05-01 21:47:42'),
+	(1502, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:47:46', '2019-05-01 21:47:46'),
+	(1503, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:52:46', '2019-05-01 21:52:46'),
+	(1504, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:52:49', '2019-05-01 21:52:49'),
+	(1505, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:53:15', '2019-05-01 21:53:15'),
+	(1506, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:53:17', '2019-05-01 21:53:17'),
+	(1507, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:53:31', '2019-05-01 21:53:31'),
+	(1508, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:53:33', '2019-05-01 21:53:33'),
+	(1509, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:53:55', '2019-05-01 21:53:55'),
+	(1510, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:53:57', '2019-05-01 21:53:57'),
+	(1511, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:54:26', '2019-05-01 21:54:26'),
+	(1512, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:54:28', '2019-05-01 21:54:28'),
+	(1513, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:54:57', '2019-05-01 21:54:57'),
+	(1514, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:54:58', '2019-05-01 21:54:58'),
+	(1515, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 21:55:14', '2019-05-01 21:55:14'),
+	(1516, 'Update', 'local', 'Success', '{"Updated id":["2"]}', 1, '2019-05-01 21:55:38', '2019-05-01 21:55:38'),
+	(1517, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 21:55:39', '2019-05-01 21:55:39'),
+	(1518, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:55:46', '2019-05-01 21:55:46'),
+	(1519, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:55:48', '2019-05-01 21:55:48'),
+	(1520, 'Update', 'local', 'Success', '{"Updated id":["2"]}', 1, '2019-05-01 21:56:01', '2019-05-01 21:56:01'),
+	(1521, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":["2"]}', 1, '2019-05-01 21:56:02', '2019-05-01 21:56:02'),
+	(1522, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:56:09', '2019-05-01 21:56:09'),
+	(1523, 'Visit Edit Page', 'site', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:56:11', '2019-05-01 21:56:11'),
+	(1524, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:56:19', '2019-05-01 21:56:19'),
+	(1525, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:56:58', '2019-05-01 21:56:58'),
+	(1526, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 21:57:00', '2019-05-01 21:57:00'),
+	(1527, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:00:57', '2019-05-01 22:00:57'),
+	(1528, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:00:59', '2019-05-01 22:00:59'),
+	(1529, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:01:26', '2019-05-01 22:01:26'),
+	(1530, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:01:29', '2019-05-01 22:01:29'),
+	(1531, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:01:43', '2019-05-01 22:01:43'),
+	(1532, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:01:45', '2019-05-01 22:01:45'),
+	(1533, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:02:05', '2019-05-01 22:02:05'),
+	(1534, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:02:07', '2019-05-01 22:02:07'),
+	(1535, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:02:40', '2019-05-01 22:02:40'),
+	(1536, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:02:43', '2019-05-01 22:02:43'),
+	(1537, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:03:12', '2019-05-01 22:03:12'),
+	(1538, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:03:14', '2019-05-01 22:03:14'),
+	(1539, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:03:23', '2019-05-01 22:03:23'),
+	(1540, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:03:25', '2019-05-01 22:03:25'),
+	(1541, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:03:40', '2019-05-01 22:03:40'),
+	(1542, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:03:42', '2019-05-01 22:03:42'),
+	(1543, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:04:33', '2019-05-01 22:04:33'),
+	(1544, 'Visit Edit Page', 'local', 'Success', '{"Edit Id":[1]}', 1, '2019-05-01 22:04:37', '2019-05-01 22:04:37'),
+	(1545, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["3"]}', 1, '2019-05-01 22:05:52', '2019-05-01 22:05:52'),
+	(1546, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["4"]}', 1, '2019-05-01 22:06:39', '2019-05-01 22:06:39'),
+	(1547, 'Visit Edit Page', 'menu', 'Success', '{"Edit Id":["4"]}', 1, '2019-05-01 22:07:04', '2019-05-01 22:07:04'),
+	(1548, 'Update', 'menu', 'Success', '{"Updated id":["4"]}', 1, '2019-05-01 22:07:13', '2019-05-01 22:07:13');
 /*!40000 ALTER TABLE `logs` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-ahras-db. medias
@@ -1787,10 +2061,10 @@ CREATE TABLE IF NOT EXISTS `medias` (
 DELETE FROM `medias`;
 /*!40000 ALTER TABLE `medias` DISABLE KEYS */;
 INSERT INTO `medias` (`id`, `name`, `description`, `type`, `files`, `created_at`, `updated_at`) VALUES
-	(55, '{"en":"Albums 002","ar":"ايقونات الموقع"}', '{"en":"<p>Albums 002<\\/p>","ar":"<p>Albums 002<\\/p>"}', 1, NULL, '2019-03-25 03:02:34', '2019-03-25 03:02:34'),
-	(56, '{"en":"Albums 003","ar":"قسم"}', '{"en":"<p>Albums 03<\\/p>","ar":"<p>Albums 03<\\/p>"}', 1, NULL, '2019-03-25 03:03:52', '2019-03-25 03:03:52'),
-	(57, '{"en":"Albums 04","ar":"Albums 04"}', '{"en":"<p>Albums 04<\\/p>","ar":"<p>Albums 04<\\/p>"}', 1, NULL, '2019-03-25 03:04:49', '2019-03-25 03:04:50'),
-	(58, '{"en":"NomentClature 001","ar":"NomentClature 001"}', '{"en":"<p>NomentClature 001<\\/p>","ar":"<p>NomentClature 001<\\/p>"}', 2, NULL, '2019-03-25 03:42:39', '2019-03-25 03:42:39');
+	(55, '{"en":"Albums 002","fr":"Albums 002","ar":"ايقونات الموقع"}', '{"en":"<p>Albums 002<\\/p>","fr":"<p>Albums 002<\\/p>","ar":"<p>Albums 002<\\/p>"}', 1, NULL, '2019-03-25 03:02:34', '2019-04-23 21:19:36'),
+	(56, '{"en":"Albums 003","fr":"Albums 003","ar":"قسم"}', '{"en":"<p>Albums 03<\\/p>","fr":"<p>Albums 003<\\/p>","ar":"<p>Albums 03<\\/p>"}', 1, NULL, '2019-03-25 03:03:52', '2019-04-23 21:22:00'),
+	(57, '{"en":"Albums 04","fr":"Albums 04","ar":"Albums 04"}', '{"en":"<p>Albums 04<\\/p>","fr":"<p>Albums 04<\\/p>","ar":"<p>Albums 04<\\/p>"}', 1, NULL, '2019-03-25 03:04:49', '2019-04-23 21:22:21'),
+	(58, '{"en":"NomentClature 001","fr":"NomentClature 001","ar":"NomentClature 001"}', '{"en":"<p>NomentClature 001<\\/p>","fr":"<p>NomentClature 001<\\/p>","ar":"<p>NomentClature 001<\\/p>"}', 2, NULL, '2019-03-25 03:42:39', '2019-04-23 21:22:42');
 /*!40000 ALTER TABLE `medias` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-ahras-db. menu
@@ -1870,14 +2144,18 @@ CREATE TABLE IF NOT EXISTS `news` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-ahras-db.news : ~2 rows (environ)
+-- Listage des données de la table cam-souk-ahras-db.news : ~3 rows (environ)
 DELETE FROM `news`;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
 INSERT INTO `news` (`id`, `title`, `description`, `image`, `created_at`, `updated_at`) VALUES
-	(1, '{"en":"News 01","fr":"News 001","ar":"News 01"}', '{"en":"<p>This comprehensive tutorial contains everything you have to know about WordPress Theme development, starting with setting the environment, through WordPress installation and configuration, setting up theme construction, development including custom widgets and functions.<\\/p>","fr":"<p>This comprehensive tutorial contains everything you have to know about WordPress Theme development, starting with setting the environment, through WordPress installation and configuration, setting up theme construction, development including custom widgets and functions.<\\/p>","ar":"<p>This comprehensive tutorial contains everything you have to know about WordPress Theme development, starting with setting the environment, through WordPress installation and configuration, setting up theme construction, development including custom widgets and functions.<\\/p>"}', '96063_1553611798.jpg', '2019-03-07 16:29:15', '2019-03-26 14:49:58'),
-	(2, '{"en":"News 02","fr":"News 02","ar":"News 02"}', '{"en":"<p>The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous\\/next controls and indicators.<\\/p>\\r\\n<p>In browsers where the&nbsp;<a href=\\"https:\\/\\/www.w3.org\\/TR\\/page-visibility\\/\\">Page Visibility API<\\/a>&nbsp;is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).<\\/p>","fr":"<p>The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous\\/next controls and indicators.<\\/p>\\r\\n<p>In browsers where the&nbsp;<a href=\\"https:\\/\\/www.w3.org\\/TR\\/page-visibility\\/\\">Page Visibility API<\\/a>&nbsp;is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).<\\/p>","ar":"<p>The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous\\/next controls and indicators.<\\/p>\\r\\n<p>In browsers where the&nbsp;<a href=\\"https:\\/\\/www.w3.org\\/TR\\/page-visibility\\/\\">Page Visibility API<\\/a>&nbsp;is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).<\\/p>"}', '87590_1553611896.jpg', '2019-03-07 16:30:52', '2019-03-26 14:51:36');
+	(1, '{"en":"This is title of the news","fr":"This is title of the news","ar":"This is title of the news"}', '{"en":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>","fr":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>","ar":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>"}', '59124_1556728002.jpg', '2019-03-07 16:29:15', '2019-05-01 16:26:42'),
+	(2, '{"en":"This is title of the news 02","fr":"This is title of the news 02","ar":"This is title of the news 02"}', '{"en":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>","fr":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>","ar":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>"}', '41632_1556728126.jpg', '2019-03-07 16:30:52', '2019-05-01 16:28:46'),
+	(3, '{"en":"This is title of the news 03","fr":"This is title of the news 03","ar":"This is title of the news 03"}', '{"en":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>","fr":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>","ar":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>"}', '16400_1556728217.jpg', '2019-05-01 16:30:17', '2019-05-01 16:30:17'),
+	(4, '{"en":"This is title of the news 04","fr":"This is title of the news 04","ar":"This is title of the news 04"}', '{"en":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>","fr":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>","ar":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>"}', '20335_1556728321.jpg', '2019-05-01 16:32:01', '2019-05-01 16:32:01'),
+	(5, '{"en":"This is title of the news 05","fr":"This is title of the news 05","ar":"This is title of the news 05"}', '{"en":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>","fr":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>","ar":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>"}', '13089_1556728388.jpg', '2019-05-01 16:33:08', '2019-05-01 16:33:08'),
+	(6, '{"en":"This is title of the news 06","fr":"This is title of the news 06","ar":"This is title of the news 06"}', '{"en":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>","fr":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>","ar":"<p class=\\"dark-grey-text mb-3 mt-4 mx-4\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.<\\/p>\\r\\n<div class=\\"row mx-4 mt-3\\">\\r\\n<p class=\\"dark-grey-text article\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\\/p>\\r\\n<h5 class=\\"mt-3 mb-4\\"><strong>Lorem ipsum dolor sit amet<\\/strong><\\/h5>\\r\\n<p class=\\"dark-grey-text article\\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.<\\/p>\\r\\n<blockquote class=\\"blockquote mx-md-5 mx-1\\">\\r\\n<p class=\\"mb-0\\">\\"Lorem ipsum dolor sit amet, consectetur adipiscing elit...\\"<\\/p>\\r\\n<\\/blockquote>\\r\\n<p class=\\"dark-grey-text article\\">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\\/p>\\r\\n<\\/div>"}', '65341_1556728452.jpg', '2019-05-01 16:34:12', '2019-05-01 16:34:12');
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-ahras-db. page
@@ -2134,25 +2412,25 @@ INSERT INTO `permissions` (`id`, `name`, `slug`, `description`, `controller_name
 	(249, 'users-websiteupdate-InscriptionController', 'App-Application-Admin-Inscription-Controller-update', 'Allow admin on update in controller Inscription Controller', 'InscriptionController', 'update', 'website', 1, 'App\\Application\\Controllers\\Website\\InscriptionController', '2019-03-06 15:09:04', '2019-03-06 15:09:04'),
 	(250, 'users-websitegetById-InscriptionController', 'App-Application-Admin-Inscription-Controller-getById', 'Allow admin on getById in controller Inscription Controller', 'InscriptionController', 'getById', 'website', 1, 'App\\Application\\Controllers\\Website\\InscriptionController', '2019-03-06 15:09:04', '2019-03-06 15:09:04'),
 	(251, 'users-websitedestroy-InscriptionController', 'App-Application-Admin-Inscription-Controller-destroy', 'Allow admin on destroy in controller Inscription Controller', 'InscriptionController', 'destroy', 'website', 1, 'App\\Application\\Controllers\\Website\\InscriptionController', '2019-03-06 15:09:05', '2019-03-06 15:09:05'),
-	(254, 'index-SectionController', 'App-Application-Admin-Section-Controller-index', 'Allow admin on index in controller Section Controller', 'SectionController', 'index', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
-	(255, 'show-SectionController', 'App-Application-Admin-Section-Controller-show', 'Allow admin on show in controller Section Controller', 'SectionController', 'show', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
-	(256, 'store-SectionController', 'App-Application-Admin-Section-Controller-store', 'Allow admin on store in controller Section Controller', 'SectionController', 'store', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
-	(257, 'update-SectionController', 'App-Application-Admin-Section-Controller-update', 'Allow admin on update in controller Section Controller', 'SectionController', 'update', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
-	(258, 'getById-SectionController', 'App-Application-Admin-Section-Controller-getById', 'Allow admin on getById in controller Section Controller', 'SectionController', 'getById', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
-	(259, 'destroy-SectionController', 'App-Application-Admin-Section-Controller-destroy', 'Allow admin on destroy in controller Section Controller', 'SectionController', 'destroy', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
-	(260, 'pluck-SectionController', 'App-Application-Admin-Section-Controller-pluck', 'Allow admin on pluck in controller Section Controller', 'SectionController', 'pluck', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
-	(261, 'admin-website-index-SectionController', 'App-Application-Admin-Section-Controller-index', 'Allow admin on index in controller Section Controller', 'SectionController', 'index', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
-	(262, 'admin-website-show-SectionController', 'App-Application-Admin-Section-Controller-show', 'Allow admin on show in controller Section Controller', 'SectionController', 'show', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
-	(263, 'admin-website-store-SectionController', 'App-Application-Admin-Section-Controller-store', 'Allow admin on store in controller Section Controller', 'SectionController', 'store', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
-	(264, 'admin-website-update-SectionController', 'App-Application-Admin-Section-Controller-update', 'Allow admin on update in controller Section Controller', 'SectionController', 'update', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
-	(265, 'admin-website-getById-SectionController', 'App-Application-Admin-Section-Controller-getById', 'Allow admin on getById in controller Section Controller', 'SectionController', 'getById', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
-	(266, 'admin-website-destroy-SectionController', 'App-Application-Admin-Section-Controller-destroy', 'Allow admin on destroy in controller Section Controller', 'SectionController', 'destroy', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
-	(267, 'users-websiteindex-SectionController', 'App-Application-Admin-Section-Controller-index', 'Allow admin on index in controller Section Controller', 'SectionController', 'index', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
-	(268, 'users-websiteshow-SectionController', 'App-Application-Admin-Section-Controller-show', 'Allow admin on show in controller Section Controller', 'SectionController', 'show', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
-	(269, 'users-websitestore-SectionController', 'App-Application-Admin-Section-Controller-store', 'Allow admin on store in controller Section Controller', 'SectionController', 'store', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
-	(270, 'users-websiteupdate-SectionController', 'App-Application-Admin-Section-Controller-update', 'Allow admin on update in controller Section Controller', 'SectionController', 'update', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
-	(271, 'users-websitegetById-SectionController', 'App-Application-Admin-Section-Controller-getById', 'Allow admin on getById in controller Section Controller', 'SectionController', 'getById', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-06 20:38:39', '2019-03-06 20:38:39'),
-	(272, 'users-websitedestroy-SectionController', 'App-Application-Admin-Section-Controller-destroy', 'Allow admin on destroy in controller Section Controller', 'SectionController', 'destroy', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-06 20:38:39', '2019-03-06 20:38:39'),
+	(254, 'index-SiteController', 'App-Application-Admin-Section-Controller-index', 'Allow admin on index in controller Section Controller', 'SiteController', 'index', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
+	(255, 'show-SiteController', 'App-Application-Admin-Section-Controller-show', 'Allow admin on show in controller Section Controller', 'SiteController', 'show', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
+	(256, 'store-SiteController', 'App-Application-Admin-Section-Controller-store', 'Allow admin on store in controller Section Controller', 'SiteController', 'store', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
+	(257, 'update-SiteController', 'App-Application-Admin-Section-Controller-update', 'Allow admin on update in controller Section Controller', 'SiteController', 'update', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
+	(258, 'getById-SiteController', 'App-Application-Admin-Section-Controller-getById', 'Allow admin on getById in controller Section Controller', 'SiteController', 'getById', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
+	(259, 'destroy-SiteController', 'App-Application-Admin-Section-Controller-destroy', 'Allow admin on destroy in controller Section Controller', 'SiteController', 'destroy', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
+	(260, 'pluck-SiteController', 'App-Application-Admin-Section-Controller-pluck', 'Allow admin on pluck in controller Section Controller', 'SiteController', 'pluck', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
+	(261, 'admin-website-index-SiteController', 'App-Application-Admin-Section-Controller-index', 'Allow admin on index in controller Section Controller', 'SiteController', 'index', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
+	(262, 'admin-website-show-SiteController', 'App-Application-Admin-Section-Controller-show', 'Allow admin on show in controller Section Controller', 'SiteController', 'show', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
+	(263, 'admin-website-store-SiteController', 'App-Application-Admin-Section-Controller-store', 'Allow admin on store in controller Section Controller', 'SiteController', 'store', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-06 20:38:37', '2019-03-06 20:38:37'),
+	(264, 'admin-website-update-SiteController', 'App-Application-Admin-Section-Controller-update', 'Allow admin on update in controller Section Controller', 'SiteController', 'update', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
+	(265, 'admin-website-getById-SiteController', 'App-Application-Admin-Section-Controller-getById', 'Allow admin on getById in controller Section Controller', 'SiteController', 'getById', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
+	(266, 'admin-website-destroy-SiteController', 'App-Application-Admin-Section-Controller-destroy', 'Allow admin on destroy in controller Section Controller', 'SiteController', 'destroy', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
+	(267, 'users-websiteindex-SiteController', 'App-Application-Admin-Section-Controller-index', 'Allow admin on index in controller Section Controller', 'SiteController', 'index', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
+	(268, 'users-websiteshow-SiteController', 'App-Application-Admin-Section-Controller-show', 'Allow admin on show in controller Section Controller', 'SiteController', 'show', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
+	(269, 'users-websitestore-SiteController', 'App-Application-Admin-Section-Controller-store', 'Allow admin on store in controller Section Controller', 'SiteController', 'store', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
+	(270, 'users-websiteupdate-SiteController', 'App-Application-Admin-Section-Controller-update', 'Allow admin on update in controller Section Controller', 'SiteController', 'update', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-06 20:38:38', '2019-03-06 20:38:38'),
+	(271, 'users-websitegetById-SiteController', 'App-Application-Admin-Section-Controller-getById', 'Allow admin on getById in controller Section Controller', 'SiteController', 'getById', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-06 20:38:39', '2019-03-06 20:38:39'),
+	(272, 'users-websitedestroy-SiteController', 'App-Application-Admin-Section-Controller-destroy', 'Allow admin on destroy in controller Section Controller', 'SiteController', 'destroy', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-06 20:38:39', '2019-03-06 20:38:39'),
 	(273, 'index-LocalController', 'App-Application-Admin-Local-Controller-index', 'Allow admin on index in controller Local Controller', 'LocalController', 'index', 'admin', 1, 'App\\Application\\Controllers\\Admin\\LocalController', '2019-03-06 20:53:21', '2019-03-06 20:53:21'),
 	(274, 'show-LocalController', 'App-Application-Admin-Local-Controller-show', 'Allow admin on show in controller Local Controller', 'LocalController', 'show', 'admin', 1, 'App\\Application\\Controllers\\Admin\\LocalController', '2019-03-06 20:53:21', '2019-03-06 20:53:21'),
 	(275, 'store-LocalController', 'App-Application-Admin-Local-Controller-store', 'Allow admin on store in controller Local Controller', 'LocalController', 'store', 'admin', 1, 'App\\Application\\Controllers\\Admin\\LocalController', '2019-03-06 20:53:21', '2019-03-06 20:53:21'),
@@ -2367,13 +2645,13 @@ INSERT INTO `permissions` (`id`, `name`, `slug`, `description`, `controller_name
 	(510, 'admin-admin-getById-RoleController', 'App-Application-Controllers-Admin-RoleController-getById', 'Allow Admin admin on getById in controller RoleController', 'RoleController', 'getById', 'admin', 1, 'App\\Application\\Controllers\\Admin\\RoleController', '2019-03-08 11:48:01', '2019-03-08 11:48:01'),
 	(511, 'admin-admin-destroy-RoleController', 'App-Application-Controllers-Admin-RoleController-destroy', 'Allow Admin admin on destroy in controller RoleController', 'RoleController', 'destroy', 'admin', 1, 'App\\Application\\Controllers\\Admin\\RoleController', '2019-03-08 11:48:01', '2019-03-08 11:48:01'),
 	(512, 'admin-admin-pluck-RoleController', 'App-Application-Controllers-Admin-RoleController-pluck', 'Allow Admin admin on pluck in controller RoleController', 'RoleController', 'pluck', 'admin', 1, 'App\\Application\\Controllers\\Admin\\RoleController', '2019-03-08 11:48:01', '2019-03-08 11:48:01'),
-	(513, 'admin-admin-index-SectionController', 'App-Application-Controllers-Admin-SectionController-index', 'Allow Admin admin on index in controller SectionController', 'SectionController', 'index', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-08 11:48:01', '2019-03-08 11:48:01'),
-	(514, 'admin-admin-show-SectionController', 'App-Application-Controllers-Admin-SectionController-show', 'Allow Admin admin on show in controller SectionController', 'SectionController', 'show', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-08 11:48:01', '2019-03-08 11:48:01'),
-	(515, 'admin-admin-store-SectionController', 'App-Application-Controllers-Admin-SectionController-store', 'Allow Admin admin on store in controller SectionController', 'SectionController', 'store', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-08 11:48:01', '2019-03-08 11:48:01'),
-	(516, 'admin-admin-update-SectionController', 'App-Application-Controllers-Admin-SectionController-update', 'Allow Admin admin on update in controller SectionController', 'SectionController', 'update', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-08 11:48:01', '2019-03-08 11:48:01'),
-	(517, 'admin-admin-getById-SectionController', 'App-Application-Controllers-Admin-SectionController-getById', 'Allow Admin admin on getById in controller SectionController', 'SectionController', 'getById', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-08 11:48:01', '2019-03-08 11:48:01'),
-	(518, 'admin-admin-destroy-SectionController', 'App-Application-Controllers-Admin-SectionController-destroy', 'Allow Admin admin on destroy in controller SectionController', 'SectionController', 'destroy', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-08 11:48:02', '2019-03-08 11:48:02'),
-	(519, 'admin-admin-pluck-SectionController', 'App-Application-Controllers-Admin-SectionController-pluck', 'Allow Admin admin on pluck in controller SectionController', 'SectionController', 'pluck', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SectionController', '2019-03-08 11:48:02', '2019-03-08 11:48:02'),
+	(513, 'admin-admin-index-SiteController', 'App-Application-Controllers-Admin-SiteController-index', 'Allow Admin admin on index in controller SiteController', 'SiteController', 'index', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-08 11:48:01', '2019-03-08 11:48:01'),
+	(514, 'admin-admin-show-SiteController', 'App-Application-Controllers-Admin-SiteController-show', 'Allow Admin admin on show in controller SiteController', 'SiteController', 'show', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-08 11:48:01', '2019-03-08 11:48:01'),
+	(515, 'admin-admin-store-SiteController', 'App-Application-Controllers-Admin-SiteController-store', 'Allow Admin admin on store in controller SiteController', 'SiteController', 'store', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-08 11:48:01', '2019-03-08 11:48:01'),
+	(516, 'admin-admin-update-SiteController', 'App-Application-Controllers-Admin-SiteController-update', 'Allow Admin admin on update in controller SiteController', 'SiteController', 'update', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-08 11:48:01', '2019-03-08 11:48:01'),
+	(517, 'admin-admin-getById-SiteController', 'App-Application-Controllers-Admin-SiteController-getById', 'Allow Admin admin on getById in controller SiteController', 'SiteController', 'getById', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-08 11:48:01', '2019-03-08 11:48:01'),
+	(518, 'admin-admin-destroy-SiteController', 'App-Application-Controllers-Admin-SiteController-destroy', 'Allow Admin admin on destroy in controller SiteController', 'SiteController', 'destroy', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-08 11:48:02', '2019-03-08 11:48:02'),
+	(519, 'admin-admin-pluck-SiteController', 'App-Application-Controllers-Admin-SiteController-pluck', 'Allow Admin admin on pluck in controller SiteController', 'SiteController', 'pluck', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SiteController', '2019-03-08 11:48:02', '2019-03-08 11:48:02'),
 	(520, 'admin-admin-index-SettingController', 'App-Application-Controllers-Admin-SettingController-index', 'Allow Admin admin on index in controller SettingController', 'SettingController', 'index', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SettingController', '2019-03-08 11:48:02', '2019-03-08 11:48:02'),
 	(521, 'admin-admin-show-SettingController', 'App-Application-Controllers-Admin-SettingController-show', 'Allow Admin admin on show in controller SettingController', 'SettingController', 'show', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SettingController', '2019-03-08 11:48:02', '2019-03-08 11:48:02'),
 	(522, 'admin-admin-store-SettingController', 'App-Application-Controllers-Admin-SettingController-store', 'Allow Admin admin on store in controller SettingController', 'SettingController', 'store', 'admin', 1, 'App\\Application\\Controllers\\Admin\\SettingController', '2019-03-08 11:48:03', '2019-03-08 11:48:03'),
@@ -2433,13 +2711,13 @@ INSERT INTO `permissions` (`id`, `name`, `slug`, `description`, `controller_name
 	(582, 'admin-website-update-RequestController', 'App-Application-Controllers-Website-RequestController-update', 'Allow Admin admin on update in controller RequestController', 'RequestController', 'update', 'website', 1, 'App\\Application\\Controllers\\Website\\RequestController', '2019-03-08 11:48:07', '2019-03-08 11:48:07'),
 	(583, 'admin-website-getById-RequestController', 'App-Application-Controllers-Website-RequestController-getById', 'Allow Admin admin on getById in controller RequestController', 'RequestController', 'getById', 'website', 1, 'App\\Application\\Controllers\\Website\\RequestController', '2019-03-08 11:48:07', '2019-03-08 11:48:07'),
 	(584, 'admin-website-destroy-RequestController', 'App-Application-Controllers-Website-RequestController-destroy', 'Allow Admin admin on destroy in controller RequestController', 'RequestController', 'destroy', 'website', 1, 'App\\Application\\Controllers\\Website\\RequestController', '2019-03-08 11:48:07', '2019-03-08 11:48:07'),
-	(585, 'admin-website-index-SectionController', 'App-Application-Controllers-Website-SectionController-index', 'Allow Admin admin on index in controller SectionController', 'SectionController', 'index', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
-	(586, 'admin-website-show-SectionController', 'App-Application-Controllers-Website-SectionController-show', 'Allow Admin admin on show in controller SectionController', 'SectionController', 'show', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
-	(587, 'admin-website-store-SectionController', 'App-Application-Controllers-Website-SectionController-store', 'Allow Admin admin on store in controller SectionController', 'SectionController', 'store', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
-	(588, 'admin-website-update-SectionController', 'App-Application-Controllers-Website-SectionController-update', 'Allow Admin admin on update in controller SectionController', 'SectionController', 'update', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
-	(589, 'admin-website-getById-SectionController', 'App-Application-Controllers-Website-SectionController-getById', 'Allow Admin admin on getById in controller SectionController', 'SectionController', 'getById', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
-	(590, 'admin-website-destroy-SectionController', 'App-Application-Controllers-Website-SectionController-destroy', 'Allow Admin admin on destroy in controller SectionController', 'SectionController', 'destroy', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
-	(591, 'admin-website-locaux-SectionController', 'App-Application-Controllers-Website-SectionController-locaux', 'Allow Admin admin on locaux in controller SectionController', 'SectionController', 'locaux', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
+	(585, 'admin-website-index-SiteController', 'App-Application-Controllers-Website-SiteController-index', 'Allow Admin admin on index in controller SiteController', 'SiteController', 'index', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
+	(586, 'admin-website-show-SiteController', 'App-Application-Controllers-Website-SiteController-show', 'Allow Admin admin on show in controller SiteController', 'SiteController', 'show', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
+	(587, 'admin-website-store-SiteController', 'App-Application-Controllers-Website-SiteController-store', 'Allow Admin admin on store in controller SiteController', 'SiteController', 'store', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
+	(588, 'admin-website-update-SiteController', 'App-Application-Controllers-Website-SiteController-update', 'Allow Admin admin on update in controller SiteController', 'SiteController', 'update', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
+	(589, 'admin-website-getById-SiteController', 'App-Application-Controllers-Website-SiteController-getById', 'Allow Admin admin on getById in controller SiteController', 'SiteController', 'getById', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
+	(590, 'admin-website-destroy-SiteController', 'App-Application-Controllers-Website-SiteController-destroy', 'Allow Admin admin on destroy in controller SiteController', 'SiteController', 'destroy', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
+	(591, 'admin-website-locaux-SiteController', 'App-Application-Controllers-Website-SiteController-locaux', 'Allow Admin admin on locaux in controller SiteController', 'SiteController', 'locaux', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
 	(592, 'user-website-index-ArtisanController', 'App-Application-Controllers-Website-ArtisanController-index', 'Allow User admin on index in controller ArtisanController', 'ArtisanController', 'index', 'website', 1, 'App\\Application\\Controllers\\Website\\ArtisanController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
 	(593, 'user-website-show-ArtisanController', 'App-Application-Controllers-Website-ArtisanController-show', 'Allow User admin on show in controller ArtisanController', 'ArtisanController', 'show', 'website', 1, 'App\\Application\\Controllers\\Website\\ArtisanController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
 	(594, 'user-website-store-ArtisanController', 'App-Application-Controllers-Website-ArtisanController-store', 'Allow User admin on store in controller ArtisanController', 'ArtisanController', 'store', 'website', 1, 'App\\Application\\Controllers\\Website\\ArtisanController', '2019-03-08 11:48:08', '2019-03-08 11:48:08'),
@@ -2479,13 +2757,13 @@ INSERT INTO `permissions` (`id`, `name`, `slug`, `description`, `controller_name
 	(634, 'user-website-update-RequestController', 'App-Application-Controllers-Website-RequestController-update', 'Allow User admin on update in controller RequestController', 'RequestController', 'update', 'website', 1, 'App\\Application\\Controllers\\Website\\RequestController', '2019-03-08 11:48:11', '2019-03-08 11:48:11'),
 	(635, 'user-website-getById-RequestController', 'App-Application-Controllers-Website-RequestController-getById', 'Allow User admin on getById in controller RequestController', 'RequestController', 'getById', 'website', 1, 'App\\Application\\Controllers\\Website\\RequestController', '2019-03-08 11:48:11', '2019-03-08 11:48:11'),
 	(636, 'user-website-destroy-RequestController', 'App-Application-Controllers-Website-RequestController-destroy', 'Allow User admin on destroy in controller RequestController', 'RequestController', 'destroy', 'website', 1, 'App\\Application\\Controllers\\Website\\RequestController', '2019-03-08 11:48:11', '2019-03-08 11:48:11'),
-	(637, 'user-website-index-SectionController', 'App-Application-Controllers-Website-SectionController-index', 'Allow User admin on index in controller SectionController', 'SectionController', 'index', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:11', '2019-03-08 11:48:11'),
-	(638, 'user-website-show-SectionController', 'App-Application-Controllers-Website-SectionController-show', 'Allow User admin on show in controller SectionController', 'SectionController', 'show', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:11', '2019-03-08 11:48:11'),
-	(639, 'user-website-store-SectionController', 'App-Application-Controllers-Website-SectionController-store', 'Allow User admin on store in controller SectionController', 'SectionController', 'store', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:11', '2019-03-08 11:48:11'),
-	(640, 'user-website-update-SectionController', 'App-Application-Controllers-Website-SectionController-update', 'Allow User admin on update in controller SectionController', 'SectionController', 'update', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:11', '2019-03-08 11:48:11'),
-	(641, 'user-website-getById-SectionController', 'App-Application-Controllers-Website-SectionController-getById', 'Allow User admin on getById in controller SectionController', 'SectionController', 'getById', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:11', '2019-03-08 11:48:11'),
-	(642, 'user-website-destroy-SectionController', 'App-Application-Controllers-Website-SectionController-destroy', 'Allow User admin on destroy in controller SectionController', 'SectionController', 'destroy', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:12', '2019-03-08 11:48:12'),
-	(643, 'user-website-locaux-SectionController', 'App-Application-Controllers-Website-SectionController-locaux', 'Allow User admin on locaux in controller SectionController', 'SectionController', 'locaux', 'website', 1, 'App\\Application\\Controllers\\Website\\SectionController', '2019-03-08 11:48:12', '2019-03-08 11:48:12'),
+	(637, 'user-website-index-SiteController', 'App-Application-Controllers-Website-SiteController-index', 'Allow User admin on index in controller SiteController', 'SiteController', 'index', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:11', '2019-03-08 11:48:11'),
+	(638, 'user-website-show-SiteController', 'App-Application-Controllers-Website-SiteController-show', 'Allow User admin on show in controller SiteController', 'SiteController', 'show', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:11', '2019-03-08 11:48:11'),
+	(639, 'user-website-store-SiteController', 'App-Application-Controllers-Website-SiteController-store', 'Allow User admin on store in controller SiteController', 'SiteController', 'store', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:11', '2019-03-08 11:48:11'),
+	(640, 'user-website-update-SiteController', 'App-Application-Controllers-Website-SiteController-update', 'Allow User admin on update in controller SiteController', 'SiteController', 'update', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:11', '2019-03-08 11:48:11'),
+	(641, 'user-website-getById-SiteController', 'App-Application-Controllers-Website-SiteController-getById', 'Allow User admin on getById in controller SiteController', 'SiteController', 'getById', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:11', '2019-03-08 11:48:11'),
+	(642, 'user-website-destroy-SiteController', 'App-Application-Controllers-Website-SiteController-destroy', 'Allow User admin on destroy in controller SiteController', 'SiteController', 'destroy', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:12', '2019-03-08 11:48:12'),
+	(643, 'user-website-locaux-SiteController', 'App-Application-Controllers-Website-SiteController-locaux', 'Allow User admin on locaux in controller SiteController', 'SiteController', 'locaux', 'website', 1, 'App\\Application\\Controllers\\Website\\SiteController', '2019-03-08 11:48:12', '2019-03-08 11:48:12'),
 	(644, 'index-MediasController', 'App-Application-Admin-Medias-Controller-index', 'Allow admin on index in controller Medias Controller', 'MediasController', 'index', 'admin', 1, 'App\\Application\\Controllers\\Admin\\MediasController', '2019-03-08 13:00:30', '2019-03-08 13:00:30'),
 	(645, 'show-MediasController', 'App-Application-Admin-Medias-Controller-show', 'Allow admin on show in controller Medias Controller', 'MediasController', 'show', 'admin', 1, 'App\\Application\\Controllers\\Admin\\MediasController', '2019-03-08 13:00:30', '2019-03-08 13:00:30'),
 	(646, 'store-MediasController', 'App-Application-Admin-Medias-Controller-store', 'Allow admin on store in controller Medias Controller', 'MediasController', 'store', 'admin', 1, 'App\\Application\\Controllers\\Admin\\MediasController', '2019-03-08 13:00:30', '2019-03-08 13:00:30'),
@@ -3011,19 +3289,14 @@ CREATE TABLE IF NOT EXISTS `request` (
   KEY `request_artisan_id_foreign` (`artisan_id`),
   KEY `request_local_id_foreign` (`local_id`),
   KEY `request_section_id_foreign` (`section_id`),
-  CONSTRAINT `request_artisan_id_foreign` FOREIGN KEY (`artisan_id`) REFERENCES `artisan` (`numero_artisan`) ON DELETE CASCADE,
-  CONSTRAINT `request_local_id_foreign` FOREIGN KEY (`local_id`) REFERENCES `local` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `request_section_id_foreign` FOREIGN KEY (`section_id`) REFERENCES `section` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  CONSTRAINT `request_artisan_id_foreign` FOREIGN KEY (`artisan_id`) REFERENCES `artisan` (`numero_artisan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `request_local_id_foreign` FOREIGN KEY (`local_id`) REFERENCES `local` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `request_section_id_foreign` FOREIGN KEY (`section_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table cam-souk-ahras-db.request : ~4 rows (environ)
+-- Listage des données de la table cam-souk-ahras-db.request : ~0 rows (environ)
 DELETE FROM `request`;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
-INSERT INTO `request` (`id`, `artisan_id`, `section_id`, `local_id`, `status`, `created_at`, `updated_at`) VALUES
-	(4, 'A001', 1, 1, '1', '2019-03-07 11:30:07', '2019-03-15 10:48:38'),
-	(5, 'A001', 1, 1, NULL, '2019-03-07 14:43:54', '2019-03-07 14:43:54'),
-	(10, 'A001', 1, 2, NULL, '2019-03-07 15:58:51', '2019-03-07 15:58:51'),
-	(11, 'A001', 2, 1, NULL, '2019-03-07 16:00:50', '2019-03-07 16:00:50');
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 
 -- Listage de la structure de la table cam-souk-ahras-db. roles
@@ -3059,26 +3332,6 @@ DELETE FROM `role_user`;
 /*!40000 ALTER TABLE `role_user` DISABLE KEYS */;
 /*!40000 ALTER TABLE `role_user` ENABLE KEYS */;
 
--- Listage de la structure de la table cam-souk-ahras-db. section
-CREATE TABLE IF NOT EXISTS `section` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci,
-  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `section_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Listage des données de la table cam-souk-ahras-db.section : ~2 rows (environ)
-DELETE FROM `section`;
-/*!40000 ALTER TABLE `section` DISABLE KEYS */;
-INSERT INTO `section` (`id`, `name`, `description`, `image`, `created_at`, `updated_at`) VALUES
-	(1, '{"en":"Section 01","ar":"Section 01", "fr": null}', '{"en":"<p>Section 01 Description0.....<\\/p>","ar":null, "fr": null}', '22082_1552607235.jpg', '2019-03-06 20:50:06', '2019-03-14 23:47:15'),
-	(2, '{"en":"Section 02","ar":"Section 02", "fr": null}', '{"en":"<p>Section 02 ....<\\/p>","ar":null, "fr": null}', '14937_1552607266.jpg', '2019-03-07 00:29:17', '2019-03-14 23:47:46');
-/*!40000 ALTER TABLE `section` ENABLE KEYS */;
-
 -- Listage de la structure de la table cam-souk-ahras-db. setting
 CREATE TABLE IF NOT EXISTS `setting` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -3100,6 +3353,26 @@ INSERT INTO `setting` (`id`, `name`, `type`, `body_setting`, `created_at`, `upda
 	(4, 'img_cam', 'image', '82470_1553601460.jpg', '2019-03-25 16:15:20', '2019-03-26 11:57:41');
 /*!40000 ALTER TABLE `setting` ENABLE KEYS */;
 
+-- Listage de la structure de la table cam-souk-ahras-db. site
+CREATE TABLE IF NOT EXISTS `site` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `section_name_unique` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Listage des données de la table cam-souk-ahras-db.site : ~2 rows (environ)
+DELETE FROM `site`;
+/*!40000 ALTER TABLE `site` DISABLE KEYS */;
+INSERT INTO `site` (`id`, `name`, `description`, `image`, `created_at`, `updated_at`) VALUES
+	(1, '{"en":"Section 01","fr":"Site 01","ar":"Section 01"}', '{"en":"<p>Section 01 Description0.....<\\/p>","fr":null,"ar":null}', '22082_1552607235.jpg', '2019-03-06 20:50:06', '2019-05-01 21:26:38'),
+	(2, '{"en":"Section 02","fr":"Site 02","ar":"Section 02"}', '{"en":"<p>Section 02 ....<\\/p>","fr":null,"ar":null}', '14937_1552607266.jpg', '2019-03-07 00:29:17', '2019-05-01 21:27:42');
+/*!40000 ALTER TABLE `site` ENABLE KEYS */;
+
 -- Listage de la structure de la table cam-souk-ahras-db. users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -3115,16 +3388,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`),
   UNIQUE KEY `users_api_token_unique` (`api_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table cam-souk-ahras-db.users : ~4 rows (environ)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `group_id`, `api_token`, `remember_token`, `created_at`, `updated_at`, `image`) VALUES
-	(1, 'admin', 'admin@gmail.com', '$2y$10$TENvveevcPmcHMsvLCHHQ.btzrzEahN6GDEXkqiD3nqfvb66gK6o2', 1, 'JEj4uiIEfCXjupx82Q5N0hV7RkjbYz24S6VlATP8DUz7wlZvdtos4W0Rjvzy', 'jRDZgVI65jAuqjuQPowHz0D1TIlr5acJHOYneLL1JsqnRMhIegaOt52paglt', '2019-03-08 11:47:47', '2019-03-26 11:14:41', '11606_1553598881.jpg'),
-	(4, 'Karimou Seyni', 'ibrahim.karimouseyni@yahoo.com', '$2y$10$J6jI8MRYqc4pXIYSPmZB1e35ujS55YvT1V8C4x1rIcVtDHroS1B36', 3, NULL, NULL, '2019-03-25 19:03:52', '2019-03-25 19:03:52', 'user-lg.jpg'),
-	(12, 'Karimou', 'ib@gmail.com', '$2y$10$26Fqu/SqaPOK42fzHI64E.DNRcqtCQxMLV2dt72Sc8YD6.4bwQbU.', 1, NULL, NULL, '2019-03-25 19:32:56', '2019-03-25 19:32:56', '58.jpg'),
-	(13, 'Issaka', 'ibrahimkarimouseynikis@yahoo.com', '$2y$10$oOyfUnADMfzAJH7XwwKI7ead7mGi99JcVhx7KwPHvmX3lpOgxTkCC', 2, NULL, 'jPEvoDabT3Q1k928KQoRymU9zvRw25JybT79gcGb5KhzdqgvHluVxj1UJdYW', '2019-03-26 12:28:34', '2019-03-26 15:44:29', '24054_1553615069.jpg');
+	(1, 'admin', 'admin@gmail.com', '$2y$10$TENvveevcPmcHMsvLCHHQ.btzrzEahN6GDEXkqiD3nqfvb66gK6o2', 1, 'JEj4uiIEfCXjupx82Q5N0hV7RkjbYz24S6VlATP8DUz7wlZvdtos4W0Rjvzy', 'GpHXpT6gG6r7ENiuE8P6aXCtByKMK4dfxDjIFBIcAOwBM2LV87UR3YSK2k5F', '2019-03-08 11:47:47', '2019-03-26 11:14:41', '11606_1553598881.jpg'),
+	(14, 'Mahamet Habibou', 'developer01@cam-souk-ahras.dz', '$2y$10$v7GNDfBIgJ/6lIKQ9m.qfuy/Vj1hT0zaCMAp9eZUw3LtgSuVBnboK', 3, NULL, 'cqs27uR20qm99fwyjvPXT0KhifXaJ4hKCIosYnxXIcdnztDMjE7b7z141cSz', '2019-05-01 10:49:38', '2019-05-01 10:49:38', NULL),
+	(15, 'Ibrahim Karimou', 'developer02@cam-souk-ahras.dz', '$2y$10$GSIxaz5cyJOkubkLuM8zPO.N/k9bUd5enJU0WCFj8Nzs06rLTGC9G', 3, NULL, NULL, '2019-05-01 10:50:28', '2019-05-01 10:50:28', NULL),
+	(16, 'Manager', 'manager@cam-souk-ahras.dz', '$2y$10$f1b.fKZJTFCqJvAAlcPqY.KWNP.nOjZjaDrmL0Zj1MgFGm.vYabUq', 2, NULL, NULL, '2019-05-01 10:51:07', '2019-05-01 10:51:07', NULL),
+	(17, 'Administrateur', 'admin@cam-souk-ahras.dz', '$2y$10$PNEOwFYw0DkuavhTv06KQu1wEKyNS.6nHLPSZRhURuRzJpPFh.DGC', 1, NULL, NULL, '2019-05-01 10:52:31', '2019-05-01 10:52:31', NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

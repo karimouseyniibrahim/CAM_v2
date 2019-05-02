@@ -13,9 +13,9 @@ function layoutMessage($type = 'admin')
     return layoutPath("layout.messages", $type);
 }
 
-function layoutExtend($type = 'admin')
+function layoutExtend($type = 'admin', $layout = 'app')
 {
-    return layoutPath("layout.app", $type);
+    return layoutPath("layout.".$layout, $type);
 }
 
 function layoutMenu($type = 'admin')
@@ -38,14 +38,14 @@ function layoutFooter($type = 'admin')
     return layoutPath("layout.footer", $type);
 }
 
-function layoutSideBar($type = 'admin')
+function layoutSideBar($type = 'admin', $layout = 'side-bar')
 {
-    return layoutPath("layout.side-bar", $type);
+    return layoutPath("layout.".$layout, $type);
 }
 
-function layoutContent($type = 'admin')
+function layoutContent($type = 'admin', $layout = 'content')
 {
-    return layoutPath("layout.content", $type);
+    return layoutPath("layout.".$layout, $type);
 }
 
 function layoutPushHeader($type = 'admin')

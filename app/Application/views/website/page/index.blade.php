@@ -1,4 +1,4 @@
-@extends(layoutExtend('website'))
+@extends(layoutExtend('website', 'blog'))
 
 @section('title')
     {{ trans('page.page') }} {{ trans('home.control') }}

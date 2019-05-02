@@ -17,37 +17,44 @@ class ArtisanController extends AbstractController
         parent::__construct($model);
     }
 
-    public function index(ArtisansDataTable $dataTable){
+    public function index(ArtisansDataTable $dataTable)
+    {
         return $dataTable->render('admin.artisan.index');
     }
 
-    public function show($id = null){
-        return $this->createOrEdit('admin.artisan.edit' , $id);
+    public function show($id = null)
+    {
+        return $this->createOrEdit('admin.artisan.edit', $id);
     }
 
-     public function store(AddRequestArtisan $request){
-          $item =  $this->storeOrUpdate($request , null , true);
-          return redirect('admin/artisan');
-     }
+    public function store(AddRequestArtisan $request)
+    {
+        $item = $this->storeOrUpdate($request, null, true);
+        return redirect('admin/artisan');
+    }
 
-     public function update($id , UpdateRequestArtisan $request){
-          $item = $this->storeOrUpdate($request, $id, true);
-return redirect()->back();
+    public function update($id, UpdateRequestArtisan $request)
+    {
+        $item = $this->storeOrUpdate($request, $id, true);
+        return redirect()->back();
 
-     }
+    }
 
 
-    public function getById($id){
+    public function getById($id)
+    {
         $fields = $this->model->findOrFail($id);
-        return $this->createOrEdit('admin.artisan.show' , $id , ['fields' =>  $fields]);
+        return $this->createOrEdit('admin.artisan.show', $id, ['fields' => $fields]);
     }
 
-    public function destroy($id){
-        return $this->deleteItem($id , 'admin/artisan')->with('sucess' , 'Done Delete artisan From system');
+    public function destroy($id)
+    {
+        return $this->deleteItem($id, 'admin/artisan')->with('sucess', trans('artisan.msg.delete'));
     }
 
-    public function pluck(\Illuminate\Http\Request $request){
-        return $this->deleteItem($request->id , 'admin/artisan')->with('sucess' , 'Done Delete artisan From system');
+    public function pluck(\Illuminate\Http\Request $request)
+    {
+        return $this->deleteItem($request->id, 'admin/artisan')->with('sucess', trans('artisan.msg.delete'));
     }
 
 }

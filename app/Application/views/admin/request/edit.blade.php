@@ -21,14 +21,14 @@
 					</span>
 				</div>
 			@endif
-		 <div class="form-group {{ $errors->has("section_id") ? "has-error" : "" }}" > 
-			<label for="section_id">{{ trans("request.section_id")}}</label>
-				<input type="text" name="section_id" class="form-control" id="section_id" value="{{ isset($item->section_id) ? $item->section_id : old("section_id") }}"  placeholder="{{ trans("request.section_id")}}">
+		 <div class="form-group {{ $errors->has("site_id") ? "has-error" : "" }}" >
+			<label for="site_id">{{ trans("request.site_id")}}</label>
+				<input type="text" name="site_id" class="form-control" id="site_id" value="{{ isset($item->site_id) ? $item->site_id : old("site_id") }}"  placeholder="{{ trans("request.site_id")}}">
 		</div>
-			@if ($errors->has("section_id"))
+			@if ($errors->has("site_id"))
 				<div class="alert alert-danger">
 					<span class='help-block'>
-						<strong>{{ $errors->first("section_id") }}</strong>
+						<strong>{{ $errors->first("site_id") }}</strong>
 					</span>
 				</div>
 			@endif

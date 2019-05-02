@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'ar',
+    'locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -250,12 +250,6 @@ return [
         'Links' => ConsoleTVs\Links\Facades\Links::class,
         'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'Zipper' => Chumper\Zipper\Zipper::class,
-
-
-
-
-
-
 
     ],
 

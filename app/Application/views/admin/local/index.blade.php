@@ -32,7 +32,7 @@
 			<input type="text" name="area" class="form-control " placeholder="{{ trans("local.area") }}" value="{{ request()->has("area") ? request()->get("area") : "" }}">
 		</div>
 		<div class="form-group">
-			<input type="text" name="section_id" class="form-control " placeholder="{{ trans("local.section_id") }}" value="{{ request()->has("section_id") ? request()->get("section_id") : "" }}">
+			<input type="text" name="site_id" class="form-control " placeholder="{{ trans("local.site_id") }}" value="{{ request()->has("site_id") ? request()->get("site_id") : "" }}">
 		</div>
 
         <button class="btn btn-success" type="submit" ><i class="fa fa-search"></i></button>

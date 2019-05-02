@@ -316,7 +316,7 @@ class CommandsController extends AbstractController
                 die("Error writing to file");
             }
             /*
-             * migration section
+             * migration site
              */
             $migrationPath = database_path('migrations');
             foreach (scandir($migrationPath) as $file) {

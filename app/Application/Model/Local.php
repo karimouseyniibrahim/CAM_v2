@@ -10,17 +10,17 @@ class Local extends Model
     public $table = "local";
 
     protected $fillable = [
-        'name', 'description', 'image', 'price', 'area', 'section_id',
+        'name', 'description', 'image', 'price', 'area', 'site_id',
     ];
 
     public function getSlugAttribute()
     {
-        return str_slug($this->name_lang);
+        return str_slug($this->name_lang, '-', getCurrentLang());
     }
 
     public function getUrlAttribute()
     {
-        return '/local/' . str_slug($this->name_lang);
+        return '/local/' . str_slug($this->name_lang, '-', getCurrentLang());
     }
 
     public function getNameLangAttribute()

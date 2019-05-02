@@ -2,7 +2,7 @@
             var section=$(this).val();
 
             if (section!='') {
-                $.get('/section/locaux/'+section,function(res){
+                $.get('/site/locaux/'+section,function(res){
                     var json=JSON.parse(res);
                     var out='';
                     $.each(json,function(key,value){

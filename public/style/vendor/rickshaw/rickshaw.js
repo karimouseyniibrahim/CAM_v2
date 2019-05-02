@@ -66,7 +66,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 /* Based on Alex Arnell's inheritance implementation. */
-/** section: Language
+/** site: Language
  * class Class
  *
  *  Manages Prototype's class-based OOP system.

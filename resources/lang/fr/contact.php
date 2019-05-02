@@ -2,12 +2,12 @@
 
 return [
     'contact' => 'Contact',
-    'name' => 'Name',
-    'subject' => 'Subject',
+    'name' => 'Nom',
+    'subject' => 'Sujet',
     'email' => 'Email',
-    'phone' => 'Phone',
-    'user_id' => 'User',
+    'phone' => 'Télephone',
+    'user_id' => 'Utilisateur',
     'message' => 'Message',
-    'Replay' => 'Replay',
-    'Visitor' => 'Visitor',
+    'Replay' => 'Repondre',
+    'Visitor' => 'Visiteur',
 ];

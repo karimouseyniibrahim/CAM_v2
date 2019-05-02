@@ -1,13 +1,14 @@
 <?php
-	return [
-		'page'=>'Page',
-		'title'=>'Page Title',
-        'url' => 'Url par défaut',
-		'body'=>'Page Body',
-		'active'=>'Active',
-		'No'=>'No',
-		'Yes'=>'Yes',
-		'edit'=>'edit',
-		'show'=>'show',
-		'delete'=>'delete',
-	];
+return [
+    'page' => 'Page',
+    'title' => 'Titre',
+    'url' => 'Url par défaut',
+    'image' => 'Image',
+    'body' => 'Contenu',
+    'active' => 'Active',
+    'No' => 'No',
+    'Yes' => 'Yes',
+    'edit' => 'edit',
+    'show' => 'show',
+    'delete' => 'delete',
+];

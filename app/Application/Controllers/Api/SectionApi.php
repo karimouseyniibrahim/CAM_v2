@@ -4,8 +4,8 @@ namespace App\Application\Controllers\Api;
 
 
 use App\Application\Controllers\Controller;
-use App\Application\Model\Section;
-use App\Application\Transformers\SectionTransformers;
+use App\Application\Model\Site;
+use App\Application\Transformers\SiteTransformers;
 use App\Application\Requests\Website\Section\ApiAddRequestSection;
 use App\Application\Requests\Website\Section\ApiUpdateRequestSection;
 
@@ -14,7 +14,7 @@ class SectionApi extends Controller
     use ApiTrait;
     protected $model;
 
-    public function __construct(Section $model)
+    public function __construct(Site $model)
     {
         $this->model = $model;
         /// send header Authorization Bearer token
@@ -32,9 +32,9 @@ class SectionApi extends Controller
     protected function checkLanguageBeforeReturn($data , $status_code = 200, $paginate = [])
     {
        if (request()->has('lang') && request()->get('lang') == 'ar') {
-            return response(apiReturn(SectionTransformers::transformAr($data) + $paginate), $status_code);
+            return response(apiReturn(SiteTransformers::transformAr($data) + $paginate), $status_code);
         }
-        return response(apiReturn(SectionTransformers::transform($data) + $paginate), $status_code);
+        return response(apiReturn(SiteTransformers::transform($data) + $paginate), $status_code);
     }
 
 }

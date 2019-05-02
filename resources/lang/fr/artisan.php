@@ -2,13 +2,16 @@
 
 return [
     'artisan' => 'Artisan',
-    'numero_artisan' => 'Artisan Number',
-    'name' => 'Name',
+    'numero_artisan' => 'Numéro Artisan',
+    'name' => 'Nom',
     'email' => 'Email',
-    'telephone' => 'Telephone',
-    'address' => 'Address',
-    'edit' => '',
-    'show' => '',
-    'delete' => '',
-    'inscription'=>'تسجيل الحرفيين'
+    'telephone' => 'Télephone',
+    'address' => 'Adresse',
+    'edit' => 'Editer',
+    'show' => 'Afficher',
+    'delete' => 'Supprimer',
+    'inscription'=>'S\'inscrire',
+    'msg' => [
+        'delete' => 'Effectuée ! Suppression de l\'artisan du système'
+    ]
 ];
